@@ -1,0 +1,38 @@
+# Initial engineering settings; verify the gait envelope and braking on Ubuntu.
+map: navigation/maps/task1_20260911/field_map.yaml
+frame: world
+odom_topic: /odom/mujoco_odom
+cloud_topic: /front_lidar
+initialpose_topic: /initialpose
+clicked_point_topic: /clicked_point
+cloud_frame: lidar
+robot_radius: 0.35
+safety_margin: 0.05
+max_speed: 0.20
+max_yaw_rate: 0.35
+acceleration: 0.20
+goal_tolerance: 0.10
+stop_speed: 0.025
+stop_yaw_rate: 0.06
+settle_seconds: 0.8
+odom_timeout: 0.35
+cloud_timeout: 0.45
+command_timeout: 0.30
+goal_timeout: 180.0
+progress_timeout: 15.0
+max_tracking_replans: 3
+control_hz: 20.0
+max_header_age: 0.50
+# Must match the actual sensor-to-odometry-reference transform, not its name.
+sensor_translation: [0.0, 0.0, 0.30]
+sensor_rpy: [0.0, 0.0, 0.0]
+ground_z: 0.0
+obstacle_min_height: 0.15
+obstacle_max_height: 1.20
+obstacle_buffer: 0.12
+reaction_seconds: 0.45
+local_lookahead: 0.60
+max_tilt: 0.35
+client_ip: 127.0.0.1
+robot_ip: 127.0.0.1
+client_port: 43988

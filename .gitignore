@@ -1,0 +1,46 @@
+# Local caches and editor state.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Credentials and machine-local overrides.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+navigation/config/local.yaml
+
+# Do not commit official runtime or compiled dependencies.
+/src/UeSim/
+**/build/
+*.so
+*.so.*
+*.a
+*.o
+*.obj
+*.dll
+*.exe
+*.deb
+*.stl
+*.STL
+*.dae
+*.DAE
+
+# Runtime logs, large recordings and historical scratch outputs.
+*.log
+/log.txt
+/navigation/runs/
+**/raw_bag/
+*.db3
+*.db3-shm
+*.db3-wal
+*.mcap
+/mapping/updates/
+/mapping/diagnostics/

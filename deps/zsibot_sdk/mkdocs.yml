@@ -1,0 +1,143 @@
+# mkdocs.yml
+# 仓库链接（显示在右上角）
+site_name: Dog SDK Documentation
+site_url: https://your-username.github.io/your-repo-name/
+repo_url: https://github.com/your-username/your-repo-name
+repo_name: your-username/your-repo-name
+# edit_uri: edit/main/docs/
+
+# 在这里配置 mkdocs-material 主题
+theme:
+  name: material
+  language: zh
+  
+  # 调色板配置
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+  # 启用主题功能
+  features:
+    - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky    # 让 tabs 固定，不随滚动隐藏
+    - navigation.top.sticky     # 让顶部导航栏固定，不随滚动隐藏
+    - navigation.sections
+    - navigation.expand
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+       # 搜索功能
+    - search.suggest            # 搜索建议
+    - search.highlight          # 搜索结果高亮
+    - search.share              # 分享搜索链接
+  
+    # 内容功能
+    - content.code.copy         # 代码复制按钮
+    - content.code.annotate     # 代码注释
+    - content.tabs.linked       # 链接的代码选项卡
+  
+    # 其他功能
+    - toc.follow                # 目录跟随
+    # - toc.integrate             # 集成目录
+  # 字体配置
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  # 图标配置
+  icon:
+    repo: fontawesome/brands/github
+
+# 自定义目录
+extra_css:
+  - styles/extra.css
+
+# 社交链接
+# extra:
+#   social:
+#     - icon: fontawesome/brands/github
+#       link: https://github.com/your-username/your-repo-name
+#     - icon: fontawesome/brands/twitter
+#       link: https://twitter.com/your-handle
+
+# 分析统计（可选）
+extra:
+  analytics:
+    provider: google
+    property: YOUR-GA-ID
+
+# 版权信息
+# copyright: Copyright &copy; 2024 Your Company
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.highlight:  # 注意这里的冒号，表示下面是它的子配置
+      linenums: true        # 子项：缩进一层（通常2或4个空格）
+      linenums_style: "table"  # 同样缩进一层
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tasklist
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+
+# 插件
+plugins:
+  - search
+  # static i18n plugin configuration
+  - i18n:
+      # docs are organized in folders per locale (docs/, docs/en/, docs/zh_backup/)
+      docs_structure: folder
+      # whether to fallback to default language when a translation is missing
+      fallback_to_default: true
+      # 语言映射：key 必须与 docs 下的目录名一致
+      languages:
+        - locale: zh
+          name: 中文
+          default: true
+          build: true
+        - locale: en
+          name: English
+          build: true
+nav:
+  - Home: index.md
+  - Downloads: sdk_download.md
+  - Deploy: deploy.md
+  - Architecture: architecture.md
+  - Interface:
+    # - api.md
+    - zsl-1 API: api_zsl-1.md
+    - zsl-1w API: api_zsl-1w.md
+    # - zsm-1w API: api_zsm-1w.md
+    # - dog task API: api_dog_task.md
+    - lowlevel API: api_lowlevel.md
+  - Videos: video.md
+  - FAQ: faq.md
+  - Change Log: changelog.md
+  - About: about.md

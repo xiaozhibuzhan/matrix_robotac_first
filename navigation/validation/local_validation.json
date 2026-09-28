@@ -1,0 +1,67 @@
+{
+  "created_utc": "2026-09-26T09:06:10.050336+00:00",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "scope": "Offline Python/geometry/state-machine tests; no ROS2 runtime, SDK motion or Ubuntu gait trial",
+  "tests": 36,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 1.3992327999994814,
+  "python310_syntax_files": [
+    "navigation/check_install.py",
+    "navigation/configuration.py",
+    "navigation/core.py",
+    "navigation/geometry.py",
+    "navigation/grid.py",
+    "navigation/launcher.py",
+    "navigation/node.py",
+    "navigation/package_extension.py",
+    "navigation/preflight.py",
+    "navigation/prepare_map.py",
+    "navigation/sdk_bridge.py",
+    "navigation/sdk_worker.py",
+    "navigation/sensors.py",
+    "navigation/validate.py",
+    "navigation/__init__.py",
+    "navigation/tests/test_navigation.py"
+  ],
+  "map": {
+    "width": 597,
+    "height": 482,
+    "resolution": 0.05,
+    "radius": 0.35,
+    "margin": 0.05,
+    "free_cells": 91713,
+    "passable_cells": 49147,
+    "components": 3,
+    "largest_component": 47859
+  },
+  "protected_snapshot": {
+    "checked_files": 128,
+    "changed": []
+  },
+  "task_one_sources": {
+    "field_map.yaml": true,
+    "field_map.pgm": true,
+    "field_map.pcd": true
+  },
+  "source_hashes": {
+    "navigation/check_install.py": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+    "navigation/configuration.py": "75aa7d006650c43163a437790d27a592f362ac2ed9e3dd84b81999ad1cbf2cab",
+    "navigation/core.py": "c93c668bbeef9ab8fde760c58f9c7b7632ca5ce53b39323b0e9dfe12f7deb22d",
+    "navigation/geometry.py": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+    "navigation/grid.py": "e77363b60dea91d284f7571bdd877fe275bf20b369f2b0598a6362c73b7030da",
+    "navigation/launcher.py": "6c6662177edf245e7cbc4fa883955177cde43d4ae3e6687908891eae63169e26",
+    "navigation/node.py": "e7c02dbd35d1ae29842422d8c0f36dc101945d235777869459caf79994d04c47",
+    "navigation/package_extension.py": "a6d36bc8af502f4b20958c2be7a98eb9877c0d0ddeb3ed68b50699d7e1088640",
+    "navigation/preflight.py": "f496d8d160e1720b9712b1cb5fe9873207012cefa7d4df5c0093c0d442af1b06",
+    "navigation/prepare_map.py": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+    "navigation/sdk_bridge.py": "9860222f1dd87c9d4b6dbc0652f123ace9dd7b2c6424f6df94c3a68882db7f91",
+    "navigation/sdk_worker.py": "53fdf2b5ce19ca5d54f96812a5eedf333737e796a694f8ccc2ec7ed86861d2c6",
+    "navigation/sensors.py": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+    "navigation/validate.py": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+    "navigation/__init__.py": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+    "navigation/tests/test_navigation.py": "7eb9d8d3a62da176ba3494066144bfd93c698194ea7e6922d6f06951cf91e759"
+  }
+}

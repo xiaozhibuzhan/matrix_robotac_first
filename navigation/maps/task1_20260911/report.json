@@ -1,0 +1,121 @@
+{
+  "method": "bounded measured-ground triangles; no extrapolation; task-one obstacles preserved",
+  "source_yaml": "maps/run_20260911_223510_ujmvehqs/field_map.yaml",
+  "source_pcd": "maps/run_20260911_223510_ujmvehqs/field_map.pcd",
+  "source_sha256": {
+    "field_map.yaml": "29f1adff4cd388d69adec941cd6c9b1c552b4c3d332bed0572d29dd606727f88",
+    "field_map.pgm": "ed838895bd43a9dbb5dabe736f90681eb41c8cd0843fec6657d306f635c0bfa7",
+    "field_map.pcd": "ea08860f8870b3ecd8dada2d60192c1fb556a579e597f126cc8fc825647db1c6"
+  },
+  "support": {
+    "ground_representatives": 41457,
+    "triangles": 82714,
+    "accepted_triangles": 74037,
+    "max_edge_m": 0.3,
+    "ground_band_m": 0.06,
+    "max_height_span_m": 0.04,
+    "max_slope_radians": 0.18
+  },
+  "inferred_free_cells": 60727,
+  "before": {
+    "width": 597,
+    "height": 482,
+    "resolution": 0.05,
+    "radius": 0.35,
+    "margin": 0.05,
+    "free_cells": 30986,
+    "passable_cells": 0,
+    "components": 0,
+    "largest_component": 0
+  },
+  "after": {
+    "width": 597,
+    "height": 482,
+    "resolution": 0.05,
+    "radius": 0.35,
+    "margin": 0.05,
+    "free_cells": 91713,
+    "passable_cells": 49147,
+    "components": 3,
+    "largest_component": 47859
+  },
+  "offline_example_only": {
+    "start": [
+      -0.0029102325400001128,
+      0.005806350699998575
+    ],
+    "goal": [
+      26.09708976746,
+      -15.644193649300002
+    ],
+    "path": [
+      [
+        -0.0029102325400001128,
+        0.005806350699998575
+      ],
+      [
+        3.94708976746,
+        -0.0941936492999993
+      ],
+      [
+        7.947089767460001,
+        -0.0941936492999993
+      ],
+      [
+        11.947089767460001,
+        -0.0941936492999993
+      ],
+      [
+        15.94708976746,
+        -0.0941936492999993
+      ],
+      [
+        19.947089767460003,
+        -0.0941936492999993
+      ],
+      [
+        22.59708976746,
+        -0.0941936492999993
+      ],
+      [
+        24.49708976746,
+        -0.7441936493000014
+      ],
+      [
+        24.74708976746,
+        -1.0441936493000004
+      ],
+      [
+        24.947089767460003,
+        -1.4941936493000014
+      ],
+      [
+        25.197089767460003,
+        -2.8941936493
+      ],
+      [
+        25.197089767460003,
+        -6.8941936493
+      ],
+      [
+        25.197089767460003,
+        -10.8941936493
+      ],
+      [
+        25.74708976746,
+        -14.894193649300002
+      ],
+      [
+        26.09708976746,
+        -15.644193649300002
+      ]
+    ],
+    "length_m": 39.779758536553146
+  },
+  "limits": [
+    "Derived free space is an inference, not a new sensor measurement.",
+    "Verify map, gait footprint, localization and floor support on target Ubuntu.",
+    "Example coordinates are not the current robot pose or prescribed goals."
+  ],
+  "footprint_inflation": "EDT minus resolution*sqrt(2): obstacle extent and any centre inside a candidate cell"
+}

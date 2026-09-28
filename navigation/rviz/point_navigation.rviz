@@ -1,0 +1,122 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Tool Properties
+    Name: Tool Properties
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Enabled: true
+  Name: root
+  Global Options:
+    Background Color: 35; 38; 43
+    Fixed Frame: world
+    Frame Rate: 20
+  Displays:
+    - Class: rviz_default_plugins/Map
+      Name: Navigation Map
+      Enabled: true
+      Value: true
+      Alpha: 1
+      Color Scheme: map
+      Draw Behind: true
+      Topic:
+        Value: /task2/map
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+    - Class: rviz_default_plugins/Map
+      Name: Footprint Clearance (optional)
+      Enabled: false
+      Value: false
+      Alpha: 0.5
+      Color Scheme: map
+      Topic:
+        Value: /task2/clearance
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+    - Class: rviz_default_plugins/Path
+      Name: Planned Path
+      Enabled: true
+      Value: true
+      Color: 30; 210; 255
+      Line Style: Lines
+      Line Width: 0.04
+      Topic:
+        Value: /task2/path
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+    - Class: rviz_default_plugins/Pose
+      Name: Robot Pose
+      Enabled: true
+      Value: true
+      Shape: Arrow
+      Color: 80; 255; 80
+      Shaft Length: 0.45
+      Head Length: 0.2
+      Topic:
+        Value: /task2/pose
+        Depth: 10
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Robot Goal and Live Obstacles
+      Enabled: true
+      Value: true
+      Namespaces: {}
+      Topic:
+        Value: /task2/markers
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/SetInitialPose
+      Covariance x: 0.25
+      Covariance y: 0.25
+      Covariance yaw: 0.06854
+      Topic:
+        Value: /initialpose
+        Depth: 5
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+    - Class: rviz_default_plugins/PublishPoint
+      Single click: true
+      Topic:
+        Value: /clicked_point
+        Depth: 5
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Current View
+      Target Frame: <Fixed Frame>
+      Angle: 0
+      Scale: 30
+      X: 12
+      Y: -5
+      Near Clip Distance: 0.01
+    Saved: []
+Window Geometry:
+  Width: 1400
+  Height: 900
+  X: 70
+  Y: 30
+  Hide Left Dock: false
+  Hide Right Dock: false

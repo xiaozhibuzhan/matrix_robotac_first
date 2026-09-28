@@ -1,0 +1,41 @@
+test_astar_routes_around_wall_without_corner_cutting (test_navigation.GridTests.test_astar_routes_around_wall_without_corner_cutting) ... ok
+test_binary_pgm_preserves_whitespace_pixels (test_navigation.GridTests.test_binary_pgm_preserves_whitespace_pixels) ... ok
+test_collinear_ground_rejected (test_navigation.GridTests.test_collinear_ground_rejected) ... ok
+test_diagonal_corner_cut_is_blocked (test_navigation.GridTests.test_diagonal_corner_cut_is_blocked) ... ok
+test_endpoint_on_grid_line_does_not_walk_past_end (test_navigation.GridTests.test_endpoint_on_grid_line_does_not_walk_past_end) ... ok
+test_footprint_excludes_unknown_and_border (test_navigation.GridTests.test_footprint_excludes_unknown_and_border) ... ok
+test_ground_interpolation_does_not_bridge_large_gaps (test_navigation.GridTests.test_ground_interpolation_does_not_bridge_large_gaps) ... ok
+test_invalid_goal_not_moved_to_nearest_free_cell (test_navigation.GridTests.test_invalid_goal_not_moved_to_nearest_free_cell) ... ok
+test_pgm_comments_and_ascii (test_navigation.GridTests.test_pgm_comments_and_ascii) ... ok
+test_real_map_preserves_all_original_obstacles (test_navigation.GridTests.test_real_map_preserves_all_original_obstacles) ... ok
+test_rotated_origin_roundtrip (test_navigation.GridTests.test_rotated_origin_roundtrip) ... ok
+test_braking_lag_must_settle_before_arrival (test_navigation.NavigationTests.test_braking_lag_must_settle_before_arrival) ... ok
+test_cloud_staleness_cancels_and_does_not_resume (test_navigation.NavigationTests.test_cloud_staleness_cancels_and_does_not_resume) ... ok
+test_duplicate_odometry_does_not_refresh_freshness (test_navigation.NavigationTests.test_duplicate_odometry_does_not_refresh_freshness) ... ok
+test_empty_cloud_and_bad_timestamp_rejected (test_navigation.NavigationTests.test_empty_cloud_and_bad_timestamp_rejected) ... ok
+test_initial_alignment_uses_manual_pose_and_odom (test_navigation.NavigationTests.test_initial_alignment_uses_manual_pose_and_odom) ... ok
+test_live_obstacle_stops_motion (test_navigation.NavigationTests.test_live_obstacle_stops_motion) ... ok
+test_loop_stall_latches_old_goal (test_navigation.NavigationTests.test_loop_stall_latches_old_goal) ... ok
+test_new_goal_and_cancel_send_zero (test_navigation.NavigationTests.test_new_goal_and_cancel_send_zero) ... ok
+test_no_initial_pose_rejects_motion (test_navigation.NavigationTests.test_no_initial_pose_rejects_motion) ... ok
+test_no_progress_times_out (test_navigation.NavigationTests.test_no_progress_times_out) ... ok
+test_odometry_reconnection_requires_reinitialization_even_when_idle (test_navigation.NavigationTests.test_odometry_reconnection_requires_reinitialization_even_when_idle) ... ok
+test_odometry_restart_or_frame_change_requires_new_initial_pose (test_navigation.NavigationTests.test_odometry_restart_or_frame_change_requires_new_initial_pose) ... ok
+test_position_tolerance_alone_does_not_claim_arrival (test_navigation.NavigationTests.test_position_tolerance_alone_does_not_claim_arrival) ... ok
+test_real_map_short_goal (test_navigation.NavigationTests.test_real_map_short_goal) ... ok
+test_repeated_goals_and_different_headings (test_navigation.NavigationTests.test_repeated_goals_and_different_headings) ... ok
+test_route_around_wall (test_navigation.NavigationTests.test_route_around_wall) ... ok
+test_straight_goal_arrives_and_stays_stopped (test_navigation.NavigationTests.test_straight_goal_arrives_and_stays_stopped) ... ok
+test_tilt_invalidates_localization (test_navigation.NavigationTests.test_tilt_invalidates_localization) ... ok
+test_turn_before_driving (test_navigation.NavigationTests.test_turn_before_driving) ... ok
+test_padded_rows_endianness_and_metadata_removal (test_navigation.SensorTests.test_padded_rows_endianness_and_metadata_removal) ... ok
+test_expired_moving_command_latches_stop (test_navigation.WatchdogTests.test_expired_moving_command_latches_stop) ... ok
+test_fresh_packet_cannot_revive_expired_motion (test_navigation.WatchdogTests.test_fresh_packet_cannot_revive_expired_motion) ... ok
+test_idle_expiry_stays_zero_without_motion_trip (test_navigation.WatchdogTests.test_idle_expiry_stays_zero_without_motion_trip) ... ok
+test_invalid_replayed_or_out_of_range_command_rejected (test_navigation.WatchdogTests.test_invalid_replayed_or_out_of_range_command_rejected) ... ok
+test_queued_commands_keep_source_age (test_navigation.WatchdogTests.test_queued_commands_keep_source_age) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 1.360s
+
+OK
