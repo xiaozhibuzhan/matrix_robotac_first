@@ -7,8 +7,9 @@ from .sdk_limits import MIN_FORWARD_SPEED,MIN_YAW_RATE
 
 
 class Navigator:
-    def __init__(self,grid,config):
+    def __init__(self,grid,config,planner=None):
         self.grid=grid; self.cfg=config; self.history=deque(maxlen=512)
+        self.planner=planner; self.plan_request=None; self.plan_pose=None
         self.odom=None; self.odom_stamp=None; self.odom_received=None; self.frames=None
         self.alignment=None; self.pose=None; self.linear_speed=math.inf; self.angular_speed=math.inf
         self.cloud_stamp=None; self.cloud_received=None; self.obstacles=np.empty((0,2))
@@ -19,13 +20,21 @@ class Navigator:
         self.best_remaining=math.inf; self.progress_time=None
         self.turning=True; self.corner_settle=None
         self.tracking_replans=0
+        self.tracking_replan_streak=0; self.replan_anchor_remaining=None; self.replan_anchor_pose=None
+        self.turn_reference=None; self.best_turn_error=math.inf
         self.sensor_rotation=rpy_matrix(config['sensor_rpy'])
 
     def cancel(self,reason='Cancelled'):
+        self.discard_plan()
         self.goal=None; self.path=[]; self.command=(0.,0.); self.settle_since=None
         self.ramp_speed=0.
         self.state='IDLE' if self.alignment is not None else 'WAIT_INITIAL_POSE'
         self.reason=reason
+
+    def discard_plan(self):
+        if self.planner is not None and self.plan_request is not None:
+            self.planner.discard(self.plan_request)
+        self.plan_request=None; self.plan_pose=None
 
     def fail(self,reason,lose_localization=False):
         self.cancel(reason)
@@ -119,6 +128,8 @@ class Navigator:
             self.fail(str(exc)); return False
         self.goal=tuple(map(float,point)); self.goal_started=now
         self.tracking_replans=0
+        self.tracking_replan_streak=0; self.replan_anchor_remaining=None; self.replan_anchor_pose=None
+        self.turn_reference=None; self.best_turn_error=math.inf
         self.state='STOPPING_FOR_PLAN'; self.reason='Waiting for standstill before planning'
         return True
 
@@ -128,8 +139,13 @@ class Navigator:
         return (v*math.sin(w*t)/w,v*(1-math.cos(w*t))/w)
 
     def motion_clear(self,v,w):
-        stopping=v*self.cfg['reaction_seconds']+v*v/(2*self.cfg['acceleration'])+self.cfg['obstacle_buffer']
-        distance=min(math.dist(self.pose[:2],self.goal),max(stopping,self.cfg['local_lookahead'])) if v else 0.
+        measured=self.linear_speed if math.isfinite(self.linear_speed) else 0.
+        braking_speed=max(v,measured)
+        stopping=braking_speed*self.cfg['reaction_seconds']+braking_speed*braking_speed/(2*self.cfg['acceleration'])+self.cfg['obstacle_buffer']
+        target=self.path[self.path_index] if self.path and self.path_index<len(self.path) else self.goal
+        # Near a corner, don't extrapolate a straight cruise past the turn;
+        # retain the full stopping distance even if it extends past the goal.
+        distance=max(stopping,min(math.dist(self.pose[:2],target),self.cfg['local_lookahead'])) if v else 0.
         horizon=distance/max(v,.01) if v else self.cfg['reaction_seconds']
         times=np.linspace(0,horizon,max(2,int(distance/(self.grid.resolution*.4))+1))
         offsets=np.array([self.arc(v,w,float(t)) for t in times])
@@ -157,15 +173,36 @@ class Navigator:
             self.fail(error); return self.command
         if now-self.goal_started>self.cfg['goal_timeout']:
             self.fail('Goal time limit exceeded'); return self.command
-        if self.state=='STOPPING_FOR_PLAN':
+        if self.state in ('STOPPING_FOR_PLAN','PLANNING'):
             self.ramp_speed=0.; self.command=(0.,0.)
-            if not self.is_stopped(): self.settle_since=None; return self.command
+            if (not self.is_stopped() or (self.plan_pose is not None
+                    and math.dist(self.pose[:2],self.plan_pose)>self.cfg['goal_tolerance']*.5)):
+                self.discard_plan(); self.state='STOPPING_FOR_PLAN'
+                self.reason='Waiting for standstill before planning'
+                self.settle_since=None; return self.command
             if self.settle_since is None: self.settle_since=now
             if now-self.settle_since<self.cfg['settle_seconds']: return self.command
-            try: self.path=self.grid.plan(self.pose[:2],self.goal)
-            except ValueError as exc: self.fail(str(exc)); return self.command
+            if self.planner is None:
+                try: self.path=self.grid.plan(self.pose[:2],self.goal)
+                except ValueError as exc: self.fail(str(exc)); return self.command
+            else:
+                if self.plan_request is None:
+                    self.plan_pose=tuple(self.pose[:2])
+                    self.plan_request=self.planner.submit(self.plan_pose,self.goal)
+                    self.state='PLANNING'; self.reason='Planning while stopped; sensors remain active'
+                    return self.command
+                result=self.planner.poll(self.plan_request)
+                if result is None: return self.command
+                self.plan_request=None; self.plan_pose=None
+                path,error=result
+                if error is not None:
+                    self.fail('Path planning failed: '+str(error)); return self.command
+                self.path=path
             self.path_index=1; self.state='TRACKING'; self.reason='Following planned path'
             self.turning=True; self.corner_settle=None
+            self.replan_anchor_remaining=sum(math.dist(a,b) for a,b in zip(self.path,self.path[1:]))
+            self.replan_anchor_pose=tuple(self.pose[:2])
+            self.turn_reference=None; self.best_turn_error=math.inf
             self.best_remaining=math.inf; self.progress_time=now; self.settle_since=None
             return self.command
         distance=math.dist(self.pose[:2],self.goal)
@@ -189,21 +226,35 @@ class Navigator:
             self.path_index+=1; self.turning=True; self.corner_settle=None
         target=self.path[self.path_index]
         if not self.grid.segment_free(self.pose[:2],target):
-            if self.grid.is_free(self.grid.cell(self.pose[:2])) and self.tracking_replans<self.cfg['max_tracking_replans']:
-                self.tracking_replans+=1; self.ramp_speed=0.; self.command=(0.,0.); self.path=[]; self.settle_since=None
+            if self.grid.is_free(self.grid.cell(self.pose[:2])) and self.tracking_replan_streak<self.cfg['max_tracking_replans']:
+                self.tracking_replans+=1; self.tracking_replan_streak+=1
+                self.ramp_speed=0.; self.command=(0.,0.); self.path=[]; self.settle_since=None
                 self.state='STOPPING_FOR_PLAN'; self.reason='Tracking deviation: stop before bounded static-map replan'
                 return self.command
             self.fail('Tracking error crosses blocked cells; reselect a goal'); return self.command
         remaining=math.dist(self.pose[:2],target)+sum(math.dist(a,b) for a,b in zip(self.path[self.path_index:],self.path[self.path_index+1:]))
+        if (self.tracking_replan_streak and self.replan_anchor_remaining is not None
+                and self.replan_anchor_remaining-remaining>=self.cfg['replan_progress_distance']
+                and math.dist(self.pose[:2],self.replan_anchor_pose)>=self.cfg['replan_progress_distance']*.5):
+            # Separate recoveries along a long route are not repeated failure
+            # at one location. Total goal time remains anchored to the click.
+            self.tracking_replan_streak=0
         if remaining<self.best_remaining-.02: self.best_remaining=remaining; self.progress_time=now
+        heading=math.atan2(target[1]-self.pose[1],target[0]-self.pose[0]); error=wrap(heading-self.pose[2])
+        if self.turning:
+            if self.turn_reference!=tuple(target):
+                self.turn_reference=tuple(target); self.best_turn_error=abs(error)
+            elif abs(error)<self.best_turn_error-.03:
+                self.best_turn_error=abs(error); self.progress_time=now
         if now-self.progress_time>self.cfg['progress_timeout']:
             self.fail('No path progress; stopped'); return self.command
-        heading=math.atan2(target[1]-self.pose[1],target[0]-self.pose[0]); error=wrap(heading-self.pose[2])
         w=float(np.clip(1.8*error,-self.cfg['max_yaw_rate'],self.cfg['max_yaw_rate']))
         if abs(error)<.015: w=0.
         v=min(self.cfg['max_speed'],.7*math.dist(self.pose[:2],target),math.sqrt(2*self.cfg['acceleration']*max(0,distance-self.cfg['goal_tolerance']*.5)))
         v=0. if abs(error)>.35 else v*math.cos(error)
-        if abs(error)>.35: self.turning=True
+        if abs(error)>.35 and not self.turning:
+            self.turning=True
+            self.turn_reference=tuple(target); self.best_turn_error=abs(error)
         if self.turning:
             v=0.
             if abs(error)<.025:
@@ -231,7 +282,14 @@ class Navigator:
         return self.command
 
     def snapshot(self):
+        remaining=None
+        if self.goal is not None and self.pose is not None and self.path_index<len(self.path):
+            remaining=(math.dist(self.pose[:2],self.path[self.path_index])+
+                       sum(math.dist(a,b) for a,b in zip(self.path[self.path_index:],self.path[self.path_index+1:])))
         return {'state':self.state,'reason':self.reason,'pose':self.pose,'goal':self.goal,
                 'tracking_replans':self.tracking_replans,
+                'tracking_replan_streak':self.tracking_replan_streak,
+                'path_index':self.path_index,'path_points':len(self.path),
+                'remaining_path_m':remaining,
                 'command':self.command,'linear_speed':self.linear_speed if math.isfinite(self.linear_speed) else None,
                 'angular_speed':self.angular_speed if math.isfinite(self.angular_speed) else None}

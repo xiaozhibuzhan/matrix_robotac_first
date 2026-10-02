@@ -1,6 +1,6 @@
 # matrix_robotac_first：操作与 Ubuntu 迁移指南
 
-更新日期：2026-10-02。请按“准备文件 → 校验与备份 → 安装 → 环境检查 → 预览 → 行走 → 停止”的顺序操作。**首版代码与 70 项离线测试已完成；任务二的 Ubuntu ROS2 / SDK / 仿真运动闭环仍待现场验收。**
+更新日期：2026-10-02。请按“准备文件 → 校验与备份 → 安装 → 环境检查 → 预览 → 行走 → 停止”的顺序操作。**最新现场日志已有 4 次 ARRIVED；本次加速和长路线恢复修复通过 96 项离线测试，更新后的 Ubuntu 运动效果待复测。** 已安装用户先看 [长路线修复与更新步骤](navigation/LONG_ROUTE_FIX_20261002.md)。
 
 第一开发目标：在 RViz 点一个普通可达位置，机器狗自主规划、到达并可靠停住。任务一建图已通过 Ubuntu 验收；宝箱接触、消失确认与比赛计时计分属于后续阶段。
 
@@ -52,7 +52,7 @@ Get-FileHash '.\navigation\updates\task2_point_navigation_20260926.zip' -Algorit
 Get-Content '.\navigation\updates\task2_point_navigation_20260926.zip.sha256'
 ```
 
-当前测试预期为 `Ran 70 tests` 与 `OK`；检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
+当前测试预期为 `Ran 96 tests` 与 `OK`；检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
 
 打包器会收集 `navigation/` 中允许的文件类型。打包前确认没有准备留在现场的私密配置，特别是自行新增的 `config/local.yaml`。若提示 CRLF，只把报错的扩展文本文件改为 UTF-8/LF，不批量修改官方文件。
 
@@ -145,6 +145,18 @@ client_port: 43988
 
 地图路径相对工程根目录；前四项应与所用地图和现场 topic 一致。后三项沿用官方示例的同机仿真地址，跨机器时按现场已验证的 SDK 网络配置修改。**导航 SDK 只读取这个配置文件的地址和端口，不会把 `SDK_CLIENT_IP` 环境变量自动填入其中。** 实际加载值会写入本轮日志的 `config.yaml`。
 
+**本次加速必须核对 `local.yaml`：旧文件里的 0.20 / 0.35 会覆盖新默认值。** 将下面同名项改成以下数值；`replan_progress_distance` 缺失时补一行。保留现场地图、地址和传感器外参等已验证设置：
+
+```yaml
+max_speed: 0.40
+max_yaw_rate: 0.60
+acceleration: 0.20
+max_tracking_replans: 3
+replan_progress_distance: 0.75
+```
+
+保持 `goal_timeout: 180.0` 和 `progress_timeout: 15.0`。本次半路停止发生在约 59 秒，原因是恢复额度耗尽；增大超时不能解决它。新的恢复额度按连续失败计算，已恢复行走并取得足够进展后复位。
+
 ## 3. 终端分工与环境
 
 | 终端 | 用途 | 注意 |
@@ -195,7 +207,7 @@ cd "$TASK2_PROJECT"
 /usr/bin/python3 -B -m navigation.preflight --drive --config navigation/config/local.yaml
 ```
 
-预期依次为 `imports OK`、地图摘要、当前 70 项测试 `OK`、完整预检查 JSON。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
+预期依次为 `imports OK`、地图摘要、当前 96 项测试 `OK`、完整预检查 JSON。核对 JSON 的 `control_settings` 中 `max_speed` 为 `0.4`、`max_yaw_rate` 为 `0.6`。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
 
 仅缺少相应依赖时补装：
 
@@ -243,7 +255,7 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml
 2. 保持机器狗静止，点击顶部 **2D Pose Estimate**。
 3. 在地图中**机器人此刻实际所在的位置**按住左键，沿实际朝向拖动箭头再松开。它只建立定位，不会传送机器狗，也不是设置目的地。
 4. 绿色位置/方向和红色实时障碍应与地图、仿真画面的墙体结构一致；状态应进入 `IDLE`。不确定出生点对应地图哪里时，先对照墙角/通道确定，不照抄离线示例或目标坐标当起点。
-5. 点击 **Publish Point**，在地图地面上的开阔区选距当前位置约 1 米的普通点，应出现目标和青色路径，状态转到 `STOPPING_FOR_PLAN`、`TRACKING`。
+5. 点击 **Publish Point**，在地图地面上的开阔区选距当前位置约 1 米的普通点，应出现目标；状态经 `STOPPING_FOR_PLAN → PLANNING`，规划完成出现青色路径并进入 `TRACKING`。
 6. **预览中机器人不动是正常的。** 不连接 SDK，约 15 秒无路径进展后会取消目标；这里只确认输入、坐标和路径，不验收真实到达。
 7. 点被拒绝时看状态的 `reason`，可打开 `Footprint Clearance (optional)` 查看足迹可规划区域。不要点机器人/障碍标记或缩小足迹强行通过。
 
@@ -251,11 +263,13 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml
 
 ## 6. 实际导航：先 1 米，再 2 米
 
-**2026-10-02 17:00 后更新：**前两轮已连接并起立，失败是 SDK 拒绝低于 0.05 m/s 的前向指令；第三轮为 preview。速度范围兼容及退出竞态已修复，三轮解释和具体重试见 [低速修复说明](navigation/VELOCITY_FIX_20261002.md)。请更新增量包；不用另开 highlevel_demo。
+**最新 18:00:42 开始的现场日志：**5 个接受目标中 4 个到达；第 4 个约 59 秒后因累计恢复次数耗尽停止。本次将前进上限改为 0.40 m/s、转向上限改为 0.60 rad/s，并改善路径余量、连续恢复和转向进展判断。先按第 2.3 节核对现场配置，详见 [长路线修复说明](navigation/LONG_ROUTE_FIX_20261002.md)。
+
+此前 SDK 拒绝低于 0.05 m/s 的前向指令、ROS 退出竞态已修复，历史诊断见 [低速修复说明](navigation/VELOCITY_FIX_20261002.md)。不用另开 highlevel_demo。
 
 2026-10-02 回传日志中，旧版带 `--stand-up` 仍立即退出的问题已修复：零速度 move 不能先于 standUp。遇到 `SDK returned 12295` 请先更新本次增量包，具体证据和重试见 [启动修复说明](navigation/STARTUP_FIX_20261002.md)。
 
-关闭官方键盘 demo 和其他运动命令发送za者。扩展的进程锁只能阻止它自己重复启动，不能阻止其他 SDK 程序同时控制。
+关闭官方键盘 demo 和其他运动命令发送者。扩展的进程锁只能阻止它自己重复启动，不能阻止其他 SDK 程序同时控制。
 
 终端 C **下面两条只选一条**：
 
@@ -273,7 +287,7 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive 
 
 第 4 节确认使用仿真时钟时，在所选命令末尾追加 `--use-sim-time`。`--stand-up` 会先请求站立，等待 4 秒后才发第一条零速度 move；不能用于只预览模式。成功就绪后 sdk.log 应有 `TASK2_READY`，node.log 应有 `DRIVE enabled`。
 
-应看到 `DRIVE` 和本轮日志目录。**每次重启导航都重新操作 2D Pose Estimate**，上次预览的定位不会沿用。按第 5 节对齐后，用 Publish Point 点击约 1 米开阔点，同时观察仿真画面和 `/task2/status`。
+应看到 `DRIVE`、`Loaded limits: max_speed=0.40 m/s, max_yaw_rate=0.60 rad/s` 和本轮日志目录。若仍显示 0.20 / 0.35，先 Ctrl+C 退出，检查本次 `--config` 指向的文件。**每次重启导航都重新操作 2D Pose Estimate**，上次预览的定位不会沿用。按第 5 节对齐后，用 Publish Point 点击约 1 米开阔点，同时观察仿真画面和 `/task2/status`。
 
 | 阶段 | 默认判据/预期 |
 | --- | --- |
@@ -282,7 +296,9 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive 
 | 到达 | 距原点击点 ≤0.10 m，反馈线速度 ≤0.025 m/s、角速度 ≤0.06 rad/s，连续 ≥0.8 s 后报告 `ARRIVED` |
 | 到达后 | 再观察至少 3 秒，画面停稳，没有恢复旧目标 |
 
-正常顺序为 `WAIT_INITIAL_POSE → IDLE → STOPPING_FOR_PLAN → TRACKING → SETTLING → ARRIVED`。`STOPPED` 是异常停止，不是到达。先通过短距离，再做 2 米、不同朝向、静态绕障与连续目标，建议累计 10 次并记录。
+正常顺序为 `WAIT_INITIAL_POSE → IDLE → STOPPING_FOR_PLAN → PLANNING → TRACKING → SETTLING → ARRIVED`。`PLANNING` 期间保持停车，后台计算路线并继续接收传感器；`STOPPED` 是异常停止，不是到达。先通过短距离，再做 2 米、不同朝向、静态绕障与连续目标，建议累计 10 次并记录。
+
+短程到点、转弯和制动都正常后，再选上轮长路线的同一目标复测；不要把旧日志坐标当成本轮初始位姿。转弯前减速停稳、短暂停车重规划仍是预期行为。`tracking_replans` 记录整段总恢复数，`tracking_replan_streak` 记录连续恢复数；后者最多 3 次，恢复后剩余路线缩短至少 0.75 m 且实际位移至少 0.375 m 才复位。实时障碍、持续无进展或同一处反复失败仍会取消目标。
 
 本阶段不测试碰宝箱。新局部障碍会导致停车取消目标，需要人检查后重选，尚未实现动态障碍自动绕行。
 
@@ -316,7 +332,7 @@ if [ -n "$TASK2_RUN" ]; then
 fi
 ```
 
-没有 run 目录通常是预检查阶段已失败，直接读 C 终端错误。预览没有 sdk.log 正常。反馈问题时保留 `run.json`、`config.yaml`、`events.jsonl`、`node.log`、`sdk.log`（如有）、`rviz.log` 和点击位置/现场画面，不只截最后一行。
+没有 run 目录通常是预检查阶段已失败，直接读 C 终端错误。预览没有 sdk.log 正常。反馈问题时保留 `run.json`、`config.yaml`、`events.jsonl`、`node.log`、`sdk.log`（如有）、`rviz.log` 和点击位置/现场画面，不只截最后一行。新版 `events.jsonl` 增加 `planned_path` 事件；状态含当前路点、剩余路径长度及连续恢复数，可区分正常转弯、重新规划和真正停止。
 
 ## 8. 失败时恢复旧扩展
 
@@ -355,6 +371,8 @@ BASH
 | wrong clock / 旧包 / 未来包 | 系统时间与 /clock 是否选对，预览/控制参数是否一致 |
 | No path / 余量不足 | 起点和目标是否同一足迹可通行区域，先选开阔短程点 |
 | Live obstacle | 已保护停车，对照实际障碍和外参叠加后再点选 |
+| 更新后仍然慢 | 检查启动 `Loaded limits` 和日志 `config.yaml`，旧 local.yaml 会覆盖新速度上限；拐点附近仍会主动降速 |
+| Tracking error crosses blocked cells | 核对已安装长路线修复包；检查初始定位、路径与障碍叠加，保留新日志，不靠增加超时或无限重试解决 |
 | SDK worker 失败/锁定 | 查 sdk.log 的具体错误；0x3013 表示速度范围不合法，不能一概认为未连接。更新修复包后重启并重新定位 |
 | 已有 session / 锁占用 | 回到旧导航终端正常 Ctrl+C，不用全局 pkill python |
 | bad interpreter / CRLF | 重新复制校验通过的 LF 增量包，不批量转换官方脚本 |
@@ -368,6 +386,7 @@ BASH
 | --- | --- |
 | [navigation/README.md](navigation/README.md) | 实现范围、参数、派生地图、状态与控制边界 |
 | [navigation/OPERATIONS_UBUNTU.md](navigation/OPERATIONS_UBUNTU.md) | 随增量包携带的完整操作流程，Ubuntu 上可离线查阅 |
+| [navigation/LONG_ROUTE_FIX_20261002.md](navigation/LONG_ROUTE_FIX_20261002.md) | 本次加速、半路停车证据、现场参数与复测步骤 |
 | [mapping/README.md](mapping/README.md) | 任务一采集和离线建图 |
 | [README_GPT.md](README_GPT.md) | 项目历史及已验证环境背景 |
 | [TASK2_PLAN.md](TASK2_PLAN.md) | 任务二规则、目标与后续宝箱阶段 |

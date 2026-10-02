@@ -16,6 +16,7 @@ def inspect(config=DEFAULT,map_override=None,offline=False,drive=False,rviz=True
     if not grid.passable.any(): raise ValueError('Map has no footprint-clear cells')
     report={'python':sys.version.split()[0],'platform':platform.platform(),'offline':offline,
             'mode':'drive' if drive else 'preview','map':cfg['map'],'map_summary':grid.summary(),
+            'control_settings':{key:cfg[key] for key in ('max_speed','max_yaw_rate','acceleration','goal_timeout','max_tracking_replans','replan_progress_distance')},
             'environment':{key:os.environ.get(key,'<unset>') for key in ('ROS_DISTRO','ROS_DOMAIN_ID','RMW_IMPLEMENTATION','SDK_CLIENT_IP')}}
     if not offline:
         if sys.platform!='linux': raise RuntimeError('ROS/SDK launch requires the target Ubuntu; use --offline here')

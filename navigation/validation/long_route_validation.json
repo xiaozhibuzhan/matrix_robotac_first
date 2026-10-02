@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-02T11:35:41.080262+00:00",
+  "validation_kind": "deterministic_offline_controller_simulation",
+  "ubuntu_ros_sdk_field_test": false,
+  "limitations": [
+    "This is an offline deterministic kinematic simulation, not an Ubuntu ROS/SDK or robot gait field test.",
+    "First-order command response with tau=0.25 s models lag only; it does not model full robot dynamics, sensor noise or localization drift.",
+    "Real static map footprint clearance and every emitted SDK command domain are checked. A valid ground-only cloud keeps sensor freshness; real LiDAR obstacle geometry is not replayed.",
+    "Speed comparisons use the same current planner/controller, yaw limit, acceleration, map and lag; they do not compare all old-version defaults to all new-version defaults.",
+    "This benchmark uses the synchronous pure controller for deterministic simulated-time comparison and excludes real background planning elapsed time. Asynchronous callbacks and cancellation are covered separately in navigation/tests/test_async_planning.py."
+  ],
+  "conditions": {
+    "response_tau_seconds": 0.25,
+    "simulation_timestep_seconds": 0.05,
+    "max_speed_comparison_m_s": [
+      0.2,
+      0.4
+    ],
+    "max_yaw_rate_rad_s": 0.6,
+    "acceleration_m_s2": 0.2,
+    "maximum_steps_per_goal": 4000,
+    "goal_timeout_seconds": 180.0,
+    "goal_tolerance_m": 0.1,
+    "stop_speed_m_s": 0.025,
+    "stop_yaw_rate_rad_s": 0.06,
+    "settle_seconds": 0.8,
+    "robot_radius_m": 0.35,
+    "safety_margin_m": 0.05,
+    "planner_execution": "synchronous pure-controller benchmark for deterministic simulated-time comparison",
+    "real_background_planning_time_included": false
+  },
+  "source_sha256": {
+    "navigation/core.py": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+    "navigation/grid.py": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+    "navigation/config/default.yaml": "05af9230bb9af5e6dcb781e3d9ca07fc19352f81b8213e56bd16f198fdcdff43",
+    "navigation/planning.py": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+    "navigation/node.py": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+    "navigation/tests/test_long_route.py": "19621358ca8ba43536a3be938dfc50a9f50f37e15086af419ec423b83dbfad46",
+    "navigation/tests/test_navigation.py": "563686577903836f1e2e312552fe6a1a40dfbd75634c82b8eb91c317a8f33aad",
+    "navigation/tests/test_sdk_velocity.py": "768f49f0074c7f0daa48b69d3afb49bab1e2bce937e49a6b82e414e870ef77ac",
+    "navigation/tests/test_async_planning.py": "e7dd3a1548ce92343d344acbf30ccce3ee898de333ccd6347e667916163db502"
+  },
+  "map_sha256": {
+    "navigation/maps/task1_20260911/field_map.yaml": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+    "navigation/maps/task1_20260911/field_map.pgm": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd"
+  },
+  "routes": [
+    {
+      "logged_goal_number": 2,
+      "source_log_directory": "navigation/run/run_20261002_180042_hhck6zcr",
+      "start_pose_m_rad": [
+        2.3239095177,
+        -0.1842999194,
+        -0.0388229733
+      ],
+      "goal_xy_m": [
+        16.7220039368,
+        3.6776235104
+      ],
+      "straight_distance_m": 14.907031075266353,
+      "cases": [
+        {
+          "max_speed_m_s": 0.2,
+          "max_yaw_rate_rad_s": 0.6,
+          "acceleration_m_s2": 0.2,
+          "elapsed_seconds": 104.15,
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "final_pose_m_rad": [
+            16.701846841117632,
+            3.6029404032881738,
+            1.321883741366631
+          ],
+          "goal_error_m": 0.07733099960242028,
+          "measured_linear_speed_m_s": 0.00074118085457027,
+          "measured_angular_speed_rad_s": 0.0,
+          "tracking_replans": 0,
+          "tracking_replan_streak": 0,
+          "planned_path_length_m": 16.60727516650653,
+          "planned_segments": 6,
+          "post_arrival_zero_command_seconds": 1.5,
+          "post_arrival_goal_error_m": 0.07722056706275034,
+          "sdk_domain_commands_checked": 2113
+        },
+        {
+          "max_speed_m_s": 0.4,
+          "max_yaw_rate_rad_s": 0.6,
+          "acceleration_m_s2": 0.2,
+          "elapsed_seconds": 69.0,
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "final_pose_m_rad": [
+            16.70195863042761,
+            3.6033273879502747,
+            1.3219027546099014
+          ],
+          "goal_error_m": 0.0769280370591817,
+          "measured_linear_speed_m_s": 0.0007477604784093156,
+          "measured_angular_speed_rad_s": 0.0,
+          "tracking_replans": 0,
+          "tracking_replan_streak": 0,
+          "planned_path_length_m": 16.60727516650653,
+          "planned_segments": 6,
+          "post_arrival_zero_command_seconds": 1.5,
+          "post_arrival_goal_error_m": 0.07681662406643262,
+          "sdk_domain_commands_checked": 1410
+        }
+      ],
+      "elapsed_reduction_fraction_0_4_vs_0_2": 0.33749399903984645
+    },
+    {
+      "logged_goal_number": 3,
+      "source_log_directory": "navigation/run/run_20261002_180042_hhck6zcr",
+      "start_pose_m_rad": [
+        16.6930056454,
+        3.5986972337,
+        1.2487612143
+      ],
+      "goal_xy_m": [
+        13.6852378845,
+        -5.8343863487
+      ],
+      "straight_distance_m": 9.900996554693563,
+      "cases": [
+        {
+          "max_speed_m_s": 0.2,
+          "max_yaw_rate_rad_s": 0.6,
+          "acceleration_m_s2": 0.2,
+          "elapsed_seconds": 80.15,
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "final_pose_m_rad": [
+            13.760935335652015,
+            -5.821904801826718,
+            -2.995116318487487
+          ],
+          "goal_error_m": 0.07669526136808424,
+          "measured_linear_speed_m_s": 0.0007352309863152034,
+          "measured_angular_speed_rad_s": 7.023398483237036e-05,
+          "tracking_replans": 0,
+          "tracking_replan_streak": 0,
+          "planned_path_length_m": 11.294101637467348,
+          "planned_segments": 5,
+          "post_arrival_zero_command_seconds": 1.5,
+          "post_arrival_goal_error_m": 0.07658571919638217,
+          "sdk_domain_commands_checked": 1633
+        },
+        {
+          "max_speed_m_s": 0.4,
+          "max_yaw_rate_rad_s": 0.6,
+          "acceleration_m_s2": 0.2,
+          "elapsed_seconds": 57.55,
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "final_pose_m_rad": [
+            13.762454784266355,
+            -5.821712675400232,
+            -2.994100316465164
+          ],
+          "goal_error_m": 0.07822492100153863,
+          "measured_linear_speed_m_s": 0.0007601262525251212,
+          "measured_angular_speed_rad_s": 0.00012861699083240095,
+          "tracking_replans": 0,
+          "tracking_replan_streak": 0,
+          "planned_path_length_m": 11.294101637467348,
+          "planned_segments": 5,
+          "post_arrival_zero_command_seconds": 1.5,
+          "post_arrival_goal_error_m": 0.07811166647626971,
+          "sdk_domain_commands_checked": 1181
+        }
+      ],
+      "elapsed_reduction_fraction_0_4_vs_0_2": 0.28197130380536506
+    },
+    {
+      "logged_goal_number": 4,
+      "source_log_directory": "navigation/run/run_20261002_180042_hhck6zcr",
+      "start_pose_m_rad": [
+        13.7610095743,
+        -5.8269904203,
+        -2.9414488565
+      ],
+      "goal_xy_m": [
+        25.565328598,
+        -8.4376745224
+      ],
+      "straight_distance_m": 12.08956653872435,
+      "cases": [
+        {
+          "max_speed_m_s": 0.2,
+          "max_yaw_rate_rad_s": 0.6,
+          "acceleration_m_s2": 0.2,
+          "elapsed_seconds": 171.1,
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "final_pose_m_rad": [
+            25.559457833766572,
+            -8.359354043629384,
+            -1.5114633619731341
+          ],
+          "goal_error_m": 0.07850984123373336,
+          "measured_linear_speed_m_s": 0.000918075281704001,
+          "measured_angular_speed_rad_s": 0.00010246403698393363,
+          "tracking_replans": 0,
+          "tracking_replan_streak": 0,
+          "planned_path_length_m": 22.696006392256358,
+          "planned_segments": 14,
+          "post_arrival_zero_command_seconds": 1.5,
+          "post_arrival_goal_error_m": 0.07837305383127584,
+          "sdk_domain_commands_checked": 3452
+        },
+        {
+          "max_speed_m_s": 0.4,
+          "max_yaw_rate_rad_s": 0.6,
+          "acceleration_m_s2": 0.2,
+          "elapsed_seconds": 130.6,
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "final_pose_m_rad": [
+            25.559492225919467,
+            -8.36146889570758,
+            -1.5115282613068073
+          ],
+          "goal_error_m": 0.07639881400790506,
+          "measured_linear_speed_m_s": 0.0009066427452427702,
+          "measured_angular_speed_rad_s": 6.839660824519809e-05,
+          "tracking_replans": 0,
+          "tracking_replan_streak": 0,
+          "planned_path_length_m": 22.696006392256358,
+          "planned_segments": 14,
+          "post_arrival_zero_command_seconds": 1.5,
+          "post_arrival_goal_error_m": 0.07626373371276,
+          "sdk_domain_commands_checked": 2642
+        }
+      ],
+      "elapsed_reduction_fraction_0_4_vs_0_2": 0.23670368205727643
+    }
+  ]
+}

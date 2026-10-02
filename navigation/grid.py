@@ -96,35 +96,56 @@ class GridMap:
         x,y=cell
         return 0<=x<self.width and 0<=y<self.height and bool(self.passable[y,x])
 
-    def segment_free(self,start,end):
-        """Supercover includes both side cells at a diagonal corner crossing."""
+    def _segment_cells(self,start,end):
+        """Collision-checked supercover, including side cells at corner crossings."""
         ax,ay=self.continuous_cell(start); bx,by=self.continuous_cell(end)
-        if not all(math.isfinite(v) for v in (ax,ay,bx,by)): return False
+        if not all(math.isfinite(v) for v in (ax,ay,bx,by)): return None
         x,y=math.floor(ax),math.floor(ay); ex,ey=math.floor(bx),math.floor(by)
-        if not self.is_free((x,y)) or not self.is_free((ex,ey)): return False
+        if not self.is_free((x,y)) or not self.is_free((ex,ey)): return None
+        cells=[(x,y),(ex,ey)]
         dx,dy=bx-ax,by-ay; sx=1 if dx>0 else -1; sy=1 if dy>0 else -1
         tx=((x+1-ax) if dx>0 else (ax-x))/abs(dx) if dx else math.inf
         ty=((y+1-ay) if dy>0 else (ay-y))/abs(dy) if dy else math.inf
         stepx=1/abs(dx) if dx else math.inf; stepy=1/abs(dy) if dy else math.inf
         for _ in range(abs(ex-x)+abs(ey-y)+3):
-            if (x,y)==(ex,ey): return True
-            # Destination was checked above. Never walk beyond an endpoint
-            # on a grid line when the negative direction touches t == 1.
-            if min(tx,ty)>=1.-1e-12: return True
+            if (x,y)==(ex,ey): return cells
+            # The endpoint was checked above. Do not walk beyond it when
+            # travelling negatively to an endpoint exactly on a grid line.
+            if min(tx,ty)>=1.-1e-12: return cells
             if abs(tx-ty)<1e-10:
-                if not self.is_free((x+sx,y)) or not self.is_free((x,y+sy)): return False
+                side=((x+sx,y),(x,y+sy))
+                if not all(self.is_free(c) for c in side): return None
+                cells.extend(side)
                 x+=sx; y+=sy; tx+=stepx; ty+=stepy
             elif tx<ty: x+=sx; tx+=stepx
             else: y+=sy; ty+=stepy
-            if not self.is_free((x,y)): return False
-        return False
+            if not self.is_free((x,y)): return None
+            cells.append((x,y))
+        return None
+
+    def segment_free(self,start,end):
+        return self._segment_cells(start,end) is not None
+
+    def _segment_clearance(self,start,end):
+        cells=self._segment_cells(start,end)
+        if cells is None: return -math.inf
+        return min(self.clearance[y,x] for x,y in cells)
 
     def plan(self,start,goal,max_expansions=300000):
         source,target=self.cell(start),self.cell(goal)
         if not self.is_free(source): raise ValueError('Start lacks known-free footprint clearance')
         if not self.is_free(target): raise ValueError('Goal lacks known-free clearance; goal was NOT moved')
-        if self.segment_free(start,goal): return [tuple(start),tuple(goal)]
-        queue=[(math.dist(source,target),0.0,source)]; cost={source:0.0}; parent={}; expanded=0
+        # This is a preference, not extra footprint inflation: narrow legal
+        # passages and clicked endpoints remain available. With adequate room,
+        # reserve 10 cm beyond the hard radius+margin for tracking/turn drift.
+        preferred=self.radius+self.margin+.10
+        if self._segment_clearance(start,goal)>=preferred:
+            return [tuple(start),tuple(goal)]
+        penalties=1.+8.*np.maximum(0.,(preferred-self.clearance)/.10)
+        def heuristic(cell):
+            dx,dy=abs(cell[0]-target[0]),abs(cell[1]-target[1])
+            return max(dx,dy)+(math.sqrt(2)-1.)*min(dx,dy)
+        queue=[(heuristic(source),0.0,source)]; cost={source:0.0}; parent={}; expanded=0
         while queue:
             _,g,current=heapq.heappop(queue)
             if g!=cost[current]: continue
@@ -136,18 +157,32 @@ class GridMap:
                 nxt=(x+dx,y+dy)
                 if not self.is_free(nxt): continue
                 if dx and dy and (not self.is_free((x+dx,y)) or not self.is_free((x,y+dy))): continue
-                ng=g+math.hypot(dx,dy)
+                weight=max(penalties[y,x],penalties[y+dy,x+dx])
+                if dx and dy:
+                    # The supercover also touches both side cells. Penalize
+                    # their clearance so diagonal shortcuts cannot hug corners.
+                    weight=max(weight,penalties[y,x+dx],penalties[y+dy,x])
+                ng=g+math.hypot(dx,dy)*float(weight)
                 if ng<cost.get(nxt,math.inf):
                     cost[nxt]=ng; parent[nxt]=current
-                    heapq.heappush(queue,(ng+math.dist(nxt,target),ng,nxt))
+                    heapq.heappush(queue,(ng+heuristic(nxt),ng,nxt))
         else: raise ValueError('No path in known free space after footprint inflation')
         cells=[target]
         while cells[-1]!=source: cells.append(parent[cells[-1]])
         raw=[tuple(start)]+[self.world(c) for c in reversed(cells)]+[tuple(goal)]
+        # Simplification must not undo the planner's clearance preference.
+        # Compare every shortcut with the minimum clearance of the grid path
+        # that it replaces, capped at the desired reserve. Endpoint approaches
+        # and unavoidable narrow passages keep their original legal clearance.
+        clearances=[self._segment_clearance(a,b) for a,b in zip(raw,raw[1:])]
         path=[raw[0]]; i=0
         while i<len(raw)-1:
-            j=min(len(raw)-1,i+80)
-            while j>i+1 and not self.segment_free(raw[i],raw[j]): j-=1
+            minimum=np.minimum.accumulate(clearances[i:])
+            j=len(raw)-1
+            while j>i+1:
+                required=min(preferred,float(minimum[j-i-1]))
+                if self._segment_clearance(raw[i],raw[j])>=required-1e-12: break
+                j-=1
             if not self.segment_free(raw[i],raw[j]): raise ValueError('Path segment failed collision validation')
             path.append(raw[j]); i=j
         return path

@@ -9,6 +9,7 @@ from .configuration import load_config
 from .core import Navigator
 from .geometry import yaw_of
 from .grid import GridMap
+from .planning import AsyncPlanner
 from .sdk_bridge import SDKBridge
 from .sensors import lidar_points
 
@@ -71,7 +72,7 @@ def main():
     class PointNavigationNode(Node):
         def __init__(self):
             super().__init__('task2_point_navigation',parameter_overrides=[Parameter('use_sim_time',value=args.use_sim_time)])
-            self.nav=Navigator(grid,cfg); self.bridge=None; self.bridge_failed=False
+            self.nav=Navigator(grid,cfg); self.bridge=None; self.bridge_failed=False; self.planner=None
             self.events=open(run_dir/'events.jsonl','a',encoding='utf-8',buffering=1)
             self.last_state=None; self.last_path=None; self.last_report=0.; self.errors={}
             sensor=QoSProfile(depth=1,reliability=ReliabilityPolicy.BEST_EFFORT,durability=DurabilityPolicy.VOLATILE)
@@ -92,6 +93,7 @@ def main():
             self.publish_map(np.where(grid.passable,0,100).astype(np.int8),self.clearance_pub)
             if args.drive:
                 self.bridge=SDKBridge(args.config,run_dir/'sdk.log',args.stand_up)
+            self.planner=AsyncPlanner(grid.plan); self.nav.planner=self.planner
             self.record('startup',{'drive':args.drive,'map':grid.summary(),'config':cfg})
             # A paused /clock must not pause the stop/command freshness timers.
             self.steady_clock=Clock(clock_type=ClockType.STEADY_TIME)
@@ -200,6 +202,9 @@ def main():
             stamp=self.get_clock().now().to_msg()
             path_key=tuple(self.nav.path)
             if path_key!=self.last_path:
+                self.record('planned_path',{'points':self.nav.path,
+                    'tracking_replans':self.nav.tracking_replans,
+                    'tracking_replan_streak':self.nav.tracking_replan_streak})
                 path=RosPath(); path.header.frame_id=cfg['frame']; path.header.stamp=stamp
                 for x,y in self.nav.path:
                     p=PoseStamped(); p.header=path.header; p.pose.position.x=float(x); p.pose.position.y=float(y); p.pose.position.z=.03; p.pose.orientation.w=1.
@@ -230,6 +235,7 @@ def main():
 
         def close(self):
             self.nav.cancel('Node shutting down'); self.send_zero()
+            if self.planner is not None: self.planner.close()
             if self.bridge is not None: self.bridge.close()
             if not self.events.closed:
                 self.record('shutdown',self.nav.snapshot()); self.events.close()

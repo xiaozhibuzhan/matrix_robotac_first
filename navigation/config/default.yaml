@@ -8,8 +8,8 @@ clicked_point_topic: /clicked_point
 cloud_frame: lidar
 robot_radius: 0.35
 safety_margin: 0.05
-max_speed: 0.20
-max_yaw_rate: 0.35
+max_speed: 0.40
+max_yaw_rate: 0.60
 acceleration: 0.20
 goal_tolerance: 0.10
 stop_speed: 0.025
@@ -21,6 +21,8 @@ command_timeout: 0.30
 goal_timeout: 180.0
 progress_timeout: 15.0
 max_tracking_replans: 3
+# Reset the consecutive recovery budget only after verified route progress.
+replan_progress_distance: 0.75
 control_hz: 20.0
 max_header_age: 0.50
 # Must match the actual sensor-to-odometry-reference transform, not its name.

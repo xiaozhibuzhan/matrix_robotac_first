@@ -58,6 +58,7 @@ def main():
                    'config':cfg,'use_sim_time':args.use_sim_time,'source_hashes':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'navigation').glob('*.py')}})
     (run_dir/'run.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+chr(10),encoding='utf-8')
     print(('DRIVE' if args.drive else 'PREVIEW (no SDK motion)')+' | logs: '+str(run_dir),flush=True)
+    print(f"Loaded limits: max_speed={cfg['max_speed']:.2f} m/s, max_yaw_rate={cfg['max_yaw_rate']:.2f} rad/s",flush=True)
     print('Wait for sensors, set 2D Pose Estimate while stopped, then Publish Point. Ctrl+C stops.',flush=True)
     node=viewer=None; logs=[]; code=0
     def interrupted(signum,frame): raise KeyboardInterrupt
