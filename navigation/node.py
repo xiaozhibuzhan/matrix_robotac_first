@@ -13,6 +13,26 @@ from .sdk_bridge import SDKBridge
 from .sensors import lidar_points
 
 
+def _run_ros_node(rclpy, node_factory, ros_args, external_shutdown_exception):
+    """Close application resources before idempotent ROS context cleanup."""
+    rclpy.init(args=ros_args); node=None
+    try:
+        node=node_factory(); rclpy.spin(node)
+    except (KeyboardInterrupt, external_shutdown_exception):
+        pass
+    finally:
+        try:
+            if node is not None:
+                try:
+                    node.close()
+                finally:
+                    node.destroy_node()
+        finally:
+            # Humble's signal handler may already have shut down the context.
+            # Checking ok() before shutdown() leaves a race with that handler.
+            rclpy.try_shutdown()
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config',required=True); parser.add_argument('--run-dir',required=True)
@@ -22,6 +42,7 @@ def main():
     if args.stand_up and not args.drive: parser.error('--stand-up requires --drive')
     try:
         import rclpy
+        from rclpy.executors import ExternalShutdownException
         from rclpy.node import Node
         from rclpy.parameter import Parameter
         from rclpy.clock import Clock,ClockType
@@ -203,13 +224,7 @@ def main():
             if not self.events.closed:
                 self.record('shutdown',self.nav.snapshot()); self.events.close()
 
-    rclpy.init(args=ros_args); node=None
-    try:
-        node=PointNavigationNode(); rclpy.spin(node)
-    except KeyboardInterrupt: pass
-    finally:
-        if node is not None: node.close(); node.destroy_node()
-        if rclpy.ok(): rclpy.shutdown()
+    _run_ros_node(rclpy, PointNavigationNode, ros_args, ExternalShutdownException)
 
 
 if __name__=='__main__': main()

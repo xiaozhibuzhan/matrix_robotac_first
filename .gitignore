@@ -36,6 +36,7 @@ navigation/config/local.yaml
 # Runtime logs, large recordings and historical scratch outputs.
 *.log
 /log.txt
+/navigation/run/
 /navigation/runs/
 **/raw_bag/
 *.db3

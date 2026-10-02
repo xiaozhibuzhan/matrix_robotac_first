@@ -2,7 +2,9 @@
 
 更新：2026-10-02。目标按用户确认执行：**在 RViz 点一个可达位置，机器狗自主到达并可靠停住。** 本目录是独立扩展，不修改官方代码，不改变已验收的任务一建图程序与原始地图。
 
-**当前状态：首版代码与离线验证已完成，目标 Ubuntu 的 ROS2、SDK、仿真运动闭环尚未现场验收。** 本地 36 项测试全部通过，128 个选定官方/任务一文件 SHA256 未变化。结果见 [验证报告](validation/local_validation.json) 和 [测试日志](validation/offline_tests.txt)。Windows 测试不能代替真实 SDK、步态外形、制动距离和现场重复测试。
+**当前状态：首版代码与离线验证已完成，目标 Ubuntu 的 ROS2、SDK、仿真运动闭环尚未现场验收。** 本地 54 项测试全部通过，128 个选定官方/任务一文件 SHA256 未变化。结果见 [验证报告](validation/local_validation.json) 和 [测试日志](validation/offline_tests.txt)。Windows 测试不能代替真实 SDK、步态外形、制动距离和现场重复测试。
+
+**2026-10-02 现场日志修复：**旧版带 `--stand-up` 启动时先发零速度 move，被 SDK 以 `12295 / 0x3007` 拒绝。现已调整为先 standUp、等待 4 秒，再发零速度；同时修复预览退出时重复关闭 ROS。详见 [证据、改动与重试步骤](STARTUP_FIX_20261002.md)。修复后的真实控制仍待 Ubuntu 复测。
 
 ## 1. 已实现与当前边界
 
@@ -34,7 +36,7 @@
 | 离线地图/配置检查 | `/usr/bin/python3 -B -m navigation.preflight --offline --config navigation/config/local.yaml` |
 | ROS 与 SDK 文件预检查，不连接机器人 | `/usr/bin/python3 -B -m navigation.preflight --drive --config navigation/config/local.yaml` |
 | 预览，不连接 SDK | `bash navigation/run_navigation.sh --config navigation/config/local.yaml` |
-| 已站立后的实际控制 | `bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive` |
+| SDK 已允许 move 状态时的实际控制 | `bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive` |
 | 本轮需要请求一次 standUp | 在上一行命令末尾追加 `--stand-up` |
 | 查看状态 | `ros2 topic echo /task2/status`；Ctrl+C 只结束查看 |
 | 取消目标 | `ros2 service call /task2/cancel std_srvs/srv/Trigger '{}'` |
@@ -96,7 +98,7 @@ bash navigation/run_navigation.sh --map navigation/maps/task1_trial_02/field_map
 
 ## 6. Ubuntu 现场验收
 
-本地 36 项覆盖坐标、未知区/足迹、对角切角、绕墙、180° 转向、连续目标、0.25 秒响应滞后模型、实际派生图短程到达、取消替换、传感器故障、元数据、看门狗过期/乱序/超限。响应滞后仅为测试模型，不是机器狗动力学标定。
+本地 54 项覆盖坐标、未知区/足迹、对角切角、绕墙、180° 转向、连续目标、0.25 秒响应滞后模型、实际派生图短程到达、取消替换、传感器故障、元数据、看门狗过期/乱序/超限。响应滞后仅为测试模型，不是机器狗动力学标定。新增回归覆盖 SDK 启动状态顺序、初始化失败/中断、ROS 幂等退出及排除回传日志的打包规则，均使用离线模拟。
 
 以下现场项目目前尚未验证：
 

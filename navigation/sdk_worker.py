@@ -38,9 +38,12 @@ class CommandGuard:
         return (0.,0.) if self.tripped else self.velocity
 
 
-def result_ok(value):
+def result_ok(value,operation='SDK call'):
     # Some binding versions return void; physical stop is verified by odometry.
-    if value is not None and int(value)!=0: raise RuntimeError(f'SDK returned {value}')
+    if value is not None and int(value)!=0:
+        code=int(value)
+        hint='; state transition rejected: move requires standUp first' if code==0x3007 and operation.startswith('move') else ''
+        raise RuntimeError(f'{operation}: SDK returned {code} (0x{code:04X}){hint}')
 
 
 def load_sdk():
@@ -78,10 +81,14 @@ def main():
             if time.monotonic()>deadline: raise RuntimeError('SDK connection timeout')
             time.sleep(.05)
         if not running[0]: return 0
-        result_ok(sdk.move(0.,0.,0.))
         if args.stand_up:
-            result_ok(sdk.standUp()); until=time.monotonic()+3
+            # Even a zero-speed move changes SDK state; standUp must come first.
+            print('SDK connected; requesting standUp before the first move',flush=True)
+            result_ok(sdk.standUp(),'standUp'); until=time.monotonic()+4
             while running[0] and time.monotonic()<until: time.sleep(.05)
+        if not running[0]: return 0
+        # Preserve errors instead of treating a rejected zero command as a stop.
+        result_ok(sdk.move(0.,0.,0.),'move(0,0,0) startup')
         if not running[0]: return 0
         guard=CommandGuard(cfg['command_timeout'],cfg['max_speed'],cfg['max_yaw_rate'])
         os.set_blocking(sys.stdin.fileno(),False); buffer=b''
@@ -100,7 +107,7 @@ def main():
                     if line: guard.accept(line.decode('ascii'),time.monotonic())
             v,w=guard.current(time.monotonic())
             if not sdk.checkConnect(): raise RuntimeError('SDK disconnected')
-            result_ok(sdk.move(v,0.,w))
+            result_ok(sdk.move(v,0.,w),'move')
             if guard.tripped: raise RuntimeError('Motion watchdog expired and latched; restart navigation')
     except Exception as exc:
         print(json.dumps({'sdk_error':str(exc)}),file=sys.stderr,flush=True); exit_code=2

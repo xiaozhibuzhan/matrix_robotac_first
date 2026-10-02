@@ -24,7 +24,7 @@ class SDKBridge:
                 if time.monotonic()>deadline: raise RuntimeError(f'SDK worker startup timed out; inspect {log_path}')
                 ready,_,_=select.select([read_fd],[],[],.1)
                 if ready:
-                    if os.read(read_fd,64)!=b'READY': raise RuntimeError('SDK worker readiness pipe closed')
+                    if os.read(read_fd,64)!=b'READY': raise RuntimeError(f'SDK worker readiness pipe closed; inspect {log_path}')
                     break
             os.set_blocking(self.process.stdin.fileno(),False)
         except BaseException:

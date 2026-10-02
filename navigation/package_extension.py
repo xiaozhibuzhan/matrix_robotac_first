@@ -13,7 +13,7 @@ def main():
     files=[]
     for path in sorted(extension.rglob('*')):
         relative=path.relative_to(extension)
-        if any(part in ('runs','updates','__pycache__') or part.startswith('.') for part in relative.parts): continue
+        if any(part in ('run','runs','updates','__pycache__') or part.startswith('.') for part in relative.parts): continue
         if path.is_symlink() or not path.is_file(): continue
         if path.suffix not in ('.py','.sh','.yaml','.rviz','.md','.json','.txt','.pgm'): continue
         if path.name=='package_manifest.json': continue

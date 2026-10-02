@@ -1,6 +1,6 @@
 # matrix_robotac_first：操作与 Ubuntu 迁移指南
 
-更新日期：2026-10-02。请按“准备文件 → 校验与备份 → 安装 → 环境检查 → 预览 → 行走 → 停止”的顺序操作。**首版代码与 36 项离线测试已完成；任务二的 Ubuntu ROS2 / SDK / 仿真运动闭环仍待现场验收。**
+更新日期：2026-10-02。请按“准备文件 → 校验与备份 → 安装 → 环境检查 → 预览 → 行走 → 停止”的顺序操作。**首版代码与 54 项离线测试已完成；任务二的 Ubuntu ROS2 / SDK / 仿真运动闭环仍待现场验收。**
 
 第一开发目标：在 RViz 点一个普通可达位置，机器狗自主规划、到达并可靠停住。任务一建图已通过 Ubuntu 验收；宝箱接触、消失确认与比赛计时计分属于后续阶段。
 
@@ -52,7 +52,7 @@ Get-FileHash '.\navigation\updates\task2_point_navigation_20260926.zip' -Algorit
 Get-Content '.\navigation\updates\task2_point_navigation_20260926.zip.sha256'
 ```
 
-当前测试预期为 `Ran 36 tests` 与 `OK`；检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
+当前测试预期为 `Ran 54 tests` 与 `OK`；检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
 
 打包器会收集 `navigation/` 中允许的文件类型。打包前确认没有准备留在现场的私密配置，特别是自行新增的 `config/local.yaml`。若提示 CRLF，只把报错的扩展文本文件改为 UTF-8/LF，不批量修改官方文件。
 
@@ -195,7 +195,7 @@ cd "$TASK2_PROJECT"
 /usr/bin/python3 -B -m navigation.preflight --drive --config navigation/config/local.yaml
 ```
 
-预期依次为 `imports OK`、地图摘要、当前 36 项测试 `OK`、完整预检查 JSON。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
+预期依次为 `imports OK`、地图摘要、当前 54 项测试 `OK`、完整预检查 JSON。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
 
 仅缺少相应依赖时补装：
 
@@ -251,11 +251,13 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml
 
 ## 6. 实际导航：先 1 米，再 2 米
 
-关闭官方键盘 demo 和其他运动命令发送者。扩展的进程锁只能阻止它自己重复启动，不能阻止其他 SDK 程序同时控制。
+2026-10-02 回传日志中，旧版带 `--stand-up` 仍立即退出的问题已修复：零速度 move 不能先于 standUp。遇到 `SDK returned 12295` 请先更新本次增量包，具体证据和重试见 [启动修复说明](STARTUP_FIX_20261002.md)。
+
+关闭官方键盘 demo 和其他运动命令发送za者。扩展的进程锁只能阻止它自己重复启动，不能阻止其他 SDK 程序同时控制。
 
 终端 C **下面两条只选一条**：
 
-已站立：
+官方 SDK 已允许进入 move 状态（不能仅靠画面判断已站立）：
 
 ```bash
 bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive
@@ -267,7 +269,7 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive
 bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive --stand-up
 ```
 
-第 4 节确认使用仿真时钟时，在所选命令末尾追加 `--use-sim-time`。`--stand-up` 会请求站立动作，不能用于只预览模式。
+第 4 节确认使用仿真时钟时，在所选命令末尾追加 `--use-sim-time`。`--stand-up` 会先请求站立，等待 4 秒后才发第一条零速度 move；不能用于只预览模式。成功就绪后 sdk.log 应有 `TASK2_READY`，node.log 应有 `DRIVE enabled`。
 
 应看到 `DRIVE` 和本轮日志目录。**每次重启导航都重新操作 2D Pose Estimate**，上次预览的定位不会沿用。按第 5 节对齐后，用 Publish Point 点击约 1 米开阔点，同时观察仿真画面和 `/task2/status`。
 
