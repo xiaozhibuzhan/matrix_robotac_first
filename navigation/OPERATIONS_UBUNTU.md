@@ -356,17 +356,14 @@ BASH
 | bad interpreter / CRLF | 重新复制校验通过的 LF 增量包，不批量转换官方脚本 |
 | 退出后仍运动 | 采用现场已验证的官方停车方式，保留日志；软件零指令不代替运控失联保护 |
 
-## 10. 文档入口与后续同步
+## 10. 本包文档入口
 
-原始工作区与 Git 副本是两份文件。修改原件后同步对应 README、扩展文件和新包，再在 Git 副本查看 git status、提交、推送；不要把整个官方运行工程直接加入仓库。是否上传成功，以远端对应 commit 为准。
+本页随 navigation 增量包提供，与源码工程根 README 的第 0～9 节同步维护。文中命令都在工程根目录执行，不能因为本文件在 navigation 内，就在 navigation 子目录运行命令。
 
-| 入口 | 内容 |
-| --- | --- |
-| [navigation/README.md](navigation/README.md) | 实现范围、参数、派生地图、状态与控制边界 |
-| [navigation/OPERATIONS_UBUNTU.md](navigation/OPERATIONS_UBUNTU.md) | 随增量包携带的完整操作流程，Ubuntu 上可离线查阅 |
-| [mapping/README.md](mapping/README.md) | 任务一采集和离线建图 |
-| [README_GPT.md](README_GPT.md) | 项目历史及已验证环境背景 |
-| [TASK2_PLAN.md](TASK2_PLAN.md) | 任务二规则、目标与后续宝箱阶段 |
-| [MIGRATION_UBUNTU.md](MIGRATION_UBUNTU.md) | 迁移原则索引 |
+- [README.md](README.md)：实现范围、派生地图、参数和验收边界。
+- [config/default.yaml](config/default.yaml)：默认配置，现场配置另存 local.yaml。
+- [validation/local_validation.json](validation/local_validation.json)：已有离线验证结果，不代表现场运动验收。
+
+任务一操作、项目背景和任务二后续规则在完整源码工程的 mapping/README.md、README_GPT.md、TASK2_PLAN.md 中；这些文件不随本增量 ZIP 提供。
 
 本文命令已对照当前接口；Ubuntu 图形、通信、SDK 动态加载和实际运动必须现场按步骤验证，不能把 Windows 离线通过当成现场验收。

@@ -1,6 +1,6 @@
 # 任务二第一开发目标：RViz 点选 → 自主到达 → 停稳
 
-更新：2026-09-26。目标按用户确认执行：**在 RViz 点一个可达位置，机器狗自主到达并可靠停住。** 本目录是独立扩展，不修改官方代码，不改变已验收的任务一建图程序与原始地图。
+更新：2026-10-02。目标按用户确认执行：**在 RViz 点一个可达位置，机器狗自主到达并可靠停住。** 本目录是独立扩展，不修改官方代码，不改变已验收的任务一建图程序与原始地图。
 
 **当前状态：首版代码与离线验证已完成，目标 Ubuntu 的 ROS2、SDK、仿真运动闭环尚未现场验收。** 本地 36 项测试全部通过，128 个选定官方/任务一文件 SHA256 未变化。结果见 [验证报告](validation/local_validation.json) 和 [测试日志](validation/offline_tests.txt)。Windows 测试不能代替真实 SDK、步态外形、制动距离和现场重复测试。
 
@@ -17,97 +17,36 @@
 
 静态障碍由全局路径绕开；**新出现的局部障碍目前导致停车、取消目标，由人检查后重新点选**，尚未实现动态障碍自动绕行。也未实现宝箱接触、识别/消失确认、比赛计时计分、多目标队列、自动寻宝和在线地图匹配定位。这些不属于本次第一开发目标。
 
-## 2. 不修改官方代码与 Ubuntu 增量迁移
+## 2. 安装与操作入口
 
-所有新增执行文件、配置、派生地图、RViz、测试与日志都在 `navigation/`。根目录 `README_GPT.md` 和 `TASK2_PLAN.md` 只更新进度入口。`run_sim.sh`、`config/`、原有 `rviz/`、`src/`、`deps/`、`mapping/`、任务一 `maps/` 保持原样。128 项校验覆盖选定源文件/配置，不表示扫描了全部 UE 二进制。
+**首次操作请按 [OPERATIONS_UBUNTU.md](OPERATIONS_UBUNTU.md) 逐步执行。** 它随增量包一起提供，包含 Windows 打包、Ubuntu 路径检查、校验、备份、安装、配置、四个终端的分工、RViz 点选、停止、日志和回退；只拿到 ZIP 也能离线查阅。项目根 README 的第 0～9 节与该操作指南同步维护。
 
-SDK 只加载已有官方库；无需编译 SDK、执行 `colcon build` 或重建整个仿真。专用 RViz 是 `navigation/rviz/point_navigation.rviz`；运行时再复制一份到本轮日志目录，不覆盖官方配置。
+所有新增执行文件、配置、派生地图、RViz、测试与日志都在 `navigation/`。官方 `run_sim.sh`、`config/`、原有 `rviz/`、`src/`、`deps/`、已验收的 `mapping/` 和任务一 `maps/` 保持原样。128 项校验覆盖选定源文件/配置，不表示扫描了全部 UE 二进制。`protected_baseline.json` 是开发机的防误改记录，不要求目标 Ubuntu 配置与 Windows 完全一致。
 
-增量包：`navigation/updates/task2_point_navigation_20260926.zip`，附同名 `.sha256`；包内仅有 `navigation/`，排除日志、缓存和旧更新包。**不要用整个 Windows 项目覆盖 Ubuntu，不要删除目标机 build、运行库或已跑通环境。**
+增量包为 `navigation/updates/task2_point_navigation_20260926.zip` 及同名 `.sha256`。包内只含 `navigation/`，不含官方运行库、任务一源地图或 ROS 环境。**不要用整个 Windows 工程覆盖 Ubuntu，不要删除官方 build 或已跑通的运行库。** SDK 只加载已有官方库，不需要编译 SDK、执行 `colcon build` 或重建整个仿真。
 
-在 Ubuntu 先关闭旧导航，将 zip 和 sha256 放在同一目录。以下项目路径按实际修改：
+## 3. 启动接口与运行约定
 
-```bash
-sha256sum -c task2_point_navigation_20260926.zip.sha256
-TASK2_STAGE=$(mktemp -d)
-unzip task2_point_navigation_20260926.zip -d "$TASK2_STAGE"
-TASK2_PROJECT="$HOME/robotac/matrix_robotac_first"
-# 已有 navigation 时先备份；不搬动任何官方目录。
-if [ -d "$TASK2_PROJECT/navigation" ]; then
-  mv -- "$TASK2_PROJECT/navigation" "$TASK2_PROJECT/navigation.backup.$(date +%Y%m%d_%H%M%S)"
-fi
-cp -a -- "$TASK2_STAGE/navigation" "$TASK2_PROJECT/navigation"
-cd "$TASK2_PROJECT"
-/usr/bin/python3 -B -m navigation.check_install
-```
+完整操作顺序以 [操作指南](OPERATIONS_UBUNTU.md) 为准；以下供已经完成安装检查的开发者查接口：
 
-完整性校验后，对照备份，将现场调好的参数逐项放入 `navigation/config/local.yaml`。不要用默认值覆盖现场标定；有意修改原包配置后，`check_install` 报出变化属于正常现象。开发用 `protected_baseline.json` 是本机防误改快照，不要求 Ubuntu 所有配置与 Windows 相同。
+| 操作 | 工程根目录下的命令 |
+| --- | --- |
+| 离线地图/配置检查 | `/usr/bin/python3 -B -m navigation.preflight --offline --config navigation/config/local.yaml` |
+| ROS 与 SDK 文件预检查，不连接机器人 | `/usr/bin/python3 -B -m navigation.preflight --drive --config navigation/config/local.yaml` |
+| 预览，不连接 SDK | `bash navigation/run_navigation.sh --config navigation/config/local.yaml` |
+| 已站立后的实际控制 | `bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive` |
+| 本轮需要请求一次 standUp | 在上一行命令末尾追加 `--stand-up` |
+| 查看状态 | `ros2 topic echo /task2/status`；Ctrl+C 只结束查看 |
+| 取消目标 | `ros2 service call /task2/cancel std_srvs/srv/Trigger '{}'` |
 
-## 3. 启动顺序
-
-### 3.1 沿用现有环境
-
-使用已有 Ubuntu 22.04 / ROS2 Humble / **系统 CPython 3.10**。官方扩展文件名是 `cpython-310-...-linux-gnu.so`，不能迁移 Windows Python/.pyc 或直接换用不同 Python 小版本。支持官方已有的 x86_64 / aarch64 库。新增源码采用 UTF-8/LF，以项目相对路径定位资源。
-
-按任务一已经跑通的顺序启动官方仿真、运控和 Zenoh。导航脚本不会重启或杀死它们，也不修改环境脚本、官方 JSON、`ROS_DOMAIN_ID` 或 `RMW_IMPLEMENTATION`。历史验收环境是 `rmw_zenoh_cpp`、domain `89`、`SDK_CLIENT_IP=127.0.0.1`；**以目标机当前已验证值为准**，各终端保持一致，并沿用原 source/overlay 顺序。
-
-```bash
-source /opt/ros/humble/setup.bash
-# 然后沿用原来的 Zenoh/项目环境加载方式与已验证变量。
-cd ~/robotac/matrix_robotac_first
-/usr/bin/python3 --version
-/usr/bin/python3 -c "import numpy, scipy, yaml, rclpy; print('imports OK')"
-/usr/bin/python3 -B -m navigation.preflight --offline
-/usr/bin/python3 -B -m unittest discover -s navigation/tests -v
-/usr/bin/python3 -B -m navigation.preflight --drive
-```
-
-数值依赖仅在缺少时安装：`sudo apt install python3-numpy python3-scipy python3-yaml`。ROS 使用现有 rclpy、geometry/nav/sensor/std/visualization messages、std_srvs、rviz2；按预检查补齐缺失的 Humble 包，不重建仿真。测试会读取已有任务一基准图；缺失时先核对基准，不能称作通过。`preflight --drive` **只检查、不连接 SDK**；实际运动由下面启动器的 `--drive` 开启。
-
-### 3.2 先预览
-
-```bash
-bash navigation/run_navigation.sh
-```
-
-默认打开 RViz 和导航节点，**不加载 SDK、不发送机器人运动指令**。预览显示路径和候选速度；机器人不动时，随后按无进展超时取消目标是预期行为。
-
-1. 传感器数据稳定、机器人静止后，在固定坐标系 `world` 下，用 `2D Pose Estimate` 指定机器人**当前实际位置和实际朝向**。不要把目的地当初始位置，也不要照抄离线示例坐标。
-2. 对照仿真画面，检查绿色机器人标记、方向及红色实时障碍与地图固定结构对齐。整体偏移/旋转时先修正初始位姿或外参。
-3. 用 `Publish Point` 在地图地面上选视野内、开阔区、约 1～2 米的普通可达点，确认青色路径与终点正确。首轮暂不选宝箱或复杂窄缝。
-4. 可打开 `Footprint Clearance (optional)` 检查实际允许机器人中心通过的区域。灰色未知区、障碍和足迹余量不足位置会拒绝。
-
-本版本没有接入 `2D Goal Pose`；输入约定就是 `2D Pose Estimate` 与 `Publish Point`。
-
-### 3.3 开启实际控制
-
-退出预览；关闭键盘控制 demo 和其他运动命令发送者。每次重启导航均重新设置初始位姿。以下命令二选一：
-
-```bash
-# 机器狗已站立：
-bash navigation/run_navigation.sh --drive
-# 本轮需要扩展调用一次官方 standUp 时：
-bash navigation/run_navigation.sh --drive --stand-up
-```
-
-默认 SDK 地址来自项目官方示例：local IP `127.0.0.1`、端口 `43988`、robot IP `127.0.0.1`。目标机不同则修改独立配置，以 `--config navigation/config/local.yaml` 启动。程序不会自动把环境变量覆盖进这些配置，实际地址保存在本轮 `config.yaml`。
-
-同一 domain 的本扩展启动器、同一端口的本扩展 SDK worker 分别加锁，防止重复启动；**这些锁不能阻止其他 demo 发命令**。没有 `--drive` 时拒绝 `--stand-up`。
-
-仅当传感器使用仿真时间且有 `/clock` 发布者时加 `--use-sim-time`。时间基准不一致会拒绝旧包/未来包，不要靠增大超时掩盖。控制定时器和 SDK 看门狗采用 steady/单调时间，暂停仿真时间不会暂停过期停车。
-
-### 3.4 取消、退出与日志
-
-```bash
-ros2 topic echo /task2/status
-ros2 service call /task2/cancel std_srvs/srv/Trigger '{}'
-```
-
-服务成功仅表示目标已取消且零速度已请求；仍须核对反馈与实际停止。启动终端 Ctrl+C 或关闭本轮 RViz 会回收本轮导航，退出前反复发送零速度；不会使用全局 pkill，不停止官方仿真和 Zenoh。
-
-正常状态：`WAIT_INITIAL_POSE → IDLE → STOPPING_FOR_PLAN → TRACKING → SETTLING → ARRIVED`。异常停止后不会自动恢复旧目标。里程计重连/重置/跳变/换 frame 后须重新初始化；SDK worker 超时或退出后须重启导航。
-
-日志位于 `navigation/runs/run_日期_时间_随机后缀/`：`run.json` 记录环境、命令、代码/地图哈希与退出信息；`config.yaml` 为实际参数；`events.jsonl` 含点击、状态与约 2 Hz 轨迹；`node.log`、`sdk.log`、`rviz.log` 用于排错。预览不创建 SDK 日志。
+- 使用目标机原有 Ubuntu 22.04 / ROS2 Humble / 系统 CPython 3.10，保留原 source/overlay 顺序和已验证的通信变量；不要用 Conda 解释器代替。官方 SDK 为 Linux x86_64 / aarch64 二进制。
+- `local.yaml` 需按操作指南创建。SDK 地址取其中 `client_ip / robot_ip / client_port`，默认 `127.0.0.1 / 127.0.0.1 / 43988`，不会被 `SDK_CLIENT_IP` 自动覆盖。
+- 每次启动重新 `2D Pose Estimate` 定位，再 `Publish Point` 选目标；本版本不用 `2D Goal Pose`。预览不动时，约 15 秒无进展取消目标是预期行为。
+- 只保留一个导航实例，并关闭其他运动命令发送者。同 domain 的启动器和同端口的 SDK worker 有锁，但不能阻止官方 demo 同时控制。
+- 仅当现场传感器确定使用仿真时间且 `/clock` 非零、持续推进时，预览和控制都追加 `--use-sim-time`。控制定时器和 SDK 看门狗采用单调时间，仿真时钟暂停不会暂停过期停车。
+- 正常状态为 `WAIT_INITIAL_POSE → IDLE → STOPPING_FOR_PLAN → TRACKING → SETTLING → ARRIVED`。异常停止不自动恢复旧目标；里程计重连、重置、跳变或换 frame 后须重新初始化，SDK worker 超时或退出后须重启导航。
+- 取消服务成功表示已清除目标并请求零速度，仍须核对实际停止。导航终端 Ctrl+C 或关闭本轮 RViz 会回收本轮导航进程，不关闭官方仿真和 Zenoh。
+- 日志在 `navigation/runs/run_日期_时间_随机后缀/`。`run.json` 保存环境、命令和哈希，`config.yaml` 保存本轮参数，`events.jsonl` 含点击、状态与约 2 Hz 轨迹；排错看 `node.log / sdk.log / rviz.log`，预览无 SDK 日志。
 
 ## 4. 导航派生图
 
@@ -175,4 +114,4 @@ bash navigation/run_navigation.sh --map navigation/maps/task1_trial_02/field_map
 
 `run_navigation.sh / launcher.py`：启动与退出；`node.py / sensors.py`：ROS 与 RViz；`core.py / geometry.py`：定位、跟踪与停止；`grid.py / prepare_map.py`：地图与 A*；`sdk_bridge.py / sdk_worker.py`：控制与看门狗；`preflight.py / check_install.py`：环境/包核对；`validate.py / tests/`：离线验证；`package_extension.py`：只打包本扩展。
 
-总体任务规则及后续阶段见 [TASK2_PLAN.md](../TASK2_PLAN.md)。本次验收界限仅为普通点选目标自主到达和停止，不把宝箱能力写成已经实现。
+完整源码工程中的总体任务规则及后续阶段见 [TASK2_PLAN.md](../TASK2_PLAN.md)；该文件不在 navigation 增量包内。本次验收界限仅为普通点选目标自主到达和停止，不把宝箱能力写成已经实现。

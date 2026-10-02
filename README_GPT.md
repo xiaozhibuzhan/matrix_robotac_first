@@ -1,5 +1,7 @@
 # RobotAC 场地三维建图与 Ubuntu 迁移记录
 
+当前逐步操作与增量迁移请先看 [README.md](README.md)；迁移包内也附有 [离线操作指南](navigation/OPERATIONS_UBUNTU.md)。下文保留项目背景与历史记录。
+
 更新日期：2026-09-26（任务二第一目标已实现首版代码与离线验证，待 Ubuntu 现场验收；任务一验收结论沿用 2026-09-24 记录）。本文件保留项目背景与迁移记录；当前建图操作入口和参数以 [mapping/README.md](mapping/README.md) 为准。**任务一（场地三维建图）已完成，建图精准高效、完全符合比赛要求，详见 [mapping/README.md](mapping/README.md)。** 下文保留的 2026-09-07 内容仅用于历史追溯，不能覆盖本轮 Ubuntu 验证结果。
 
 ## 2026-09-26：任务二第一目标——点选、自主到达与停稳
