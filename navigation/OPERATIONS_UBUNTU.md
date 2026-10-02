@@ -383,6 +383,7 @@ BASH
 本页随 navigation 增量包提供，与源码工程根 README 的第 0～9 节同步维护。文中命令都在工程根目录执行，不能因为本文件在 navigation 内，就在 navigation 子目录运行命令。
 
 - [README.md](README.md)：实现范围、派生地图、参数和验收边界。
+- [MAP_REBUILD_UBUNTU.md](MAP_REBUILD_UBUNTU.md)：手动重新采集、比赛换场景和导航切图。
 - [config/default.yaml](config/default.yaml)：默认配置，现场配置另存 local.yaml。
 - [validation/local_validation.json](validation/local_validation.json)：已有离线验证结果，不代表现场运动验收。
 

@@ -118,6 +118,7 @@
     "navigation/grid.py",
     "navigation/launcher.py",
     "navigation/LONG_ROUTE_FIX_20261002.md",
+    "navigation/MAP_REBUILD_UBUNTU.md",
     "navigation/maps/task1_20260911/field_map.pgm",
     "navigation/maps/task1_20260911/field_map.yaml",
     "navigation/maps/task1_20260911/inferred_support.pgm",
