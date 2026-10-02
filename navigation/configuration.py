@@ -2,6 +2,7 @@
 from pathlib import Path
 import math
 import yaml
+from .sdk_limits import MIN_FORWARD_SPEED,MIN_YAW_RATE
 
 ROOT=Path(__file__).resolve().parents[1]
 DEFAULT=Path(__file__).resolve().parent/'config/default.yaml'
@@ -31,6 +32,8 @@ def load_config(path=DEFAULT,map_override=None):
         raise ValueError('max_tracking_replans must be an integer from 1 to 5')
     if cfg['max_speed']>.5 or cfg['max_yaw_rate']>1 or cfg['control_hz']<10:
         raise ValueError('First-version limits: speed <=0.5, yaw <=1.0, control_hz >=10')
+    if cfg['max_speed']<MIN_FORWARD_SPEED or cfg['max_yaw_rate']<MIN_YAW_RATE:
+        raise ValueError('SDK requires max_speed >=0.05 and max_yaw_rate >=0.02')
     if cfg['command_timeout']<2/cfg['control_hz'] or cfg['command_timeout']>1:
         raise ValueError('Command watchdog must span >=2 control periods and <=1 second')
     if cfg['obstacle_min_height']>=cfg['obstacle_max_height']:

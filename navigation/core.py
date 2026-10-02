@@ -3,6 +3,7 @@ from collections import deque
 import math
 import numpy as np
 from .geometry import align_pose,transform_pose,wrap,yaw_of,rotation_matrix,rpy_matrix,normalized_quaternion
+from .sdk_limits import MIN_FORWARD_SPEED,MIN_YAW_RATE
 
 
 class Navigator:
@@ -14,6 +15,7 @@ class Navigator:
         self.goal=None; self.path=[]; self.path_index=1; self.goal_started=None
         self.state='WAIT_INITIAL_POSE'; self.reason='Use 2D Pose Estimate while stopped'
         self.command=(0.,0.); self.last_tick=None; self.settle_since=None
+        self.ramp_speed=0.
         self.best_remaining=math.inf; self.progress_time=None
         self.turning=True; self.corner_settle=None
         self.tracking_replans=0
@@ -21,6 +23,7 @@ class Navigator:
 
     def cancel(self,reason='Cancelled'):
         self.goal=None; self.path=[]; self.command=(0.,0.); self.settle_since=None
+        self.ramp_speed=0.
         self.state='IDLE' if self.alignment is not None else 'WAIT_INITIAL_POSE'
         self.reason=reason
 
@@ -148,14 +151,14 @@ class Navigator:
             self.fail('Control loop stalled; old goal cancelled')
         self.last_tick=now
         if self.goal is None:
-            self.command=(0.,0.); return self.command
+            self.ramp_speed=0.; self.command=(0.,0.); return self.command
         error=self.healthy(now)
         if error:
             self.fail(error); return self.command
         if now-self.goal_started>self.cfg['goal_timeout']:
             self.fail('Goal time limit exceeded'); return self.command
         if self.state=='STOPPING_FOR_PLAN':
-            self.command=(0.,0.)
+            self.ramp_speed=0.; self.command=(0.,0.)
             if not self.is_stopped(): self.settle_since=None; return self.command
             if self.settle_since is None: self.settle_since=now
             if now-self.settle_since<self.cfg['settle_seconds']: return self.command
@@ -167,7 +170,7 @@ class Navigator:
             return self.command
         distance=math.dist(self.pose[:2],self.goal)
         if distance<=self.cfg['goal_tolerance']:
-            self.command=(0.,0.); self.state='SETTLING'; self.reason='Zero command; verifying measured standstill'
+            self.ramp_speed=0.; self.command=(0.,0.); self.state='SETTLING'; self.reason='Zero command; verifying measured standstill'
             if not self.is_stopped(): self.settle_since=None; return self.command
             if self.settle_since is None: self.settle_since=now
             if now-self.settle_since>=self.cfg['settle_seconds']:
@@ -179,7 +182,7 @@ class Navigator:
                 and self.grid.segment_free(self.pose[:2],self.path[self.path_index+1])):
             # Brake and verify actual standstill before changing segment. A
             # commanded instant turn otherwise cuts corners with SDK/gait lag.
-            self.command=(0.,0.)
+            self.ramp_speed=0.; self.command=(0.,0.)
             if not self.is_stopped(): self.corner_settle=None; return self.command
             if self.corner_settle is None: self.corner_settle=now
             if now-self.corner_settle<.2: return self.command
@@ -187,7 +190,7 @@ class Navigator:
         target=self.path[self.path_index]
         if not self.grid.segment_free(self.pose[:2],target):
             if self.grid.is_free(self.grid.cell(self.pose[:2])) and self.tracking_replans<self.cfg['max_tracking_replans']:
-                self.tracking_replans+=1; self.command=(0.,0.); self.path=[]; self.settle_since=None
+                self.tracking_replans+=1; self.ramp_speed=0.; self.command=(0.,0.); self.path=[]; self.settle_since=None
                 self.state='STOPPING_FOR_PLAN'; self.reason='Tracking deviation: stop before bounded static-map replan'
                 return self.command
             self.fail('Tracking error crosses blocked cells; reselect a goal'); return self.command
@@ -206,10 +209,21 @@ class Navigator:
             if abs(error)<.025:
                 w=0.
                 if self.is_stopped(): self.turning=False
-        v=min(v,self.command[0]+self.cfg['acceleration']*min(max(dt,0),.1))
+        # The SDK cannot express 0 < vx < 0.05. Accumulate the startup ramp
+        # separately from the emitted zero commands, or it never starts.
+        # Approaching an intermediate corner still needs a legal crawl speed
+        # until the existing measured-position/standstill transition accepts it.
+        if v>0:
+            desired=min(self.cfg['max_speed'],max(v,MIN_FORWARD_SPEED))
+            self.ramp_speed=min(desired,self.ramp_speed+self.cfg['acceleration']*min(max(dt,0),.1))
+            v=self.ramp_speed if self.ramp_speed>=MIN_FORWARD_SPEED else 0.
+        else:
+            self.ramp_speed=0.
+        if abs(w)<MIN_YAW_RATE: w=0.
+        # Check the actual SDK-domain command, including the minimum crawl.
         clear,reason=self.motion_clear(v,w)
         if not clear and reason.startswith('Predicted') and v>0:
-            v=0.; clear,reason=self.motion_clear(v,w)
+            self.ramp_speed=0.; v=0.; clear,reason=self.motion_clear(v,w)
         if not clear:
             self.fail(reason); return self.command
         self.reason='Aligning next segment' if self.turning else 'Following planned path'

@@ -1,6 +1,6 @@
 # matrix_robotac_first：操作与 Ubuntu 迁移指南
 
-更新日期：2026-10-02。请按“准备文件 → 校验与备份 → 安装 → 环境检查 → 预览 → 行走 → 停止”的顺序操作。**首版代码与 54 项离线测试已完成；任务二的 Ubuntu ROS2 / SDK / 仿真运动闭环仍待现场验收。**
+更新日期：2026-10-02。请按“准备文件 → 校验与备份 → 安装 → 环境检查 → 预览 → 行走 → 停止”的顺序操作。**首版代码与 70 项离线测试已完成；任务二的 Ubuntu ROS2 / SDK / 仿真运动闭环仍待现场验收。**
 
 第一开发目标：在 RViz 点一个普通可达位置，机器狗自主规划、到达并可靠停住。任务一建图已通过 Ubuntu 验收；宝箱接触、消失确认与比赛计时计分属于后续阶段。
 
@@ -52,7 +52,7 @@ Get-FileHash '.\navigation\updates\task2_point_navigation_20260926.zip' -Algorit
 Get-Content '.\navigation\updates\task2_point_navigation_20260926.zip.sha256'
 ```
 
-当前测试预期为 `Ran 54 tests` 与 `OK`；检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
+当前测试预期为 `Ran 70 tests` 与 `OK`；检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
 
 打包器会收集 `navigation/` 中允许的文件类型。打包前确认没有准备留在现场的私密配置，特别是自行新增的 `config/local.yaml`。若提示 CRLF，只把报错的扩展文本文件改为 UTF-8/LF，不批量修改官方文件。
 
@@ -195,7 +195,7 @@ cd "$TASK2_PROJECT"
 /usr/bin/python3 -B -m navigation.preflight --drive --config navigation/config/local.yaml
 ```
 
-预期依次为 `imports OK`、地图摘要、当前 54 项测试 `OK`、完整预检查 JSON。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
+预期依次为 `imports OK`、地图摘要、当前 70 项测试 `OK`、完整预检查 JSON。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
 
 仅缺少相应依赖时补装：
 
@@ -250,6 +250,8 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml
 本版不用 `2D Goal Pose`。预览完成后在 C 按 Ctrl+C，等命令行提示符返回；预览与控制不能同时保留。
 
 ## 6. 实际导航：先 1 米，再 2 米
+
+**2026-10-02 17:00 后更新：**前两轮已连接并起立，失败是 SDK 拒绝低于 0.05 m/s 的前向指令；第三轮为 preview。速度范围兼容及退出竞态已修复，三轮解释和具体重试见 [低速修复说明](VELOCITY_FIX_20261002.md)。请更新增量包；不用另开 highlevel_demo。
 
 2026-10-02 回传日志中，旧版带 `--stand-up` 仍立即退出的问题已修复：零速度 move 不能先于 standUp。遇到 `SDK returned 12295` 请先更新本次增量包，具体证据和重试见 [启动修复说明](STARTUP_FIX_20261002.md)。
 
@@ -353,7 +355,7 @@ BASH
 | wrong clock / 旧包 / 未来包 | 系统时间与 /clock 是否选对，预览/控制参数是否一致 |
 | No path / 余量不足 | 起点和目标是否同一足迹可通行区域，先选开阔短程点 |
 | Live obstacle | 已保护停车，对照实际障碍和外参叠加后再点选 |
-| SDK worker 失败/锁定 | 查 sdk.log，解决连接/冲突后重启导航并重新定位 |
+| SDK worker 失败/锁定 | 查 sdk.log 的具体错误；0x3013 表示速度范围不合法，不能一概认为未连接。更新修复包后重启并重新定位 |
 | 已有 session / 锁占用 | 回到旧导航终端正常 Ctrl+C，不用全局 pkill python |
 | bad interpreter / CRLF | 重新复制校验通过的 LF 增量包，不批量转换官方脚本 |
 | 退出后仍运动 | 采用现场已验证的官方停车方式，保留日志；软件零指令不代替运控失联保护 |

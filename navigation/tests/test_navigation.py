@@ -147,7 +147,27 @@ class NavigationTests(unittest.TestCase):
                 result=rig.reach((1.5,0.))
                 self.assertEqual(result['state'],'ARRIVED',result)
                 self.assertLessEqual(rig.nav.tracking_replans,rig.cfg['max_tracking_replans'])
-                if lag: self.assertGreater(rig.nav.tracking_replans,0)
+
+    def test_invalidated_tracking_segment_stops_and_respects_replan_budget(self):
+        cells=np.zeros((160,160)); cells[45:105,80]=100
+        rig=Rig(GridMap(cells,.05,(-4.,-4.,0.)),(-1.5,0.,0.))
+        self.assertTrue(rig.nav.set_goal((1.5,0.),rig.t))
+        started=rig.nav.goal_started
+        for attempt in range(rig.cfg['max_tracking_replans']+1):
+            # A deviation has left the current segment crossing the known wall.
+            # Exercise this explicitly instead of requiring every lagged run
+            # to deviate (a successful collision-free route need not replan).
+            rig.nav.state='TRACKING'
+            rig.nav.path=[(-1.5,0.),(1.5,0.)]; rig.nav.path_index=1
+            self.assertEqual(rig.step(move=False),(0.,0.))
+            if attempt<rig.cfg['max_tracking_replans']:
+                self.assertEqual(rig.nav.state,'STOPPING_FOR_PLAN')
+                self.assertEqual(rig.nav.goal,(1.5,0.))
+                self.assertEqual(rig.nav.goal_started,started)
+                self.assertEqual(rig.nav.tracking_replans,attempt+1)
+            else:
+                self.assertEqual(rig.nav.state,'STOPPED')
+                self.assertIsNone(rig.nav.goal)
 
     def test_real_map_short_goal(self):
         cfg=load_config(); g=GridMap.load(cfg['map']); rig=Rig(g,(-.00291023254,.0058063507,0.))

@@ -10,6 +10,7 @@ import signal
 import sys
 import time
 from .configuration import ROOT,load_config
+from .sdk_limits import validate_sdk_velocity
 
 
 class CommandGuard:
@@ -28,6 +29,7 @@ class CommandGuard:
             raise ValueError('Nonfinite or out-of-order command')
         if not 0<=now-issued<=self.timeout: raise ValueError('Expired/future command')
         if not 0<=v<=self.max_speed+1e-8 or abs(w)>self.max_yaw+1e-8: raise ValueError('SDK velocity limit exceeded')
+        validate_sdk_velocity(v,w)
         self.sequence=sequence; self.issued=issued; self.velocity=(v,w)
 
     def current(self,now):
@@ -43,6 +45,8 @@ def result_ok(value,operation='SDK call'):
     if value is not None and int(value)!=0:
         code=int(value)
         hint='; state transition rejected: move requires standUp first' if code==0x3007 and operation.startswith('move') else ''
+        if code==0x3013:
+            hint='; velocity outside SDK range: vx=0 or >=0.05 m/s, yaw=0 or abs>=0.02 rad/s'
         raise RuntimeError(f'{operation}: SDK returned {code} (0x{code:04X}){hint}')
 
 
@@ -107,7 +111,7 @@ def main():
                     if line: guard.accept(line.decode('ascii'),time.monotonic())
             v,w=guard.current(time.monotonic())
             if not sdk.checkConnect(): raise RuntimeError('SDK disconnected')
-            result_ok(sdk.move(v,0.,w),'move')
+            result_ok(sdk.move(v,0.,w),f'move(vx={v:.9f}, vy=0, yaw={w:.9f})')
             if guard.tripped: raise RuntimeError('Motion watchdog expired and latched; restart navigation')
     except Exception as exc:
         print(json.dumps({'sdk_error':str(exc)}),file=sys.stderr,flush=True); exit_code=2

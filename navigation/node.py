@@ -13,7 +13,8 @@ from .sdk_bridge import SDKBridge
 from .sensors import lidar_points
 
 
-def _run_ros_node(rclpy, node_factory, ros_args, external_shutdown_exception):
+def _run_ros_node(rclpy, node_factory, ros_args, external_shutdown_exception,
+                  rcl_error_exception):
     """Close application resources before idempotent ROS context cleanup."""
     rclpy.init(args=ros_args); node=None
     try:
@@ -28,9 +29,17 @@ def _run_ros_node(rclpy, node_factory, ros_args, external_shutdown_exception):
                 finally:
                     node.destroy_node()
         finally:
-            # Humble's signal handler may already have shut down the context.
-            # Checking ok() before shutdown() leaves a race with that handler.
-            rclpy.try_shutdown()
+            # Humble's C signal handler can race even with try_shutdown()'s
+            # internal ok() check. Ignore only that error after confirming the
+            # context is already inactive; unrelated cleanup failures matter.
+            try:
+                rclpy.try_shutdown()
+            except rcl_error_exception as exc:
+                message=str(exc).partition(', at ')[0]
+                already_stopped=('failed to shutdown: rcl_shutdown already '
+                                 'called on the given context')
+                if message!=already_stopped or rclpy.ok():
+                    raise
 
 
 def main():
@@ -43,6 +52,7 @@ def main():
     try:
         import rclpy
         from rclpy.executors import ExternalShutdownException
+        from rclpy.impl.implementation_singleton import rclpy_implementation
         from rclpy.node import Node
         from rclpy.parameter import Parameter
         from rclpy.clock import Clock,ClockType
@@ -224,7 +234,8 @@ def main():
             if not self.events.closed:
                 self.record('shutdown',self.nav.snapshot()); self.events.close()
 
-    _run_ros_node(rclpy, PointNavigationNode, ros_args, ExternalShutdownException)
+    _run_ros_node(rclpy, PointNavigationNode, ros_args, ExternalShutdownException,
+                  rclpy_implementation.RCLError)
 
 
 if __name__=='__main__': main()
