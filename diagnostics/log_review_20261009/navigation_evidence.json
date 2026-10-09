@@ -1,0 +1,2206 @@
+{
+  "review_date": "2026-10-09",
+  "timezone": "Asia/Shanghai",
+  "scope": "Read-only analysis of all five navigation/run/run_20261009_* imports; no runtime files changed.",
+  "method": {
+    "duration": "clicked_goal to first terminal state or shutdown, monotonic seconds",
+    "route_length": "sum of initial planned_path point-to-point distances",
+    "position_error": "distance from aligned map/odometry pose to clicked goal; not independently measured ground truth",
+    "approximate_travel": "sum of logged state/trajectory pose steps; approximately 0.5 s samples",
+    "time_basis": "wall_time converted to UTC+08:00"
+  },
+  "runs": [
+    {
+      "directory": "navigation/run/run_20261009_171552_3dlehb42",
+      "mode": "preview",
+      "created_utc": "2026-10-09T09:15:52.576045+00:00",
+      "finished_utc": "2026-10-09T09:16:58.798678+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.yaml",
+      "map_version": "task1_20260911",
+      "map_hashes": {
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.yaml": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.pgm": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd"
+      },
+      "map_summary": {
+        "width": 597,
+        "height": 482,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 91713,
+        "passable_cells": 49147,
+        "components": 3,
+        "largest_component": 47859
+      },
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "node_exit": 0,
+      "rviz_exit": 0,
+      "sdk_log": null,
+      "source_hash_comparison": [
+        {
+          "path": "navigation/core.py",
+          "logged_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "current_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "match": true
+        },
+        {
+          "path": "navigation/check_install.py",
+          "logged_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "current_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "match": true
+        },
+        {
+          "path": "navigation/planning.py",
+          "logged_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "current_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "match": true
+        },
+        {
+          "path": "navigation/__init__.py",
+          "logged_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "current_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "match": true
+        },
+        {
+          "path": "navigation/prepare_map.py",
+          "logged_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "current_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "match": true
+        },
+        {
+          "path": "navigation/preflight.py",
+          "logged_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "current_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "match": true
+        },
+        {
+          "path": "navigation/node.py",
+          "logged_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "current_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_limits.py",
+          "logged_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "current_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "match": true
+        },
+        {
+          "path": "navigation/package_extension.py",
+          "logged_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "current_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "match": true
+        },
+        {
+          "path": "navigation/launcher.py",
+          "logged_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "current_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "match": true
+        },
+        {
+          "path": "navigation/configuration.py",
+          "logged_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "current_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "match": true
+        },
+        {
+          "path": "navigation/geometry.py",
+          "logged_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "current_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "match": true
+        },
+        {
+          "path": "navigation/sensors.py",
+          "logged_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "current_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "match": true
+        },
+        {
+          "path": "navigation/grid.py",
+          "logged_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "current_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_bridge.py",
+          "logged_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "current_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_worker.py",
+          "logged_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "current_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "match": true
+        },
+        {
+          "path": "navigation/validate.py",
+          "logged_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "current_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "match": true
+        }
+      ],
+      "initial_pose_events": [
+        {
+          "event_line": 20,
+          "local_time": "2026-10-09T17:16:01.976+08:00",
+          "accepted": true,
+          "pose": [
+            0.7499990463256836,
+            -0.33333301544189453,
+            0.0
+          ],
+          "reason": "Initial pose set; check overlay before clicking"
+        },
+        {
+          "event_line": 57,
+          "local_time": "2026-10-09T17:16:20.830+08:00",
+          "accepted": true,
+          "pose": [
+            0.7035542130470276,
+            -0.04940415173768997,
+            -0.06344326522123529
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            0.7499648736559571,
+            -0.33353670691098286,
+            -0.0012358816836056524
+          ],
+          "manual_pose_position_change_m": 0.287898,
+          "manual_pose_yaw_change_deg": -3.564221
+        },
+        {
+          "event_line": 74,
+          "local_time": "2026-10-09T17:16:29.324+08:00",
+          "accepted": true,
+          "pose": [
+            0.9051591157913208,
+            0.012241842225193977,
+            -0.14075879324840118
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            0.7035356967646526,
+            -0.04950405671851743,
+            -0.06404995594578669
+          ],
+          "manual_pose_position_change_m": 0.210866,
+          "manual_pose_yaw_change_deg": -4.395093
+        },
+        {
+          "event_line": 94,
+          "local_time": "2026-10-09T17:16:39.223+08:00",
+          "accepted": true,
+          "pose": [
+            0.4044819474220276,
+            -0.008581639267504215,
+            -0.11995342571866666
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            0.905126480236509,
+            0.0121582795409963,
+            -0.14139272286056132
+          ],
+          "manual_pose_position_change_m": 0.501074,
+          "manual_pose_yaw_change_deg": 1.228381
+        },
+        {
+          "event_line": 109,
+          "local_time": "2026-10-09T17:16:46.927+08:00",
+          "accepted": true,
+          "pose": [
+            -0.18949797749519348,
+            0.23967698216438293,
+            -0.1392541842333106
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            0.40446343019293773,
+            -0.008660005593407663,
+            -0.12037535894039064
+          ],
+          "manual_pose_position_change_m": 0.643787,
+          "manual_pose_yaw_change_deg": -1.081677
+        },
+        {
+          "event_line": 121,
+          "local_time": "2026-10-09T17:16:52.600+08:00",
+          "accepted": true,
+          "pose": [
+            0.07291889935731888,
+            0.06639624387025833,
+            -0.16689719421080043
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            -0.18950539468437338,
+            0.23963900166273658,
+            -0.13962133090753473
+          ],
+          "manual_pose_position_change_m": 0.314451,
+          "manual_pose_yaw_change_deg": -1.562792
+        }
+      ],
+      "goals": [],
+      "stops": [],
+      "warnings": [
+        {
+          "file": "navigation/run/run_20261009_171552_3dlehb42/node.log",
+          "line": 4,
+          "text": "\u001b[2m2026-10-09T09:16:58.622250Z\u001b[0m \u001b[31mERROR\u001b[0m rx-2 ThreadId(09) \u001b[2mzenoh::api::session\u001b[0m\u001b[2m:\u001b[0m Received Data for unknown expr_id: 22"
+        },
+        {
+          "file": "navigation/run/run_20261009_171552_3dlehb42/node.log",
+          "line": 5,
+          "text": "\u001b[2m2026-10-09T09:16:58.623804Z\u001b[0m \u001b[31mERROR\u001b[0m rx-2 ThreadId(09) \u001b[2mzenoh::api::session\u001b[0m\u001b[2m:\u001b[0m Received Data for unknown expr_id: 22"
+        },
+        {
+          "file": "navigation/run/run_20261009_171552_3dlehb42/rviz.log",
+          "line": 6,
+          "text": "[ERROR] [1791537353.049934628] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : "
+        }
+      ]
+    },
+    {
+      "directory": "navigation/run/run_20261009_171709_h3l2kzmd",
+      "mode": "drive",
+      "created_utc": "2026-10-09T09:17:09.528599+00:00",
+      "finished_utc": "2026-10-09T09:18:36.553843+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.yaml",
+      "map_version": "task1_20260911",
+      "map_hashes": {
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.yaml": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.pgm": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd"
+      },
+      "map_summary": {
+        "width": 597,
+        "height": 482,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 91713,
+        "passable_cells": 49147,
+        "components": 3,
+        "largest_component": 47859
+      },
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "node_exit": 0,
+      "rviz_exit": 0,
+      "sdk_log": [
+        "ROBOT SDK is Running, APP Command or other input is InValid!",
+        "mp_recv_cp: 127.0.0.1:43988",
+        "client bind success",
+        "connect success!",
+        "SDK connected; requesting standUp before the first move",
+        "TASK2_READY"
+      ],
+      "source_hash_comparison": [
+        {
+          "path": "navigation/core.py",
+          "logged_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "current_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "match": true
+        },
+        {
+          "path": "navigation/check_install.py",
+          "logged_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "current_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "match": true
+        },
+        {
+          "path": "navigation/planning.py",
+          "logged_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "current_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "match": true
+        },
+        {
+          "path": "navigation/__init__.py",
+          "logged_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "current_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "match": true
+        },
+        {
+          "path": "navigation/prepare_map.py",
+          "logged_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "current_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "match": true
+        },
+        {
+          "path": "navigation/preflight.py",
+          "logged_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "current_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "match": true
+        },
+        {
+          "path": "navigation/node.py",
+          "logged_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "current_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_limits.py",
+          "logged_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "current_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "match": true
+        },
+        {
+          "path": "navigation/package_extension.py",
+          "logged_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "current_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "match": true
+        },
+        {
+          "path": "navigation/launcher.py",
+          "logged_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "current_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "match": true
+        },
+        {
+          "path": "navigation/configuration.py",
+          "logged_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "current_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "match": true
+        },
+        {
+          "path": "navigation/geometry.py",
+          "logged_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "current_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "match": true
+        },
+        {
+          "path": "navigation/sensors.py",
+          "logged_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "current_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "match": true
+        },
+        {
+          "path": "navigation/grid.py",
+          "logged_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "current_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_bridge.py",
+          "logged_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "current_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_worker.py",
+          "logged_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "current_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "match": true
+        },
+        {
+          "path": "navigation/validate.py",
+          "logged_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "current_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "match": true
+        }
+      ],
+      "initial_pose_events": [
+        {
+          "event_line": 33,
+          "local_time": "2026-10-09T17:17:29.690+08:00",
+          "accepted": true,
+          "pose": [
+            0.3166656494140625,
+            -0.23333311080932617,
+            -0.09065976994574562
+          ],
+          "reason": "Initial pose set; check overlay before clicking"
+        }
+      ],
+      "goals": [
+        {
+          "number": 1,
+          "click_line": 54,
+          "clicked_local_time": "2026-10-09T17:17:40.226+08:00",
+          "terminal_line": 167,
+          "terminal_local_time": "2026-10-09T17:18:36.392+08:00",
+          "elapsed_s": 56.166051,
+          "map_version": "task1_20260911",
+          "max_speed": 0.4,
+          "start_pose_first_logged_after_click": [
+            0.3175311621917644,
+            -0.23336574257981485,
+            -0.09033187901424877
+          ],
+          "goal_xy": [
+            16.52177619934082,
+            5.913780212402344
+          ],
+          "initial_planned_path_line": 59,
+          "initial_path_points": [
+            [
+              0.3175708020196915,
+              -0.2333660781783492
+            ],
+            [
+              13.74708976746,
+              0.3058063506999993
+            ],
+            [
+              15.397089767460002,
+              0.5558063506999993
+            ],
+            [
+              15.69708976746,
+              0.7558063506999986
+            ],
+            [
+              16.04708976746,
+              1.1558063507000007
+            ],
+            [
+              16.147089767460002,
+              1.4058063507000007
+            ],
+            [
+              16.52177619934082,
+              5.913780212402344
+            ]
+          ],
+          "initial_path_length_m": 20.794009,
+          "initial_path_point_count": 7,
+          "result": "program_shutdown_interruption",
+          "terminal_event": "shutdown",
+          "terminal_state": "IDLE",
+          "terminal_reason": "Node shutting down",
+          "terminal_pose": [
+            15.97522058945055,
+            1.082740193649026,
+            0.7959411865559998
+          ],
+          "terminal_distance_to_goal_m": 4.861859,
+          "approximate_logged_travel_m": 15.898823,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 166,
+            "metres": 4.93742
+          },
+          "remaining_initial_path_at_terminal_pose_m": 4.895265,
+          "terminal_node_log_matches": []
+        }
+      ],
+      "stops": [],
+      "warnings": [
+        {
+          "file": "navigation/run/run_20261009_171709_h3l2kzmd/rviz.log",
+          "line": 6,
+          "text": "[ERROR] [1791537429.946029767] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : "
+        }
+      ]
+    },
+    {
+      "directory": "navigation/run/run_20261009_172348_2ltvrbrx",
+      "mode": "preview",
+      "created_utc": "2026-10-09T09:23:48.497852+00:00",
+      "finished_utc": "2026-10-09T09:23:55.511517+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml",
+      "map_version": "field_a_20261009_170749",
+      "map_hashes": {
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.pgm": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7"
+      },
+      "map_summary": {
+        "width": 597,
+        "height": 483,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 100454,
+        "passable_cells": 58013,
+        "components": 1,
+        "largest_component": 58013
+      },
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "node_exit": 0,
+      "rviz_exit": 0,
+      "sdk_log": null,
+      "source_hash_comparison": [
+        {
+          "path": "navigation/core.py",
+          "logged_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "current_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "match": true
+        },
+        {
+          "path": "navigation/check_install.py",
+          "logged_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "current_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "match": true
+        },
+        {
+          "path": "navigation/planning.py",
+          "logged_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "current_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "match": true
+        },
+        {
+          "path": "navigation/__init__.py",
+          "logged_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "current_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "match": true
+        },
+        {
+          "path": "navigation/prepare_map.py",
+          "logged_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "current_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "match": true
+        },
+        {
+          "path": "navigation/preflight.py",
+          "logged_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "current_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "match": true
+        },
+        {
+          "path": "navigation/node.py",
+          "logged_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "current_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_limits.py",
+          "logged_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "current_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "match": true
+        },
+        {
+          "path": "navigation/package_extension.py",
+          "logged_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "current_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "match": true
+        },
+        {
+          "path": "navigation/launcher.py",
+          "logged_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "current_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "match": true
+        },
+        {
+          "path": "navigation/configuration.py",
+          "logged_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "current_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "match": true
+        },
+        {
+          "path": "navigation/geometry.py",
+          "logged_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "current_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "match": true
+        },
+        {
+          "path": "navigation/sensors.py",
+          "logged_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "current_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "match": true
+        },
+        {
+          "path": "navigation/grid.py",
+          "logged_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "current_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_bridge.py",
+          "logged_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "current_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_worker.py",
+          "logged_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "current_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "match": true
+        },
+        {
+          "path": "navigation/validate.py",
+          "logged_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "current_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "match": true
+        }
+      ],
+      "initial_pose_events": [],
+      "goals": [],
+      "stops": [],
+      "warnings": [
+        {
+          "file": "navigation/run/run_20261009_172348_2ltvrbrx/rviz.log",
+          "line": 6,
+          "text": "[ERROR] [1791537828.914090439] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : "
+        }
+      ]
+    },
+    {
+      "directory": "navigation/run/run_20261009_172517_kklh34zv",
+      "mode": "drive",
+      "created_utc": "2026-10-09T09:25:17.371653+00:00",
+      "finished_utc": "2026-10-09T09:34:11.712505+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml",
+      "map_version": "field_a_20261009_170749",
+      "map_hashes": {
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.pgm": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7"
+      },
+      "map_summary": {
+        "width": 597,
+        "height": 483,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 100454,
+        "passable_cells": 58013,
+        "components": 1,
+        "largest_component": 58013
+      },
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "node_exit": 0,
+      "rviz_exit": 0,
+      "sdk_log": [
+        "ROBOT SDK is Running, APP Command or other input is InValid!",
+        "mp_recv_cp: 127.0.0.1:43988",
+        "client bind success",
+        "connect success!",
+        "SDK connected; requesting standUp before the first move",
+        "TASK2_READY"
+      ],
+      "source_hash_comparison": [
+        {
+          "path": "navigation/core.py",
+          "logged_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "current_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "match": true
+        },
+        {
+          "path": "navigation/check_install.py",
+          "logged_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "current_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "match": true
+        },
+        {
+          "path": "navigation/planning.py",
+          "logged_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "current_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "match": true
+        },
+        {
+          "path": "navigation/__init__.py",
+          "logged_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "current_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "match": true
+        },
+        {
+          "path": "navigation/prepare_map.py",
+          "logged_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "current_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "match": true
+        },
+        {
+          "path": "navigation/preflight.py",
+          "logged_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "current_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "match": true
+        },
+        {
+          "path": "navigation/node.py",
+          "logged_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "current_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_limits.py",
+          "logged_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "current_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "match": true
+        },
+        {
+          "path": "navigation/package_extension.py",
+          "logged_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "current_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "match": true
+        },
+        {
+          "path": "navigation/launcher.py",
+          "logged_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "current_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "match": true
+        },
+        {
+          "path": "navigation/configuration.py",
+          "logged_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "current_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "match": true
+        },
+        {
+          "path": "navigation/geometry.py",
+          "logged_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "current_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "match": true
+        },
+        {
+          "path": "navigation/sensors.py",
+          "logged_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "current_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "match": true
+        },
+        {
+          "path": "navigation/grid.py",
+          "logged_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "current_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_bridge.py",
+          "logged_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "current_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_worker.py",
+          "logged_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "current_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "match": true
+        },
+        {
+          "path": "navigation/validate.py",
+          "logged_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "current_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "match": true
+        }
+      ],
+      "initial_pose_events": [
+        {
+          "event_line": 24,
+          "local_time": "2026-10-09T17:25:32.816+08:00",
+          "accepted": true,
+          "pose": [
+            0.41666507720947266,
+            -0.1333332061767578,
+            -0.11065704672138432
+          ],
+          "reason": "Initial pose set; check overlay before clicking"
+        },
+        {
+          "event_line": 43,
+          "local_time": "2026-10-09T17:25:41.896+08:00",
+          "accepted": true,
+          "pose": [
+            0.4409770965576172,
+            -0.1088109016418457,
+            -0.00500007613924152
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            0.41742396833356665,
+            -0.13326733196168394,
+            -0.11032786307883762
+          ],
+          "manual_pose_position_change_m": 0.033954,
+          "manual_pose_yaw_change_deg": 6.034838
+        },
+        {
+          "event_line": 69,
+          "local_time": "2026-10-09T17:25:55.643+08:00",
+          "accepted": true,
+          "pose": [
+            -0.025350570678710938,
+            -0.03981208801269531,
+            -0.0049996563409927
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            0.4415069053701763,
+            -0.10874683704306513,
+            -0.004296234088308222
+          ],
+          "manual_pose_position_change_m": 0.471919,
+          "manual_pose_yaw_change_deg": -0.040303
+        }
+      ],
+      "goals": [
+        {
+          "number": 1,
+          "click_line": 84,
+          "clicked_local_time": "2026-10-09T17:26:03.169+08:00",
+          "terminal_line": 270,
+          "terminal_local_time": "2026-10-09T17:27:32.678+08:00",
+          "elapsed_s": 89.509105,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.4,
+          "start_pose_first_logged_after_click": [
+            -0.025206738598728757,
+            -0.039788709615341214,
+            -0.004760050558300694
+          ],
+          "goal_xy": [
+            19.580812454223633,
+            6.109644412994385
+          ],
+          "initial_planned_path_line": 89,
+          "initial_path_points": [
+            [
+              -0.02519271950895876,
+              -0.03978660290899155
+            ],
+            [
+              13.902771997450003,
+              0.3832595825000027
+            ],
+            [
+              15.402771997450003,
+              0.583259582500002
+            ],
+            [
+              15.70277199745,
+              0.7832595825000013
+            ],
+            [
+              15.95277199745,
+              1.083259582500002
+            ],
+            [
+              17.152771997450003,
+              5.033259582500001
+            ],
+            [
+              17.30277199745,
+              5.233259582500001
+            ],
+            [
+              17.75277199745,
+              5.533259582500001
+            ],
+            [
+              19.580812454223633,
+              6.109644412994385
+            ]
+          ],
+          "initial_path_length_m": 23.034575,
+          "initial_path_point_count": 9,
+          "result": "arrived",
+          "terminal_event": "state",
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "terminal_pose": [
+            19.49861431339023,
+            6.084084007053233,
+            0.3325979255156666
+          ],
+          "terminal_distance_to_goal_m": 0.086081,
+          "approximate_logged_travel_m": 23.028482,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 269,
+            "metres": 0.08766
+          },
+          "remaining_initial_path_at_terminal_pose_m": 0.086081,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_172517_kklh34zv/node.log",
+              "line": 24,
+              "text": "[INFO] [1791538052.678385500] [task2_point_navigation]: {\"state\": \"ARRIVED\", \"reason\": \"Within tolerance and measured standstill confirmed\", \"pose\": [19.49861431339023, 6.084084007053233, 0.3325979255156666], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 8, \"path_points\": 9, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.007683951077514874, \"angular_speed\": 0.008431445348715183, \"mode\": \"drive\"}"
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "click_line": 283,
+          "clicked_local_time": "2026-10-09T17:27:38.979+08:00",
+          "terminal_line": 648,
+          "terminal_local_time": "2026-10-09T17:30:38.997+08:00",
+          "elapsed_s": 180.01803,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.4,
+          "start_pose_first_logged_after_click": [
+            19.4997972258033,
+            6.0848931211672515,
+            0.36225555021333256
+          ],
+          "goal_xy": [
+            7.269211292266846,
+            -6.74526834487915
+          ],
+          "initial_planned_path_line": 290,
+          "initial_path_points": [
+            [
+              19.499156565150933,
+              6.085285355264139
+            ],
+            [
+              17.55277199745,
+              5.483259582500001
+            ],
+            [
+              17.00277199745,
+              4.883259582500003
+            ],
+            [
+              16.902771997450003,
+              0.9332595824999999
+            ],
+            [
+              17.25277199745,
+              0.6332595825000027
+            ],
+            [
+              19.30277199745,
+              0.1332595825000027
+            ],
+            [
+              24.55277199745,
+              -0.5167404174999994
+            ],
+            [
+              24.852771997450002,
+              -0.8667404174999991
+            ],
+            [
+              24.902771997450003,
+              -1.0667404174999984
+            ],
+            [
+              25.102771997450002,
+              -3.166740417499998
+            ],
+            [
+              25.30277199745,
+              -12.366740417499999
+            ],
+            [
+              24.80277199745,
+              -14.2667404175
+            ],
+            [
+              24.652771997450003,
+              -14.466740417499999
+            ],
+            [
+              24.102771997450002,
+              -14.6667404175
+            ],
+            [
+              22.402771997450003,
+              -14.966740417499999
+            ],
+            [
+              10.002771997450001,
+              -14.9167404175
+            ],
+            [
+              8.252771997450001,
+              -14.5167404175
+            ],
+            [
+              8.052771997450002,
+              -14.366740417499999
+            ],
+            [
+              7.852771997450001,
+              -13.8167404175
+            ],
+            [
+              7.269211292266846,
+              -6.74526834487915
+            ]
+          ],
+          "initial_path_length_m": 53.294704,
+          "initial_path_point_count": 20,
+          "result": "protective_stop",
+          "terminal_event": "state",
+          "terminal_state": "STOPPED",
+          "terminal_reason": "Goal time limit exceeded",
+          "terminal_pose": [
+            9.860623564447176,
+            -14.876491646608295,
+            2.9194473297066086
+          ],
+          "terminal_distance_to_goal_m": 8.534179,
+          "approximate_logged_travel_m": 43.998875,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 647,
+            "metres": 9.680237
+          },
+          "remaining_initial_path_at_terminal_pose_m": 9.578351,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_172517_kklh34zv/node.log",
+              "line": 60,
+              "text": "[INFO] [1791538238.997555901] [task2_point_navigation]: {\"state\": \"STOPPED\", \"reason\": \"Goal time limit exceeded\", \"pose\": [9.860623564447176, -14.876491646608295, 2.9194473297066086], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 16, \"path_points\": 0, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.304360705108061, \"angular_speed\": 0.04203376997659485, \"mode\": \"drive\"}"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "click_line": 698,
+          "clicked_local_time": "2026-10-09T17:31:04.318+08:00",
+          "terminal_line": 771,
+          "terminal_local_time": "2026-10-09T17:31:39.952+08:00",
+          "elapsed_s": 35.63405,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.4,
+          "start_pose_first_logged_after_click": [
+            9.80895594932119,
+            -14.868149818629057,
+            2.908317978278927
+          ],
+          "goal_xy": [
+            7.233504772186279,
+            -7.212353229522705
+          ],
+          "initial_planned_path_line": 703,
+          "initial_path_points": [
+            [
+              9.809137367823023,
+              -14.868096227533616
+            ],
+            [
+              8.252771997450001,
+              -14.5167404175
+            ],
+            [
+              7.852771997450001,
+              -14.1667404175
+            ],
+            [
+              7.233504772186279,
+              -7.212353229522705
+            ]
+          ],
+          "initial_path_length_m": 9.108945,
+          "initial_path_point_count": 4,
+          "result": "arrived",
+          "terminal_event": "state",
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "terminal_pose": [
+            7.239382299013097,
+            -7.304769343593793,
+            1.6340778960841187
+          ],
+          "terminal_distance_to_goal_m": 0.092603,
+          "approximate_logged_travel_m": 9.042107,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 770,
+            "metres": 0.097569
+          },
+          "remaining_initial_path_at_terminal_pose_m": 0.092603,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_172517_kklh34zv/node.log",
+              "line": 69,
+              "text": "[INFO] [1791538299.952589097] [task2_point_navigation]: {\"state\": \"ARRIVED\", \"reason\": \"Within tolerance and measured standstill confirmed\", \"pose\": [7.239382299013097, -7.304769343593793, 1.6340778960841187], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 3, \"path_points\": 4, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.011356654556713766, \"angular_speed\": 0.004688594504177141, \"mode\": \"drive\"}"
+            }
+          ]
+        }
+      ],
+      "stops": [
+        {
+          "event_line": 648,
+          "local_time": "2026-10-09T17:30:38.997+08:00",
+          "reason": "Goal time limit exceeded",
+          "pose": [
+            9.860623564447176,
+            -14.876491646608295,
+            2.9194473297066086
+          ],
+          "linear_speed": 0.304360705108061,
+          "angular_speed": 0.04203376997659485,
+          "already_under_standstill_threshold": false,
+          "next_samples": [
+            {
+              "event_line": 650,
+              "elapsed_s": 0.500298,
+              "linear_speed": 0.0034718107372030114,
+              "angular_speed": 0.009778429418371372,
+              "displacement_m": 0.035227
+            },
+            {
+              "event_line": 651,
+              "elapsed_s": 1.050531,
+              "linear_speed": 0.009262881520400166,
+              "angular_speed": 6.178089955559209e-05,
+              "displacement_m": 0.037963
+            },
+            {
+              "event_line": 652,
+              "elapsed_s": 1.60051,
+              "linear_speed": 0.008174218792001574,
+              "angular_speed": 0.000599677896031488,
+              "displacement_m": 0.042358
+            },
+            {
+              "event_line": 653,
+              "elapsed_s": 2.150215,
+              "linear_speed": 0.0022080445572183853,
+              "angular_speed": 0.006006084494689723,
+              "displacement_m": 0.043668
+            },
+            {
+              "event_line": 654,
+              "elapsed_s": 2.650291,
+              "linear_speed": 0.0035260242374836877,
+              "angular_speed": 0.008875931341076611,
+              "displacement_m": 0.042774
+            }
+          ],
+          "first_later_sample_under_standstill_threshold": {
+            "event_line": 650,
+            "elapsed_s": 0.500298
+          }
+        }
+      ],
+      "warnings": [
+        {
+          "file": "navigation/run/run_20261009_172517_kklh34zv/rviz.log",
+          "line": 6,
+          "text": "[ERROR] [1791537917.810363316] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : "
+        }
+      ]
+    },
+    {
+      "directory": "navigation/run/run_20261009_173705_dhnzktx1",
+      "mode": "drive",
+      "created_utc": "2026-10-09T09:37:05.292409+00:00",
+      "finished_utc": "2026-10-09T09:44:43.630613+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml",
+      "map_version": "field_a_20261009_170749",
+      "map_hashes": {
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.pgm": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7"
+      },
+      "map_summary": {
+        "width": 597,
+        "height": 483,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 100454,
+        "passable_cells": 58013,
+        "components": 1,
+        "largest_component": 58013
+      },
+      "control_settings": {
+        "max_speed": 0.5,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "node_exit": 0,
+      "rviz_exit": 0,
+      "sdk_log": [
+        "ROBOT SDK is Running, APP Command or other input is InValid!",
+        "mp_recv_cp: 127.0.0.1:43988",
+        "client bind success",
+        "connect success!",
+        "SDK connected; requesting standUp before the first move",
+        "TASK2_READY"
+      ],
+      "source_hash_comparison": [
+        {
+          "path": "navigation/core.py",
+          "logged_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "current_sha256": "64aadb14d3ab0ddbf3b662d3346be606948bc0a041be5fb0eefd759a8f216e42",
+          "match": true
+        },
+        {
+          "path": "navigation/check_install.py",
+          "logged_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "current_sha256": "126fd60b0ab16d65eace579fc6c8847cd855279eacafde71b2151cd5b49f54b8",
+          "match": true
+        },
+        {
+          "path": "navigation/planning.py",
+          "logged_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "current_sha256": "f442bd64dfb616dc42486135fc24b9b2c5201ba25b6f3bf7f3a5900a72cd8cbc",
+          "match": true
+        },
+        {
+          "path": "navigation/__init__.py",
+          "logged_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "current_sha256": "dba8510ce2eed6ef18ca03633c77ef669af4f3e0e4c78b2e1375539d20931e55",
+          "match": true
+        },
+        {
+          "path": "navigation/prepare_map.py",
+          "logged_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "current_sha256": "2a919bc6e82da18e181e29d883df05f74bc9e1c5962873ab0c6950337e2f076a",
+          "match": true
+        },
+        {
+          "path": "navigation/preflight.py",
+          "logged_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "current_sha256": "16e5b89d204847f1832cdcd655c380b521af7060df92f9c875b267ccba382b30",
+          "match": true
+        },
+        {
+          "path": "navigation/node.py",
+          "logged_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "current_sha256": "91bd69834d2ee7523880e11523fb46b6c14bf216cc4ebf9d0965ff7cccab11b5",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_limits.py",
+          "logged_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "current_sha256": "736beff386b86f2be4565837d4d89c42b3b0a0716cab7fdb95856ccff67144b5",
+          "match": true
+        },
+        {
+          "path": "navigation/package_extension.py",
+          "logged_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "current_sha256": "bbf9a2b0bd719b98a5cef81406ab449ce718d9ea3b3e7414fab50744373ad00a",
+          "match": true
+        },
+        {
+          "path": "navigation/launcher.py",
+          "logged_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "current_sha256": "36a5f175947b23e54975029ce5243f0dc15728fa108024d69805c63adbc28e8b",
+          "match": true
+        },
+        {
+          "path": "navigation/configuration.py",
+          "logged_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "current_sha256": "1110cca35f0a109a94f8d2b5327da3dac7150210a3c5f6132350e8d9acb18c83",
+          "match": true
+        },
+        {
+          "path": "navigation/geometry.py",
+          "logged_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "current_sha256": "9ac9356b7c982401d568bf89333d88563968beae78348135d6e4f60d0979e988",
+          "match": true
+        },
+        {
+          "path": "navigation/sensors.py",
+          "logged_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "current_sha256": "528aa6a769caae9ec88e0b8b979da5c494e4c9565c29ea66e7a905d57f2c807e",
+          "match": true
+        },
+        {
+          "path": "navigation/grid.py",
+          "logged_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "current_sha256": "e2904cbbbcfb37ec9e0b05571d30d26176ee8db77d07cbddbba594bb5fdc0535",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_bridge.py",
+          "logged_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "current_sha256": "62a75cc009458630b1301f0ec2d23207a9a438b2330b0f1373173c6f9944c82f",
+          "match": true
+        },
+        {
+          "path": "navigation/sdk_worker.py",
+          "logged_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "current_sha256": "8efadbbf761096ccbc85be5d4619d6c29583f0c5f70f8719f184a79fb8508067",
+          "match": true
+        },
+        {
+          "path": "navigation/validate.py",
+          "logged_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "current_sha256": "3d7c4b5266ae57519c7ec79c26fc215e2c739967a09fcc30185c87fa5bcb4fac",
+          "match": true
+        }
+      ],
+      "initial_pose_events": [
+        {
+          "event_line": 12,
+          "local_time": "2026-10-09T17:37:14.298+08:00",
+          "accepted": true,
+          "pose": [
+            0.6166658401489258,
+            -0.33333301544189453,
+            0.0
+          ],
+          "reason": "Initial pose set; check overlay before clicking"
+        },
+        {
+          "event_line": 40,
+          "local_time": "2026-10-09T17:37:27.996+08:00",
+          "accepted": true,
+          "pose": [
+            -0.02538299933075905,
+            0.13554193079471588,
+            -0.02499993827742176
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            0.6201044914157602,
+            -0.3329621569439228,
+            -0.0008282244915798539
+          ],
+          "manual_pose_position_change_m": 0.79759,
+          "manual_pose_yaw_change_deg": -1.384937
+        },
+        {
+          "event_line": 486,
+          "local_time": "2026-10-09T17:41:04.925+08:00",
+          "accepted": true,
+          "pose": [
+            24.25112533569336,
+            -14.442532539367676,
+            -2.7860873492392457
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.400833822663166,
+            -14.56122984725365,
+            -2.819617595529235
+          ],
+          "manual_pose_position_change_m": 0.191054,
+          "manual_pose_yaw_change_deg": 1.921142
+        },
+        {
+          "event_line": 527,
+          "local_time": "2026-10-09T17:41:26.087+08:00",
+          "accepted": true,
+          "pose": [
+            24.957115173339844,
+            -14.025341033935547,
+            -2.5663420557213295
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.249471733134506,
+            -14.443829384770853,
+            -2.7824525523386936
+          ],
+          "manual_pose_position_change_m": 0.822126,
+          "manual_pose_yaw_change_deg": 12.382219
+        },
+        {
+          "event_line": 544,
+          "local_time": "2026-10-09T17:41:34.488+08:00",
+          "accepted": true,
+          "pose": [
+            24.680221557617188,
+            -14.246443748474121,
+            -2.6742036410733134
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.95668465884763,
+            -14.025671127378843,
+            -2.566131269228137
+          ],
+          "manual_pose_position_change_m": 0.353797,
+          "manual_pose_yaw_change_deg": -6.192091
+        },
+        {
+          "event_line": 563,
+          "local_time": "2026-10-09T17:41:44.021+08:00",
+          "accepted": true,
+          "pose": [
+            24.239830017089844,
+            -14.393447875976562,
+            -2.699692649462307
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.679835647624103,
+            -14.24666344499596,
+            -2.674113276644076
+          ],
+          "manual_pose_position_change_m": 0.463843,
+          "manual_pose_yaw_change_deg": -1.46559
+        },
+        {
+          "event_line": 578,
+          "local_time": "2026-10-09T17:41:51.651+08:00",
+          "accepted": true,
+          "pose": [
+            24.525718688964844,
+            -13.972549438476562,
+            -2.598591613093079
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.239614932381038,
+            -14.393559783702587,
+            -2.6996621007451767
+          ],
+          "manual_pose_position_change_m": 0.509024,
+          "manual_pose_yaw_change_deg": 5.790912
+        },
+        {
+          "event_line": 595,
+          "local_time": "2026-10-09T17:41:59.927+08:00",
+          "accepted": true,
+          "pose": [
+            24.513721466064453,
+            -14.238945960998535,
+            -2.908291263428798
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.525560056656005,
+            -13.972652225361163,
+            -2.59857367161626
+          ],
+          "manual_pose_position_change_m": 0.266557,
+          "manual_pose_yaw_change_deg": -17.745511
+        },
+        {
+          "event_line": 610,
+          "local_time": "2026-10-09T17:42:07.636+08:00",
+          "accepted": true,
+          "pose": [
+            24.31242561340332,
+            -14.263248443603516,
+            -2.9082931278495705
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.513606155347897,
+            -14.238976933256424,
+            -2.9082809567722023
+          ],
+          "manual_pose_position_change_m": 0.202639,
+          "manual_pose_yaw_change_deg": -0.000697
+        },
+        {
+          "event_line": 626,
+          "local_time": "2026-10-09T17:42:15.618+08:00",
+          "accepted": true,
+          "pose": [
+            24.829265594482422,
+            -14.219192504882812,
+            -2.732944278152711
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            24.312340007034614,
+            -14.263271463165895,
+            -2.9082856702294246
+          ],
+          "manual_pose_position_change_m": 0.518802,
+          "manual_pose_yaw_change_deg": 10.046322
+        },
+        {
+          "event_line": 691,
+          "local_time": "2026-10-09T17:42:45.457+08:00",
+          "accepted": true,
+          "pose": [
+            23.134267807006836,
+            -15.294309616088867,
+            -2.9779254973860003
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            23.04972807671278,
+            -15.263265420010704,
+            -2.734633623016118
+          ],
+          "manual_pose_position_change_m": 0.090059,
+          "manual_pose_yaw_change_deg": -13.939598
+        },
+        {
+          "event_line": 712,
+          "local_time": "2026-10-09T17:42:55.041+08:00",
+          "accepted": true,
+          "pose": [
+            23.132434844970703,
+            -15.327590942382812,
+            -2.895672472721576
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            23.12790576295473,
+            -15.296020166714268,
+            -2.9450011857309013
+          ],
+          "manual_pose_position_change_m": 0.031894,
+          "manual_pose_yaw_change_deg": 2.826327
+        },
+        {
+          "event_line": 730,
+          "local_time": "2026-10-09T17:43:03.813+08:00",
+          "accepted": true,
+          "pose": [
+            23.134267807006836,
+            -15.294309616088867,
+            -2.8553464352942552
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            23.132489615992654,
+            -15.330121043956977,
+            -2.880330316601873
+          ],
+          "manual_pose_position_change_m": 0.035856,
+          "manual_pose_yaw_change_deg": 1.431471
+        },
+        {
+          "event_line": 743,
+          "local_time": "2026-10-09T17:43:10.503+08:00",
+          "accepted": true,
+          "pose": [
+            23.219457626342773,
+            -15.566068649291992,
+            -2.9061908151784444
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            23.13451734223474,
+            -15.29532704688797,
+            -2.849918378674017
+          ],
+          "manual_pose_position_change_m": 0.283753,
+          "manual_pose_yaw_change_deg": -3.224173
+        },
+        {
+          "event_line": 753,
+          "local_time": "2026-10-09T17:43:15.030+08:00",
+          "accepted": true,
+          "pose": [
+            23.19900131225586,
+            -15.331254959106445,
+            -2.781100379592874
+          ],
+          "reason": "Initial pose set; check overlay before clicking",
+          "previous_logged_pose": [
+            23.21930552376665,
+            -15.566521432057904,
+            -2.9041078101883535
+          ],
+          "manual_pose_position_change_m": 0.236141,
+          "manual_pose_yaw_change_deg": 7.047807
+        }
+      ],
+      "goals": [
+        {
+          "number": 1,
+          "click_line": 48,
+          "clicked_local_time": "2026-10-09T17:37:32.162+08:00",
+          "terminal_line": 80,
+          "terminal_local_time": "2026-10-09T17:37:45.988+08:00",
+          "elapsed_s": 13.826158,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.5,
+          "start_pose_first_logged_after_click": [
+            -0.02503647541995933,
+            0.13555317427622993,
+            -0.02482276757547206
+          ],
+          "goal_xy": [
+            4.769129753112793,
+            0.1886955350637436
+          ],
+          "initial_planned_path_line": 53,
+          "initial_path_points": [
+            [
+              -0.024985641663360498,
+              0.13555565614278
+            ],
+            [
+              4.769129753112793,
+              0.1886955350637436
+            ]
+          ],
+          "initial_path_length_m": 4.79441,
+          "initial_path_point_count": 2,
+          "result": "arrived",
+          "terminal_event": "state",
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "terminal_pose": [
+            4.676740387164289,
+            0.18512400299026488,
+            0.04927988137961817
+          ],
+          "terminal_distance_to_goal_m": 0.092458,
+          "approximate_logged_travel_m": 4.708701,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 79,
+            "metres": 0.094092
+          },
+          "remaining_initial_path_at_terminal_pose_m": 0.092458,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_173705_dhnzktx1/node.log",
+              "line": 10,
+              "text": "[INFO] [1791538665.988753120] [task2_point_navigation]: {\"state\": \"ARRIVED\", \"reason\": \"Within tolerance and measured standstill confirmed\", \"pose\": [4.676740387164289, 0.18512400299026488, 0.04927988137961817], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 1, \"path_points\": 2, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.007933118392441561, \"angular_speed\": 0.004901910382612875, \"mode\": \"drive\"}"
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "click_line": 88,
+          "clicked_local_time": "2026-10-09T17:37:49.753+08:00",
+          "terminal_line": 147,
+          "terminal_local_time": "2026-10-09T17:38:17.291+08:00",
+          "elapsed_s": 27.537957,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.5,
+          "start_pose_first_logged_after_click": [
+            4.682594534736983,
+            0.1866491432101669,
+            0.06334442171440158
+          ],
+          "goal_xy": [
+            16.47870635986328,
+            -0.10410492867231369
+          ],
+          "initial_planned_path_line": 94,
+          "initial_path_points": [
+            [
+              4.684123826121268,
+              0.18630196132377994
+            ],
+            [
+              16.47870635986328,
+              -0.10410492867231369
+            ]
+          ],
+          "initial_path_length_m": 11.798157,
+          "initial_path_point_count": 2,
+          "result": "arrived",
+          "terminal_event": "state",
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "terminal_pose": [
+            16.39202955901186,
+            -0.09778979830772913,
+            -0.06168277896292592
+          ],
+          "terminal_distance_to_goal_m": 0.086907,
+          "approximate_logged_travel_m": 11.724402,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 146,
+            "metres": 0.090286
+          },
+          "remaining_initial_path_at_terminal_pose_m": 0.086907,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_173705_dhnzktx1/node.log",
+              "line": 17,
+              "text": "[INFO] [1791538697.292770232] [task2_point_navigation]: {\"state\": \"ARRIVED\", \"reason\": \"Within tolerance and measured standstill confirmed\", \"pose\": [16.39202955901186, -0.09778979830772913, -0.06168277896292592], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 1, \"path_points\": 2, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.010600498279161827, \"angular_speed\": 0.0023701114568381062, \"mode\": \"drive\"}"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "click_line": 150,
+          "clicked_local_time": "2026-10-09T17:38:18.911+08:00",
+          "terminal_line": 312,
+          "terminal_local_time": "2026-10-09T17:39:37.694+08:00",
+          "elapsed_s": 78.782113,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.5,
+          "start_pose_first_logged_after_click": [
+            16.400110372953378,
+            -0.09577734589354694,
+            -0.05894932886697738
+          ],
+          "goal_xy": [
+            7.281965255737305,
+            -6.117303848266602
+          ],
+          "initial_planned_path_line": 157,
+          "initial_path_points": [
+            [
+              16.39759296582942,
+              -0.09556748290811634
+            ],
+            [
+              24.50277199745,
+              -0.4667404174999987
+            ],
+            [
+              24.852771997450002,
+              -0.8667404174999991
+            ],
+            [
+              24.902771997450003,
+              -1.0667404174999984
+            ],
+            [
+              25.102771997450002,
+              -3.166740417499998
+            ],
+            [
+              25.30277199745,
+              -12.366740417499999
+            ],
+            [
+              24.80277199745,
+              -14.2667404175
+            ],
+            [
+              24.652771997450003,
+              -14.466740417499999
+            ],
+            [
+              24.102771997450002,
+              -14.6667404175
+            ],
+            [
+              22.402771997450003,
+              -14.966740417499999
+            ],
+            [
+              10.002771997450001,
+              -14.9167404175
+            ],
+            [
+              8.252771997450001,
+              -14.5167404175
+            ],
+            [
+              8.052771997450002,
+              -14.366740417499999
+            ],
+            [
+              7.852771997450001,
+              -13.8167404175
+            ],
+            [
+              7.281965255737305,
+              -6.117303848266602
+            ]
+          ],
+          "initial_path_length_m": 47.440237,
+          "initial_path_point_count": 15,
+          "result": "protective_stop",
+          "terminal_event": "state",
+          "terminal_state": "STOPPED",
+          "terminal_reason": "Live obstacle: stopped; inspect and choose another goal",
+          "terminal_pose": [
+            24.60970370680938,
+            -14.441294883944007,
+            -2.7121481131566205
+          ],
+          "terminal_distance_to_goal_m": 19.223406,
+          "approximate_logged_travel_m": 22.477104,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 311,
+            "metres": 25.032971
+          },
+          "remaining_initial_path_at_terminal_pose_m": 25.032104,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_173705_dhnzktx1/node.log",
+              "line": 35,
+              "text": "[INFO] [1791538777.694362744] [task2_point_navigation]: {\"state\": \"STOPPED\", \"reason\": \"Live obstacle: stopped; inspect and choose another goal\", \"pose\": [24.60970370680938, -14.441294883944007, -2.7121481131566205], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 8, \"path_points\": 0, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.007800841475397724, \"angular_speed\": 0.00674157603368786, \"mode\": \"drive\"}"
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "click_line": 435,
+          "clicked_local_time": "2026-10-09T17:40:41.964+08:00",
+          "terminal_line": 452,
+          "terminal_local_time": "2026-10-09T17:40:47.895+08:00",
+          "elapsed_s": 5.931498,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.5,
+          "start_pose_first_logged_after_click": [
+            24.5874490580384,
+            -14.453519382996928,
+            -2.7020893606187446
+          ],
+          "goal_xy": [
+            7.841518878936768,
+            -14.444384574890137
+          ],
+          "initial_planned_path_line": 440,
+          "initial_path_points": [
+            [
+              24.587391617202176,
+              -14.453550028798688
+            ],
+            [
+              24.452771997450004,
+              -14.5667404175
+            ],
+            [
+              24.05277199745,
+              -14.6667404175
+            ],
+            [
+              22.402771997450003,
+              -14.966740417499999
+            ],
+            [
+              8.302771997450002,
+              -14.9167404175
+            ],
+            [
+              7.841518878936768,
+              -14.444384574890137
+            ]
+          ],
+          "initial_path_length_m": 17.02554,
+          "initial_path_point_count": 6,
+          "result": "protective_stop",
+          "terminal_event": "state",
+          "terminal_state": "STOPPED",
+          "terminal_reason": "Live obstacle: stopped; inspect and choose another goal",
+          "terminal_pose": [
+            24.428765413313638,
+            -14.54875271482455,
+            -2.8279050323997734
+          ],
+          "terminal_distance_to_goal_m": 16.587575,
+          "approximate_logged_travel_m": 0.203912,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 451,
+            "metres": 16.832989
+          },
+          "remaining_initial_path_at_terminal_pose_m": 16.831419,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_173705_dhnzktx1/node.log",
+              "line": 43,
+              "text": "[INFO] [1791538847.896208202] [task2_point_navigation]: {\"state\": \"STOPPED\", \"reason\": \"Live obstacle: stopped; inspect and choose another goal\", \"pose\": [24.428765413313638, -14.54875271482455, -2.8279050323997734], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 2, \"path_points\": 0, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.005424354683275755, \"angular_speed\": 0.05452633521277527, \"mode\": \"drive\"}"
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "click_line": 639,
+          "clicked_local_time": "2026-10-09T17:42:21.467+08:00",
+          "terminal_line": 672,
+          "terminal_local_time": "2026-10-09T17:42:35.898+08:00",
+          "elapsed_s": 14.431225,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.5,
+          "start_pose_first_logged_after_click": [
+            24.829220584207707,
+            -14.219213637824417,
+            -2.7329397555493053
+          ],
+          "goal_xy": [
+            22.980188369750977,
+            -15.298066139221191
+          ],
+          "initial_planned_path_line": 644,
+          "initial_path_points": [
+            [
+              24.829215370025214,
+              -14.219216026061698
+            ],
+            [
+              24.50277199745,
+              -14.616740417499999
+            ],
+            [
+              22.980188369750977,
+              -15.298066139221191
+            ]
+          ],
+          "initial_path_length_m": 2.182456,
+          "initial_path_point_count": 3,
+          "result": "arrived",
+          "terminal_event": "state",
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "terminal_pose": [
+            23.06152549696983,
+            -15.260121252558934,
+            -2.701399237117572
+          ],
+          "terminal_distance_to_goal_m": 0.089753,
+          "approximate_logged_travel_m": 2.108546,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 671,
+            "metres": 0.096416
+          },
+          "remaining_initial_path_at_terminal_pose_m": 0.089753,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_173705_dhnzktx1/node.log",
+              "line": 53,
+              "text": "[INFO] [1791538955.899215682] [task2_point_navigation]: {\"state\": \"ARRIVED\", \"reason\": \"Within tolerance and measured standstill confirmed\", \"pose\": [23.06152549696983, -15.260121252558934, -2.701399237117572], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 2, \"path_points\": 3, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.01428168081373636, \"angular_speed\": 0.004426890387875499, \"mode\": \"drive\"}"
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "click_line": 765,
+          "clicked_local_time": "2026-10-09T17:43:20.932+08:00",
+          "terminal_line": 900,
+          "terminal_local_time": "2026-10-09T17:44:26.751+08:00",
+          "elapsed_s": 65.818807,
+          "map_version": "field_a_20261009_170749",
+          "max_speed": 0.5,
+          "start_pose_first_logged_after_click": [
+            23.198622065512662,
+            -15.331743122110504,
+            -2.779385568767586
+          ],
+          "goal_xy": [
+            7.698947906494141,
+            -10.579329490661621
+          ],
+          "initial_planned_path_line": 770,
+          "initial_path_points": [
+            [
+              23.198554254151855,
+              -15.33180289912195
+            ],
+            [
+              10.002771997450001,
+              -14.9167404175
+            ],
+            [
+              8.252771997450001,
+              -14.5167404175
+            ],
+            [
+              8.052771997450002,
+              -14.366740417499999
+            ],
+            [
+              7.852771997450001,
+              -13.8167404175
+            ],
+            [
+              7.75277199745,
+              -11.8167404175
+            ],
+            [
+              7.698947906494141,
+              -10.579329490661621
+            ]
+          ],
+          "initial_path_length_m": 19.073755,
+          "initial_path_point_count": 7,
+          "result": "arrived",
+          "terminal_event": "state",
+          "terminal_state": "ARRIVED",
+          "terminal_reason": "Within tolerance and measured standstill confirmed",
+          "terminal_pose": [
+            7.701517978923615,
+            -10.667525821014719,
+            1.5914505849698157
+          ],
+          "terminal_distance_to_goal_m": 0.088234,
+          "approximate_logged_travel_m": 19.045937,
+          "tracking_replans": 0,
+          "last_logged_remaining_path": {
+            "event_line": 899,
+            "metres": 0.090498
+          },
+          "remaining_initial_path_at_terminal_pose_m": 0.088234,
+          "terminal_node_log_matches": [
+            {
+              "path": "navigation/run/run_20261009_173705_dhnzktx1/node.log",
+              "line": 69,
+              "text": "[INFO] [1791539066.752461845] [task2_point_navigation]: {\"state\": \"ARRIVED\", \"reason\": \"Within tolerance and measured standstill confirmed\", \"pose\": [7.701517978923615, -10.667525821014719, 1.5914505849698157], \"goal\": null, \"tracking_replans\": 0, \"tracking_replan_streak\": 0, \"path_index\": 6, \"path_points\": 7, \"remaining_path_m\": null, \"command\": [0.0, 0.0], \"linear_speed\": 0.011326164662433245, \"angular_speed\": 0.004834090813229411, \"mode\": \"drive\"}"
+            }
+          ]
+        }
+      ],
+      "stops": [
+        {
+          "event_line": 312,
+          "local_time": "2026-10-09T17:39:37.694+08:00",
+          "reason": "Live obstacle: stopped; inspect and choose another goal",
+          "pose": [
+            24.60970370680938,
+            -14.441294883944007,
+            -2.7121481131566205
+          ],
+          "linear_speed": 0.007800841475397724,
+          "angular_speed": 0.00674157603368786,
+          "already_under_standstill_threshold": true,
+          "next_samples": [
+            {
+              "event_line": 314,
+              "elapsed_s": 0.498707,
+              "linear_speed": 0.013375798273709985,
+              "angular_speed": 0.0012043481360904957,
+              "displacement_m": 0.00709
+            },
+            {
+              "event_line": 315,
+              "elapsed_s": 1.000048,
+              "linear_speed": 0.006532055047981154,
+              "angular_speed": 0.005350161676746449,
+              "displacement_m": 0.011583
+            },
+            {
+              "event_line": 316,
+              "elapsed_s": 1.548766,
+              "linear_speed": 0.0037141745770334776,
+              "angular_speed": 0.004395601310288947,
+              "displacement_m": 0.013856
+            },
+            {
+              "event_line": 317,
+              "elapsed_s": 2.100076,
+              "linear_speed": 0.0021166706213396674,
+              "angular_speed": 0.00239706988721592,
+              "displacement_m": 0.015297
+            },
+            {
+              "event_line": 318,
+              "elapsed_s": 2.60116,
+              "linear_speed": 0.0035933186204716735,
+              "angular_speed": 0.004150701339066217,
+              "displacement_m": 0.014773
+            }
+          ],
+          "first_later_sample_under_standstill_threshold": {
+            "event_line": 314,
+            "elapsed_s": 0.498707
+          }
+        },
+        {
+          "event_line": 452,
+          "local_time": "2026-10-09T17:40:47.895+08:00",
+          "reason": "Live obstacle: stopped; inspect and choose another goal",
+          "pose": [
+            24.428765413313638,
+            -14.54875271482455,
+            -2.8279050323997734
+          ],
+          "linear_speed": 0.005424354683275755,
+          "angular_speed": 0.05452633521277527,
+          "already_under_standstill_threshold": true,
+          "next_samples": [
+            {
+              "event_line": 454,
+              "elapsed_s": 0.549212,
+              "linear_speed": 0.012578553862367609,
+              "angular_speed": 0.006010603330553494,
+              "displacement_m": 0.005255
+            },
+            {
+              "event_line": 455,
+              "elapsed_s": 1.049151,
+              "linear_speed": 0.0073403357828438365,
+              "angular_speed": 0.0020986758645901624,
+              "displacement_m": 0.009916
+            },
+            {
+              "event_line": 456,
+              "elapsed_s": 1.550781,
+              "linear_speed": 0.0044850637478532195,
+              "angular_speed": 0.0029436948989269495,
+              "displacement_m": 0.012455
+            },
+            {
+              "event_line": 457,
+              "elapsed_s": 2.099265,
+              "linear_speed": 0.004607338226563662,
+              "angular_speed": 0.0031904438023654695,
+              "displacement_m": 0.014933
+            },
+            {
+              "event_line": 458,
+              "elapsed_s": 2.649216,
+              "linear_speed": 0.005791544963158604,
+              "angular_speed": 0.002441825254552217,
+              "displacement_m": 0.017892
+            }
+          ],
+          "first_later_sample_under_standstill_threshold": {
+            "event_line": 454,
+            "elapsed_s": 0.549212
+          }
+        }
+      ],
+      "warnings": [
+        {
+          "file": "navigation/run/run_20261009_173705_dhnzktx1/rviz.log",
+          "line": 6,
+          "text": "[ERROR] [1791538625.710107087] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : "
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "runs": 5,
+    "preview_runs": 2,
+    "drive_runs": 3,
+    "accepted_goals": 10,
+    "arrived": 6,
+    "protective_stops": 3,
+    "program_shutdown_interruption": 1,
+    "all_logged_source_hashes_match": true,
+    "all_process_exit_codes_zero": true,
+    "old_map_passable_cells": 49147,
+    "new_map_passable_cells": 58013,
+    "passable_cell_increase_percent": 18.039758,
+    "old_map_components": 3,
+    "new_map_components": 1,
+    "no_rejected_sensor_events": true
+  },
+  "interpretation_limits": [
+    "Arrival errors are computed in the manually aligned map/odometry frame, without independent ground truth.",
+    "Accepted initial_pose only means fresh odometry and measured standstill; it does not certify localization accuracy.",
+    "Manual initial_pose changes must not be reported as odometry drift.",
+    "Live obstacle logs lack triggering point, point cloud, distance and extrinsics residual; cannot decide actual obstacle versus false positive.",
+    "Both latest obstacle stops occurred just after turning at measured linear speeds below the standstill threshold; 0.5 m/s cannot be established as the cause.",
+    "Later success after initial_pose adjustments is not proof that prior obstacle stops were false.",
+    "The old-map drive run ended with shutdown and RViz SIGINT/SIGTERM; the log cannot identify who initiated it.",
+    "STOPPED means zero command requested; physical standstill is separately observed in later approximately 0.5-second samples."
+  ],
+  "code_evidence": [
+    {
+      "path": "navigation/core.py",
+      "line": 80,
+      "meaning": "Initial pose uses manually supplied pose and raw odometry to establish alignment."
+    },
+    {
+      "path": "navigation/core.py",
+      "line": 107,
+      "meaning": "Live obstacle height filtering uses configured 0.15 to 1.2 m."
+    },
+    {
+      "path": "navigation/core.py",
+      "line": 141,
+      "meaning": "Swept motion check uses max(commanded, measured) speed for stopping horizon."
+    },
+    {
+      "path": "navigation/core.py",
+      "line": 158,
+      "meaning": "Any valid obstacle point within radius plus safety margin of sampled trajectory centres triggers Live obstacle."
+    },
+    {
+      "path": "navigation/core.py",
+      "line": 175,
+      "meaning": "Absolute per-goal deadline triggers Goal time limit exceeded."
+    }
+  ]
+}

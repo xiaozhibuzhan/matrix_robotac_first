@@ -388,6 +388,7 @@ BASH
 | [navigation/OPERATIONS_UBUNTU.md](navigation/OPERATIONS_UBUNTU.md) | 随增量包携带的完整操作流程，Ubuntu 上可离线查阅 |
 | [navigation/LONG_ROUTE_FIX_20261002.md](navigation/LONG_ROUTE_FIX_20261002.md) | 本次加速、半路停车证据、现场参数与复测步骤 |
 | [navigation/MAP_REBUILD_UBUNTU.md](navigation/MAP_REBUILD_UBUNTU.md) | 手控重新采集、地图生成、比赛换场景参数与导航切图 |
+| [LOG_REVIEW_20261009.md](LOG_REVIEW_20261009.md) | 10 月 9 日目标系统日志评价、新地图效果和后续修改建议 |
 | [mapping/README.md](mapping/README.md) | 任务一采集和离线建图 |
 | [README_GPT.md](README_GPT.md) | 项目历史及已验证环境背景 |
 | [TASK2_PLAN.md](TASK2_PLAN.md) | 任务二规则、目标与后续宝箱阶段 |

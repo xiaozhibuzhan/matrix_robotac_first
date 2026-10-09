@@ -1,0 +1,1037 @@
+{
+  "scope": "Read-only review of migrated Oct 09 logs and map bytes. Only this review directory is written.",
+  "comparison_method": "All maps loaded by the same local navigation.grid.GridMap; radius 0.35 m, margin 0.05 m; resolution 0.05 m. Connected components use the planner-compatible 4-connected passable grid (diagonal moves require both side cells clear).",
+  "maps": {
+    "old_raw": {
+      "path": "maps/run_20260911_223510_ujmvehqs/field_map.yaml",
+      "yaml_sha256": "29f1adff4cd388d69adec941cd6c9b1c552b4c3d332bed0572d29dd606727f88",
+      "pgm_sha256": "ed838895bd43a9dbb5dabe736f90681eb41c8cd0843fec6657d306f635c0bfa7",
+      "summary": {
+        "width": 597,
+        "height": 482,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 30986,
+        "passable_cells": 0,
+        "components": 0,
+        "largest_component": 0
+      },
+      "origin": [
+        -2.87791023254,
+        -16.6191936493,
+        0.0
+      ],
+      "component_cells": [],
+      "cell_areas_m2": {
+        "unknown": 618.6375,
+        "free": 77.465,
+        "occupied": 23.2825,
+        "passable": 0.0
+      }
+    },
+    "new_raw": {
+      "path": "maps/run_20261009_162738_ri4mjc_v/field_map.yaml",
+      "yaml_sha256": "be902e440dd35e0f207b06a0b662b231651c226104bac4f823e562c99d3421a1",
+      "pgm_sha256": "4ba11e4ba407e5bac748924497b18fef558e3982225009bba7934d57cda2be2a",
+      "summary": {
+        "width": 597,
+        "height": 483,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 37767,
+        "passable_cells": 0,
+        "components": 0,
+        "largest_component": 0
+      },
+      "origin": [
+        -2.87222800255,
+        -16.6417404175,
+        0.0
+      ],
+      "component_cells": [],
+      "cell_areas_m2": {
+        "unknown": 603.92,
+        "free": 94.4175,
+        "occupied": 22.54,
+        "passable": 0.0
+      }
+    },
+    "old_derived": {
+      "path": "navigation/maps/task1_20260911/field_map.yaml",
+      "yaml_sha256": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+      "pgm_sha256": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd",
+      "summary": {
+        "width": 597,
+        "height": 482,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 91713,
+        "passable_cells": 49147,
+        "components": 3,
+        "largest_component": 47859
+      },
+      "origin": [
+        -2.87791023254,
+        -16.6191936493,
+        0.0
+      ],
+      "component_cells": [
+        47859,
+        1047,
+        241
+      ],
+      "cell_areas_m2": {
+        "unknown": 466.82,
+        "free": 229.2825,
+        "occupied": 23.2825,
+        "passable": 122.8675
+      }
+    },
+    "new_derived": {
+      "path": "navigation/maps/field_a_20261009_170749/field_map.yaml",
+      "yaml_sha256": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+      "pgm_sha256": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7",
+      "summary": {
+        "width": 597,
+        "height": 483,
+        "resolution": 0.05,
+        "radius": 0.35,
+        "margin": 0.05,
+        "free_cells": 100454,
+        "passable_cells": 58013,
+        "components": 1,
+        "largest_component": 58013
+      },
+      "origin": [
+        -2.87222800255,
+        -16.6417404175,
+        0.0
+      ],
+      "component_cells": [
+        58013
+      ],
+      "cell_areas_m2": {
+        "unknown": 447.2025,
+        "free": 251.13500000000002,
+        "occupied": 22.54,
+        "passable": 145.0325
+      }
+    }
+  },
+  "derived_source_hash_checks": {
+    "old_derived": {
+      "report": "navigation/maps/task1_20260911/report.json",
+      "files": {
+        "maps\\run_20260911_223510_ujmvehqs\\field_map.yaml": {
+          "expected": "29f1adff4cd388d69adec941cd6c9b1c552b4c3d332bed0572d29dd606727f88",
+          "actual": "29f1adff4cd388d69adec941cd6c9b1c552b4c3d332bed0572d29dd606727f88",
+          "matches": true
+        },
+        "maps\\run_20260911_223510_ujmvehqs\\field_map.pgm": {
+          "expected": "ed838895bd43a9dbb5dabe736f90681eb41c8cd0843fec6657d306f635c0bfa7",
+          "actual": "ed838895bd43a9dbb5dabe736f90681eb41c8cd0843fec6657d306f635c0bfa7",
+          "matches": true
+        },
+        "maps\\run_20260911_223510_ujmvehqs\\field_map.pcd": {
+          "expected": "ea08860f8870b3ecd8dada2d60192c1fb556a579e597f126cc8fc825647db1c6",
+          "actual": "ea08860f8870b3ecd8dada2d60192c1fb556a579e597f126cc8fc825647db1c6",
+          "matches": true
+        }
+      }
+    },
+    "new_derived": {
+      "report": "navigation/maps/field_a_20261009_170749/report.json",
+      "files": {
+        "maps\\run_20261009_162738_ri4mjc_v\\field_map.yaml": {
+          "expected": "be902e440dd35e0f207b06a0b662b231651c226104bac4f823e562c99d3421a1",
+          "actual": "be902e440dd35e0f207b06a0b662b231651c226104bac4f823e562c99d3421a1",
+          "matches": true
+        },
+        "maps\\run_20261009_162738_ri4mjc_v\\field_map.pgm": {
+          "expected": "4ba11e4ba407e5bac748924497b18fef558e3982225009bba7934d57cda2be2a",
+          "actual": "4ba11e4ba407e5bac748924497b18fef558e3982225009bba7934d57cda2be2a",
+          "matches": true
+        },
+        "maps\\run_20261009_162738_ri4mjc_v\\field_map.pcd": {
+          "expected": "43695836c8d12e5b53645eb98cb155989735f0db6d1f50fe01a73630a4be30f9",
+          "actual": "43695836c8d12e5b53645eb98cb155989735f0db6d1f50fe01a73630a4be30f9",
+          "matches": true
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "run_20261009_171552_3dlehb42",
+      "mode": "preview",
+      "created_utc": "2026-10-09T09:15:52.576045+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.yaml",
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "map_hash_checks": {
+        "navigation/maps/task1_20260911/field_map.yaml": {
+          "expected": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+          "actual": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+          "matches": true
+        },
+        "navigation/maps/task1_20260911/field_map.pgm": {
+          "expected": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd",
+          "actual": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd",
+          "matches": true
+        }
+      },
+      "local_grid_code_matches_run": true
+    },
+    {
+      "run": "run_20261009_171709_h3l2kzmd",
+      "mode": "drive",
+      "created_utc": "2026-10-09T09:17:09.528599+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/task1_20260911/field_map.yaml",
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "map_hash_checks": {
+        "navigation/maps/task1_20260911/field_map.yaml": {
+          "expected": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+          "actual": "e5f3712800522eaa4db02bd28a8cdcacc90a108d7a3d607ae8581f178738cd73",
+          "matches": true
+        },
+        "navigation/maps/task1_20260911/field_map.pgm": {
+          "expected": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd",
+          "actual": "e953205a052aa1bdf7258d671e9f0ab89f67400876d5b232ff0ee8ff3fb388bd",
+          "matches": true
+        }
+      },
+      "local_grid_code_matches_run": true
+    },
+    {
+      "run": "run_20261009_172348_2ltvrbrx",
+      "mode": "preview",
+      "created_utc": "2026-10-09T09:23:48.497852+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml",
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "map_hash_checks": {
+        "navigation/maps/field_a_20261009_170749/field_map.yaml": {
+          "expected": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+          "actual": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+          "matches": true
+        },
+        "navigation/maps/field_a_20261009_170749/field_map.pgm": {
+          "expected": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7",
+          "actual": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7",
+          "matches": true
+        }
+      },
+      "local_grid_code_matches_run": true
+    },
+    {
+      "run": "run_20261009_172517_kklh34zv",
+      "mode": "drive",
+      "created_utc": "2026-10-09T09:25:17.371653+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml",
+      "control_settings": {
+        "max_speed": 0.4,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "map_hash_checks": {
+        "navigation/maps/field_a_20261009_170749/field_map.yaml": {
+          "expected": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+          "actual": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+          "matches": true
+        },
+        "navigation/maps/field_a_20261009_170749/field_map.pgm": {
+          "expected": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7",
+          "actual": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7",
+          "matches": true
+        }
+      },
+      "local_grid_code_matches_run": true
+    },
+    {
+      "run": "run_20261009_173705_dhnzktx1",
+      "mode": "drive",
+      "created_utc": "2026-10-09T09:37:05.292409+00:00",
+      "map": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/navigation/maps/field_a_20261009_170749/field_map.yaml",
+      "control_settings": {
+        "max_speed": 0.5,
+        "max_yaw_rate": 0.6,
+        "acceleration": 0.2,
+        "goal_timeout": 180.0,
+        "max_tracking_replans": 3,
+        "replan_progress_distance": 0.75
+      },
+      "map_hash_checks": {
+        "navigation/maps/field_a_20261009_170749/field_map.yaml": {
+          "expected": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+          "actual": "a3cee9449de8902b1fde136e82b5f4de1821eac2cd3acfa45c431e5cd05784c9",
+          "matches": true
+        },
+        "navigation/maps/field_a_20261009_170749/field_map.pgm": {
+          "expected": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7",
+          "actual": "b619a38598d6cfb4fa8c866a6a1f558eb9665a36eea5052ab087886f11f454c7",
+          "matches": true
+        }
+      },
+      "local_grid_code_matches_run": true
+    }
+  ],
+  "same_coordinate_planning": [
+    {
+      "run": "run_20261009_171709_h3l2kzmd",
+      "events_line_start": 55,
+      "start_xy": [
+        0.3175311621917644,
+        -0.23336574257981485
+      ],
+      "goal_xy": [
+        16.52177619934082,
+        5.913780212402344
+      ],
+      "straight_distance_m": 17.33104037892196,
+      "planning": {
+        "old": {
+          "success": true,
+          "length_m": 20.7940485666066,
+          "path_points": 7,
+          "minimum_extra_clearance_m": 0.11238451136587535
+        },
+        "new": {
+          "success": true,
+          "length_m": 20.736949995419145,
+          "path_points": 7,
+          "minimum_extra_clearance_m": 0.11238451136587535
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 59,
+        "length_m": 20.794008972150284,
+        "points": [
+          [
+            0.3175708020196915,
+            -0.2333660781783492
+          ],
+          [
+            13.74708976746,
+            0.3058063506999993
+          ],
+          [
+            15.397089767460002,
+            0.5558063506999993
+          ],
+          [
+            15.69708976746,
+            0.7558063506999986
+          ],
+          [
+            16.04708976746,
+            1.1558063507000007
+          ],
+          [
+            16.147089767460002,
+            1.4058063507000007
+          ],
+          [
+            16.52177619934082,
+            5.913780212402344
+          ]
+        ]
+      },
+      "result": {
+        "state": "MANUAL_SHUTDOWN",
+        "reason": "No ARRIVED/STOPPED before user shutdown",
+        "events_line": 167
+      }
+    },
+    {
+      "run": "run_20261009_172517_kklh34zv",
+      "events_line_start": 85,
+      "start_xy": [
+        -0.025206738598728757,
+        -0.039788709615341214
+      ],
+      "goal_xy": [
+        19.580812454223633,
+        6.109644412994385
+      ],
+      "straight_distance_m": 20.547786165880947,
+      "planning": {
+        "old": {
+          "success": false,
+          "reason": "No path in known free space after footprint inflation"
+        },
+        "new": {
+          "success": true,
+          "length_m": 23.034588707014475,
+          "path_points": 9,
+          "minimum_extra_clearance_m": 0.11238451136587535
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 89,
+        "length_m": 23.034574630427617,
+        "points": [
+          [
+            -0.02519271950895876,
+            -0.03978660290899155
+          ],
+          [
+            13.902771997450003,
+            0.3832595825000027
+          ],
+          [
+            15.402771997450003,
+            0.583259582500002
+          ],
+          [
+            15.70277199745,
+            0.7832595825000013
+          ],
+          [
+            15.95277199745,
+            1.083259582500002
+          ],
+          [
+            17.152771997450003,
+            5.033259582500001
+          ],
+          [
+            17.30277199745,
+            5.233259582500001
+          ],
+          [
+            17.75277199745,
+            5.533259582500001
+          ],
+          [
+            19.580812454223633,
+            6.109644412994385
+          ]
+        ]
+      },
+      "result": {
+        "state": "ARRIVED",
+        "reason": "Within tolerance and measured standstill confirmed",
+        "events_line": 270,
+        "elapsed_seconds": 89.50532092599997,
+        "pose": [
+          19.49861431339023,
+          6.084084007053233,
+          0.3325979255156666
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_172517_kklh34zv",
+      "events_line_start": 284,
+      "start_xy": [
+        19.4997972258033,
+        6.0848931211672515
+      ],
+      "goal_xy": [
+        7.269211292266846,
+        -6.74526834487915
+      ],
+      "straight_distance_m": 17.725695346655424,
+      "planning": {
+        "old": {
+          "success": false,
+          "reason": "No path in known free space after footprint inflation"
+        },
+        "new": {
+          "success": true,
+          "length_m": 53.295200301616006,
+          "path_points": 20,
+          "minimum_extra_clearance_m": 0.1145243174173266
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 290,
+        "length_m": 53.29470407389081,
+        "points": [
+          [
+            19.499156565150933,
+            6.085285355264139
+          ],
+          [
+            17.55277199745,
+            5.483259582500001
+          ],
+          [
+            17.00277199745,
+            4.883259582500003
+          ],
+          [
+            16.902771997450003,
+            0.9332595824999999
+          ],
+          [
+            17.25277199745,
+            0.6332595825000027
+          ],
+          [
+            19.30277199745,
+            0.1332595825000027
+          ],
+          [
+            24.55277199745,
+            -0.5167404174999994
+          ],
+          [
+            24.852771997450002,
+            -0.8667404174999991
+          ],
+          [
+            24.902771997450003,
+            -1.0667404174999984
+          ],
+          [
+            25.102771997450002,
+            -3.166740417499998
+          ],
+          [
+            25.30277199745,
+            -12.366740417499999
+          ],
+          [
+            24.80277199745,
+            -14.2667404175
+          ],
+          [
+            24.652771997450003,
+            -14.466740417499999
+          ],
+          [
+            24.102771997450002,
+            -14.6667404175
+          ],
+          [
+            22.402771997450003,
+            -14.966740417499999
+          ],
+          [
+            10.002771997450001,
+            -14.9167404175
+          ],
+          [
+            8.252771997450001,
+            -14.5167404175
+          ],
+          [
+            8.052771997450002,
+            -14.366740417499999
+          ],
+          [
+            7.852771997450001,
+            -13.8167404175
+          ],
+          [
+            7.269211292266846,
+            -6.74526834487915
+          ]
+        ]
+      },
+      "result": {
+        "state": "STOPPED",
+        "reason": "Goal time limit exceeded",
+        "events_line": 648,
+        "elapsed_seconds": 179.96798541200042,
+        "pose": [
+          9.860623564447176,
+          -14.876491646608295,
+          2.9194473297066086
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_172517_kklh34zv",
+      "events_line_start": 699,
+      "start_xy": [
+        9.80895594932119,
+        -14.868149818629057
+      ],
+      "goal_xy": [
+        7.233504772186279,
+        -7.212353229522705
+      ],
+      "straight_distance_m": 8.077386345816203,
+      "planning": {
+        "old": {
+          "success": false,
+          "reason": "No path in known free space after footprint inflation"
+        },
+        "new": {
+          "success": true,
+          "length_m": 9.108779351898923,
+          "path_points": 4,
+          "minimum_extra_clearance_m": 0.1145243174173266
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 703,
+        "length_m": 9.108944512854244,
+        "points": [
+          [
+            9.809137367823023,
+            -14.868096227533616
+          ],
+          [
+            8.252771997450001,
+            -14.5167404175
+          ],
+          [
+            7.852771997450001,
+            -14.1667404175
+          ],
+          [
+            7.233504772186279,
+            -7.212353229522705
+          ]
+        ]
+      },
+      "result": {
+        "state": "ARRIVED",
+        "reason": "Within tolerance and measured standstill confirmed",
+        "events_line": 771,
+        "elapsed_seconds": 35.602572038999824,
+        "pose": [
+          7.239382299013097,
+          -7.304769343593793,
+          1.6340778960841187
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_173705_dhnzktx1",
+      "events_line_start": 49,
+      "start_xy": [
+        -0.02503647541995933,
+        0.13555317427622993
+      ],
+      "goal_xy": [
+        4.769129753112793,
+        0.1886955350637436
+      ],
+      "straight_distance_m": 4.794460755633946,
+      "planning": {
+        "old": {
+          "success": true,
+          "length_m": 4.794460755633946,
+          "path_points": 2,
+          "minimum_extra_clearance_m": 0.3292893218813453
+        },
+        "new": {
+          "success": true,
+          "length_m": 4.794460755633946,
+          "path_points": 2,
+          "minimum_extra_clearance_m": 0.37928932188134534
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 53,
+        "length_m": 4.794409897491186,
+        "points": [
+          [
+            -0.024985641663360498,
+            0.13555565614278
+          ],
+          [
+            4.769129753112793,
+            0.1886955350637436
+          ]
+        ]
+      },
+      "result": {
+        "state": "ARRIVED",
+        "reason": "Within tolerance and measured standstill confirmed",
+        "events_line": 80,
+        "elapsed_seconds": 13.79958334300045,
+        "pose": [
+          4.676740387164289,
+          0.18512400299026488,
+          0.04927988137961817
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_173705_dhnzktx1",
+      "events_line_start": 89,
+      "start_xy": [
+        4.682594534736983,
+        0.1866491432101669
+      ],
+      "goal_xy": [
+        16.47870635986328,
+        -0.10410492867231369
+      ],
+      "straight_distance_m": 11.799694577454146,
+      "planning": {
+        "old": {
+          "success": true,
+          "length_m": 11.799694577454146,
+          "path_points": 2,
+          "minimum_extra_clearance_m": 0.3292893218813453
+        },
+        "new": {
+          "success": true,
+          "length_m": 11.799694577454146,
+          "path_points": 2,
+          "minimum_extra_clearance_m": 0.27928932188134525
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 94,
+        "length_m": 11.798157199622716,
+        "points": [
+          [
+            4.684123826121268,
+            0.18630196132377994
+          ],
+          [
+            16.47870635986328,
+            -0.10410492867231369
+          ]
+        ]
+      },
+      "result": {
+        "state": "ARRIVED",
+        "reason": "Within tolerance and measured standstill confirmed",
+        "events_line": 147,
+        "elapsed_seconds": 27.501144851999925,
+        "pose": [
+          16.39202955901186,
+          -0.09778979830772913,
+          -0.06168277896292592
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_173705_dhnzktx1",
+      "events_line_start": 151,
+      "start_xy": [
+        16.400110372953378,
+        -0.09577734589354694
+      ],
+      "goal_xy": [
+        7.281965255737305,
+        -6.117303848266602
+      ],
+      "straight_distance_m": 10.927001043167902,
+      "planning": {
+        "old": {
+          "success": false,
+          "reason": "No path in known free space after footprint inflation"
+        },
+        "new": {
+          "success": true,
+          "length_m": 47.437712908352474,
+          "path_points": 15,
+          "minimum_extra_clearance_m": 0.1145243174173266
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 157,
+        "length_m": 47.44023727991051,
+        "points": [
+          [
+            16.39759296582942,
+            -0.09556748290811634
+          ],
+          [
+            24.50277199745,
+            -0.4667404174999987
+          ],
+          [
+            24.852771997450002,
+            -0.8667404174999991
+          ],
+          [
+            24.902771997450003,
+            -1.0667404174999984
+          ],
+          [
+            25.102771997450002,
+            -3.166740417499998
+          ],
+          [
+            25.30277199745,
+            -12.366740417499999
+          ],
+          [
+            24.80277199745,
+            -14.2667404175
+          ],
+          [
+            24.652771997450003,
+            -14.466740417499999
+          ],
+          [
+            24.102771997450002,
+            -14.6667404175
+          ],
+          [
+            22.402771997450003,
+            -14.966740417499999
+          ],
+          [
+            10.002771997450001,
+            -14.9167404175
+          ],
+          [
+            8.252771997450001,
+            -14.5167404175
+          ],
+          [
+            8.052771997450002,
+            -14.366740417499999
+          ],
+          [
+            7.852771997450001,
+            -13.8167404175
+          ],
+          [
+            7.281965255737305,
+            -6.117303848266602
+          ]
+        ]
+      },
+      "result": {
+        "state": "STOPPED",
+        "reason": "Live obstacle: stopped; inspect and choose another goal",
+        "events_line": 312,
+        "elapsed_seconds": 78.75413270400077,
+        "pose": [
+          24.60970370680938,
+          -14.441294883944007,
+          -2.7121481131566205
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_173705_dhnzktx1",
+      "events_line_start": 436,
+      "start_xy": [
+        24.5874490580384,
+        -14.453519382996928
+      ],
+      "goal_xy": [
+        7.841518878936768,
+        -14.444384574890137
+      ],
+      "straight_distance_m": 16.74593267059395,
+      "planning": {
+        "old": {
+          "success": false,
+          "reason": "Start lacks known-free footprint clearance"
+        },
+        "new": {
+          "success": true,
+          "length_m": 17.025603873659996,
+          "path_points": 6,
+          "minimum_extra_clearance_m": 0.11238451136587535
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 440,
+        "length_m": 17.025540185733597,
+        "points": [
+          [
+            24.587391617202176,
+            -14.453550028798688
+          ],
+          [
+            24.452771997450004,
+            -14.5667404175
+          ],
+          [
+            24.05277199745,
+            -14.6667404175
+          ],
+          [
+            22.402771997450003,
+            -14.966740417499999
+          ],
+          [
+            8.302771997450002,
+            -14.9167404175
+          ],
+          [
+            7.841518878936768,
+            -14.444384574890137
+          ]
+        ]
+      },
+      "result": {
+        "state": "STOPPED",
+        "reason": "Live obstacle: stopped; inspect and choose another goal",
+        "events_line": 452,
+        "elapsed_seconds": 5.900326909999421,
+        "pose": [
+          24.428765413313638,
+          -14.54875271482455,
+          -2.8279050323997734
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_173705_dhnzktx1",
+      "events_line_start": 640,
+      "start_xy": [
+        24.829220584207707,
+        -14.219213637824417
+      ],
+      "goal_xy": [
+        22.980188369750977,
+        -15.298066139221191
+      ],
+      "straight_distance_m": 2.1407575411215625,
+      "planning": {
+        "old": {
+          "success": false,
+          "reason": "Start lacks known-free footprint clearance"
+        },
+        "new": {
+          "success": true,
+          "length_m": 2.1824616052864068,
+          "path_points": 3,
+          "minimum_extra_clearance_m": 0.11238451136587535
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 644,
+        "length_m": 2.182456450536335,
+        "points": [
+          [
+            24.829215370025214,
+            -14.219216026061698
+          ],
+          [
+            24.50277199745,
+            -14.616740417499999
+          ],
+          [
+            22.980188369750977,
+            -15.298066139221191
+          ]
+        ]
+      },
+      "result": {
+        "state": "ARRIVED",
+        "reason": "Within tolerance and measured standstill confirmed",
+        "events_line": 672,
+        "elapsed_seconds": 14.400400538999747,
+        "pose": [
+          23.06152549696983,
+          -15.260121252558934,
+          -2.701399237117572
+        ]
+      }
+    },
+    {
+      "run": "run_20261009_173705_dhnzktx1",
+      "events_line_start": 766,
+      "start_xy": [
+        23.198622065512662,
+        -15.331743122110504
+      ],
+      "goal_xy": [
+        7.698947906494141,
+        -10.579329490661621
+      ],
+      "straight_distance_m": 16.211888673443564,
+      "planning": {
+        "old": {
+          "success": false,
+          "reason": "Goal lacks known-free clearance; goal was NOT moved"
+        },
+        "new": {
+          "success": true,
+          "length_m": 19.07382098445112,
+          "path_points": 7,
+          "minimum_extra_clearance_m": 0.1145243174173266
+        }
+      },
+      "logged_planned_path": {
+        "events_line": 770,
+        "length_m": 19.073755085772852,
+        "points": [
+          [
+            23.198554254151855,
+            -15.33180289912195
+          ],
+          [
+            10.002771997450001,
+            -14.9167404175
+          ],
+          [
+            8.252771997450001,
+            -14.5167404175
+          ],
+          [
+            8.052771997450002,
+            -14.366740417499999
+          ],
+          [
+            7.852771997450001,
+            -13.8167404175
+          ],
+          [
+            7.75277199745,
+            -11.8167404175
+          ],
+          [
+            7.698947906494141,
+            -10.579329490661621
+          ]
+        ]
+      },
+      "result": {
+        "state": "ARRIVED",
+        "reason": "Within tolerance and measured standstill confirmed",
+        "events_line": 900,
+        "elapsed_seconds": 65.80066925000028,
+        "pose": [
+          7.701517978923615,
+          -10.667525821014719,
+          1.5914505849698157
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Unknown gray map cells include outside-field space, not only missing scans within traversable ground.",
+    "Derived free space uses bounded measured-ground support and is not a fresh measurement at every cell.",
+    "The route overlay on the old map is from the new-map run and does not assert feasibility in the old map.",
+    "Obstacle-stop logs do not retain offending live cloud points or raw odometry/alignment; cannot establish real obstacle versus alignment/extrinsic cause."
+  ],
+  "improvement": {
+    "passable_cell_increase": 8866,
+    "passable_percent_increase": 18.03975827619184,
+    "largest_component_percent_increase": 21.21649010635409,
+    "note": "Free/passable area comparison describes these mapped grids, not independent proof of geometric accuracy."
+  }
+}
