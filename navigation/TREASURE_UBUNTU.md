@@ -4,9 +4,9 @@
 
 ## 1. 开始前的条件
 
-官方 UE、MuJoCo、SDK 和任务一文件保持不变；目标环境为 Ubuntu 22.04、ROS2 Humble、系统 Python 3.10。普通导航应先验证可到达停稳。
+目标环境为 Ubuntu 22.04、ROS2 Humble、系统 Python 3.10。普通导航应先验证可到达停稳。用户已授权修正场外宝箱摆放，独立补丁只改官方关卡五箱 XY；官方触发/计分蓝图、MuJoCo、SDK 和任务一文件不变。
 
-用户已确认当前画面是 UE 且已完整重启过仿真。先在 FreeCam 全场观察中找到真实宝箱；当前低位 FollowCam 看不到，尚不能认定整个场景没有箱子。检查方法见 [场景与点选排查](TREASURE_TROUBLESHOOTING.md)。new-round、select 和 RViz 标记不会生成官方宝箱。
+用户视频已确认五个宝箱排在地板外。先按 [宝箱位置修复手册](../scene_tools/README.md) 在 Ubuntu 应用、完整重启 UE，检查五箱位于地板上且持续存在；先验收起点附近 box-1。new-round、select 和 RViz 标记不会生成或搬动官方宝箱，单纯更新导航也不含此场景修复。
 
 已实现流程为“人工选箱 → 自主到接近点 → 显式受控接触 → 人工观察消失 → 停稳确认 → 下一箱”。已有离线验证，官方仿真中的完整流程和实际触发范围仍待现场验收。
 
@@ -67,7 +67,7 @@ bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml
 
 无 `--drive` 时没有 SDK 运动，也不能确认真实宝箱成功。预览中机器狗不走，导航无进展保护可能触发，这是预期行为。检查图层后 Ctrl+C 结束预览。
 
-开始一轮新的正式试验时，按已验证的官方命令重启仿真、回到指定起点并恢复宝箱。用户本轮已完整重启过，不必为排查显示再次反复重启。若仍在同一官方回合则按第 5 节恢复记录；导航终端运行：
+开始一轮新的正式试验时，按已验证的官方命令重启仿真、回到指定起点并恢复宝箱。应用位置补丁后必须完整重启官方仿真，再 new-round；只有官方仿真确实未重启、仍属同一回合才按第 5 节恢复记录。导航终端运行：
 
 ```bash
 bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml --treasure --drive --stand-up

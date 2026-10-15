@@ -1,0 +1,153 @@
+{
+  "layout_id": "treasure_inside_v1_20261015",
+  "integration_tests_passed": 11,
+  "python_3_10_syntax": "passed",
+  "resource_check": {
+    "protected_file_count": 796,
+    "changed_resources": [
+      {
+        "path": "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.uexp",
+        "before_sha256": "318cc497caef88b84d9813d3399d13d6767bb1c4d49fea33c85c51a0a261eee0",
+        "after_sha256": "06a425a432cbdbd98599d50380d4dc50d2d36e39b4555c790c450c14adc1f599"
+      }
+    ],
+    "changed_byte_count": 24,
+    "changed_offsets": [
+      32027,
+      32028,
+      32035,
+      32036,
+      32037,
+      32110,
+      32111,
+      32118,
+      32119,
+      32120,
+      32193,
+      32194,
+      32201,
+      32202,
+      32203,
+      32276,
+      32277,
+      32284,
+      32285,
+      32286,
+      32359,
+      32360,
+      32367,
+      32368
+    ],
+    "permitted_byte_ranges": [
+      [
+        32022,
+        32037
+      ],
+      [
+        32105,
+        32120
+      ],
+      [
+        32188,
+        32203
+      ],
+      [
+        32271,
+        32286
+      ],
+      [
+        32354,
+        32369
+      ]
+    ],
+    "uexp_length_unchanged": 47953,
+    "original_backup_sha256": "318cc497caef88b84d9813d3399d13d6767bb1c4d49fea33c85c51a0a261eee0",
+    "runtime_verified": false
+  },
+  "placement_check": {
+    "resource_state": "PATCHED",
+    "floor_count": 37,
+    "map_footprint_radius_m": 0.35,
+    "map_margin_m": 0.05,
+    "hypothetical_box_radius_m": 0.3,
+    "boxes": [
+      {
+        "id": "box-1",
+        "center_m": [
+          1.0,
+          -3.0
+        ],
+        "approach_m": [
+          1.0,
+          -2.1
+        ],
+        "wall_clearance_m": 0.9981672382029428,
+        "route_from_start_m": 2.3259406699226015,
+        "floor_actor": "BP_Floor_3x3_C_16",
+        "route_with_all_boxes_m": 2.3259406699226015
+      },
+      {
+        "id": "box-2",
+        "center_m": [
+          7.5,
+          -8.0
+        ],
+        "approach_m": [
+          7.5,
+          -8.9
+        ],
+        "wall_clearance_m": 0.8292893218813453,
+        "route_from_start_m": 61.10273581630717,
+        "floor_actor": "BP_Floor_3x3_C_35",
+        "route_with_all_boxes_m": 61.37684976488164
+      },
+      {
+        "id": "box-3",
+        "center_m": [
+          13.5,
+          -6.0
+        ],
+        "approach_m": [
+          14.4,
+          -6.0
+        ],
+        "wall_clearance_m": 0.9001137138287253,
+        "route_from_start_m": 22.069619967009697,
+        "floor_actor": "BP_Floor_3x3_C_21",
+        "route_with_all_boxes_m": 22.069619967009697
+      },
+      {
+        "id": "box-4",
+        "center_m": [
+          25.2,
+          -10.0
+        ],
+        "approach_m": [
+          25.2,
+          -9.1
+        ],
+        "wall_clearance_m": 0.7355150967112002,
+        "route_from_start_m": 33.25096256760736,
+        "floor_actor": "BP_Floor_3x3_C_4",
+        "route_with_all_boxes_m": 33.25096256760736
+      },
+      {
+        "id": "box-5",
+        "center_m": [
+          19.0,
+          6.0
+        ],
+        "approach_m": [
+          18.1,
+          6.0
+        ],
+        "wall_clearance_m": 0.9292893218813453,
+        "route_from_start_m": 21.654102552492983,
+        "floor_actor": "BP_Floor_3x3_C_28",
+        "route_with_all_boxes_m": 21.654102552492983
+      }
+    ],
+    "runtime_verified": false,
+    "note": "Offline check only; UE loading, rendering and overlap require target Ubuntu acceptance"
+  }
+}

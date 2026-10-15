@@ -1,6 +1,6 @@
 # 导航扩展：能力、参数与开发接口
 
-更新：2026-10-15。本目录为自有扩展，保持官方程序、任务一建图和原图不变。普通点选导航已经在目标 Ubuntu 实测到达停稳；宝箱闭环已实现并离线验证，实际接触与消失流程尚待现场验收。
+更新：2026-10-15。本目录为自有扩展，保持任务一建图和原图不变。普通点选导航已经在目标 Ubuntu 实测到达停稳；宝箱闭环已实现并离线验证，实际接触与消失流程尚待现场验收。当前场外摆放另按用户授权由 [scene_tools](../scene_tools/README.md) 仅修改官方关卡五箱 XY，不改变导航运动代码。
 
 操作统一从 [OPERATIONS_UBUNTU.md](OPERATIONS_UBUNTU.md) 进入；宝箱流程见 [TREASURE_UBUNTU.md](TREASURE_UBUNTU.md)，当前场景/交互问题见 [TREASURE_TROUBLESHOOTING.md](TREASURE_TROUBLESHOOTING.md)。本页维护技术说明，不重复安装步骤。
 
@@ -24,7 +24,7 @@
 
 首次操作按 [OPERATIONS_UBUNTU.md](OPERATIONS_UBUNTU.md) 逐步执行。该手册随包提供；项目根 README 维护用途索引。
 
-所有新增执行文件、配置、派生地图、RViz、测试与日志都在 `navigation/`。官方 `run_sim.sh`、`config/`、原有 `rviz/`、`src/`、`deps/`、已验收的 `mapping/` 和任务一 `maps/` 保持原样。128 项校验覆盖选定源文件/配置，不表示扫描了全部 UE 二进制。`protected_baseline.json` 是开发机的防误改记录，不要求目标 Ubuntu 配置与 Windows 完全一致。
+导航执行文件、配置、派生地图、RViz、测试与日志位于 `navigation/`。场景补丁独立位于 `scene_tools/`，只改 `src/` 中指定的一个关卡 `.uexp` 五组 XY；官方 `run_sim.sh`、`config/`、原有 `rviz/`、`deps/`、已验收的 `mapping/` 和任务一 `maps/` 保持原样。此前 128 项校验覆盖选定源文件/配置，不表示扫描了全部 UE 二进制。`protected_baseline.json` 是开发机的防误改记录，不要求目标 Ubuntu 配置与 Windows 完全一致。
 
 增量包为 `navigation/updates/task2_treasure_20261015_docs_cleanup.zip` 及同名 `.sha256`。包内只含 `navigation/`，不含官方运行库、任务一源地图或 ROS 环境。**不要用整个 Windows 工程覆盖 Ubuntu，不要删除官方 build 或已跑通的运行库。** SDK 只加载已有官方库，不需要编译 SDK、执行 `colcon build` 或重建整个仿真。
 
