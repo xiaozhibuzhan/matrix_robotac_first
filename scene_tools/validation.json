@@ -149,5 +149,32 @@
     ],
     "runtime_verified": false,
     "note": "Offline check only; UE loading, rendering and overlap require target Ubuntu acceptance"
+  },
+  "historical_offline_report_date": "2026-10-15",
+  "user_acceptance_update": {
+    "date": "2026-10-16",
+    "source": "Direct user report in this conversation; successful command separately confirmed",
+    "task1_state": "COMPLETE",
+    "task2_state": "COMPLETE_BY_USER_ACCEPTANCE",
+    "successful_command": "bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml --drive --stand-up",
+    "confirmed": [
+      "Ubuntu scene placement patch succeeded",
+      "Treasure disappears after robot contact",
+      "Official scoreboard records corresponding points",
+      "Ordinary navigation completed task two"
+    ],
+    "legacy_treasure_mode": {
+      "operation_status": "RETIRED_FROM_CURRENT_GUIDES",
+      "reported_problem": "Still occurs with legacy dedicated mode; cause not newly diagnosed",
+      "source_code": "Retained unchanged for historical investigation"
+    },
+    "not_supplied": [
+      "Latest runtime logs",
+      "Exact final score",
+      "Elapsed time",
+      "Per-box event list",
+      "Repeat count"
+    ],
+    "next_stage": "Task-three rules and official-interface preparation"
   }
 }

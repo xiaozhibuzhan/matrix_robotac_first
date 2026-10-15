@@ -1,0 +1,719 @@
+{
+  "date": "2026-10-16",
+  "method": "Read-only cooked package name/import/export parsing and ASCII payload hints; no function bytecode execution analysis. Names indicate investigation leads, not a verified external API.",
+  "assets": [
+    {
+      "path": "src/UeSim/Linux/UeSim/Content/BluePrint/robotac/BP_RobotACCharacter.uasset",
+      "sha256": "a19c53af1165354579a79dc9ef629ef83aa865f310eafde39f0290ac223842b9",
+      "uexp_sha256": "5dc555bc788cf7653171a76616aed4d8a554706b5a9b264d338200b2995cdc6e",
+      "name_count": 182,
+      "export_count": 22,
+      "matching_names": [
+        "AddControllerPitchInput",
+        "AddControllerYawInput",
+        "AddMovementInput",
+        "bIgnoreAllPressedKeysUntilRelease",
+        "CallFunc_AddControllerPitchInput_Val_ImplicitCast",
+        "CallFunc_AddControllerYawInput_Val_ImplicitCast",
+        "CallFunc_AddMappingContext_self_CastInput",
+        "CallFunc_AddMovementInput_ScaleValue_ImplicitCast",
+        "CallFunc_Conv_InputActionValueToAxis2D_ReturnValue",
+        "CallFunc_Conv_InputActionValueToBool_ReturnValue",
+        "Hit",
+        "InpActEvt_IA_Jump_K2Node_EnhancedInputActionEvent",
+        "InpActEvt_IA_Look_K2Node_EnhancedInputActionEvent",
+        "InpActEvt_IA_Move_K2Node_EnhancedInputActionEvent",
+        "K2Node_EnhancedInputActionEvent_ActionValue",
+        "K2Node_EnhancedInputActionEvent_ElapsedTime",
+        "K2Node_EnhancedInputActionEvent_SourceAction",
+        "K2Node_EnhancedInputActionEvent_TriggeredTime",
+        "TriggeredTime",
+        "UpdateAttackScore",
+        "/Game/BluePrint/robotac/BP_RobotACSCORE",
+        "/Game/Fab/Survival_Character/Demo/ThirdPerson/Input/Actions/IA_Jump",
+        "/Game/Fab/Survival_Character/Demo/ThirdPerson/Input/Actions/IA_Look",
+        "/Game/Fab/Survival_Character/Demo/ThirdPerson/Input/Actions/IA_Move",
+        "/Game/Fab/Survival_Character/Demo/ThirdPerson/Input/IMC_Default",
+        "/Script/EnhancedInput",
+        "BP_RobotACSCORE_C",
+        "Conv_InputActionValueToAxis2D",
+        "Conv_InputActionValueToBool",
+        "Default__BP_RobotACSCORE_C",
+        "Default__EnhancedInputActionDelegateBinding",
+        "EnhancedInputActionDelegateBinding",
+        "EnhancedInputLibrary",
+        "EnhancedInputLocalPlayerSubsystem",
+        "EnhancedInputSubsystemInterface",
+        "InputAction",
+        "InputActionValue",
+        "InputMappingContext"
+      ],
+      "functions": [
+        {
+          "index": 7,
+          "name": "ExecuteUbergraph_BP_RobotACCharacter",
+          "class": "Function",
+          "offset": 870,
+          "size": 6765
+        },
+        {
+          "index": 8,
+          "name": "InpActEvt_IA_Jump_K2Node_EnhancedInputActionEvent_2",
+          "class": "Function",
+          "offset": 7635,
+          "size": 384
+        },
+        {
+          "index": 9,
+          "name": "InpActEvt_IA_Jump_K2Node_EnhancedInputActionEvent_3",
+          "class": "Function",
+          "offset": 8019,
+          "size": 384
+        },
+        {
+          "index": 10,
+          "name": "InpActEvt_IA_Look_K2Node_EnhancedInputActionEvent_0",
+          "class": "Function",
+          "offset": 8403,
+          "size": 384
+        },
+        {
+          "index": 11,
+          "name": "InpActEvt_IA_Move_K2Node_EnhancedInputActionEvent_1",
+          "class": "Function",
+          "offset": 8787,
+          "size": 384
+        },
+        {
+          "index": 12,
+          "name": "ReceiveBeginPlay",
+          "class": "Function",
+          "offset": 9171,
+          "size": 52
+        },
+        {
+          "index": 13,
+          "name": "ReceiveTick",
+          "class": "Function",
+          "offset": 9223,
+          "size": 133
+        }
+      ],
+      "payload_string_hints": []
+    },
+    {
+      "path": "src/UeSim/Linux/UeSim/Content/BluePrint/robotac/BP_BulletRobotAc.uasset",
+      "sha256": "ca5e9fc5db313066917defacc0fed880711ad9b097569511888427703aaade85",
+      "uexp_sha256": "6b21c43cbfe1b6133c151aff22573cdaa501fa482e92ff258389ff12f82f9249",
+      "name_count": 144,
+      "export_count": 11,
+      "matching_names": [
+        "CallFunc_K2_SetActorLocation_SweepHitResult",
+        "ExecuteUbergraph_BP_BulletRobotAc",
+        "Hit",
+        "weapon",
+        "/Game/BluePrint/IROS/BP_Explosion",
+        "/Game/BluePrint/robotac/BP_BulletRobotAc",
+        "BP_BulletRobotAc_C",
+        "Default__BP_BulletRobotAc_C",
+        "HitResult"
+      ],
+      "functions": [
+        {
+          "index": 3,
+          "name": "ExecuteUbergraph_BP_BulletRobotAc",
+          "class": "Function",
+          "offset": 494,
+          "size": 4747
+        },
+        {
+          "index": 4,
+          "name": "ReceiveActorBeginOverlap",
+          "class": "Function",
+          "offset": 5241,
+          "size": 137
+        },
+        {
+          "index": 5,
+          "name": "ReceiveBeginPlay",
+          "class": "Function",
+          "offset": 5378,
+          "size": 52
+        },
+        {
+          "index": 6,
+          "name": "ReceiveTick",
+          "class": "Function",
+          "offset": 5430,
+          "size": 133
+        }
+      ],
+      "payload_string_hints": []
+    },
+    {
+      "path": "src/UeSim/Linux/UeSim/Content/BluePrint/robotac/BP_RobotACSCORE.uasset",
+      "sha256": "e37e58eb2991215de6de80f37b25409606ba69581b4b0b0f6b70ba5d1802c2ab",
+      "uexp_sha256": "23379baeea7426c0187df3df8ec2b3127fb8a99f9167cfe2fbdbd1fb0ab17dbd",
+      "name_count": 198,
+      "export_count": 12,
+      "matching_names": [
+        "CallFunc_Map_GetKeyValueByIndex_Key",
+        "CallFunc_Map_GetKeyValueByIndex_Value",
+        "ExecuteUbergraph_BP_RobotACSCORE",
+        "score",
+        "temscore",
+        "UpdateAttackScore",
+        "UpdateBoxScore",
+        "UpdateQRScore",
+        "/Game/BluePrint/robotac/BP_RobotACSCORE",
+        "/Script/UDPWrapper",
+        "BP_RobotACSCORE_C",
+        "Default__BP_RobotACSCORE_C",
+        "Map_GetKeyValueByIndex",
+        "ROS2NodeComponent",
+        "Ros2StringSubscribe_GEN_VARIABLE",
+        "Ros2StringSubscribeComponent",
+        "UDP_GEN_VARIABLE",
+        "UDPComponent",
+        "UdpReceiver_GEN_VARIABLE",
+        "UdpReceiverComponent",
+        "Weapon_GEN_VARIABLE"
+      ],
+      "functions": [
+        {
+          "index": 3,
+          "name": "ExecuteUbergraph_BP_RobotACSCORE",
+          "class": "Function",
+          "offset": 806,
+          "size": 1359
+        },
+        {
+          "index": 4,
+          "name": "ReceiveBeginPlay",
+          "class": "Function",
+          "offset": 2165,
+          "size": 52
+        },
+        {
+          "index": 5,
+          "name": "ReceiveTick",
+          "class": "Function",
+          "offset": 2217,
+          "size": 133
+        },
+        {
+          "index": 6,
+          "name": "UpdateAnwser",
+          "class": "Function",
+          "offset": 2350,
+          "size": 740
+        },
+        {
+          "index": 7,
+          "name": "UpdateAttackScore",
+          "class": "Function",
+          "offset": 3090,
+          "size": 3418
+        },
+        {
+          "index": 8,
+          "name": "UpdateBoxScore",
+          "class": "Function",
+          "offset": 6508,
+          "size": 2206
+        },
+        {
+          "index": 9,
+          "name": "UpdateQRScore",
+          "class": "Function",
+          "offset": 8714,
+          "size": 2437
+        }
+      ],
+      "payload_string_hints": [
+        {
+          "uexp_offset": 6130,
+          "text": "score"
+        },
+        {
+          "uexp_offset": 10773,
+          "text": "score"
+        }
+      ]
+    },
+    {
+      "path": "src/UeSim/Linux/UeSim/Content/BluePrint/IROS/BP_rifle.uasset",
+      "sha256": "ccd41873a4b36a438f50c4913291abde7015b2ac56911254a544915f9768782d",
+      "uexp_sha256": "64c91057a52be8164867eeed5fc69b6e722e365fd441e665616935217ec35019",
+      "name_count": 153,
+      "export_count": 17,
+      "matching_names": [
+        "/Game/BluePrint/IROS/BP_LaserLine",
+        "/Game/Fab/Laserrifle/laserrifle1",
+        "CallFunc_BreakHitResult_bBlockingHit",
+        "CallFunc_BreakHitResult_bInitialOverlap",
+        "CallFunc_BreakHitResult_BoneName",
+        "CallFunc_BreakHitResult_Distance",
+        "CallFunc_BreakHitResult_ElementIndex",
+        "CallFunc_BreakHitResult_FaceIndex",
+        "CallFunc_BreakHitResult_HitActor",
+        "CallFunc_BreakHitResult_HitBoneName",
+        "CallFunc_BreakHitResult_HitComponent",
+        "CallFunc_BreakHitResult_HitItem",
+        "CallFunc_BreakHitResult_ImpactNormal",
+        "CallFunc_BreakHitResult_ImpactPoint",
+        "CallFunc_BreakHitResult_Location",
+        "CallFunc_BreakHitResult_Normal",
+        "CallFunc_BreakHitResult_PhysMat",
+        "CallFunc_BreakHitResult_Time",
+        "CallFunc_BreakHitResult_TraceEnd",
+        "CallFunc_BreakHitResult_TraceStart",
+        "CallFunc_GetPlayerControllerFromInputDevice_ReturnValue",
+        "CallFunc_LineTraceSingle_OutHit",
+        "ExecuteUbergraph_BP_rifle",
+        "FireInTheHole",
+        "InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent",
+        "K2Node_InputKeyEvent_Key",
+        "Key",
+        "laserrifle1",
+        "weapon",
+        "/Game/BluePrint/IROS/BP_Bullet",
+        "/Game/BluePrint/IROS/BP_Explosion_Gun_Start",
+        "/Game/BluePrint/IROS/BP_rifle",
+        "/Game/forceback/gunshoot",
+        "/Script/InputCore",
+        "/Script/PhysicsCore",
+        "BP_Bullet_C",
+        "BP_rifle_C",
+        "BreakHitResult",
+        "Default__BP_Bullet_C",
+        "Default__BP_rifle_C",
+        "Default__InputKeyDelegateBinding",
+        "GetPlayerControllerFromInputDevice",
+        "gunshoot",
+        "HitResult",
+        "InputDeviceId",
+        "InputDeviceLibrary",
+        "InputKeyDelegateBinding",
+        "laserrifle1_GEN_VARIABLE"
+      ],
+      "functions": [
+        {
+          "index": 5,
+          "name": "ExecuteUbergraph_BP_rifle",
+          "class": "Function",
+          "offset": 702,
+          "size": 6696
+        },
+        {
+          "index": 6,
+          "name": "InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent_0",
+          "class": "Function",
+          "offset": 7398,
+          "size": 137
+        },
+        {
+          "index": 7,
+          "name": "ReceiveBeginPlay",
+          "class": "Function",
+          "offset": 7535,
+          "size": 52
+        },
+        {
+          "index": 8,
+          "name": "ReceiveTick",
+          "class": "Function",
+          "offset": 7587,
+          "size": 133
+        }
+      ],
+      "payload_string_hints": []
+    },
+    {
+      "path": "src/UeSim/Linux/UeSim/Content/BluePrint/IROS/BP_Bullet.uasset",
+      "sha256": "537851fe3f4321fe9b96a5e5c40d4d7a8fa8e9fe4f6e087c87d812ebbb32d999",
+      "uexp_sha256": "07ea03cb629580ecfe04f99e701f01579b0d9db972a4a21a0cd0862ac23b7939",
+      "name_count": 144,
+      "export_count": 11,
+      "matching_names": [
+        "CallFunc_K2_SetActorLocation_SweepHitResult",
+        "ExecuteUbergraph_BP_Bullet",
+        "Hit",
+        "weapon",
+        "/Game/BluePrint/IROS/BP_Bullet",
+        "/Game/BluePrint/IROS/BP_Explosion",
+        "BP_Bullet_C",
+        "Default__BP_Bullet_C",
+        "HitResult"
+      ],
+      "functions": [
+        {
+          "index": 3,
+          "name": "ExecuteUbergraph_BP_Bullet",
+          "class": "Function",
+          "offset": 494,
+          "size": 4747
+        },
+        {
+          "index": 4,
+          "name": "ReceiveActorBeginOverlap",
+          "class": "Function",
+          "offset": 5241,
+          "size": 137
+        },
+        {
+          "index": 5,
+          "name": "ReceiveBeginPlay",
+          "class": "Function",
+          "offset": 5378,
+          "size": 52
+        },
+        {
+          "index": 6,
+          "name": "ReceiveTick",
+          "class": "Function",
+          "offset": 5430,
+          "size": 133
+        }
+      ],
+      "payload_string_hints": []
+    },
+    {
+      "path": "src/UeSim/Linux/UeSim/Content/BluePrint/Robot/BP_Xgb.uasset",
+      "sha256": "e2a8952269e6b908d8d02e19e9ffaa4dd2991fc1186858ba4f61f77f09ce15f7",
+      "uexp_sha256": "417da8ee149340f18ef2e755b6cf855e9a13b3f332eaa542153f9289240c9cd4",
+      "name_count": 370,
+      "export_count": 62,
+      "matching_names": [
+        "CallFunc_BreakHitResult_bBlockingHit",
+        "CallFunc_BreakHitResult_bInitialOverlap",
+        "CallFunc_BreakHitResult_BoneName",
+        "CallFunc_BreakHitResult_Distance",
+        "CallFunc_BreakHitResult_ElementIndex",
+        "CallFunc_BreakHitResult_FaceIndex",
+        "CallFunc_BreakHitResult_HitActor",
+        "CallFunc_BreakHitResult_HitBoneName",
+        "CallFunc_BreakHitResult_HitComponent",
+        "CallFunc_BreakHitResult_HitItem",
+        "CallFunc_BreakHitResult_ImpactNormal",
+        "CallFunc_BreakHitResult_ImpactPoint",
+        "CallFunc_BreakHitResult_Location",
+        "CallFunc_BreakHitResult_Normal",
+        "CallFunc_BreakHitResult_PhysMat",
+        "CallFunc_BreakHitResult_Time",
+        "CallFunc_BreakHitResult_TraceEnd",
+        "CallFunc_BreakHitResult_TraceStart",
+        "CallFunc_K2_SetActorTransform_SweepHitResult",
+        "CallFunc_K2_SetRelativeRotation_SweepHitResult",
+        "CallFunc_K2_SetRelativeTransform_SweepHitResult",
+        "CallFunc_LineTraceSingle_OutHit",
+        "CallFunc_Map_Keys_Keys",
+        "input",
+        "TopicName",
+        "/Script/EnhancedInput",
+        "/Script/PhysicsCore",
+        "/Script/UDPWrapper",
+        "BreakHitResult",
+        "EnhancedInputComponent",
+        "HitResult",
+        "Map_Keys",
+        "ROS2NodeComponent",
+        "UDP_GEN_VARIABLE",
+        "UDPComponent",
+        "UdpReceiver_GEN_VARIABLE",
+        "UdpReceiverComponent"
+      ],
+      "functions": [
+        {
+          "index": 5,
+          "name": "BodyMapCreate",
+          "class": "Function",
+          "offset": 2459,
+          "size": 2905
+        },
+        {
+          "index": 6,
+          "name": "Coordinate_compensation",
+          "class": "Function",
+          "offset": 5364,
+          "size": 14658
+        },
+        {
+          "index": 7,
+          "name": "DetectOriginPos",
+          "class": "Function",
+          "offset": 20022,
+          "size": 939
+        },
+        {
+          "index": 8,
+          "name": "ExecuteUbergraph_BP_Xgb",
+          "class": "Function",
+          "offset": 20961,
+          "size": 4224
+        },
+        {
+          "index": 9,
+          "name": "GetSelfTrasnsform",
+          "class": "Function",
+          "offset": 25185,
+          "size": 905
+        },
+        {
+          "index": 10,
+          "name": "Ground_detection",
+          "class": "Function",
+          "offset": 26090,
+          "size": 3093
+        },
+        {
+          "index": 11,
+          "name": "ReceiveActorBeginOverlap",
+          "class": "Function",
+          "offset": 29183,
+          "size": 137
+        },
+        {
+          "index": 12,
+          "name": "ReceiveActorEndOverlap",
+          "class": "Function",
+          "offset": 29320,
+          "size": 137
+        },
+        {
+          "index": 13,
+          "name": "ReceiveBeginPlay",
+          "class": "Function",
+          "offset": 29457,
+          "size": 52
+        },
+        {
+          "index": 14,
+          "name": "ReceiveEndPlay",
+          "class": "Function",
+          "offset": 29509,
+          "size": 137
+        },
+        {
+          "index": 15,
+          "name": "ReceiveTick",
+          "class": "Function",
+          "offset": 29646,
+          "size": 133
+        },
+        {
+          "index": 16,
+          "name": "Sensor_Initial",
+          "class": "Function",
+          "offset": 29779,
+          "size": 5628
+        },
+        {
+          "index": 17,
+          "name": "Sensor_Transform",
+          "class": "Function",
+          "offset": 35407,
+          "size": 1264
+        },
+        {
+          "index": 18,
+          "name": "Sensor_Transform_inverse",
+          "class": "Function",
+          "offset": 36671,
+          "size": 1264
+        },
+        {
+          "index": 19,
+          "name": "UpdateView",
+          "class": "Function",
+          "offset": 37935,
+          "size": 1250
+        }
+      ],
+      "payload_string_hints": []
+    },
+    {
+      "path": "src/UeSim/Linux/UeSim/Content/BluePrint/Robot/MujoCoSim_Xgb.uasset",
+      "sha256": "03f7f7f5321d5e84d8f42dd9c007e0d4ba8b323f586920dbe128ae44eaed64e5",
+      "uexp_sha256": "a2d583cffa1a7db1d9d5a4a05ef08f878e0ab35128376e9b0a72cd80bb603ff8",
+      "name_count": 424,
+      "export_count": 75,
+      "matching_names": [
+        "BndEvt__MujoCoSim_Xgb_Ros2StringSubscribe_K2Node_ComponentBoundEvent_0_OnStringMessageReceived__DelegateSignature",
+        "CallFunc_BreakHitResult_bBlockingHit",
+        "CallFunc_BreakHitResult_bInitialOverlap",
+        "CallFunc_BreakHitResult_BoneName",
+        "CallFunc_BreakHitResult_Distance",
+        "CallFunc_BreakHitResult_ElementIndex",
+        "CallFunc_BreakHitResult_FaceIndex",
+        "CallFunc_BreakHitResult_HitActor",
+        "CallFunc_BreakHitResult_HitBoneName",
+        "CallFunc_BreakHitResult_HitComponent",
+        "CallFunc_BreakHitResult_HitItem",
+        "CallFunc_BreakHitResult_ImpactNormal",
+        "CallFunc_BreakHitResult_ImpactPoint",
+        "CallFunc_BreakHitResult_Location",
+        "CallFunc_BreakHitResult_Normal",
+        "CallFunc_BreakHitResult_PhysMat",
+        "CallFunc_BreakHitResult_Time",
+        "CallFunc_BreakHitResult_TraceEnd",
+        "CallFunc_BreakHitResult_TraceStart",
+        "CallFunc_K2_SetActorTransform_SweepHitResult",
+        "CallFunc_K2_SetRelativeTransform_SweepHitResult",
+        "CallFunc_K2_SetWorldTransform_SweepHitResult",
+        "CallFunc_LineTraceSingle_OutHit",
+        "CallFunc_Map_Keys_Keys",
+        "InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent",
+        "input",
+        "K2Node_InputKeyEvent_Key",
+        "Key",
+        "LastHitTime",
+        "OnUdpMessageReceived",
+        "Ros2StringSubscribe",
+        "UDP",
+        "UdpReceiver",
+        "Weapon",
+        "/Game/BluePrint/BP_ScoreRecorder",
+        "/Game/BluePrint/robotac/BP_BulletRobotAc",
+        "/Script/InputCore",
+        "/Script/PhysicsCore",
+        "/Script/UDPWrapper",
+        "BP_BulletRobotAc_C",
+        "BP_ScoreRecorder_C",
+        "BreakHitResult",
+        "Default__BP_BulletRobotAc_C",
+        "Default__BP_ScoreRecorder_C",
+        "Default__InputKeyDelegateBinding",
+        "Default__Ros2StringSubscribeComponent",
+        "Default__UDPComponent",
+        "Default__UdpReceiverComponent",
+        "HitResult",
+        "InputKeyDelegateBinding",
+        "Map_Keys",
+        "OnUdpDataReceivedEvent__DelegateSignature",
+        "ROS2NodeComponent",
+        "Ros2StringSubscribe_GEN_VARIABLE",
+        "Ros2StringSubscribeComponent",
+        "UDP_GEN_VARIABLE",
+        "UDPComponent",
+        "UdpReceiver_GEN_VARIABLE",
+        "UdpReceiverComponent",
+        "Weapon_GEN_VARIABLE"
+      ],
+      "functions": [
+        {
+          "index": 5,
+          "name": "BndEvt__MujoCoSim_Xgb_Ros2StringSubscribe_K2Node_ComponentBoundEvent_0_OnStringMessageReceived__DelegateSignature",
+          "class": "Function",
+          "offset": 2668,
+          "size": 133
+        },
+        {
+          "index": 6,
+          "name": "BodyMapCreate",
+          "class": "Function",
+          "offset": 2801,
+          "size": 2905
+        },
+        {
+          "index": 7,
+          "name": "Coordinate_compensation",
+          "class": "Function",
+          "offset": 5706,
+          "size": 2620
+        },
+        {
+          "index": 8,
+          "name": "CustomEvent_0",
+          "class": "Function",
+          "offset": 8326,
+          "size": 184
+        },
+        {
+          "index": 9,
+          "name": "ExecuteUbergraph_MujoCoSim_Xgb",
+          "class": "Function",
+          "offset": 8510,
+          "size": 13895
+        },
+        {
+          "index": 10,
+          "name": "InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent_0",
+          "class": "Function",
+          "offset": 22405,
+          "size": 137
+        },
+        {
+          "index": 11,
+          "name": "MujocoInitial",
+          "class": "Function",
+          "offset": 22542,
+          "size": 1047
+        },
+        {
+          "index": 12,
+          "name": "ReceiveActorBeginOverlap",
+          "class": "Function",
+          "offset": 23589,
+          "size": 137
+        },
+        {
+          "index": 13,
+          "name": "ReceiveBeginPlay",
+          "class": "Function",
+          "offset": 23726,
+          "size": 52
+        },
+        {
+          "index": 14,
+          "name": "ReceiveTick",
+          "class": "Function",
+          "offset": 23778,
+          "size": 133
+        },
+        {
+          "index": 15,
+          "name": "send_msg",
+          "class": "Function",
+          "offset": 23911,
+          "size": 522
+        },
+        {
+          "index": 16,
+          "name": "sim_state_manager",
+          "class": "Function",
+          "offset": 24433,
+          "size": 723
+        },
+        {
+          "index": 17,
+          "name": "SynchronousUpdate",
+          "class": "Function",
+          "offset": 25156,
+          "size": 618
+        },
+        {
+          "index": 18,
+          "name": "UpdateMainBodyPose",
+          "class": "Function",
+          "offset": 25774,
+          "size": 893
+        },
+        {
+          "index": 19,
+          "name": "UpdateView",
+          "class": "Function",
+          "offset": 26667,
+          "size": 1250
+        }
+      ],
+      "payload_string_hints": []
+    }
+  ],
+  "limits": [
+    "No runtime task-three test",
+    "No verified firing topic or payload",
+    "No confirmed ammunition carry-over",
+    "No task-three scoring rule supplied"
+  ]
+}

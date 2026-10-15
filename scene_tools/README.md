@@ -1,8 +1,8 @@
 # 把场地外的五个宝箱移入场地：Ubuntu 操作
 
-更新：2026-10-15。用户视频已确认五个真实宝箱排在地板外。本次按用户明确授权，修改官方 `RobotAC_Level_1.uexp` 中五个现有宝箱根组件的 **XY 坐标**，不新增或删除实例。保留原高度、旋转、缩放、碰撞设置、触发蓝图和计分。当前只有运行包，因此修改的是编译后的关卡资源，不需要 Unreal Editor 或重新编译仿真。
+更新：2026-10-16。用户已在 Ubuntu 确认摆放修复成功，宝箱触碰消失、官方记分牌增分，普通导航完成任务二。补丁按授权只修改官方 `RobotAC_Level_1.uexp` 中五个现有宝箱根组件的 **XY 坐标**，不新增或删除实例；高度、旋转、缩放、碰撞、触发和计分均保留。只有运行包也可应用，无需 Unreal Editor 或重新编译。
 
-开发机已应用补丁并保留原件。**Ubuntu 必须另外应用，再完整重启 UE；单纯更新 navigation 或重启导航不会搬动箱子。** 当前已通过资源校验、备份回退测试和离线可达性检查；尚未在目标 Ubuntu 加载 UE 验证显示和接触。
+开发机与目标 Ubuntu 已成功应用，原件备份保留。已成功的机器无需重装；新机器才按下文应用并完整重启 UE。单纯更新 navigation 不会搬动箱子。旧 `--treasure` 操作已停用，下文现统一为普通单点导航，不再执行双点选择与宝箱 CLI。
 
 ## 1. 新位置与接近点
 
@@ -104,24 +104,15 @@ sha256sum src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.umap \
 4. 按 [宝箱手册](../navigation/TREASURE_UBUNTU.md) 的 ROS 环境启动：
 
 ```bash
-bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml --treasure --drive --stand-up
+bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml --drive --stand-up
 ```
 
 5. 起立后至少等 4 秒，等 SDK 日志 `TASK2_READY` 与导航 `DRIVE enabled`；在 RViz 用 `2D Pose Estimate` 对齐机器人实际位置和朝向。它不会搬动箱子或机器人。
-6. 这次已完整重启官方仿真，因此开启新的本地回合，不 resume 旧官方回合。先 `status`，若仍有活动的旧回合，`finish` 后再 `new-round`。
+6. 普通模式不建立旧实验的本地回合，不执行 new-round、select、contact 或 confirm。
+7. `Publish Point` 每次只选一个普通导航目的地；可先到 box-1 附近空地停稳、核对画面，再选择新的最终目标。表中的建议接近点是普通导航参考，不是必须连续点选的第二步。
+8. 沿用已经成功的操作观察触碰后宝箱消失、官方记分牌增分，再选下一箱。若目标被拒或遇障碍保护，按导航日志排查，不关闭检查。完整流程见宝箱手册。
 
-```bash
-/usr/bin/python3 -B -m navigation.treasure_cli status
-# 只有仍有活动旧回合时执行下一行：
-/usr/bin/python3 -B -m navigation.treasure_cli finish
-/usr/bin/python3 -B -m navigation.treasure_cli new-round
-/usr/bin/python3 -B -m navigation.treasure_cli select box-1 --radius 0.18
-```
-
-7. **0.18 m 仍是待实测的示例半径**，按实际整个箱子占据标定，允许 0.05～0.30 m。按 Publish Point 先点实际 box-1 中心附近 `(1.00,-3.00)`，再点 `(1.00,-2.10)` 接近点；两点后切回 Move Camera。坐标提示建立在地图与机器狗已经对齐的前提下，不能忽略画面偏差。
-8. 等 `READY_CONTACT` 后执行 `contact`；只在 UE 中看到箱子真实消失才 `confirm --disappeared`，等停稳及 `CONFIRMED`。未消失就不确认。完整命令与异常处理见宝箱手册。
-
-若 `PATCHED` 后箱子仍在场外，先确认已完整退出旧 UE、是在同一个原工程启动，并检查实际默认关卡；按 [场景取证](../navigation/TREASURE_TROUBLESHOOTING.md#3-补丁后仍不一致时核对实际场景) 收集证据。若开局自行消失、悬空、嵌地或 UE 加载报错，先保留画面/日志，按下节回退。当前离线验证不能替代这些运行检查。
+若另一台机器 `PATCHED` 后画面仍不一致，先确认完整重启、实际工程与默认关卡，按 [场景排查](../navigation/TREASURE_TROUBLESHOOTING.md) 收集证据。若开局自行消失、悬空、嵌地或 UE 加载报错，先保留画面/日志并回退。本次用户成功反馈不表示其他版本和场景已通过验收。
 
 ## 6. 回退到官方原件
 
@@ -136,6 +127,8 @@ cd "$TASK2_PROJECT"
 应返回 `ORIGINAL`，`.uexp` 恢复为上表原始 SHA256。然后用原先的启动命令重启；箱子也会恢复到原场外位置。保留备份目录，不删除官方运行库。再次应用使用同一条 `apply` 命令即可。
 
 ## 7. 已完成的验证
+
+2026-10-16 用户现场确认：Ubuntu 中场景摆放、宝箱触碰消失、官方计分和普通导航任务二流程成功。尚无本次新运行日志、精确总分或耗时，记录为用户反馈验收。下方保留此前离线检查的范围，不能据此宣称旧专用模式通过。
 
 - 已解析原 `.umap` 名称表和 554 项导出表，逐一核对五个 `cash_lux` 根组件、所属宝箱、原坐标、偏移与资源哈希。
 - 实际只改一个 47,953 字节 `.uexp` 中五组 XY double；Z、文件长度、`.umap`、其余资源字节不变。

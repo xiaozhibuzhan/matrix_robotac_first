@@ -1,6 +1,8 @@
 # 历史记录与文档清理
 
-整理日期：2026-10-15。本目录仅用于追溯，旧记录中的“最新”、待办项和安装命令均指当时版本。当前操作统一从 [项目 README](../../README.md) 进入。
+整理日期：2026-10-16。本目录仅用于追溯，旧记录中的“最新”、待办项和安装命令均指当时版本。当前操作统一从 [项目 README](../../README.md) 进入。
+
+任务二现已通过普通导航、触碰消失与官方计分完成。旧 `--treasure` 双点、本地回合与 contact/confirm 流程已从正式操作停用；源码和历史 Git 版本保留追溯，不把旧教程当作任务三前置条件。最新现场记录见 [CHANGELOG](../../CHANGELOG.md)。
 
 ## 保留的记录
 
@@ -39,4 +41,4 @@
 | 10 月 10 日两点 | 匹配回合的两轮日志只收到中心，没有第二点接收或拒绝记录；不能推断用户只点击一次 |
 | 10 月 15 日两点 | 已收到后续点击，但被二维平面检查拒绝，旧逻辑又清空选择；当前增加阶段、XYZ 日志和停稳健康状态下重试 |
 
-旧 MD 原文另有工作区备份：diagnostics/document_cleanup_20261015/documents_before_cleanup.zip。原日志、地图、旧发布 ZIP 和官方文件保留。本次不改任务一文档及其受保护快照，也不更新独立 Git 发布副本。
+旧 MD 原文另有工作区备份：diagnostics/document_cleanup_20261015/documents_before_cleanup.zip。10 月 16 日改写前文档与场景包另备份于 diagnostics/task2_acceptance_20261016/before_document_update.zip。原日志、地图和任务一快照保留；过时双点教程还可在 Git 提交 eaa6a3e 中追溯。

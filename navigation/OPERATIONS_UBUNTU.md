@@ -1,8 +1,8 @@
 # Ubuntu 安装、升级与普通导航操作
 
-更新：2026-10-15。本页统一维护增量迁移、环境、普通导航、日志和回退步骤。宝箱专用流程见 [TREASURE_UBUNTU.md](TREASURE_UBUNTU.md)，当前场景与点击问题见 [TREASURE_TROUBLESHOOTING.md](TREASURE_TROUBLESHOOTING.md)。所有命令均在工程根目录执行。
+更新：2026-10-16。本页统一维护增量迁移、环境、普通导航、日志和回退步骤。任务二已验收流程见 [TREASURE_UBUNTU.md](TREASURE_UBUNTU.md)，当前场景与旧模式误用见 [TREASURE_TROUBLESHOOTING.md](TREASURE_TROUBLESHOOTING.md)。所有命令均在工程根目录执行。
 
-当前包为 task2_treasure_20261015_docs_cleanup.zip，包含普通导航、宝箱功能和此前修复；本次相对 selection_fix 只整理文档，运动代码相同。普通点选导航已有 Ubuntu 到达停稳记录，宝箱完整流程尚待现场验收。
+现有导航包为 task2_treasure_20261015_docs_cleanup.zip，功能代码与 selection_fix 相同。2026-10-16 用户已确认使用普通导航完成任务二，宝箱触碰消失且官方记分牌增分；正式命令不加 `--treasure`。旧包内专用模式教程已停用，以仓库现行手册为准；本次不改运动代码，已跑通的目标机无需重装。
 
 **场外宝箱摆放修复独立安装：** 已按用户授权修改本地关卡五箱 XY，Ubuntu 按 [scene_tools 操作手册](../scene_tools/README.md) 取得工具、校验备份并应用。这一步必须先关闭 UE、应用后重启；本页“官方可保持运行”只适用于导航增量更新，不适用于场景资源补丁。
 

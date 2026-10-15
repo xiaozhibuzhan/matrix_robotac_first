@@ -1,26 +1,34 @@
 # matrix_robotac_first
 
-更新：2026-10-15。任务一建图已完成，任务二普通点选导航已在 Ubuntu 实测到达停稳。宝箱流程已实现并通过离线验证，官方场景中的完整触发流程仍待验收。
+更新：2026-10-16。**任务一完成，任务二已在 Ubuntu 通过普通导航触碰宝箱、消失与官方计分完成，当前准备任务三。** 现场结论与变更见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 当前推进路线
 
-1. 用户视频已确认：五个真实宝箱排在地板外，属于场景摆放问题。
-2. 已按用户授权修改本地官方关卡的五组宝箱 XY 坐标，并备份原件。Ubuntu 按 [宝箱位置修复与回退](scene_tools/README.md) 应用独立补丁，再完整重启官方仿真。
-3. 在 UE 中验收五个箱子位于场内、地板上并持续存在；当前已通过离线检查，目标 Ubuntu 的实际加载仍待确认。
-4. 先测试起点附近的 box-1，再按 [宝箱操作手册](navigation/TREASURE_UBUNTU.md) 验证“两点选择 → 自主接近 → 受控接触 → 观察消失 → 确认记录”。
+1. 保留任务一地图、普通导航和已经成功的宝箱场景修复；已应用补丁的 Ubuntu 无需重新安装。
+2. 任务二正式操作沿用 [普通导航触碰宝箱](navigation/TREASURE_UBUNTU.md)，启动不加 `--treasure`，不使用旧双点与宝箱 CLI 流程。
+3. 任务二以 UE 中宝箱真实消失及官方记分牌增分为成功依据，用户已确认完成。
+4. 按 [任务三准备计划](TASK3_PLAN.md) 核对规则、官方动作入口与反馈，先完成单次动作闭环，再接入后续控制。
 
-`new-round`、`select` 和 RViz 点选只管理本地任务，**不会生成官方宝箱**。任务二采用人工选目标的半自动方式；当前不要求自动识别或搜索宝箱。
+已确认的成功命令：
+
+```bash
+bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml --drive --stand-up
+```
+
+`treasure_local.yaml` 只指定配置文件；`Publish Point` 每次选一个普通导航目的地。保留 `--drive`、`--stand-up`，起立后至少等待 4 秒和 `TASK2_READY`。旧专用模式仍有现场问题，已从正式操作停用，实验代码保留追溯。
 
 ## 按用途阅读
 
 | 用途 | 唯一维护入口 |
 | --- | --- |
 | Ubuntu 安装、升级、环境、普通导航、停止和回退 | [navigation/OPERATIONS_UBUNTU.md](navigation/OPERATIONS_UBUNTU.md) |
-| 宝箱配置、两点选择、接触、确认和回合恢复 | [navigation/TREASURE_UBUNTU.md](navigation/TREASURE_UBUNTU.md) |
+| 任务二已验收的普通导航触碰流程 | [navigation/TREASURE_UBUNTU.md](navigation/TREASURE_UBUNTU.md) |
 | 宝箱从场外移入场内、Ubuntu 应用与还原 | [scene_tools/README.md](scene_tools/README.md) |
-| UE 画面无宝箱、点击后没有任务、误点恢复 | [navigation/TREASURE_TROUBLESHOOTING.md](navigation/TREASURE_TROUBLESHOOTING.md) |
+| 宝箱场景、正式命令与旧模式误用排查 | [navigation/TREASURE_TROUBLESHOOTING.md](navigation/TREASURE_TROUBLESHOOTING.md) |
 | 当前能力、现场证据和后续安排 | [PROJECT_STATUS.md](PROJECT_STATUS.md) |
 | 任务二规则、目标与阶段验收 | [TASK2_PLAN.md](TASK2_PLAN.md) |
+| 任务三规则待确认项、官方资源与首个开发目标 | [TASK3_PLAN.md](TASK3_PLAN.md) |
+| 现场验收与项目更新记录 | [CHANGELOG.md](CHANGELOG.md) |
 | 重新采集地图、比赛换场景及切图 | [navigation/MAP_REBUILD_UBUNTU.md](navigation/MAP_REBUILD_UBUNTU.md) |
 | 任务一采集与建图 | [mapping/README.md](mapping/README.md) |
 | 导航实现、参数与开发接口 | [navigation/README.md](navigation/README.md) |
@@ -29,7 +37,7 @@
 
 ## 当前迁移版本与目录
 
-本次文档整理后的导航增量包：`navigation/updates/task2_treasure_20261015_docs_cleanup.zip`，配套同名 `.zip.sha256`。功能代码与 10 月 15 日 selection_fix 版本相同，整合了随包手册并移除了过时教程。已有 selection_fix 的目标机无需为文档整理重装；需要迁移时统一按操作手册执行。
+导航历史增量包为 `navigation/updates/task2_treasure_20261015_docs_cleanup.zip`，功能代码与 selection_fix 相同。本次更新不改运动代码，已跑通的 Ubuntu 无需重装。旧导航 ZIP 内的双点/专用模式教程已停用，现行操作以仓库中的本页和任务二手册为准。
 
 | 目录 | 用途 |
 | --- | --- |

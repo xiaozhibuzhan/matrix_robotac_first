@@ -1,6 +1,6 @@
 # 导航扩展：能力、参数与开发接口
 
-更新：2026-10-15。本目录为自有扩展，保持任务一建图和原图不变。普通点选导航已经在目标 Ubuntu 实测到达停稳；宝箱闭环已实现并离线验证，实际接触与消失流程尚待现场验收。当前场外摆放另按用户授权由 [scene_tools](../scene_tools/README.md) 仅修改官方关卡五箱 XY，不改变导航运动代码。
+更新：2026-10-16。普通导航已在 Ubuntu 完成任务二，用户确认宝箱触碰后消失、官方记分牌增分。正式操作不加 `--treasure`；旧专用模式仍有问题，实验源码保留追溯。本次不改导航运动代码。任务一与原图不变，场景只保留先前授权的五箱 XY 修复。
 
 操作统一从 [OPERATIONS_UBUNTU.md](OPERATIONS_UBUNTU.md) 进入；宝箱流程见 [TREASURE_UBUNTU.md](TREASURE_UBUNTU.md)，当前场景/交互问题见 [TREASURE_TROUBLESHOOTING.md](TREASURE_TROUBLESHOOTING.md)。本页维护技术说明，不重复安装步骤。
 
@@ -18,7 +18,7 @@
 - 独立 SDK 子进程检查命令生成时刻和序号。父节点退出/管道断开会停车；移动命令超过 0.30 秒未更新则停车并锁定，必须重启导航。
 - 保存参数、地图/代码哈希、初始位姿、点击、轨迹、状态和异常日志。
 
-静态障碍由全局路径绕开；**新出现的局部障碍目前导致停车、取消目标，由人检查后重新点选**，尚未实现动态障碍自动绕行。宝箱模式另提供受控接触、人工消失确认及本地计时计分；尚无自动宝箱识别、多目标队列、自动寻宝和在线地图匹配定位。
+静态障碍由全局路径绕开；**新出现的局部障碍目前导致停车、取消目标，由人检查后重新点选**，尚未实现动态障碍自动绕行。当前任务二以普通导航和官方消失/计分完成；旧实验的受控接触、双点、本地回合与确认不再是正式操作。尚无自动宝箱识别、多目标队列、自动寻宝和在线地图匹配定位。
 
 ## 2. 安装与操作入口
 
@@ -38,7 +38,7 @@
 | ROS 与 SDK 文件预检查，不连接机器人 | `/usr/bin/python3 -B -m navigation.preflight --drive --config navigation/config/local.yaml` |
 | 预览，不连接 SDK | `bash navigation/run_navigation.sh --config navigation/config/local.yaml` |
 | 本目标仿真的实际控制 | `bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive --stand-up` |
-| 宝箱实际控制 | `bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml --treasure --drive --stand-up` |
+| 任务二已验收控制 | `bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml --drive --stand-up` |
 | 查看状态 | `ros2 topic echo /task2/status`；Ctrl+C 只结束查看 |
 | 取消目标 | `ros2 service call /task2/cancel std_srvs/srv/Trigger '{}'` |
 
@@ -115,7 +115,7 @@ SDK 前向输出为 0 或至少 0.05 m/s，偏航为 0 或绝对值至少 0.02 r
 4. **重复性**：建议 10 次短程，覆盖不同朝向、一次静态绕障和连续点选，记录误差、耗时和失败原因。次数是工程建议，不是赛规。
 5. **替换/取消/退出/重启**：移动中换目标、服务取消、Ctrl+C、关闭 RViz；旧目标失效。重启仿真后须重新初始定位。
 6. **异常停车**：受控仿真中验证雷达/里程计断流，导航父节点暂停/退出，观察独立 SDK 零指令与真实停止。只对本轮确认的 PID 操作，不用全局 pkill。SDK 本身被强杀时属于官方失联机制验证。
-7. **保留证据**：保存完整 runs 目录、实际参数和必要视频；普通点选确认正常后，按宝箱手册验收已经实现的受控接触与人工消失确认。
+7. **保留证据**：保存完整 runs 目录、实际参数和必要视频；任务二使用普通单点导航，以真实宝箱消失和官方记分牌增分记录成功，不再执行旧本地确认。
 
 先读 `node.log` / `sdk.log`：初始位姿拒绝查静止与里程计；时钟错误查环境与 /clock；No path 查足迹与连通性；Live obstacle 查实际障碍/外参；SDK 返回错误查官方实际返回与连接。不要通过关闭检查、忽略 SDK 错误或填白未知区来强行运行。
 
@@ -123,4 +123,4 @@ SDK 前向输出为 0 或至少 0.05 m/s，偏航为 0 或绝对值至少 0.02 r
 
 `run_navigation.sh / launcher.py`：启动与退出；`node.py / sensors.py`：ROS 与 RViz；`core.py / geometry.py`：定位、跟踪与停止；`grid.py / prepare_map.py / planning.py`：地图、A* 与后台规划；`sdk_bridge.py / sdk_worker.py`：控制与看门狗；`preflight.py / check_install.py`：环境/包核对；`validate.py / tests/`：离线验证；`package_extension.py`：只打包本扩展。
 
-完整工程的 TASK2_PLAN.md 维护赛规与阶段安排，PROJECT_STATUS.md 维护总体进度，两者不在 navigation 增量包内。宝箱功能已经实现，现场触发与连续多箱仍待验收；不把实现完成等同于比赛流程验收完成。
+完整工程的 TASK2_PLAN.md 维护任务二规则与完成结论，PROJECT_STATUS.md 维护总体进度，TASK3_PLAN.md 维护当前任务三准备；这些不在历史 navigation 增量包内。用户已确认普通导航完成任务二、宝箱消失与官方计分成功；旧专用模式仍有问题并已停用正式操作，不能把它的离线测试当作现场成功。
