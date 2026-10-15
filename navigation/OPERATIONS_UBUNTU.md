@@ -1,8 +1,10 @@
-# matrix_robotac_first：操作与 Ubuntu 迁移指南
+# Ubuntu 安装、升级与普通导航操作
 
-更新日期：2026-10-02。请按“准备文件 → 校验与备份 → 安装 → 环境检查 → 预览 → 行走 → 停止”的顺序操作。**最新现场日志已有 4 次 ARRIVED；本次加速和长路线恢复修复通过 96 项离线测试，更新后的 Ubuntu 运动效果待复测。** 已安装用户先看 [长路线修复与更新步骤](LONG_ROUTE_FIX_20261002.md)。
+更新：2026-10-15。本页统一维护增量迁移、环境、普通导航、日志和回退步骤。宝箱专用流程见 [TREASURE_UBUNTU.md](TREASURE_UBUNTU.md)，当前场景与点击问题见 [TREASURE_TROUBLESHOOTING.md](TREASURE_TROUBLESHOOTING.md)。所有命令均在工程根目录执行。
 
-第一开发目标：在 RViz 点一个普通可达位置，机器狗自主规划、到达并可靠停住。任务一建图已通过 Ubuntu 验收；宝箱接触、消失确认与比赛计时计分属于后续阶段。
+当前包为 task2_treasure_20261015_docs_cleanup.zip，包含普通导航、宝箱功能和此前修复；本次相对 selection_fix 只整理文档，运动代码相同。普通点选导航已有 Ubuntu 到达停稳记录，宝箱完整流程尚待现场验收。
+
+按“准备文件 → 校验、暂存与备份 → 安装 → 配置 → 环境 → 预览 → 行走 → 停止”执行。已安装 selection_fix 的目标机可以继续使用相同功能，无需为文档整理重新安装。
 
 ## 0. 先认清目录
 
@@ -26,11 +28,11 @@ GitHub 仓库保存开发扩展、文档、配置快照和必要地图，**不�
 在原始工作区找到以下两个文件，通过 U 盘、共享文件夹或已有 SSH/SCP 传到 Ubuntu 的下载位置：
 
 ```text
-navigation/updates/task2_point_navigation_20260926.zip
-navigation/updates/task2_point_navigation_20260926.zip.sha256
+navigation/updates/task2_treasure_20261015_docs_cleanup.zip
+navigation/updates/task2_treasure_20261015_docs_cleanup.zip.sha256
 ```
 
-必须同时复制来自**同一次打包**的两个文件。文件名保留首版日期，内容可能更新；以 SHA256 和包内 manifest 判断版本，不能只看名称。
+必须同时复制来自**同一次打包**的两个文件，以 SHA256 和包内 manifest 核对完整性。不要混用旧版本的校验文件。
 
 Git 仓库副本也有 `navigation/updates/`。只有确认提交已推送，才能从 GitHub 取到最新包；本地 commit 不代表远端已更新。私有仓库需要登录有权限的账号才能下载。
 
@@ -42,19 +44,17 @@ Git 仓库副本也有 `navigation/updates/`。只有确认提交已推送，才
 
 ```powershell
 Set-Location 'E:\各种比赛\robortac\matrix_robotac_first'
-python -B -m navigation.preflight --offline
-if ($LASTEXITCODE -ne 0) { throw '预检查失败，停止打包' }
-python -B -m unittest discover -s navigation/tests -v
-if ($LASTEXITCODE -ne 0) { throw '测试失败，停止打包' }
-python -B -m navigation.package_extension
+python -B -m navigation.validate --check-protected
+if ($LASTEXITCODE -ne 0) { throw '验证失败，停止打包' }
+python -B -m navigation.package_extension --name task2_treasure_20261015_docs_cleanup.zip
 if ($LASTEXITCODE -ne 0) { throw '打包失败，不传输旧包' }
-Get-FileHash '.\navigation\updates\task2_point_navigation_20260926.zip' -Algorithm SHA256
-Get-Content '.\navigation\updates\task2_point_navigation_20260926.zip.sha256'
+Get-FileHash '.\navigation\updates\task2_treasure_20261015_docs_cleanup.zip' -Algorithm SHA256
+Get-Content '.\navigation\updates\task2_treasure_20261015_docs_cleanup.zip.sha256'
 ```
 
-当前测试预期为 `Ran 96 tests` 与 `OK`；检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
+当前功能版本已有 162 项离线测试通过；源码修改后以实际测试输出为准，检查和测试通过后再打包。最后两条显示的 ZIP SHA256 应一致，大小写不影响比较。随后重新传输这两个文件。
 
-打包器会收集 `navigation/` 中允许的文件类型。打包前确认没有准备留在现场的私密配置，特别是自行新增的 `config/local.yaml`。若提示 CRLF，只把报错的扩展文本文件改为 UTF-8/LF，不批量修改官方文件。
+打包器会排除运行日志、missions、updates、缓存、config/local.yaml 和 config/*_local.yaml。其他自行新增的私密配置仍需核对。若提示 CRLF，只把报错的扩展文本文件改为 UTF-8/LF，不批量修改官方文件。
 
 ## 2. Ubuntu 校验、备份与安装
 
@@ -70,8 +70,8 @@ TASK2_DOWNLOAD="$HOME/Downloads/task2-update"       # zip 和 sha256 所在目�
 printf '工程：%s\n下载：%s\n' "$TASK2_PROJECT" "$TASK2_DOWNLOAD"
 ls -ld "$TASK2_PROJECT/src" "$TASK2_PROJECT/deps"
 ls -l "$TASK2_PROJECT/run_sim.sh"
-ls -lh "$TASK2_DOWNLOAD/task2_point_navigation_20260926.zip" \
-       "$TASK2_DOWNLOAD/task2_point_navigation_20260926.zip.sha256"
+ls -lh "$TASK2_DOWNLOAD/task2_treasure_20261015_docs_cleanup.zip" \
+       "$TASK2_DOWNLOAD/task2_treasure_20261015_docs_cleanup.zip.sha256"
 ```
 
 **预期：**全部存在。遇 `No such file or directory` 先改路径，不继续覆盖。保留双引号以支持空格。目录存在只是检查位置，仿真可运行性仍以此前现场验证为准。
@@ -88,10 +88,9 @@ test -f "$TASK2_PROJECT/run_sim.sh"
 test -d "$TASK2_PROJECT/src"
 test -d "$TASK2_PROJECT/deps"
 cd "$TASK2_DOWNLOAD"
-sha256sum -c task2_point_navigation_20260926.zip.sha256
-
-TASK2_STAGE=$(mktemp -d)
-unzip -q task2_point_navigation_20260926.zip -d "$TASK2_STAGE"
+sha256sum -c task2_treasure_20261015_docs_cleanup.zip.sha256
+TASK2_STAGE=$(mktemp -d "$TASK2_PROJECT/.task2_stage.XXXXXX")
+/usr/bin/python3 -m zipfile -e task2_treasure_20261015_docs_cleanup.zip "$TASK2_STAGE"
 cd "$TASK2_STAGE"
 /usr/bin/python3 -B -m navigation.check_install
 
@@ -102,6 +101,20 @@ if [ -e "$TASK2_PROJECT/navigation" ]; then
 fi
 cp -a -- "$TASK2_STAGE/navigation" "$TASK2_PROJECT/navigation"
 cd "$TASK2_PROJECT"
+# 恢复本机配置与回合；旧日志仍完整保存在备份内。
+for TASK2_CONFIG in "$TASK2_BACKUP/navigation/config/local.yaml" \
+                    "$TASK2_BACKUP/navigation/config/"*_local.yaml; do
+  if [ -f "$TASK2_CONFIG" ]; then
+    cp -a -- "$TASK2_CONFIG" navigation/config/
+  fi
+done
+if [ -d "$TASK2_BACKUP/navigation/missions" ]; then
+  mkdir -p navigation/missions
+  cp -a -- "$TASK2_BACKUP/navigation/missions/." navigation/missions/
+fi
+if [ -d "$TASK2_BACKUP/navigation/maps" ]; then
+  cp -an -- "$TASK2_BACKUP/navigation/maps/." navigation/maps/
+fi
 /usr/bin/python3 -B -m navigation.check_install
 printf '安装完成，请记下备份目录：%s\n' "$TASK2_BACKUP"
 BASH
@@ -109,11 +122,11 @@ BASH
 
 **成功标志：**
 
-1. 校验显示 `task2_point_navigation_20260926.zip: OK`。
+1. 校验显示 `task2_treasure_20261015_docs_cleanup.zip: OK`。
 2. 两次 manifest 检查的 `missing_or_changed` 都是 `[]`。
-3. 最后打印“安装完成”和备份目录。请保存这个路径，旧参数与日志都在其中。
+3. 最后打印“安装完成”和备份目录。现场 local.yaml、*_local.yaml 和 missions 已恢复；旧日志仍在备份中。额外地图只补入包内不存在的文件，同名现场变体应核对备份后另用独立目录。
 
-校验不一致就重新传输同版的两个文件；缺少 unzip 时只需 `sudo apt install unzip`。安装中途失败不要删除备份，按第 8 节回退。
+校验不一致就重新传输同版的两个文件。解压使用系统 Python，不要求安装 unzip。安装中途失败不要删除备份，按第 8 节回退。
 
 若是直接从 Git 拷贝源码，`check_install` 可能提示 `No package manifest: source checkout`。这不是通过校验，而是当前目录没有打包清单；本页推荐使用 zip 安装流程。
 
@@ -127,14 +140,14 @@ cp -n navigation/config/default.yaml navigation/config/local.yaml
 nano navigation/config/local.yaml
 ```
 
-`cp -n` 不覆盖已有文件。首次试运行可沿用默认参数；旧备份有调好的配置时，对照新默认值逐项恢复，不把旧文件整份盲目覆盖。Nano 按 **Ctrl+O → Enter** 保存，**Ctrl+X** 退出。
+`cp -n` 不覆盖已有文件。首次试运行可沿用默认参数；已有配置已在升级时恢复；对照默认值核对新增键，保留现场地图、网络、足迹和传感器外参。Nano 按 **Ctrl+O → Enter** 保存，**Ctrl+X** 退出。
 
 后面所有预检查与启动都显式使用 `--config navigation/config/local.yaml`，避免“改了文件却没加载”。不要靠缩小足迹或增大超时来掩盖问题。
 
 首先核对以下配置。修改现有同名项，不在 YAML 末尾重复添加；保持冒号后的空格，不用 Tab 缩进：
 
 ```yaml
-map: navigation/maps/task1_20260911/field_map.yaml
+map: navigation/maps/field_a_20261009_170749/field_map.yaml
 frame: world
 odom_topic: /odom/mujoco_odom
 cloud_topic: /front_lidar
@@ -143,9 +156,9 @@ robot_ip: 127.0.0.1
 client_port: 43988
 ```
 
-地图路径相对工程根目录；前四项应与所用地图和现场 topic 一致。后三项沿用官方示例的同机仿真地址，跨机器时按现场已验证的 SDK 网络配置修改。**导航 SDK 只读取这个配置文件的地址和端口，不会把 `SDK_CLIENT_IP` 环境变量自动填入其中。** 实际加载值会写入本轮日志的 `config.yaml`。
+上面的地图仅为 10 月 9 日当前场景示例；先确认文件存在并与实际场景匹配，换场景按 [重建与换图指南](MAP_REBUILD_UBUNTU.md) 重新生成。地图路径相对工程根目录；前四项应与所用地图和现场 topic 一致。后三项沿用官方示例的同机仿真地址，跨机器时按现场已验证的 SDK 网络配置修改。**导航 SDK 只读取这个配置文件的地址和端口，不会把 `SDK_CLIENT_IP` 环境变量自动填入其中。** 实际加载值会写入本轮日志的 `config.yaml`。
 
-**本次加速必须核对 `local.yaml`：旧文件里的 0.20 / 0.35 会覆盖新默认值。** 将下面同名项改成以下数值；`replan_progress_distance` 缺失时补一行。保留现场地图、地址和传感器外参等已验证设置：
+**核对实际加载的 `local.yaml`：旧文件里的 0.20 / 0.35 会覆盖当前默认上限。** 将下面同名项改成以下数值；`replan_progress_distance` 缺失时补一行。保留现场地图、地址和传感器外参等已验证设置：
 
 ```yaml
 max_speed: 0.40
@@ -155,7 +168,7 @@ max_tracking_replans: 3
 replan_progress_distance: 0.75
 ```
 
-保持 `goal_timeout: 180.0` 和 `progress_timeout: 15.0`。本次半路停止发生在约 59 秒，原因是恢复额度耗尽；增大超时不能解决它。新的恢复额度按连续失败计算，已恢复行走并取得足够进展后复位。
+普通短程可沿用默认 goal_timeout: 180.0 和 progress_timeout: 15.0；现场已针对长绕行验证过其他总时限时，保留相应配置。连续失败最多恢复 3 次，取得足够实际进展后复位。总时限、无进展和障碍停车要按日志分别判断，不把增加超时当作通用处理。
 
 ## 3. 终端分工与环境
 
@@ -207,7 +220,7 @@ cd "$TASK2_PROJECT"
 /usr/bin/python3 -B -m navigation.preflight --drive --config navigation/config/local.yaml
 ```
 
-预期依次为 `imports OK`、地图摘要、当前 96 项测试 `OK`、完整预检查 JSON。核对 JSON 的 `control_settings` 中 `max_speed` 为 `0.4`、`max_yaw_rate` 为 `0.6`。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
+预期依次为 `imports OK`、地图摘要、当前功能版本的测试全部 `OK`（已有记录为 162 项）、完整预检查 JSON。核对 JSON 的 `control_settings` 中 `max_speed` 为 `0.4`、`max_yaw_rate` 为 `0.6`。这里 `preflight --drive` **仅检查文件与导入，不连接机器人，不发送速度**；不代表 SDK 动态加载、连接和制动已通过。
 
 仅缺少相应依赖时补装：
 
@@ -263,23 +276,11 @@ bash navigation/run_navigation.sh --config navigation/config/local.yaml
 
 ## 6. 实际导航：先 1 米，再 2 米
 
-**最新 18:00:42 开始的现场日志：**5 个接受目标中 4 个到达；第 4 个约 59 秒后因累计恢复次数耗尽停止。本次将前进上限改为 0.40 m/s、转向上限改为 0.60 rad/s，并改善路径余量、连续恢复和转向进展判断。先按第 2.3 节核对现场配置，详见 [长路线修复说明](LONG_ROUTE_FIX_20261002.md)。
-
-此前 SDK 拒绝低于 0.05 m/s 的前向指令、ROS 退出竞态已修复，历史诊断见 [低速修复说明](VELOCITY_FIX_20261002.md)。不用另开 highlevel_demo。
-
-2026-10-02 回传日志中，旧版带 `--stand-up` 仍立即退出的问题已修复：零速度 move 不能先于 standUp。遇到 `SDK returned 12295` 请先更新本次增量包，具体证据和重试见 [启动修复说明](STARTUP_FIX_20261002.md)。
+普通点选导航已在目标 Ubuntu 实测到达停稳。当前巡航上限为 0.40 m/s、转向上限为 0.60 rad/s；实际加载值以现场配置和日志为准。起立顺序、SDK 非零速度域、连续恢复和退出问题的修复均已包含在当前包中。
 
 关闭官方键盘 demo 和其他运动命令发送者。扩展的进程锁只能阻止它自己重复启动，不能阻止其他 SDK 程序同时控制。
 
-终端 C **下面两条只选一条**：
-
-官方 SDK 已允许进入 move 状态（不能仅靠画面判断已站立）：
-
-```bash
-bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive
-```
-
-需要扩展调用一次官方 standUp：
+终端 C 使用下面的命令。10 月 10 日现场日志显示：每次新建控制进程都应保留 `--stand-up`；5 次省略均被 SDK 以 `0x3007` 拒绝，不能凭外观站着省略。关闭前一个控制实例后再启动一次并等待就绪：
 
 ```bash
 bash navigation/run_navigation.sh --config navigation/config/local.yaml --drive --stand-up
@@ -372,21 +373,23 @@ BASH
 | No path / 余量不足 | 起点和目标是否同一足迹可通行区域，先选开阔短程点 |
 | Live obstacle | 已保护停车，对照实际障碍和外参叠加后再点选 |
 | 更新后仍然慢 | 检查启动 `Loaded limits` 和日志 `config.yaml`，旧 local.yaml 会覆盖新速度上限；拐点附近仍会主动降速 |
-| Tracking error crosses blocked cells | 核对已安装长路线修复包；检查初始定位、路径与障碍叠加，保留新日志，不靠增加超时或无限重试解决 |
-| SDK worker 失败/锁定 | 查 sdk.log 的具体错误；0x3013 表示速度范围不合法，不能一概认为未连接。更新修复包后重启并重新定位 |
+| Tracking error crosses blocked cells | 核对实际参数和初始定位、路径与障碍叠加，保留新日志，不靠增加超时或无限重试解决 |
+| SDK worker 失败/锁定 | 查 sdk.log 的具体错误；0x3013 表示速度范围不合法，不能一概认为未连接。若需重启，使用当前包并重新定位 |
 | 已有 session / 锁占用 | 回到旧导航终端正常 Ctrl+C，不用全局 pkill python |
 | bad interpreter / CRLF | 重新复制校验通过的 LF 增量包，不批量转换官方脚本 |
 | 退出后仍运动 | 采用现场已验证的官方停车方式，保留日志；软件零指令不代替运控失联保护 |
 
 ## 10. 本包文档入口
 
-本页随 navigation 增量包提供，与源码工程根 README 的第 0～9 节同步维护。文中命令都在工程根目录执行，不能因为本文件在 navigation 内，就在 navigation 子目录运行命令。
+本页维护安装与普通导航操作；根 README 只保留索引，不再重复一份安装流程。文件位于 navigation 内，命令仍在工程根目录运行。
 
-- [README.md](README.md)：实现范围、派生地图、参数和验收边界。
-- [MAP_REBUILD_UBUNTU.md](MAP_REBUILD_UBUNTU.md)：手动重新采集、比赛换场景和导航切图。
-- [config/default.yaml](config/default.yaml)：默认配置，现场配置另存 local.yaml。
-- [validation/local_validation.json](validation/local_validation.json)：已有离线验证结果，不代表现场运动验收。
+- [README.md](README.md)：实现范围、参数和验收边界。
+- [TREASURE_UBUNTU.md](TREASURE_UBUNTU.md)：宝箱选择、接触、确认和恢复。
+- [TREASURE_TROUBLESHOOTING.md](TREASURE_TROUBLESHOOTING.md)：当前 UE 场景和点击问题。
+- [MAP_REBUILD_UBUNTU.md](MAP_REBUILD_UBUNTU.md)：重新采集、比赛换场景和切图。
+- [config/default.yaml](config/default.yaml)：默认配置；现场设置另存 local.yaml。
+- [validation/local_validation.json](validation/local_validation.json)：已有离线验证结果。
 
-任务一操作、项目背景和任务二后续规则在完整源码工程的 mapping/README.md、README_GPT.md、TASK2_PLAN.md 中；这些文件不随本增量 ZIP 提供。
+任务一操作、总体状态和赛规在完整工程的 mapping/README.md、PROJECT_STATUS.md 和 TASK2_PLAN.md 中；这些文件不随 navigation 增量包提供。
 
 本文命令已对照当前接口；Ubuntu 图形、通信、SDK 动态加载和实际运动必须现场按步骤验证，不能把 Windows 离线通过当成现场验收。

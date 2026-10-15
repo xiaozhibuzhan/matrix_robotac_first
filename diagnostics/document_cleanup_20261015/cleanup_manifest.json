@@ -1,0 +1,37 @@
+{
+  "written": [
+    "OFFICIAL_TREASURE_REVIEW.md",
+    "PROJECT_STATUS.md",
+    "README.md",
+    "README_GPT.md",
+    "TASK2_PLAN.md",
+    "docs/archive/LOG_REVIEW_20261009.md",
+    "docs/archive/LOG_REVIEW_20261010_1009.md",
+    "docs/archive/LOG_REVIEW_20261010_1025.md",
+    "docs/archive/README.md",
+    "docs/archive/README_GPT.md",
+    "docs/archive/codexfix.md",
+    "navigation/OPERATIONS_UBUNTU.md",
+    "navigation/README.md",
+    "navigation/TREASURE_TROUBLESHOOTING.md",
+    "navigation/TREASURE_UBUNTU.md"
+  ],
+  "removed_superseded": [
+    "MIGRATION_UBUNTU.md",
+    "TREASURE_SELECTION_GUIDE_20261010.md",
+    "navigation/STARTUP_FIX_20261002.md",
+    "navigation/VELOCITY_FIX_20261002.md",
+    "navigation/LONG_ROUTE_FIX_20261002.md",
+    "navigation/TREASURE_CLI_FIX_20261010.md",
+    "navigation/TREASURE_SCENE_AND_CLICK_20261015.md"
+  ],
+  "archived": [
+    "README_GPT.md",
+    "codexfix.md",
+    "LOG_REVIEW_20261009.md",
+    "LOG_REVIEW_20261010_1009.md",
+    "LOG_REVIEW_20261010_1025.md"
+  ],
+  "package": "task2_treasure_20261015_docs_cleanup.zip",
+  "scope": "Documentation only in active workspace; no official, mapping, map or Git mirror changes"
+}

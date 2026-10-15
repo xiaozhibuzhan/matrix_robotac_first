@@ -1,3 +1,5 @@
+> 历史记录，归档于 2026-10-15。下文状态和命令只代表当时版本；当前操作以 [项目入口](../../README.md) 和 [统一手册](../../navigation/OPERATIONS_UBUNTU.md) 为准。
+
 # 2026-10-09 目标 Ubuntu 迁回日志评估与修改建议
 
 时间统一为北京时间。范围：`maps/` 中 10 月 9 日两轮采集、`navigation/run/` 中同日五轮导航，以及同批迁回的 `navigation/maps/field_a_20261009_170749/`。本轮为分析与建议，未修改官方代码、导航程序、运行配置或原始地图。
@@ -8,7 +10,7 @@ GitHub 副本保存本报告、结构化证据、对比图和正式地图产物�
 
 ## 1. 建图评价：采集稳定，新图改善明确
 
-正式建图轮次是 [run_20261009_162738_ri4mjc_v](maps/run_20261009_162738_ri4mjc_v/)。16:24 的短轮正常结束，但只有原始采集文件，没有最终地图，不应与正式地图混用。
+正式建图轮次是 [run_20261009_162738_ri4mjc_v](../../maps/run_20261009_162738_ri4mjc_v/)。16:24 的短轮正常结束，但只有原始采集文件，没有最终地图，不应与正式地图混用。
 
 | 指标 | 9 月 11 日基准 | 10 月 9 日正式轮 |
 | --- | ---: | ---: |
@@ -34,7 +36,7 @@ GitHub 副本保存本报告、结构化证据、对比图和正式地图产物�
 - 正式 bag 约 **4.66 GB**，比赛流程应预留录制空间和离线建图时间。
 - 两轮原始 PGM 都仍较稀疏，按默认足迹直接膨胀后没有可通行格；应继续加载导航派生图。不能把原始矩形栅格约 84% 的未知区解释为“84% 比赛场地没采到”，矩形中还含场地外区域。
 
-证据：[正式生成报告](maps/run_20261009_162738_ri4mjc_v/finalize_report.json)、[正式录制元数据](maps/run_20261009_162738_ri4mjc_v/raw_bag/metadata.yaml)、[生成日志](maps/run_20261009_162738_ri4mjc_v/finalize.log)、[新派生图报告](navigation/maps/field_a_20261009_170749/report.json)。
+证据：[正式生成报告](../../maps/run_20261009_162738_ri4mjc_v/finalize_report.json)、[正式录制元数据](../../maps/run_20261009_162738_ri4mjc_v/raw_bag/metadata.yaml)、[生成日志](../../maps/run_20261009_162738_ri4mjc_v/finalize.log)、[新派生图报告](../../navigation/maps/field_a_20261009_170749/report.json)。
 
 ## 2. 地图是否正确切换
 
@@ -58,7 +60,7 @@ GitHub 副本保存本报告、结构化证据、对比图和正式地图产物�
 
 这比仅看 PCD 点数增加更能说明重建有效。全图只有一个足迹连通区域，仍不表示所有白色像素、宝箱接触点或任意点击点都可导航。
 
-![新旧地图与当前长绕行路线](diagnostics/log_review_20261009/map_comparison.png)
+![新旧地图与当前长绕行路线](../../diagnostics/log_review_20261009/map_comparison.png)
 
 图中浅绿为足迹可通行中心区域；蓝线是新图日志中的约 47.44 m 规划路线，左图仅叠加作位置对照，不表示旧图能规划此路线。紫叉为最新轮两次实时障碍停车附近。灰色既包含未观测区，也包含场地之外，不能全部当作应涂白的空地。
 
@@ -93,7 +95,7 @@ GitHub 副本保存本报告、结构化证据、对比图和正式地图产物�
 Goal time limit exceeded
 ```
 
-证据：[node.log](navigation/run/run_20261009_172517_kklh34zv/node.log) 第 60 行；[events.jsonl](navigation/run/run_20261009_172517_kklh34zv/events.jsonl) 第 283 行点击、第 290 行规划、第 648 行超时。
+证据：[node.log](../../navigation/run/run_20261009_172517_kklh34zv/node.log) 第 60 行；[events.jsonl](../../navigation/run/run_20261009_172517_kklh34zv/events.jsonl) 第 283 行点击、第 290 行规划、第 648 行超时。
 
 此目标规划 **53.29 m、20 个路点**，没有重规划，停止前最后一个轨迹快照仍剩 **9.68 m**。依据停止位置和原路径估算还剩约 9.58 m。本次与 10 月 2 日的“累计恢复额度耗尽”是不同问题。
 
@@ -110,7 +112,7 @@ Goal time limit exceeded
 - `(24.610, -14.441)`；
 - `(24.429, -14.549)`。
 
-证据：[node.log](navigation/run/run_20261009_173705_dhnzktx1/node.log) 第 35、43 行；[events.jsonl](navigation/run/run_20261009_173705_dhnzktx1/events.jsonl) 第 312、452 行。
+证据：[node.log](../../navigation/run/run_20261009_173705_dhnzktx1/node.log) 第 35、43 行；[events.jsonl](../../navigation/run/run_20261009_173705_dhnzktx1/events.jsonl) 第 312、452 行。
 
 原因均为 `Live obstacle: stopped; inspect and choose another goal`。两次都在转弯完成、准备再前进时触发，线速度分别仅 **0.0078、0.0054 m/s**；不能描述成“0.50 m/s 高速撞上障碍”。
 
@@ -188,4 +190,4 @@ active samplers with a different type refer to the same texture image unit
 
 判断依据应是：同一路线可以重复到达、停稳后不再恢复旧目标；超时不再无故中断仍在有效前进的路线；实时障碍停车能指出具体障碍证据。未完成这些复测前，可评价为“地图重建成功，点选导航已可用，长路线与局部避障仍需完善”，不宜直接写成比赛全场验收完成。
 
-结构化证据与图示见 [diagnostics/log_review_20261009](diagnostics/log_review_20261009/)。
+结构化证据与图示见 [diagnostics/log_review_20261009](../../diagnostics/log_review_20261009/)。

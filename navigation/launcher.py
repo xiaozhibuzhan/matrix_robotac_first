@@ -30,6 +30,7 @@ def main():
     parser.add_argument('--config',type=Path,default=DEFAULT); parser.add_argument('--map',type=Path)
     parser.add_argument('--drive',action='store_true'); parser.add_argument('--stand-up',action='store_true')
     parser.add_argument('--no-rviz',action='store_true'); parser.add_argument('--use-sim-time',action='store_true')
+    parser.add_argument('--treasure',action='store_true',help='Enable human-selected treasure rounds')
     args=parser.parse_args()
     if args.stand_up and not args.drive: parser.error('--stand-up requires --drive')
     try: cfg,report=inspect(args.config,args.map,drive=args.drive,rviz=not args.no_rviz)
@@ -52,6 +53,7 @@ def main():
     if args.drive: command.append('--drive')
     if args.stand_up: command.append('--stand-up')
     if args.use_sim_time: command.append('--use-sim-time')
+    if args.treasure: command.append('--treasure')
     map_yaml=Path(cfg['map']); map_meta=yaml.safe_load(map_yaml.read_text(encoding='utf-8'))
     report['map_hashes']={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in (map_yaml,map_yaml.parent/map_meta['image'])}
     report.update({'created_utc':datetime.now(timezone.utc).isoformat(),'pid':os.getpid(),'command':command,
@@ -60,6 +62,8 @@ def main():
     print(('DRIVE' if args.drive else 'PREVIEW (no SDK motion)')+' | logs: '+str(run_dir),flush=True)
     print(f"Loaded limits: max_speed={cfg['max_speed']:.2f} m/s, max_yaw_rate={cfg['max_yaw_rate']:.2f} rad/s",flush=True)
     print('Wait for sensors, set 2D Pose Estimate while stopped, then Publish Point. Ctrl+C stops.',flush=True)
+    if args.treasure:
+        print('TREASURE: after localization run python3 -m navigation.treasure_cli new-round; select BOX_ID --radius R, then click box center and approach point.',flush=True)
     node=viewer=None; logs=[]; code=0
     def interrupted(signum,frame): raise KeyboardInterrupt
     old_term=signal.signal(signal.SIGTERM,interrupted)

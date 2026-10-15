@@ -1,0 +1,7 @@
+# Copy verified site settings to treasure_local.yaml first, then merge these.
+map: navigation/maps/field_a_20261009_170749/field_map.yaml
+frame: world
+max_speed: 0.40
+max_yaw_rate: 0.60
+goal_timeout: 300.0
+progress_timeout: 15.0

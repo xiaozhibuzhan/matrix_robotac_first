@@ -1,0 +1,25 @@
+{
+  "scope": "Documentation consolidation only; prior 162-test result is retained, no new Ubuntu acceptance claimed",
+  "superseded_documents_removed": 7,
+  "historical_documents_archived": 5,
+  "active_markdown_files": 10,
+  "links_checked_in_markdown_files": 16,
+  "broken_links": [],
+  "stale_links": [],
+  "non_document_and_protected_files_checked": 301,
+  "changed_files": [],
+  "package": "navigation/updates/task2_treasure_20261015_docs_cleanup.zip",
+  "package_files": 61,
+  "package_sha256": "b57d9b2cfdc96f74559dbed8b1af23bd587691bdc24200edfb8bff05fe5db1b2",
+  "checksum_matches": true,
+  "manifest_errors": [],
+  "non_document_payload_changes_since_selection_fix": [],
+  "excluded_content_found": [],
+  "extracted_install_check_exit": 0,
+  "extracted_install_check": "{\n  \"checked\": 60,\n  \"missing_or_changed\": []\n}",
+  "bash_syntax": {
+    "bash": "D:\\Program_Files\\Git\\bin\\bash.exe",
+    "blocks_checked": 39,
+    "failures": []
+  }
+}

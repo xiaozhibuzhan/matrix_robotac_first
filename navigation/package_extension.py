@@ -7,16 +7,19 @@ import zipfile
 from .configuration import ROOT
 
 
-def main():
+def main(name='task2_point_navigation_20260926.zip'):
     extension=ROOT/'navigation'; folder=extension/'updates'; folder.mkdir(exist_ok=True)
-    destination=folder/'task2_point_navigation_20260926.zip'
+    if Path(name).name!=name or not name.endswith('.zip'):
+        raise ValueError('Package name must be a ZIP basename')
+    destination=folder/name
     files=[]
     for path in sorted(extension.rglob('*')):
         relative=path.relative_to(extension)
-        if any(part in ('run','runs','updates','__pycache__') or part.startswith('.') for part in relative.parts): continue
+        if any(part in ('run','runs','missions','updates','__pycache__') or part.startswith('.') for part in relative.parts): continue
         if path.is_symlink() or not path.is_file(): continue
         if path.suffix not in ('.py','.sh','.yaml','.rviz','.md','.json','.txt','.pgm'): continue
         if path.name=='package_manifest.json': continue
+        if relative.parts[0]=='config' and (path.name=='local.yaml' or path.name.endswith('_local.yaml')): continue
         data=path.read_bytes()
         if path.suffix in ('.py','.sh','.yaml','.rviz','.md','.json','.txt') and bytes([13]) in data:
             raise ValueError(f'Normalize this extension file to LF before packaging: {path}')
@@ -38,4 +41,8 @@ def main():
     print(json.dumps({'archive':str(destination),'files':len(files)+1,'bytes':destination.stat().st_size,'sha256':digest},ensure_ascii=False,indent=2))
 
 
-if __name__=='__main__': main()
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--name',default='task2_point_navigation_20260926.zip')
+    main(parser.parse_args().name)

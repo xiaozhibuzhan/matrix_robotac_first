@@ -45,3 +45,7 @@ navigation/config/local.yaml
 *.mcap
 /mapping/updates/
 /mapping/diagnostics/
+
+navigation/config/*_local.yaml
+
+/navigation/missions/

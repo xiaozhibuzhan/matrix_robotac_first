@@ -1,0 +1,63 @@
+Read-only CashBox bytecode inspection. Columns: VM byte offset / serialized byte offset.
+Ubergraph script begins at BP_CashBox.uexp 0x295; VM length 301, serialized length 337; both checked.
+ReceiveActorBeginOverlap: Ubergraph entry 242
+ReceiveBeginPlay: Ubergraph entry 241
+ReceiveTick: Ubergraph entry 297
+
+000 disk000 PushFlow 298
+005 disk005 ComputedJump
+006 disk006   LocalVar EntryPoint (owner 3)
+015 disk023 SetArray
+016 disk024   LocalVar CallFunc_GetAllActorsOfClass_OutActors (owner 3)
+025 disk041   EndArray
+026 disk042 CallMath GetAllActorsOfClass
+035 disk047   Self
+036 disk048   ObjectConst BP_RobotACSCORE_C
+045 disk053   LocalVar CallFunc_GetAllActorsOfClass_OutActors (owner 3)
+054 disk070   EndParams
+055 disk071 LetBool
+056 disk072   LocalVar CallFunc_Array_IsNotEmpty_ReturnValue (owner 3)
+065 disk089   Context
+066 disk090     ObjectConst Default__KismetArrayLibrary
+                    skip=19, result=CallFunc_Array_IsNotEmpty_ReturnValue (owner 3)
+087 disk115     FinalFunction Array_IsNotEmpty
+096 disk120       LocalVar CallFunc_GetAllActorsOfClass_OutActors (owner 3)
+105 disk137       EndParams
+106 disk138 PopFlowIfNot
+107 disk139   LocalVar CallFunc_Array_IsNotEmpty_ReturnValue (owner 3)
+116 disk156 Context
+117 disk157   Self
+                  skip=14, result= (owner 0)
+130 disk170   VirtualFunction K2_DestroyActor
+143 disk179     EndParams
+144 disk180 Context
+145 disk181   ObjectConst Default__KismetArrayLibrary
+                  skip=33, result= (owner 0)
+166 disk198   FinalFunction Array_Get
+175 disk203     LocalVar CallFunc_GetAllActorsOfClass_OutActors (owner 3)
+184 disk220     Int 0
+189 disk225     LocalVar CallFunc_Array_Get_Item (owner 3)
+198 disk242     EndParams
+199 disk243 Context
+200 disk244   LocalVar CallFunc_Array_Get_Item (owner 3)
+                  skip=14, result= (owner 0)
+221 disk273   LocalVirtualFunction UpdateBoxScore
+234 disk282     EndParams
+235 disk283 PopFlow
+236 disk284 Jump 15
+241 disk289 PopFlow
+242 disk290 CallMath Delay
+251 disk295   Self
+252 disk296   Float 0.5
+257 disk301   StructConst LatentActionInfo size=32
+270 disk310     SkipOffsetConst 236
+275 disk315     Int -944467707
+280 disk320     NameConst ExecuteUbergraph_BP_CashBox
+293 disk329     Self
+294 disk330     EndStruct
+295 disk331   EndParams
+296 disk332 PopFlow
+297 disk333 PopFlow
+298 disk334 Return
+299 disk335   Nothing
+300 disk336 EndScript

@@ -20,8 +20,6 @@ class PackageExtensionTests(unittest.TestCase):
             sources={
                 'navigation/worker.py':b'print("offline fixture")\n',
                 'navigation/config/default.yaml':b'max_speed: 0.2\n',
-                # Preserve the existing local.yaml packaging policy.
-                'navigation/config/local.yaml':b'max_speed: 0.1\n',
                 'navigation/maps/field_map.pgm':b'P5\n1 1\n255\n\r',
             }
             for name,data in sources.items():
@@ -29,6 +27,9 @@ class PackageExtensionTests(unittest.TestCase):
                 path.parent.mkdir(parents=True,exist_ok=True)
                 path.write_bytes(data)
             excluded=(
+                'config/local.yaml',
+                'config/treasure_local.yaml',
+                'missions/round_private.json',
                 'run/run_private/run.json',
                 'run/run_private/config.yaml',
                 'run/run_private/point_navigation.rviz',

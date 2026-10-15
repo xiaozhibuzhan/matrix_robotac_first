@@ -1,17 +1,19 @@
 """ROS2 Humble adapter for RViz clicked-point navigation. Preview is the default."""
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path
 import time
 import numpy as np
-from .configuration import load_config
+from .configuration import ROOT, load_config
 from .core import Navigator
 from .geometry import yaw_of
 from .grid import GridMap
 from .planning import AsyncPlanner
 from .sdk_bridge import SDKBridge
 from .sensors import lidar_points
+from .treasure_session import TreasureSession
 
 
 def _run_ros_node(rclpy, node_factory, ros_args, external_shutdown_exception,
@@ -48,6 +50,7 @@ def main():
     parser.add_argument('--config',required=True); parser.add_argument('--run-dir',required=True)
     parser.add_argument('--drive',action='store_true'); parser.add_argument('--stand-up',action='store_true')
     parser.add_argument('--use-sim-time',action='store_true')
+    parser.add_argument('--treasure',action='store_true',help='Enable explicit treasure-round commands and two-click selection')
     args,ros_args=parser.parse_known_args()
     if args.stand_up and not args.drive: parser.error('--stand-up requires --drive')
     try:
@@ -73,6 +76,7 @@ def main():
         def __init__(self):
             super().__init__('task2_point_navigation',parameter_overrides=[Parameter('use_sim_time',value=args.use_sim_time)])
             self.nav=Navigator(grid,cfg); self.bridge=None; self.bridge_failed=False; self.planner=None
+            self.treasure=None
             self.events=open(run_dir/'events.jsonl','a',encoding='utf-8',buffering=1)
             self.last_state=None; self.last_path=None; self.last_report=0.; self.errors={}
             sensor=QoSProfile(depth=1,reliability=ReliabilityPolicy.BEST_EFFORT,durability=DurabilityPolicy.VOLATILE)
@@ -83,6 +87,10 @@ def main():
             self.pose_pub=self.create_publisher(PoseStamped,'/task2/pose',10)
             self.marker_pub=self.create_publisher(MarkerArray,'/task2/markers',durable)
             self.status_pub=self.create_publisher(String,'/task2/status',durable)
+            if args.treasure:
+                self.treasure_status_pub=self.create_publisher(String,'/task2/treasure/status',durable)
+                self.treasure_ack_pub=self.create_publisher(String,'/task2/treasure/ack',20)
+                self.create_subscription(String,'/task2/treasure/command',self.on_treasure_command,20)
             self.command_pub=self.create_publisher(Twist,'/task2/cmd_vel' if args.drive else '/task2/command_preview',10)
             self.create_subscription(Odometry,cfg['odom_topic'],self.on_odom,sensor)
             self.create_subscription(PointCloud2,cfg['cloud_topic'],self.on_cloud,sensor)
@@ -94,6 +102,14 @@ def main():
             if args.drive:
                 self.bridge=SDKBridge(args.config,run_dir/'sdk.log',args.stand_up)
             self.planner=AsyncPlanner(grid.plan); self.nav.planner=self.planner
+            if args.treasure:
+                source=Path(cfg['map'])
+                import yaml
+                metadata=yaml.safe_load(source.read_text(encoding='utf-8'))
+                digest=hashlib.sha256(source.read_bytes()+(source.parent/metadata['image']).read_bytes()).hexdigest()
+                self.treasure=TreasureSession(self.nav,ROOT/'navigation/missions',
+                    map_hash=digest,map_source=str(source),mode='drive' if args.drive else 'preview',
+                    map_changed=self.replace_treasure_map,event=self.record)
             self.record('startup',{'drive':args.drive,'map':grid.summary(),'config':cfg})
             # A paused /clock must not pause the stop/command freshness timers.
             self.steady_clock=Clock(clock_type=ClockType.STEADY_TIME)
@@ -119,12 +135,18 @@ def main():
             return stamp
 
         def rejected(self,kind,exc,lose=False):
+            selection_preserved=False
+            if self.treasure is not None:
+                if kind=='treasure click' and not self.bridge_failed:
+                    selection_preserved=self.treasure.reject_click(f'{kind}: {exc}',time.monotonic())
+                else:
+                    self.treasure.interrupt(f'{kind}: {exc}')
             self.nav.fail(f'{kind}: {exc}',lose)
             self.send_zero()
             key=(kind,str(exc)); now=time.monotonic()
             if now-self.errors.get(key,-math.inf)>2:
                 self.errors[key]=now; self.get_logger().warning(self.nav.reason)
-                self.record('rejected',{'kind':kind,'reason':str(exc)})
+                self.record('rejected',{'kind':kind,'reason':str(exc),'selection_preserved':selection_preserved})
 
         def on_odom(self,msg):
             try:
@@ -146,6 +168,7 @@ def main():
                 raise ValueError(f'Expected {cfg["frame"]} coordinates, received {msg.header.frame_id!r}; target not transformed silently')
 
         def on_initial(self,msg):
+            if self.treasure is not None: self.treasure.interrupt('Initial pose changed; retry explicitly after alignment')
             self.nav.cancel('Initial pose changed'); self.send_zero()
             try:
                 self.input_frame(msg); p=msg.pose.pose.position; q=msg.pose.pose.orientation
@@ -155,6 +178,28 @@ def main():
             except (ValueError,TypeError) as exc: self.rejected('initial pose',exc,True)
 
         def on_goal(self,msg):
+            if self.treasure is not None:
+                p=msg.point
+                # Record every received click, including invalid height/frame.
+                # Nonfinite input must not break the strict JSON event writer.
+                self.record('treasure_input',{'frame':msg.header.frame_id,
+                    'point':[float(v) if math.isfinite(v) else str(v) for v in (p.x,p.y,p.z)],
+                    'selection_step':self.treasure.snapshot()['selection_step'],
+                    'round_id':self.treasure.mission.round_id})
+                try:
+                    if self.bridge_failed: raise ValueError('SDK worker failed; restart navigation')
+                    self.input_frame(msg)
+                    if not all(math.isfinite(v) for v in (p.x,p.y,p.z)) or abs(p.z-cfg['ground_z'])>.2:
+                        raise ValueError(f"Click the 2D map plane: received z={p.z:.3f} m, expected {cfg['ground_z']:.3f} +/- 0.200 m; hide 3D overlays while selecting")
+                    self.treasure.click((p.x,p.y),time.monotonic())
+                except (ValueError,TypeError) as exc: self.rejected('treasure click',exc)
+                self.publish_treasure_status()
+                self.publish_visuals()
+                snapshot=self.treasure.snapshot()
+                self.get_logger().info('TREASURE: '+json.dumps(
+                    {key:snapshot[key] for key in ('selection_step','reason','navigation_state')},
+                    ensure_ascii=False,allow_nan=False))
+                return
             self.nav.cancel('New goal requested'); self.send_zero()
             try:
                 if self.bridge_failed: raise ValueError('SDK worker failed; restart navigation before driving')
@@ -166,9 +211,44 @@ def main():
             except (ValueError,TypeError) as exc: self.rejected('goal',exc)
 
         def on_cancel(self,request,response):
+            if self.treasure is not None: self.treasure.interrupt('Cancelled by /task2/cancel')
             self.nav.cancel('Cancelled by /task2/cancel'); self.send_zero()
             self.record('cancel',{}); response.success=True; response.message='Goal cleared; zero velocity requested; check measured standstill'
             return response
+
+        def replace_treasure_map(self,updated):
+            self.send_zero()
+            if self.planner is not None: self.planner.close()
+            self.nav.grid=updated
+            self.planner=AsyncPlanner(updated.plan); self.nav.planner=self.planner
+            self.publish_map(updated.occupancy,self.map_pub)
+            self.publish_map(np.where(updated.passable,0,100).astype(np.int8),self.clearance_pub)
+            self.record('treasure_memory_map',{'summary':updated.summary(),'source_file_unchanged':True})
+
+        def on_treasure_command(self,msg):
+            request=None
+            try:
+                if len(msg.data)>4096: raise ValueError('Treasure command is too long')
+                request=json.loads(msg.data)
+                if self.bridge_failed and request.get('action') not in ('status','cancel','skip','finish'):
+                    raise ValueError('SDK worker failed; restart navigation')
+                if request.get('action')!='status': self.send_zero()
+                ack=self.treasure.handle(request,time.monotonic())
+            except (ValueError,TypeError,AttributeError) as exc:
+                ack={'request_id':request.get('request_id','') if isinstance(request,dict) else '',
+                     'success':False,'message':str(exc)}
+            except Exception:
+                try: self.treasure.interrupt('Treasure command/persistence failed')
+                finally: self.send_zero()
+                raise
+            response=String(); response.data=json.dumps(ack,ensure_ascii=False,allow_nan=False)
+            self.treasure_ack_pub.publish(response)
+            self.publish_treasure_status()
+
+        def publish_treasure_status(self):
+            if self.treasure is None: return
+            status=String(); status.data=json.dumps(self.treasure.snapshot(),ensure_ascii=False,allow_nan=False)
+            self.treasure_status_pub.publish(status)
 
         def send_zero(self):
             self.nav.command=(0.,0.)
@@ -179,12 +259,15 @@ def main():
 
         def on_tick(self):
             try:
-                now=time.monotonic(); v,w=self.nav.tick(now)
+                now=time.monotonic()
+                v,w=self.treasure.tick(now) if self.treasure is not None else self.nav.tick(now)
                 if self.bridge is not None and not self.bridge_failed:
                     try: self.bridge.send(v,w)
                     except (OSError,RuntimeError) as exc:
                         self.bridge_failed=True; self.nav.fail('SDK failed: '+str(exc)); v=w=0.
-                if self.bridge_failed: self.nav.fail('SDK worker failed; restart navigation'); v=w=0.
+                if self.bridge_failed:
+                    if self.treasure is not None: self.treasure.interrupt('SDK worker failed; restart navigation')
+                    self.nav.fail('SDK worker failed; restart navigation'); v=w=0.
                 command=Twist(); command.linear.x=float(v); command.angular.z=float(w); self.command_pub.publish(command)
                 state=self.nav.snapshot(); key=(state['state'],state['reason'])
                 if key!=self.last_state or now-self.last_report>=.5:
@@ -193,9 +276,13 @@ def main():
                     self.record('state' if key!=self.last_state else 'trajectory',state)
                     if key!=self.last_state: self.get_logger().info(text.data)
                     self.last_state=key; self.last_report=now
+                    self.publish_treasure_status()
                     self.publish_visuals()
             except Exception:
-                self.nav.fail('Unexpected navigation exception'); self.send_zero()
+                try:
+                    if self.treasure is not None: self.treasure.interrupt('Unexpected treasure/navigation exception')
+                finally:
+                    self.nav.fail('Unexpected navigation exception'); self.send_zero()
                 raise
 
         def publish_visuals(self):
@@ -231,14 +318,36 @@ def main():
                 goal=Marker(); goal.header.frame_id=cfg['frame']; goal.header.stamp=stamp; goal.ns='task2'; goal.id=1; goal.type=Marker.SPHERE; goal.action=Marker.ADD
                 goal.pose.position.x=self.nav.goal[0]; goal.pose.position.y=self.nav.goal[1]; goal.pose.position.z=.12; goal.pose.orientation.w=1.
                 goal.scale.x=goal.scale.y=goal.scale.z=.18; goal.color.r=1.; goal.color.g=.7; goal.color.a=1.; markers.markers.append(goal)
+            if self.treasure is not None:
+                current=self.treasure.mission.current_attempt
+                selected=self.treasure.selection
+                targets=[a for a in self.treasure.mission.snapshot().get('attempts',[]) if a['state']=='CONFIRMED']
+                if selected and selected['center'] is not None: targets.append({**selected,'state':'SELECTED'})
+                elif current and current['state']!='CONFIRMED': targets.append(current)
+                for index,target in enumerate(targets):
+                    marker=Marker(); marker.header.frame_id=cfg['frame']; marker.header.stamp=stamp
+                    marker.ns='treasure_regions'; marker.id=100+index; marker.type=Marker.CYLINDER; marker.action=Marker.ADD
+                    marker.pose.orientation.w=1.; marker.pose.position.x=float(target['center'][0]); marker.pose.position.y=float(target['center'][1])
+                    marker.pose.position.z=.06; marker.scale.x=marker.scale.y=2*target['radius']; marker.scale.z=.06
+                    marker.color.g=1. if target['state']=='CONFIRMED' else .5; marker.color.r=0. if target['state']=='CONFIRMED' else 1.; marker.color.a=.6
+                    markers.markers.append(marker)
+                    label=Marker(); label.header=marker.header; label.ns='treasure_labels'; label.id=200+index
+                    label.type=Marker.TEXT_VIEW_FACING; label.action=Marker.ADD; label.pose.orientation.w=1.
+                    label.pose.position.x=float(target['center'][0]); label.pose.position.y=float(target['center'][1])
+                    label.pose.position.z=.5; label.scale.z=.22; label.color.r=label.color.g=label.color.b=label.color.a=1.
+                    label.text=target['box_id']+': '+target['state']; markers.markers.append(label)
             self.marker_pub.publish(markers)
 
         def close(self):
-            self.nav.cancel('Node shutting down'); self.send_zero()
-            if self.planner is not None: self.planner.close()
-            if self.bridge is not None: self.bridge.close()
-            if not self.events.closed:
-                self.record('shutdown',self.nav.snapshot()); self.events.close()
+            try:
+                if self.treasure is not None: self.treasure.interrupt('Navigation process closing; movement will not resume automatically')
+            finally:
+                self.nav.cancel('Node shutting down'); self.send_zero()
+                if self.planner is not None: self.planner.close()
+                if self.bridge is not None: self.bridge.close()
+                if not self.events.closed:
+                    try: self.record('shutdown',self.nav.snapshot())
+                    finally: self.events.close()
 
     _run_ros_node(rclpy, PointNavigationNode, ros_args, ExternalShutdownException,
                   rclpy_implementation.RCLError)
