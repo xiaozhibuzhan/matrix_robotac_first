@@ -1,0 +1,11 @@
+{
+  "profile": "official_rl_balance_policy_pi_v1",
+  "scope": "Shipped x86_64 native simulation policy only. SDK angular inputs retain the official rad/s names/limits; holding this empirical policy input requires independently stationary native feedback and fresh aligned images. Revalidate the response for any changed firmware, controller, policy or hardware deployment.",
+  "files_sha256": {
+    "deps/zsibot_sdk/lib/zsl-1/x86_64/libmc_sdk_zsl_1_x86_64.so": "c03aa3503a6de49f50871e995221c6695d35320494e8e8d5ddde78a8b026594e",
+    "src/robot_mc/build/export/mc/bin/mc_ctrl": "4fa0c4a364244aa911b137726c36994ed9a1d42009b3b0b61016a2d8409fdea0",
+    "src/robot_mc/build/export/mc/bin/libbiomimetics.so": "aac875366b952ade4d9e5428ad67967e1748d98720d724576f12fd66f735f1ea",
+    "src/robot_mc/build/export/onnx_model_crypto/xg/policy_balancestand_withyaw_0423": "49a7724349f54b1a1a1292a5d34d9da6f6ba8cb1c2f518979972744681be2104",
+    "src/robot_mc/build/export/onnx_model_crypto/xg/odom_balancestand_withyaw_0423": "ccb188a06ebe2f5d10dcddc2b65141fe1b781442344d38b91611f02af1ce8623"
+  }
+}

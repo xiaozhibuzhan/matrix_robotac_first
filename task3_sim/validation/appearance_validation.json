@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-19",
+  "package_version": "0.1.2",
+  "developer_platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.12.3",
+  "unit_tests": {
+    "total": 51,
+    "passed": 48,
+    "skipped": 3,
+    "skips": "POSIX foreground process-group launcher tests; Git Bash actual SIGINT probe passed separately",
+    "command": "python -m unittest discover -s task3_sim/tests -v"
+  },
+  "python310_grammar": {
+    "passed": true,
+    "source_files": 26,
+    "runtime": "Windows Python 3.12.3; this is grammar compatibility, not Ubuntu runtime"
+  },
+  "baseline_synthetic_regression": {
+    "all_passed": true,
+    "cases": 6,
+    "evidence": "runs/appearance_synthetic_regression/validation.json"
+  },
+  "photo_controlled_scenarios": {
+    "all_passed": true,
+    "cases": [
+      {
+        "case": "photo_baseline",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.004750564444256385,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      },
+      {
+        "case": "background_dark",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.004750564444256385,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      },
+      {
+        "case": "background_bright",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.004750564444256385,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      },
+      {
+        "case": "background_tiled",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.004750564444256385,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      },
+      {
+        "case": "sensor_dim",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.0051388833574662765,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      },
+      {
+        "case": "sensor_bright",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.0037497319007136604,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.399999999999971
+      },
+      {
+        "case": "sensor_blur",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.004077648588313812,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.399999999999971
+      },
+      {
+        "case": "sensor_noise",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.0041850645708355946,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.399999999999971
+      },
+      {
+        "case": "sensor_combined",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.004200222519522683,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.399999999999971
+      },
+      {
+        "case": "left_start",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.00471777877069526,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.7999999999999625
+      },
+      {
+        "case": "oblique_target",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.00486793121837347,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      },
+      {
+        "case": "farther_target",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "actual_miss_m": 0.005104140426577906,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.499999999999969
+      },
+      {
+        "case": "beam_blocked",
+        "passed": true,
+        "status": "MISSED",
+        "ring": 3,
+        "actual_miss_m": null,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      },
+      {
+        "case": "tag_out_of_view",
+        "passed": true,
+        "status": "TIMEOUT",
+        "ring": null,
+        "actual_miss_m": null,
+        "detection_frame_fraction": 0.0,
+        "simulation_time_s": 1.0000000000000007
+      },
+      {
+        "case": "no_ammo",
+        "passed": true,
+        "status": "NO_AMMO",
+        "ring": null,
+        "actual_miss_m": null,
+        "detection_frame_fraction": 1.0,
+        "simulation_time_s": 2.349999999999972
+      }
+    ],
+    "evidence": "runs/appearance_validation_20261019/validation.json",
+    "acceptance": "baseline ring10 and miss<=10mm; perturbed visible targets ring>=9 and miss<=20mm; preserve one-shot ammo and no-fire/occlusion behavior",
+    "limits": "15 fixed real-render scenarios; one artwork/background and deterministic noise seeds. Not statistical or real-world robustness proof."
+  },
+  "bounded_gui": {
+    "command": "python -m task3_sim --config task3_sim/config/photo_target.json --show --viewer --realtime --hold-seconds 2",
+    "process_exit_code": 0,
+    "status": "SUCCESS",
+    "ring": 10,
+    "actual_miss_m": 0.004750564444256385,
+    "simulation_time_s": 2.349999999999972,
+    "shutdown_completed": true,
+    "cleanup_errors": [],
+    "screenshot": "runs/appearance_gui_bounded/overview.png",
+    "evidence": "runs/appearance_gui_bounded/summary.json",
+    "observer_azimuth_deg": 45,
+    "visual_review": "Dog, target front and background visible; both native side panels hidden"
+  },
+  "signal_fix_evidence": "validation/interrupt_validation.json",
+  "artwork": {
+    "tag_family": "tag36h11",
+    "tag_id": 2,
+    "tag_black_edge_m": 0.16,
+    "physical_scale": "assumed, not measured",
+    "original_files_preserved": true,
+    "marker_replaced": false,
+    "calibration": "assets/provenance.json",
+    "low_resolution_corner_uncertainty": "up to 1.25 source pixels (~2.7mm under assumed scale)",
+    "score_comparison": "New10-ring semiaxes about45.5/50.2mm vs old20mm; compare actual miss instead of score"
+  },
+  "preservation": {
+    "unchanged": true,
+    "files_checked": 1189,
+    "sha256_files": 1181,
+    "metadata_only_files": 8,
+    "scope": "Defined preserve.py paths; not every UE binary",
+    "evidence": "runs/appearance_preservation_after.json"
+  },
+  "ubuntu": {
+    "previous_fix1_runtime_tested": true,
+    "previous_evidence": "validation/ubuntu_fix1_review.json",
+    "this_image_version_runtime_tested": false,
+    "required_acceptance": "headless exit0; dual-window result hold; post-result Ctrl+C exit0; photo validation; POSIX launcher tests"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "description": "Single-target milestone. Synthetic target dimensions and rendering intrinsics; camera/laser mounting initially follows demo/config/config.yaml. Kinematic base, not a gait controller.",
+  "camera": {
+    "width": 960, "height": 720,
+    "fx": 650.0, "fy": 650.0, "cx": 480.0, "cy": 360.0,
+    "position_base_m": [0.3, 0.0, -0.05185],
+    "rotation_base_from_camera": [[0.0, 0.258819045102521, 0.965925826289068], [-1.0, 0.0, 0.0], [0.0, -0.965925826289068, 0.258819045102521]]
+  },
+  "laser": {
+    "origin_base_m": [0.0, 0.0, 0.060122496627693],
+    "direction_base": [0.999515577500871, 0.021076058314450, 0.022900002162161]
+  },
+  "tag": {
+    "family": "tag36h11", "id": 0, "size_m": 0.16,
+    "bullseye_offset_tag_m": [0.0, 0.20, 0.0],
+    "min_decision_margin": 40.0, "max_reprojection_error_px": 2.0,
+    "detector_threads": 2, "quad_decimate": 1.0
+  },
+  "control": {
+    "yaw_kp": 1.5, "pitch_kp": 1.5,
+    "max_yaw_rate_rad_s": 0.35, "max_pitch_rate_rad_s": 0.18,
+    "aim_tolerance_m": 0.008, "stable_duration_s": 0.4,
+    "max_gyro_rad_s": 0.02, "max_speed_m_s": 0.01,
+    "max_frame_age_s": 0.15, "max_feedback_age_s": 0.15,
+    "max_pitch_rad": 0.3490658503988659
+  },
+  "simulation": {
+    "frame_rate_hz": 20.0, "integration_step_s": 0.005,
+    "velocity_time_constant_s": 0.12, "command_timeout_s": 0.25,
+    "initial_position_m": [0.0, 0.0, 0.27],
+    "initial_rpy_rad": [0.0, 0.04, 0.16],
+    "target_center_world_m": [2.5, 0.25, 0.50],
+    "target_yaw_rad": 0.0,
+    "board_width_m": 0.40, "board_height_m": 0.50,
+    "board_center_down_m": -0.07,
+    "ring_radii_m": [0.02, 0.04, 0.06, 0.08, 0.10],
+    "ammo_count": 5,
+    "obstacles": []
+  }
+}

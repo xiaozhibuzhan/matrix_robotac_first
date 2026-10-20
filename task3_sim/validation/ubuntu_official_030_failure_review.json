@@ -1,0 +1,180 @@
+{
+  "schema": "task3.ubuntu_official_030_failure_review.v1",
+  "review_date": "2026-10-19",
+  "native_acceptance_passed": false,
+  "read_only_evidence_review": true,
+  "acceptance_directory": "task3_sim/runs_ubuntu/official_acceptance_20261019_202032_5059",
+  "acceptance": {
+    "declared_passed": false,
+    "unit_tests_run": 213,
+    "unit_tests_passed": 209,
+    "failures": 1,
+    "errors": 3,
+    "first_failed_phase": "unit_tests",
+    "preflight_phase": "not_started",
+    "vision_phase": "not_started",
+    "native_cases": "all_not_started",
+    "cause": "Disposable fake ELF bridge in unit tests lacked POSIX owner execute mode. Windows X_OK behavior hid the fixture defect; Linux correctly rejected it before fake child launch.",
+    "real_bridge_permission_failure": false,
+    "real_bridge_build": "External terminal shows GNU 11.4 build and native preflight succeeded.",
+    "affected_tests": [
+      "ERROR: test_dead_child_reports_its_log_and_close_only_owns_its_pids (test_official_runtime.RuntimeTests)",
+      "ERROR: test_start_subscriber_before_physics_and_controller_with_official_cwd (test_official_runtime.RuntimeTests)",
+      "ERROR: test_unresponsive_owned_child_gets_only_its_own_kill (test_official_runtime.RuntimeTests)",
+      "FAIL: test_bridge_failure_starts_no_physics_or_controller (test_official_runtime.RuntimeTests)"
+    ]
+  },
+  "native_runs": [
+    {
+      "directory": "official_20261019_201947_4851",
+      "status": "ERROR",
+      "primary_error": "Official SDK connection timeout",
+      "wall_time_s": 27.557701549000058,
+      "actual_cli_exit": 2,
+      "preflight_ready": true,
+      "source_packets_accepted": 945,
+      "traced_control_physics_samples": 0,
+      "sdk_command_events": 0,
+      "shot_count": 0,
+      "cleanup_finished": true,
+      "cleanup_errors": [],
+      "process_exit_codes": {
+        "official_state_bridge": 0,
+        "robot_mujoco": 0,
+        "mc_ctrl": -6
+      },
+      "source_preservation": {
+        "source_copy_count": 703,
+        "local_source_hashes_checked": 703,
+        "mismatches": [
+          "/home/xiaozhibuzhan/robotac/matrix_robotac_first/src/robot_mc/build/export/mile_data.txt"
+        ],
+        "unavailable_count": 0,
+        "immutable_source_hash_matches": 702,
+        "cross_host_mileage_note": "Only mile_data.txt differs from this Windows copy; this is official controller mileage state and can vary across hosts. The captured runtime separately reports its original Ubuntu source files unchanged. No static official executable/model/library mismatch was found.",
+        "captured_sources_unchanged": true
+      },
+      "observations": {
+        "python_fault_log_empty": true,
+        "native_controller_terminate_message": true,
+        "simulator_logs_SIGINT_or_SIGTERM": true,
+        "controller_tail_saves_before_terminate": true,
+        "actual_controller_client_ips": [
+          "192.168.234.1"
+        ],
+        "sdk_initialization_error_lines": [
+          "bind: Cannot assign requested address",
+          "bind: Cannot assign requested address",
+          "sdk init failed!"
+        ]
+      },
+      "failure_timing_assessment": "SDK connection timeout was the reported primary exception and triggered cleanup. robot_mujoco exited normally with explicit signal-handler shutdown. mc_ctrl ultimately died by SIGABRT (-6); save/terminate tail is consistent with cleanup-time native teardown, but missing pre-cleanup poll means a prior controller abort cannot be ruled out. It is incorrect to call this a Python crash or prove mc_ctrl abort caused the initial timeout.",
+      "failure_cause": "Official mc_ctrl server attempted to bind absent 192.168.234.1 because staged sdk_config target_ip only describes the client feedback endpoint. The official binary separately reads SDK_CLIENT_IP for its own bind interface; the new runtime supplies loopback only to its children."
+    },
+    {
+      "directory": "official_20261019_202255_5304",
+      "status": "ERROR",
+      "primary_error": "Official SDK connection timeout",
+      "wall_time_s": 26.739245941000036,
+      "actual_cli_exit": 2,
+      "preflight_ready": true,
+      "source_packets_accepted": 947,
+      "traced_control_physics_samples": 0,
+      "sdk_command_events": 0,
+      "shot_count": 0,
+      "cleanup_finished": true,
+      "cleanup_errors": [],
+      "process_exit_codes": {
+        "official_state_bridge": 0,
+        "robot_mujoco": 0,
+        "mc_ctrl": -6
+      },
+      "source_preservation": {
+        "source_copy_count": 703,
+        "local_source_hashes_checked": 703,
+        "mismatches": [
+          "/home/xiaozhibuzhan/robotac/matrix_robotac_first/src/robot_mc/build/export/mile_data.txt"
+        ],
+        "unavailable_count": 0,
+        "immutable_source_hash_matches": 702,
+        "cross_host_mileage_note": "Only mile_data.txt differs from this Windows copy; this is official controller mileage state and can vary across hosts. The captured runtime separately reports its original Ubuntu source files unchanged. No static official executable/model/library mismatch was found.",
+        "captured_sources_unchanged": true
+      },
+      "observations": {
+        "python_fault_log_empty": true,
+        "native_controller_terminate_message": true,
+        "simulator_logs_SIGINT_or_SIGTERM": true,
+        "controller_tail_saves_before_terminate": true,
+        "actual_controller_client_ips": [
+          "192.168.234.1"
+        ],
+        "sdk_initialization_error_lines": [
+          "bind: Cannot assign requested address",
+          "bind: Cannot assign requested address",
+          "sdk init failed!"
+        ]
+      },
+      "failure_timing_assessment": "SDK connection timeout was the reported primary exception and triggered cleanup. robot_mujoco exited normally with explicit signal-handler shutdown. mc_ctrl ultimately died by SIGABRT (-6); save/terminate tail is consistent with cleanup-time native teardown, but missing pre-cleanup poll means a prior controller abort cannot be ruled out. It is incorrect to call this a Python crash or prove mc_ctrl abort caused the initial timeout.",
+      "failure_cause": "Official mc_ctrl server attempted to bind absent 192.168.234.1 because staged sdk_config target_ip only describes the client feedback endpoint. The official binary separately reads SDK_CLIENT_IP for its own bind interface; the new runtime supplies loopback only to its children."
+    }
+  ],
+  "conclusion": "Official dependencies and state publication started, but both actual controller logs show client_ip 192.168.234.1, two Cannot assign requested address bind failures, and sdk init failed. The simulator-side controller SDK therefore did not initialize, explaining client connection timeout before standUp/image control/gait/firing. No native gait or mission acceptance has been achieved.",
+  "fixes": {
+    "unit_fixture": "POSIX executable mode and execute-denial regression owned by official_dynamics_research.",
+    "acceptance_reporting": "Per-phase exit/status, skipped phases, first failed phase, expanded diagnostics, and evidence-consistent final exit added.",
+    "runtime_diagnostics_recommendation": "Record each owned child poll status immediately before cleanup and the specific signal sent. Preserve -6 as native abort; never silently accept it as clean exit."
+  },
+  "limitations": [
+    "Current audit host is Windows. No new Linux native run was performed.",
+    "Existing 0.3.0 records have no pre-cleanup poll/signal ledger, so the exact timing of controller SIGABRT cannot be proven.",
+    "Empty Python fault.log does not rule out an abort in a separate native controller process."
+  ],
+  "acceptance_script_verification": {
+    "embedded_python_blocks_compile": true,
+    "aggregation_cases": [
+      {
+        "case": "unit_tests",
+        "passed": true,
+        "fixture_only": true
+      },
+      {
+        "case": "official_dependency_preflight",
+        "passed": true,
+        "fixture_only": true
+      },
+      {
+        "case": "vision_15_fixed_plus_20_random",
+        "passed": true,
+        "fixture_only": true
+      },
+      {
+        "case": "native_nominal",
+        "passed": true,
+        "fixture_only": true
+      },
+      {
+        "case": "all_reported_pass",
+        "passed": true,
+        "fixture_only": true
+      },
+      {
+        "case": "inconsistent_evidence",
+        "passed": true,
+        "fixture_only": true
+      }
+    ],
+    "bash_executed": false,
+    "reason": "Whole native acceptance was not executed on this Windows audit host; Bash syntax and embedded aggregation logic were checked.",
+    "bash_syntax_check_passed": true,
+    "bash_syntax_tool": "D:/Program_Files/Git/bin/bash.exe -n task3_sim/accept_official_ubuntu.sh",
+    "ordered_stages": "unit tests -> dependency preflight -> three predeclared native cases -> 35 vision cases -> evidence summary"
+  },
+  "evidence_sha256": {
+    "task3_sim\\runs_ubuntu\\official_acceptance_20261019_202032_5059\\unit_tests.log": "9efe9da13fec1604c471f6588af8319ea0b8d87ec159df2376d514a3f87cb0ac",
+    "task3_sim\\runs_ubuntu\\official_acceptance_20261019_202032_5059\\acceptance.json": "fc20b72bb73b348536b3e51e05bd54bc32932efc8de2f65979933270f48da34e"
+  },
+  "external_terminal_record": {
+    "path": "E:/各种比赛/robortac/offical_300",
+    "sha256": "f33cbcac6f826fa1cb3e5522cd06eb75064ab3753e426ec9d40598f7e59a5387"
+  }
+}

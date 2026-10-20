@@ -1,0 +1,836 @@
+{
+  "schema": "task3.ubuntu_official_no_fire_review.v1",
+  "audit_only": true,
+  "source_files_modified": false,
+  "native_acceptance_passed": false,
+  "selection": {
+    "rule": "Summary package_version 0.3.1 plus latest encoded official run date/time; filesystem copy mtime is ignored.",
+    "selected_run": "official_20261019_211859_3364",
+    "summary_package_version": "0.3.1",
+    "original_ubuntu_output": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/runs/official_20261019_211859_3364",
+    "candidate_runs": [
+      "official_20261019_211859_3364"
+    ]
+  },
+  "outcome": {
+    "status": "FAILED",
+    "mission_status": "FAILED",
+    "shot_count": 0,
+    "ammo_remaining": 5,
+    "total_score": 0,
+    "event_time_start_s": 15.076432916999977,
+    "event_time_end_s": 226.30456068799998,
+    "wall_time_including_result_hold_and_cleanup_s": 342.669582958,
+    "active_mission_including_target_switches_s": 210.50547977399998
+  },
+  "criteria": {
+    "aim_tolerance_m": 0.008,
+    "stable_duration_s": 0.4,
+    "max_frame_age_s": 0.15,
+    "max_feedback_age_s": 0.15,
+    "max_gyro_rad_s": 0.02,
+    "max_speed_m_s": 0.01,
+    "target_timeout_s": 70.0
+  },
+  "event_counts": {
+    "all": 1569,
+    "states": {
+      "WAIT": 1,
+      "PROBING": 4,
+      "SEARCHING": 77,
+      "AIMING": 1476,
+      "MODE_TRANSITION": 6,
+      "SWITCHING": 4,
+      "FAILED": 1
+    },
+    "frame_not_delivered": 0,
+    "invalid_feedback": 0,
+    "frame_age_s": {
+      "min": 0.03271124399999792,
+      "p50": 0.05285491999998726,
+      "p95": 0.06396342179997987,
+      "max": 0.3878603659999804
+    },
+    "feedback_age_s": {
+      "min": 0.00028009399994743944,
+      "p50": 0.0055383839999834095,
+      "p95": 0.010394938599987568,
+      "max": 0.01120117699997536
+    },
+    "frame_stale_count": 1,
+    "official_fire_gate_count": 0
+  },
+  "targets": [
+    {
+      "id": 2,
+      "state": "FAILED",
+      "reason": "target_timeout",
+      "attempts": 0,
+      "ring": 0,
+      "active_since_s": 15.799080914000001,
+      "finished_at_s": 85.81671974699998,
+      "active_duration_s": 70.01763883299998,
+      "states": {
+        "PROBING": 4,
+        "SEARCHING": 26,
+        "AIMING": 540,
+        "MODE_TRANSITION": 1,
+        "SWITCHING": 1
+      },
+      "reasons": {
+        "stationary fresh-image probe; identity must be visually decoded": 4,
+        "shortest-angle turn to public_direction_prior_identity_unknown": 26,
+        "correcting image-derived laser/target error": 540,
+        "official mode transition completed; waiting for a new image": 1,
+        "target_timeout": 1
+      },
+      "search_travel_rad": 1.6405489406426879,
+      "search_probes": [
+        {
+          "timestamp": 15.799080914000001,
+          "yaw_rad": -0.0017571770043615998,
+          "source": "public_direction_prior_identity_unknown",
+          "direction_index": 0
+        },
+        {
+          "timestamp": 16.26303877800001,
+          "yaw_rad": 1.569039149790535,
+          "source": "public_direction_prior_identity_unknown",
+          "direction_index": 1
+        }
+      ],
+      "geometry_error_m": {
+        "min": 0.010921461843608402,
+        "p50": 0.05463965442740001,
+        "p95": 0.061650996187119965,
+        "max": 1.428194149087621
+      },
+      "samples_within_8mm": 0,
+      "unreachable_count": 0,
+      "best_aim_sample": {
+        "time_s": 28.391645358999995,
+        "error_norm_m": 0.010921461843608402,
+        "error_tag_xy_m": [
+          -0.004995262528911075,
+          -0.009712140910666977
+        ],
+        "session_mode": "attitude"
+      },
+      "aim_frame_age_s": {
+        "min": 0.03432796100003088,
+        "p50": 0.05204428499996183,
+        "p95": 0.06298707399997061,
+        "max": 0.07245383699999053
+      },
+      "aim_feedback_age_s": {
+        "min": 0.00030641599996528157,
+        "p50": 0.00557320000000594,
+        "p95": 0.010478506949984201,
+        "max": 0.010982819999966864
+      },
+      "aim_fresh_frame_and_feedback_count": 540,
+      "decoded_intended_tag_quality": {
+        "count": 540,
+        "decision_margin": {
+          "min": 104.5195083618164,
+          "p50": 106.71156311035156,
+          "p95": 107.10612297058105,
+          "max": 108.62564849853516
+        },
+        "reprojection_error_px": {
+          "min": 0.0030375750328028705,
+          "p50": 0.0367925903888702,
+          "p95": 0.06159955124313253,
+          "max": 0.13173464469781632
+        },
+        "hamming_nonzero": 0
+      },
+      "requested_aim_commands": {
+        "yaw_rate_rad_s": {
+          "min": -0.021842724582208616,
+          "p50": -0.016019494691053668,
+          "p95": 0.0028742199335661006,
+          "max": 0.35
+        },
+        "pitch_rate_rad_s": {
+          "min": -0.03523430834599691,
+          "p50": -0.026383918899663482,
+          "p95": -0.015310821768572014,
+          "max": 0.03636423208901859
+        }
+      },
+      "applied_aim_commands": {
+        "yaw_rate_rad_s": {
+          "min": -0.021842724582208616,
+          "p50": -0.016019494691053668,
+          "p95": 0.0028742199335661006,
+          "max": 0.35
+        },
+        "pitch_rate_rad_s": {
+          "min": -0.03132955760814095,
+          "p50": -0.02638388907033739,
+          "p95": -0.008824312415164475,
+          "max": 0.03636423208901859
+        }
+      },
+      "tail_20_seconds": {
+        "start_s": 65.782417431,
+        "end_s": 85.69873745999996,
+        "aim_event_count": 175,
+        "physical_trace_samples": 1182,
+        "geometry_error_m": {
+          "min": 0.05460565016077781,
+          "p50": 0.05462586185286937,
+          "p95": 0.05465162818476276,
+          "max": 0.05465513744711011
+        },
+        "last_error_m": 0.05461742173190901,
+        "last_error_tag_xy_m": [
+          0.02739250353493006,
+          -0.047251597927795534
+        ],
+        "median_command": {
+          "yaw_rate_rad_s": -0.01599029417530772,
+          "pitch_rate_rad_s": -0.026387831049852484
+        },
+        "feedback_rpy_span_rad": [
+          2.4163184309637653e-06,
+          7.899057700781233e-06,
+          1.9794751265456156e-05
+        ],
+        "physical_joint_q_span_rad": [
+          9.192200000000816e-06,
+          3.254400000007873e-05,
+          9.300000000100894e-06,
+          1.177200000000711e-05,
+          3.659699999991606e-05,
+          1.5019999999976719e-05,
+          2.6611599999996904e-05,
+          4.035199999996575e-05,
+          3.469000000011491e-05,
+          2.2097999999998175e-05,
+          7.230099999999684e-05,
+          1.0489999999974131e-05
+        ],
+        "physical_joint_qd_abs_max_rad_s": 3.15655452e-05,
+        "feedback_gyro_norm_rad_s": {
+          "min": 3.008130545755407e-07,
+          "p50": 4.3160623686640865e-06,
+          "p95": 1.5081510515333792e-05,
+          "max": 1.9700030547747303e-05
+        },
+        "feedback_speed_norm_m_s": {
+          "min": 7.780965562575611e-08,
+          "p50": 7.334942985387333e-07,
+          "p95": 2.449400211165715e-06,
+          "max": 3.287518888200819e-06
+        },
+        "fresh_and_stationary_count": 175
+      }
+    },
+    {
+      "id": 5,
+      "state": "FAILED",
+      "reason": "target_timeout",
+      "attempts": 0,
+      "ring": 0,
+      "active_since_s": 86.05113203100001,
+      "finished_at_s": 156.05310239099998,
+      "active_duration_s": 70.00197035999997,
+      "states": {
+        "MODE_TRANSITION": 3,
+        "SEARCHING": 24,
+        "AIMING": 449,
+        "SWITCHING": 1
+      },
+      "reasons": {
+        "official mode transition completed; waiting for a new image": 3,
+        "shortest-angle turn to image_derived_bearing": 24,
+        "correcting image-derived laser/target error": 449,
+        "target_timeout": 1
+      },
+      "search_travel_rad": 1.6558949551343316,
+      "search_probes": [
+        {
+          "timestamp": 86.05113203100001,
+          "yaw_rad": -0.006655568679061458,
+          "source": "image_derived_bearing",
+          "direction_index": null
+        }
+      ],
+      "geometry_error_m": {
+        "min": 0.10866175420557846,
+        "p50": 0.16593107035255186,
+        "p95": 0.19488239478833755,
+        "max": 1.6417257898959692
+      },
+      "samples_within_8mm": 0,
+      "unreachable_count": 0,
+      "best_aim_sample": {
+        "time_s": 106.96997696400001,
+        "error_norm_m": 0.10866175420557846,
+        "error_tag_xy_m": [
+          0.10039899936083312,
+          -0.04156221546521526
+        ],
+        "session_mode": "attitude"
+      },
+      "aim_frame_age_s": {
+        "min": 0.03271124399999792,
+        "p50": 0.05339588299995057,
+        "p95": 0.0639045733999751,
+        "max": 0.07288099199996623
+      },
+      "aim_feedback_age_s": {
+        "min": 0.0003391740000182608,
+        "p50": 0.005462729000015543,
+        "p95": 0.010433051399988357,
+        "max": 0.011115021999955843
+      },
+      "aim_fresh_frame_and_feedback_count": 449,
+      "decoded_intended_tag_quality": {
+        "count": 449,
+        "decision_margin": {
+          "min": 119.53125,
+          "p50": 119.53125,
+          "p95": 119.53125,
+          "max": 119.53125
+        },
+        "reprojection_error_px": {
+          "min": 0.0016532292139885395,
+          "p50": 0.06325840013036461,
+          "p95": 0.13037274306218163,
+          "max": 0.1733655653596503
+        },
+        "hamming_nonzero": 0
+      },
+      "requested_aim_commands": {
+        "yaw_rate_rad_s": {
+          "min": -0.35,
+          "p50": -0.09351252903350393,
+          "p95": -0.08597472195183402,
+          "max": -0.058214406620547506
+        },
+        "pitch_rate_rad_s": {
+          "min": -0.032138252974544125,
+          "p50": -0.01614844021571158,
+          "p95": -0.003117297790932701,
+          "max": 0.05130021852587714
+        }
+      },
+      "applied_aim_commands": {
+        "yaw_rate_rad_s": {
+          "min": -0.35,
+          "p50": -0.09351252903350393,
+          "p95": -0.08597472195183402,
+          "max": -0.058214406620547506
+        },
+        "pitch_rate_rad_s": {
+          "min": -0.02662403204441314,
+          "p50": -0.016132268611903082,
+          "p95": 0.0,
+          "max": 0.05130021852587714
+        }
+      },
+      "tail_20_seconds": {
+        "start_s": 135.97422963099996,
+        "end_s": 155.941625509,
+        "aim_event_count": 175,
+        "physical_trace_samples": 1173,
+        "geometry_error_m": {
+          "min": 0.16302036565631192,
+          "p50": 0.16454140739199563,
+          "p95": 0.1658607049032753,
+          "max": 0.1660805355730077
+        },
+        "last_error_m": 0.16440227847137276,
+        "last_error_tag_xy_m": [
+          0.16146898550018796,
+          -0.030917242569784384
+        ],
+        "median_command": {
+          "yaw_rate_rad_s": -0.09301395176939226,
+          "pitch_rate_rad_s": -0.016026848332833507
+        },
+        "feedback_rpy_span_rad": [
+          8.438239312320156e-05,
+          0.0005543823121831101,
+          0.0006407764543902641
+        ],
+        "physical_joint_q_span_rad": [
+          0.00024803360000000274,
+          0.0008043050000000607,
+          0.0005830599999998576,
+          0.00023205499999998103,
+          0.0005493169999999381,
+          0.0007017899999999244,
+          0.0002950951000000035,
+          0.0015751130000000169,
+          0.0009891999999998013,
+          0.0005260334000000005,
+          0.0013281099999999935,
+          0.0007540000000001434
+        ],
+        "physical_joint_qd_abs_max_rad_s": 0.00199574768,
+        "feedback_gyro_norm_rad_s": {
+          "min": 1.0566643280364867e-05,
+          "p50": 0.0005804848507617726,
+          "p95": 0.0010172067551369195,
+          "max": 0.0011612426223690316
+        },
+        "feedback_speed_norm_m_s": {
+          "min": 2.2894413800073504e-06,
+          "p50": 7.041655398574711e-05,
+          "p95": 0.0001230072481017087,
+          "max": 0.00014962099863600375
+        },
+        "fresh_and_stationary_count": 175
+      }
+    },
+    {
+      "id": 9,
+      "state": "FAILED",
+      "reason": "target_timeout",
+      "attempts": 0,
+      "ring": 0,
+      "active_since_s": 156.258994803,
+      "finished_at_s": 226.30456068799998,
+      "active_duration_s": 70.04556588499997,
+      "states": {
+        "MODE_TRANSITION": 2,
+        "SEARCHING": 27,
+        "AIMING": 487,
+        "FAILED": 1
+      },
+      "reasons": {
+        "official mode transition completed; waiting for a new image": 2,
+        "shortest-angle turn to public_direction_prior_identity_unknown": 27,
+        "correcting image-derived laser/target error": 487,
+        "target_timeout": 1
+      },
+      "search_travel_rad": 1.7084367855365739,
+      "search_probes": [
+        {
+          "timestamp": 156.258994803,
+          "yaw_rad": -1.5725535037992582,
+          "source": "public_direction_prior_identity_unknown",
+          "direction_index": 2
+        }
+      ],
+      "geometry_error_m": {
+        "min": 0.10054246628577308,
+        "p50": 0.15796951078361648,
+        "p95": 0.18506658693812555,
+        "max": 1.58423951095392
+      },
+      "samples_within_8mm": 0,
+      "unreachable_count": 0,
+      "best_aim_sample": {
+        "time_s": 172.78863367599996,
+        "error_norm_m": 0.10054246628577308,
+        "error_tag_xy_m": [
+          0.09151587720868573,
+          -0.0416369036498942
+        ],
+        "session_mode": "attitude"
+      },
+      "aim_frame_age_s": {
+        "min": 0.03448131599998305,
+        "p50": 0.05256062700001962,
+        "p95": 0.06402694469997527,
+        "max": 0.07180369299999256
+      },
+      "aim_feedback_age_s": {
+        "min": 0.00028009399994743944,
+        "p50": 0.005581402999979446,
+        "p95": 0.010158629999946812,
+        "max": 0.01120117699997536
+      },
+      "aim_fresh_frame_and_feedback_count": 487,
+      "decoded_intended_tag_quality": {
+        "count": 487,
+        "decision_margin": {
+          "min": 119.53125,
+          "p50": 119.53125,
+          "p95": 119.53125,
+          "max": 119.53125
+        },
+        "reprojection_error_px": {
+          "min": 0.001543024642327091,
+          "p50": 0.0637427201793745,
+          "p95": 0.12160894950549869,
+          "max": 0.15477692853689956
+        },
+        "hamming_nonzero": 0
+      },
+      "requested_aim_commands": {
+        "yaw_rate_rad_s": {
+          "min": -0.35,
+          "p50": -0.08952814419647073,
+          "p95": -0.08299082613463536,
+          "max": -0.053206589478717314
+        },
+        "pitch_rate_rad_s": {
+          "min": -0.030915023846321874,
+          "p50": -0.0164579476485541,
+          "p95": -0.003642144380227428,
+          "max": 0.052036350087291613
+        }
+      },
+      "applied_aim_commands": {
+        "yaw_rate_rad_s": {
+          "min": -0.35,
+          "p50": -0.08952814419647073,
+          "p95": -0.08299082613463536,
+          "max": -0.053206589478717314
+        },
+        "pitch_rate_rad_s": {
+          "min": -0.026679729313063692,
+          "p50": -0.01643298104759547,
+          "p95": -0.00010978010451808181,
+          "max": 0.052036350087291613
+        }
+      },
+      "tail_20_seconds": {
+        "start_s": 206.30323105399998,
+        "end_s": 226.203653342,
+        "aim_event_count": 176,
+        "physical_trace_samples": 1185,
+        "geometry_error_m": {
+          "min": 0.15562852928936818,
+          "p50": 0.15778024004544278,
+          "p95": 0.15818669054874684,
+          "max": 0.16678734741030796
+        },
+        "last_error_m": 0.15573844603209014,
+        "last_error_tag_xy_m": [
+          0.15260747279949985,
+          -0.031071253889087984
+        ],
+        "median_command": {
+          "yaw_rate_rad_s": -0.0892408203615461,
+          "pitch_rate_rad_s": -0.01643501247964145
+        },
+        "feedback_rpy_span_rad": [
+          0.00012116947513301016,
+          0.0010234247341771169,
+          0.00027218331716838406
+        ],
+        "physical_joint_q_span_rad": [
+          0.00028441469999999913,
+          0.00047797000000004974,
+          0.001415499999999792,
+          0.0001807060000000027,
+          0.0002853280000000291,
+          0.0012791100000000277,
+          0.00026764719999999853,
+          0.0013657810000000659,
+          0.0011498899999999868,
+          0.0003120898999999927,
+          0.0013984439999999987,
+          0.0013583799999998813
+        ],
+        "physical_joint_qd_abs_max_rad_s": 0.00717461249,
+        "feedback_gyro_norm_rad_s": {
+          "min": 1.8729994230937487e-05,
+          "p50": 0.000341609258288937,
+          "p95": 0.0018010843257419977,
+          "max": 0.0032720885195613317
+        },
+        "feedback_speed_norm_m_s": {
+          "min": 3.313440406590212e-06,
+          "p50": 4.297053215091154e-05,
+          "p95": 0.00023856913697439938,
+          "max": 0.00040276420269623724
+        },
+        "fresh_and_stationary_count": 176
+      }
+    }
+  ],
+  "sdk_and_physics": {
+    "sdk_event_count": 1588,
+    "kinds": {
+      "connected": 1,
+      "stationary_confirmed": 14,
+      "sdk_result": 1573
+    },
+    "operations": {
+      "standUp": 7,
+      "move": 115,
+      "attitudeControl": 1451
+    },
+    "result_codes": {
+      "0": 1573
+    },
+    "session_modes": {
+      "standing": 11,
+      "move": 112,
+      "attitude": 1446
+    },
+    "mode_transitions": [
+      {
+        "target_id": 2,
+        "time_s": 20.61038748599998,
+        "requested_mode": "attitude",
+        "duration_s": 5.299532943999964,
+        "result_session_mode": "standing",
+        "applied_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": 0.0,
+          "pitch_rate_rad_s": 0.0
+        },
+        "geometry_yaw_error_rad": 0.06715903428024578
+      },
+      {
+        "target_id": 5,
+        "time_s": 86.05113203100001,
+        "requested_mode": "move",
+        "duration_s": 4.57534885900003,
+        "result_session_mode": "standing",
+        "applied_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": 0.0,
+          "pitch_rate_rad_s": 0.0
+        },
+        "geometry_yaw_error_rad": null
+      },
+      {
+        "target_id": 5,
+        "time_s": 94.918085991,
+        "requested_mode": "attitude",
+        "duration_s": 5.238460363999991,
+        "result_session_mode": "standing",
+        "applied_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": 0.0,
+          "pitch_rate_rad_s": 0.0
+        },
+        "geometry_yaw_error_rad": -0.07886083816615141
+      },
+      {
+        "target_id": 5,
+        "time_s": 100.38087214299998,
+        "requested_mode": "move",
+        "duration_s": 5.535100261000025,
+        "result_session_mode": "standing",
+        "applied_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": 0.0,
+          "pitch_rate_rad_s": 0.0
+        },
+        "geometry_yaw_error_rad": -0.08378135639902055
+      },
+      {
+        "target_id": 9,
+        "time_s": 156.258994803,
+        "requested_mode": "move",
+        "duration_s": 5.384261796999965,
+        "result_session_mode": "standing",
+        "applied_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": 0.0,
+          "pitch_rate_rad_s": 0.0
+        },
+        "geometry_yaw_error_rad": null
+      },
+      {
+        "target_id": 9,
+        "time_s": 166.36555387799996,
+        "requested_mode": "attitude",
+        "duration_s": 5.365818200000035,
+        "result_session_mode": "standing",
+        "applied_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": 0.0,
+          "pitch_rate_rad_s": 0.0
+        },
+        "geometry_yaw_error_rad": -0.06697842335516875
+      }
+    ],
+    "mode_transition_total_blocking_s": 31.39852242500001,
+    "stationary_confirmed_control_modes": {
+      "0": 1,
+      "1": 7,
+      "18": 3,
+      "21": 3
+    },
+    "recorded_physics_samples": 13872,
+    "source_packets_accepted": 20231,
+    "all_joint_q_span_rad": [
+      0.5202754216,
+      2.0380172109999997,
+      1.6615268,
+      0.5028440769,
+      1.913245322,
+      1.4704822300000002,
+      0.46157500788,
+      2.02217609,
+      1.68100917,
+      0.47990088020000005,
+      1.9479464270000002,
+      1.4506533100000003
+    ],
+    "controller_actual_loopback": true,
+    "controller_sdk_init_failed": false,
+    "controller_bind_unavailable": false
+  },
+  "shutdown": {
+    "summary_shutdown_completed": true,
+    "cleanup_errors": [],
+    "owned_processes": {
+      "mc_ctrl": {
+        "pid": 3489,
+        "exit_code": -6,
+        "exit_code_before_cleanup": null,
+        "termination_requested": true,
+        "forced_kill": false
+      },
+      "robot_mujoco": {
+        "pid": 3468,
+        "exit_code": 0,
+        "exit_code_before_cleanup": null,
+        "termination_requested": true,
+        "forced_kill": false
+      },
+      "official_state_bridge": {
+        "pid": 3457,
+        "exit_code": 0,
+        "exit_code_before_cleanup": null,
+        "termination_requested": true,
+        "forced_kill": false
+      }
+    },
+    "assessment": "mc_ctrl -6 occurred after an explicit termination request while its pre-cleanup poll was still None. The official known teardown abort is separate from the completed 70-second no-fire timeouts; it is preserved as nonzero."
+  },
+  "findings": [
+    {
+      "severity": "primary",
+      "finding": "All three targets remained AIMING because image-derived laser/center error never entered the existing 8 mm tolerance. No SETTLING, READY, fire-gate attempt, ammo debit, or score event occurred."
+    },
+    {
+      "severity": "primary",
+      "finding": "Long steady tail windows show nonzero attitudeControl yaw/pitch inputs accepted with SDK code 0, but nearly zero physical angular/joint motion and persistent 5.46/16.44/15.57 cm error. This points to an input-to-body fine-control mapping/semantics or equilibrium issue, not a missing Tag or stale sensor gate. Exact SDK semantics need an independent official-contract and per-axis response check."
+    },
+    {
+      "severity": "secondary",
+      "finding": "Six safe family transitions consumed about 31.4 seconds in total; ID 5 switched move-to-attitude then back-to-move around the coarse/fine threshold. This reduces aiming time but does not explain the following 20-second no-progress plateaus."
+    },
+    {
+      "severity": "excluded",
+      "finding": "The prior SDK bind failure is resolved. All 1476 AIM observations are fresh, intended IDs have high-quality decodes, and each last-20-second tail is stationary. Increasing target_timeout or relaxing the 8 mm threshold would conceal the fine-control issue."
+    }
+  ],
+  "recommended_next_diagnostics": [
+    "Verify the official attitudeControl input contract against the physical controller, including rate versus posture/normalized-input semantics, axis sign, units, zero/reference behavior and deadband.",
+    "Run isolated yaw and pitch bounded step-response measurements using real official RobotState, record applied inputs and motion; calibrate the adapter from measured response before retrying multi-target aiming.",
+    "Add no-progress diagnosis and coarse/fine hysteresis only after the command semantics are correct. Keep image identity, freshness, stationary dwell and scoring criteria unchanged."
+  ],
+  "limitations": [
+    "Read-only review of captured summary/config/events/physical trace and native logs; no new native trial or source modification.",
+    "The log proves SDK return status and actual body response differ; it alone does not prove the SDK argument contract or the exact controller implementation."
+  ],
+  "evidence_sha256": {
+    "summary.json": "35975e4d73d9d06633ec983fb610121ef3b13b6e080c03093361b610a214c0f7",
+    "config.json": "73cbe8feae81a05d4dcd0fe81ca7b6f30193a6df0cf5fd9417e2e8f5e55b734f",
+    "events.jsonl": "e0d36b741f45707f1a6eac225ccef43db1ff0d10881de783f74ae6f4531751ff",
+    "official_physics.jsonl": "0f595a5bc4576f4e63098b945fa9a581cb11d05f3760c7cf1cc94ae5a65970c8",
+    "terminal.log": "f56c9a0e58586a824a2e0a586159987f2e65d43887ca332b56232f06fb52109f",
+    "official_runtime/mc_ctrl.log": "8526aff196e70c34b0a678c82d6173b1dd6b61e67fb5d09eca3651dcfd5b7709",
+    "official_runtime/runtime_status.json": "ac464ef9b0685ab3cfcccf34c42934e34ece38d672aeb10414336aadbf5ebadd"
+  },
+  "zero_command_pose_response": [
+    {
+      "target_id": 2,
+      "zero_sdk_at_s": 85.81696597199999,
+      "last_nonzero_sdk_arguments": [
+        0.0,
+        -0.026386562029820405,
+        -0.015989862481270427,
+        0.0
+      ],
+      "next_standUp_at_s": 86.62246432399996,
+      "physical_sample_before_publication_s": 85.81546756700003,
+      "physical_sample_after_publication_s": 86.61602268399999,
+      "before_rpy_rad": [
+        -0.02180819245444768,
+        -0.005471784954852472,
+        1.5690800038182366
+      ],
+      "after_rpy_rad": [
+        -0.0210131385711391,
+        0.010183875484506891,
+        1.5780428703288658
+      ],
+      "observed_pitch_change_rad": 0.015655660439359363,
+      "observed_yaw_change_rad": 0.008962866510629164,
+      "both_samples_precede_standUp": true,
+      "simultaneous_delta_pitch_yaw_input": [
+        0.026386562029820405,
+        0.015989862481270427
+      ],
+      "apparent_delta_pose_per_delta_input": [
+        0.5933194488037637,
+        0.560534308605076
+      ],
+      "interpretation": "Natural simultaneous two-axis transition to zero moves the body toward another posture. Ratios are observations, not identified independent gains; closed-loop coupling and incomplete settling prevent safe direct reuse."
+    },
+    {
+      "target_id": 5,
+      "zero_sdk_at_s": 156.05330639,
+      "last_nonzero_sdk_arguments": [
+        0.0,
+        -0.01611310866006075,
+        -0.09265585645724186,
+        0.0
+      ],
+      "next_standUp_at_s": 157.63578833499997,
+      "physical_sample_before_publication_s": 156.05817115900004,
+      "physical_sample_after_publication_s": 157.55330313300001,
+      "before_rpy_rad": [
+        -0.01896136451858833,
+        -0.01103720620066361,
+        0.03884124731829844
+      ],
+      "after_rpy_rad": [
+        -0.017856254950810013,
+        0.00924211192686507,
+        0.11944649564913884
+      ],
+      "observed_pitch_change_rad": 0.02027931812752868,
+      "observed_yaw_change_rad": 0.08060524833084039,
+      "both_samples_precede_standUp": true,
+      "simultaneous_delta_pitch_yaw_input": [
+        0.01611310866006075,
+        0.09265585645724186
+      ],
+      "apparent_delta_pose_per_delta_input": [
+        1.2585602539747425,
+        0.8699422941283533
+      ],
+      "interpretation": "Natural simultaneous two-axis transition to zero moves the body toward another posture. Ratios are observations, not identified independent gains; closed-loop coupling and incomplete settling prevent safe direct reuse."
+    }
+  ],
+  "design_guidance": {
+    "observed_issue": "A velocity-named SDK request returns zero status while RL_BALANCE_STAND has a finite pose response. On the captured controller, changing the request to zero changes physical alignment. API names alone cannot justify treating a held nonzero input as stationary intent.",
+    "required_identification": "Use the official API and loopback simulator to test bounded per-axis steps, return-to-zero and hold, with actual RobotState and image-derived target error. Estimate input sign, 2x2 image-error response Jacobian, response time, deadband and posture bounds. No scene truth is required.",
+    "outer_loop_if_a_posture_hold_regime_is_confirmed": {
+      "error": "e = measured laser/target image-derived 2D error; J = measured d(error)/d(official input).",
+      "update": "w = -pseudo_inverse(J) @ e; u = saturate(u_trim + Kp*w + I); I += Ki*w*actual_dt for fresh unique valid observations only.",
+      "anti_windup": "Freeze/inhibit integral while saturated in the error-driving direction, during blocked mode changes or invalid/stale observations. Rebase or reset after mode changes/target switches rather than replaying an old correction.",
+      "settled_hold": "Once aligned, freeze the integral and retain the bounded equilibrium input; verify new frames remain within 8 mm and actual gyro/speed remain under existing limits continuously for 0.4 s. Do not replace a valid held-posture input with zero merely on entry to READY.",
+      "safety": "Any stale observation, invalid source feedback, continuing motion, posture limit or unknown control regime revokes firing. A controlled nonzero posture input must remain explicitly distinguishable from nonzero angular velocity."
+    },
+    "strict_velocity_stop_contract": "If the official/competition contract requires every velocity parameter to equal zero before firing, nonzero hold cannot be relabeled as stop. Send zero, invalidate the old alignment token, acquire post-zero images and establish a fresh stationary dwell. If zero necessarily recenters off target, use a documented official posture-hold interface or adjust neutral pose/position through supported controls; otherwise the chosen API cannot meet that combination of requirements.",
+    "avoid": [
+      "Do not increase timeout to mask a steady plateau.",
+      "Do not relax the 8 mm threshold or fire using a pre-zero image.",
+      "Do not infer a hardware-safe hold from one simulator trace or reinterpret official velocity units without validating the controller contract."
+    ]
+  }
+}

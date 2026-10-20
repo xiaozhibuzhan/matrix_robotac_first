@@ -1,0 +1,55 @@
+{
+  "date_local": "2026-10-19",
+  "package_version": "0.1.1",
+  "purpose": "Fix native AprilTag ownership, result-window lifetime, native diagnostic capture and Linux checksum format.",
+  "developer_host": {"platform": "Windows 10 x86_64", "python": "3.12.3", "mujoco": "3.3.7"},
+  "unit_tests": {"passed": 33, "command": "python -m unittest discover -s task3_sim/tests -v"},
+  "render_integration": {
+    "all_passed": true,
+    "cases": ["default", "left_start", "oblique_target", "beam_blocked", "tag_out_of_view", "no_ammo"],
+    "successful_cases_ring": 10,
+    "default_simulation_time_s": 2.55,
+    "default_actual_miss_m": 0.004986078257655168,
+    "evidence": "task3_sim/runs/fix1_integration_20261019/validation.json"
+  },
+  "bounded_gui_test": {
+    "platform": "Windows developer host only",
+    "arguments": "--show --viewer --realtime --hold-seconds 2",
+    "status": "SUCCESS", "ring": 10, "process_exit_code": 0,
+    "shutdown_completed": true, "perception_closed": true,
+    "cleanup_errors": [], "display_exit_reason": "elapsed",
+    "mission_wall_time_s": 2.579,
+    "evidence": "task3_sim/runs/fix1_gui_bounded/summary.json"
+  },
+  "native_detector_stress": {
+    "real_detections": 200, "native_lifecycle_rounds": 20,
+    "covers": ["explicit close", "double close", "garbage collection", "live detector at interpreter exit"],
+    "process_exit_code": 0
+  },
+  "launcher_checks": {
+    "platform": "Git Bash with stub Python; not Ubuntu rendering",
+    "passed": true,
+    "covers": ["Bash syntax", "help creates no run", "stdout and stderr capture", "output path containing spaces", "native-style exit 134 propagation", "nonempty output refusal"],
+    "evidence": "task3_sim/runs/fix1_launcher_validation.json"
+  },
+  "preservation": {
+    "unchanged": true, "files_checked": 1189,
+    "sha256_files": 1181, "metadata_only_ros_bags": 8,
+    "evidence": "task3_sim/runs/fix1_preservation_after.json",
+    "scope": "Defined preserve.py coverage; not every UE binary. Only task3_sim owned source edited."
+  },
+  "native_source_review": {
+    "pinned_version": "pupil-apriltags 1.0.4.post11",
+    "confirmed_defect": "Vendor finalizer frees tag family before detector; detector destruction accesses family decoder state.",
+    "local_fix": "Destroy detector while families are alive, then free families; idempotent close and guarded finalizer.",
+    "metric_pose": "AprilTag IDs/corners retained; OpenCV IPPE/SQPnP and LM replace optional native pose allocation/solver path.",
+    "vendor_files_modified": false,
+    "source_url": "https://files.pythonhosted.org/packages/b9/d2/06ec5cd9ad9835ebd7e8f28b2a4c808215fca39e180dc4f95f26b98a45e7/pupil_apriltags-1.0.4.post11.tar.gz"
+  },
+  "ubuntu_user_feedback": {
+    "old_version_render_success_confirmed": true,
+    "old_version_native_abort_observed": true,
+    "fixed_version_runtime_tested_on_ubuntu": false,
+    "limitation": "User crash stack was not captured. The source defect is confirmed; target Ubuntu acceptance still requires process exit 0 and no native abort."
+  }
+}

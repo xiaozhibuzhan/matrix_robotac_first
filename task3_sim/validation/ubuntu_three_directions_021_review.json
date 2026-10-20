@@ -1,0 +1,1425 @@
+{
+  "review_date": "2026-10-19",
+  "review_type": "read-only offline audit of returned Ubuntu evidence; log text treated only as data",
+  "evidence_root": "task3_sim/runs_ubuntu",
+  "latest_directional_suite": "multi_validation_20261019_181552_06e0bf95",
+  "conclusion": "The returned 0.2.1 three-direction static-target kinematic baseline completed normally on Ubuntu. All 31 expected scenarios passed, including intentional PARTIAL/NO_AMMO/TIMEOUT cases. This does not validate gait dynamics or physical hardware.",
+  "runtime": {
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "ubuntu_runtime_tested": true
+  },
+  "suite_integrity": {
+    "complete": true,
+    "all_passed": true,
+    "seed": 20261019,
+    "fixed_cases": 11,
+    "random_cases_requested": 20,
+    "random_cases_completed": 20,
+    "tested_sources_unchanged": true
+  },
+  "independent_case_checks_all_passed": true,
+  "cases_count": 31,
+  "status_counts": {
+    "SUCCESS": 27,
+    "PARTIAL": 1,
+    "NO_AMMO": 2,
+    "TIMEOUT": 1
+  },
+  "shot_count": 85,
+  "score_total": 850,
+  "ring_counts": {
+    "10": 85
+  },
+  "max_actual_miss_m": 0.008960889247958579,
+  "source_package": {
+    "path": "task3_sim/updates/task3_three_directions_20261019.zip",
+    "sha256": "de3ce91320d8977a141497c240d30a1c03c5cdbde4cf4f5557120712d97a58ab",
+    "python_sources_count": 41,
+    "all_python_sources_match": true,
+    "sources": [
+      {
+        "path": "__init__.py",
+        "matches": true,
+        "sha256": "297b3df492997f8c7d232ed07062045c7890d148431d6c16699bb8011aa42287"
+      },
+      {
+        "path": "__main__.py",
+        "matches": true,
+        "sha256": "89df8d52045663ae13fbe1c47da74fa62fa23886c9f514a6397164b3de3d702c"
+      },
+      {
+        "path": "appearance.py",
+        "matches": true,
+        "sha256": "80f816e3aec3817a6b855268e655424a390c016de83780562ae190e74939b70d"
+      },
+      {
+        "path": "backend.py",
+        "matches": true,
+        "sha256": "fc2f83e2cad59aa028220725ac2d371295b8d6737ab7bce08e046d1dbeceb95a"
+      },
+      {
+        "path": "controller.py",
+        "matches": true,
+        "sha256": "338d82d487ad30b9594da1f4c5823b5df8ee60b45fb95eb653192497e590f1ac"
+      },
+      {
+        "path": "geometry.py",
+        "matches": true,
+        "sha256": "e0e74a38ac6ca97b5ac1f34ce882eea30e2cd571473796531517b4e8a6acec84"
+      },
+      {
+        "path": "interfaces.py",
+        "matches": true,
+        "sha256": "9317bf55c60464d53b60ab386a2af9ccfac86ca3b365adf0be059248e2a8ea1d"
+      },
+      {
+        "path": "mesh.py",
+        "matches": true,
+        "sha256": "a3edeed0dd4adc4e13a93ff87231b500bd372932a7219d15849e5dfa28e8e931"
+      },
+      {
+        "path": "mission.py",
+        "matches": true,
+        "sha256": "ac18077b5e42a7b05f42a44bf98744bfea602c09d8588c23da19871b3e084fea"
+      },
+      {
+        "path": "multi.py",
+        "matches": true,
+        "sha256": "03caadca4d330c15c7e6260a5cca37064837279e66e6887d05a680411b3ac884"
+      },
+      {
+        "path": "multi_config.py",
+        "matches": true,
+        "sha256": "5e85b46ed33af05510d3c4cd75c6a3209cf8e03814033bb8cf2a52c80247b390"
+      },
+      {
+        "path": "multi_perception.py",
+        "matches": true,
+        "sha256": "8860652fd3608037459c32e95d47540904cfc194021059060509b04f0d02391f"
+      },
+      {
+        "path": "multi_scene.py",
+        "matches": true,
+        "sha256": "21a1ef31edecd4d437664addd017e0f730aa25df4dd77c20829d9352fb855929"
+      },
+      {
+        "path": "multi_scoring.py",
+        "matches": true,
+        "sha256": "487bc30e42c7884426976f9cbaddb98ffb83347698eae4b247b32d1cd43d60a5"
+      },
+      {
+        "path": "package_update.py",
+        "matches": true,
+        "sha256": "52b709e4bdb0cc02cc1fddeb629e3d8abf8087cb929cd6665b1f679f02b1573b"
+      },
+      {
+        "path": "perception.py",
+        "matches": true,
+        "sha256": "d9e1cc1551796e50607a3b9924e5d8545defc4b5cd61d0cb042ccaf25f9a6454"
+      },
+      {
+        "path": "preserve.py",
+        "matches": true,
+        "sha256": "3f77bd336529855462c7c1880aafba93689656506fc91b21a18db600ea022cbf"
+      },
+      {
+        "path": "scene.py",
+        "matches": true,
+        "sha256": "482e449b1026f18ee150cdd9c9db703bbdb6191c5235b7216593f06646217deb"
+      },
+      {
+        "path": "scoring.py",
+        "matches": true,
+        "sha256": "9d14f1273f76d48398d328932d33ff4a14fbc37e6f6570dfe779521a2fff6ce6"
+      },
+      {
+        "path": "sensor.py",
+        "matches": true,
+        "sha256": "b7cf3f37d5c3efc458576a9e6888c78c62af0d2bb2bc002d70e3373cee1f9f2c"
+      },
+      {
+        "path": "tests/test_appearance_assets.py",
+        "matches": true,
+        "sha256": "0fc258ef5a69629c7e2e8cb68e7094b4aa088a0f7377920b9013a92b45fdd6a4"
+      },
+      {
+        "path": "tests/test_camera_effects.py",
+        "matches": true,
+        "sha256": "011d658e9c48a4ccdc7f07caec2777b1088055d3f8aa8de5b436c6709383d631"
+      },
+      {
+        "path": "tests/test_frame_transport.py",
+        "matches": true,
+        "sha256": "02905ca247f878150943524aab5adeab630d6b0ecc727e2d986b58c7f80b0d37"
+      },
+      {
+        "path": "tests/test_interrupt_shutdown.py",
+        "matches": true,
+        "sha256": "ce5d93140f27a0bc79cfb5b8076742e76b20c57ef0ed3952de6bc646d528335b"
+      },
+      {
+        "path": "tests/test_multi_mission.py",
+        "matches": true,
+        "sha256": "3e042fc41b864aa4248d7bc7b2d61c4e6faaccf0932e0a572bc67905b30d909c"
+      },
+      {
+        "path": "tests/test_multi_perception.py",
+        "matches": true,
+        "sha256": "8ebe5cfd2b03412e8c4a6cbbd056d8f29b3811d8a9f27c1791255d691c44bb3a"
+      },
+      {
+        "path": "tests/test_multi_referee.py",
+        "matches": true,
+        "sha256": "457048b9b59ebbd3718c4ea9082175d52fc3431cccb0de856f378e1f8206ebb7"
+      },
+      {
+        "path": "tests/test_multi_runtime_lifecycle.py",
+        "matches": true,
+        "sha256": "5808540f3faddd95938fc4ec247f5f97afb379dfa5bb10ce7c0ab7153a6e09b0"
+      },
+      {
+        "path": "tests/test_multi_scene.py",
+        "matches": true,
+        "sha256": "49fd350edc6f82119aa2912abc4306d909ce73e4ae8d2d3dc897eeaa9ecf7552"
+      },
+      {
+        "path": "tests/test_perception_lifecycle.py",
+        "matches": true,
+        "sha256": "dc2425de715660411e2f692c7f7c00753965879c586eb1960c3f212b05bc56a7"
+      },
+      {
+        "path": "tests/test_printed_ring_scoring.py",
+        "matches": true,
+        "sha256": "3ffdb418835787ce0a3773369e6e40a85fa2af42418e3ebba4ab27611ed76126"
+      },
+      {
+        "path": "tests/test_ray_referee.py",
+        "matches": true,
+        "sha256": "d8815bed3746712081369326e7765a83da4443c23c08ecce0673cce5459d2e8a"
+      },
+      {
+        "path": "tests/test_safety_geometry.py",
+        "matches": true,
+        "sha256": "2519b1600f4073b2878f7aceb698e8a5aa9c34f241748654b5fece4a224e877f"
+      },
+      {
+        "path": "tests/test_ui_lifecycle.py",
+        "matches": true,
+        "sha256": "99b541d0e25b56516cb9d325715c2ab9defea79c1d603662ba4df13d6f7804c4"
+      },
+      {
+        "path": "tests/test_update_boundaries.py",
+        "matches": true,
+        "sha256": "06eb6f480edcd405bdb822be59db88b181a25235f0bebb13ff727089e3977dd4"
+      },
+      {
+        "path": "tests/test_validate_multi.py",
+        "matches": true,
+        "sha256": "3d1e0d16ede0cd9b8f36ad02bcb9b107f792dd5d70bf8ed121436e8edd963018"
+      },
+      {
+        "path": "transport.py",
+        "matches": true,
+        "sha256": "c227b81e91aceab625cfbb361180b45cda41336b87e01ec696b61069c25f6241"
+      },
+      {
+        "path": "ui.py",
+        "matches": true,
+        "sha256": "4d60c26733e391b3ab423f63d6554729dadbf743a1e5c66f7eb2f6071bf186b5"
+      },
+      {
+        "path": "validate.py",
+        "matches": true,
+        "sha256": "d4b2770a679a01b0df73f1178927c9ab81f0e00dc8d327b6789a54113f9eaac6"
+      },
+      {
+        "path": "validate_appearance.py",
+        "matches": true,
+        "sha256": "3a372127b6282b60c9558fb1c1ce6b4df16e76dd75d4a651cdbfc2a8bfe2baf5"
+      },
+      {
+        "path": "validate_multi.py",
+        "matches": true,
+        "sha256": "86703ccbe0a64c5e85d60619e832996ad859efa4c34c2763e73ecb3ec81ef0ab"
+      }
+    ]
+  },
+  "official_model_sources": {
+    "count": 18,
+    "all_returned_hashes_match_local_official_sources": true,
+    "matches": {
+      "xgb.xml": true,
+      "assets/BASE_LINK.STL": true,
+      "assets/FL_ABAD_LINK.STL": true,
+      "assets/FL_FOOT_LINK.STL": true,
+      "assets/FL_HIP_LINK.STL": true,
+      "assets/FL_KNEE_LINK.STL": true,
+      "assets/FR_ABAD_LINK.STL": true,
+      "assets/FR_FOOT_LINK.STL": true,
+      "assets/FR_HIP_LINK.STL": true,
+      "assets/FR_KNEE_LINK.STL": true,
+      "assets/RL_ABAD_LINK.STL": true,
+      "assets/RL_FOOT_LINK.STL": true,
+      "assets/RL_HIP_LINK.STL": true,
+      "assets/RL_KNEE_LINK.STL": true,
+      "assets/RR_ABAD_LINK.STL": true,
+      "assets/RR_FOOT_LINK.STL": true,
+      "assets/RR_HIP_LINK.STL": true,
+      "assets/RR_KNEE_LINK.STL": true
+    }
+  },
+  "layout": {
+    "background": "surround",
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.27
+    ],
+    "initial_rpy_rad": [
+      0.0,
+      0.04,
+      0.0
+    ],
+    "target_boards": [
+      {
+        "id": 2,
+        "simulation": {
+          "target_center_world_m": [
+            0.0,
+            2.7,
+            0.5
+          ],
+          "target_yaw_rad": 1.5707963267948966
+        }
+      },
+      {
+        "id": 5,
+        "simulation": {
+          "target_center_world_m": [
+            2.7,
+            0.0,
+            0.5
+          ],
+          "target_yaw_rad": 0.0
+        }
+      },
+      {
+        "id": 9,
+        "simulation": {
+          "target_center_world_m": [
+            0.0,
+            -2.7,
+            0.5
+          ],
+          "target_yaw_rad": -1.5707963267948966
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case": "three_targets",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "unknown_tag_ignored",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "per_id_calibration",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "middle_target_missing",
+      "status": "PARTIAL",
+      "application_return_code": 2,
+      "expected_status": "PARTIAL",
+      "shot_count": 2,
+      "score": 20,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "FAILED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "two_rounds_only",
+      "status": "NO_AMMO",
+      "application_return_code": 2,
+      "expected_status": "NO_AMMO",
+      "shot_count": 2,
+      "score": 20,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "FAILED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "empty_magazine",
+      "status": "NO_AMMO",
+      "application_return_code": 2,
+      "expected_status": "NO_AMMO",
+      "shot_count": 0,
+      "score": 0,
+      "target_states": {
+        "2": "FAILED",
+        "5": "FAILED",
+        "9": "FAILED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "delay_and_drop",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "periodic_frame_loss",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "delivery_jitter",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "stale_frames_no_fire",
+      "status": "TIMEOUT",
+      "application_return_code": 2,
+      "expected_status": "TIMEOUT",
+      "shot_count": 0,
+      "score": 0,
+      "target_states": {
+        "2": "FAILED",
+        "5": "FAILED",
+        "9": "FAILED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "blackout_then_recover",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_000",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_001",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_002",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_003",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_004",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_005",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_006",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_007",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_008",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_009",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_010",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_011",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_012",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_013",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_014",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_015",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_016",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_017",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_018",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    },
+    {
+      "case": "random_019",
+      "status": "SUCCESS",
+      "application_return_code": 0,
+      "expected_status": "SUCCESS",
+      "shot_count": 3,
+      "score": 30,
+      "target_states": {
+        "2": "COMPLETED",
+        "5": "COMPLETED",
+        "9": "COMPLETED"
+      },
+      "independent_checks": {
+        "saved_summary_status_matches_validator": true,
+        "saved_shot_count_matches_validator": true,
+        "shot_file_matches_summary": true,
+        "shot_event_matches_ledger": true,
+        "unique_intended_targets": true,
+        "one_debit_per_shot": true,
+        "ammo_remaining_matches_debits": true,
+        "matching_physical_target": true,
+        "correct_credit": true,
+        "every_saved_shot_ready_fresh_id": true,
+        "native_fault_log_empty": true,
+        "shutdown_complete": true,
+        "perception_closed": true,
+        "cleanup_empty": true,
+        "model_sources_unchanged": true,
+        "version021": true,
+        "four_walls": true
+      },
+      "all_independent_checks_passed": true
+    }
+  ],
+  "independent_cli_runs": [
+    {
+      "run": "run_20261019_181235_3008",
+      "package_version": "0.2.1",
+      "status": "SUCCESS",
+      "mujoco_gl": "egl",
+      "shot_count": 3,
+      "score": 30,
+      "ammo_remaining": 2,
+      "real_process_exit_zero": true,
+      "shutdown_completed": true,
+      "perception_closed": true,
+      "cleanup_errors": [],
+      "native_fault_log_bytes": 0,
+      "display_exit_reason": null,
+      "nonfatal_warnings": []
+    },
+    {
+      "run": "run_20261019_181315_3057",
+      "package_version": "0.2.1",
+      "status": "SUCCESS",
+      "mujoco_gl": "glfw",
+      "shot_count": 3,
+      "score": 30,
+      "ammo_remaining": 2,
+      "real_process_exit_zero": true,
+      "shutdown_completed": true,
+      "perception_closed": true,
+      "cleanup_errors": [],
+      "native_fault_log_bytes": 0,
+      "display_exit_reason": "keyboard_interrupt_after_result",
+      "nonfatal_warnings": [
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/.venv/lib/python3.10/site-packages/glfw/__init__.py:917: GLFWError: (65548) b'Wayland: The platform does not provide the window position'",
+        "  warnings.warn(message, GLFWError)",
+        "Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway."
+      ]
+    },
+    {
+      "run": "run_20261019_181431_3198",
+      "package_version": "0.2.1",
+      "status": "SUCCESS",
+      "mujoco_gl": "glfw",
+      "shot_count": 3,
+      "score": 30,
+      "ammo_remaining": 2,
+      "real_process_exit_zero": true,
+      "shutdown_completed": true,
+      "perception_closed": true,
+      "cleanup_errors": [],
+      "native_fault_log_bytes": 0,
+      "display_exit_reason": "window_closed",
+      "nonfatal_warnings": [
+        "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/.venv/lib/python3.10/site-packages/glfw/__init__.py:917: GLFWError: (65548) b'Wayland: The platform does not provide the window position'",
+        "  warnings.warn(message, GLFWError)",
+        "Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway."
+      ]
+    }
+  ],
+  "efficiency_baseline": {
+    "three_targets_simulation_time_s": 38.05000000000101,
+    "shot_times_s": [
+      6.499999999999884,
+      22.299999999999848,
+      38.05000000000101
+    ],
+    "per_target_search_travel_rad": {
+      "2": 1.5474082757670036,
+      "5": 4.712524926014297,
+      "9": 4.712391817369327
+    },
+    "observation": "After ID2, the baseline searches approximately 270 degrees positive yaw for each of ID5 and ID9. Initial camera events already decode front ID5, but this bearing is not used for switching."
+  },
+  "limitations": [
+    "Validator case process_code is an application return in one Python process; independent terminal.log evidence supplies three actual clean CLI exits.",
+    "Latest baseline motion_model is kinematic_base_with_velocity_lag; no foot contact gait dynamics are exercised.",
+    "Physical dimensions and camera/laser extrinsics remain assumed, not calibrated on hardware.",
+    "Hashes prove returned code bytes match the shipped 0.2.1 Python package and imported model hashes match local official files; not an independent authenticity attestation of host or hardware.",
+    "Older 15:xx suites are historical row-target or single-target results and were excluded from these 31 cases.",
+    "Nonfatal Wayland/GLFW window-position warnings appear in GUI logs, with subsequent normal result and zero exit."
+  ]
+}

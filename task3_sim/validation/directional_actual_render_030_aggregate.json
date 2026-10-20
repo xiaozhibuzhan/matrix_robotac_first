@@ -1,0 +1,55 @@
+{
+  "complete": true,
+  "all_passed": true,
+  "tested_sources_unchanged": true,
+  "cases": 35,
+  "fixed_cases": 15,
+  "random_cases_completed": 20,
+  "shot_count": 97,
+  "correct_target_ids": 97,
+  "ring_counts": {
+    "10": 97
+  },
+  "total_score": 970,
+  "max_actual_miss_m": 0.008960889389361031,
+  "statuses": {
+    "SUCCESS": 31,
+    "PARTIAL": 1,
+    "NO_AMMO": 2,
+    "TIMEOUT": 1
+  },
+  "default_cases": {
+    "three_targets": {
+      "simulation_time_s": 19.950000000000315,
+      "shot_times_s": [
+        6.499999999999884,
+        13.200000000000664,
+        19.950000000000315
+      ],
+      "rotation_rad_by_target": {
+        "2": 1.5474082757671184,
+        "5": 1.566499718462206,
+        "9": 1.5709624184967819
+      },
+      "search_positive_commands": 61,
+      "search_negative_commands": 120
+    },
+    "unknown_tag_ignored": {
+      "simulation_time_s": 19.950000000000315,
+      "shot_times_s": [
+        6.499999999999884,
+        13.200000000000664,
+        19.950000000000315
+      ],
+      "rotation_rad_by_target": {
+        "2": 1.5474082757671184,
+        "5": 1.566499718462206,
+        "9": 1.5709624184967819
+      },
+      "search_positive_commands": 61,
+      "search_negative_commands": 120
+    }
+  },
+  "scope": "Windows actual MuJoCo rendering and native decoded AprilTags with kinematic motion backend. Does not claim official Linux dynamics or hardware acceptance.",
+  "report": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\directional_validation_030_20261019_195009\\validation.json"
+}

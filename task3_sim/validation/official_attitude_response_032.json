@@ -1,0 +1,526 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T13:53:55.393806+00:00",
+  "scope": "Read-only official docs, header, x86-64 ELF static analysis and actual Ubuntu run evidence. No Linux ELF/controller executed on this Windows host. No source/official file changed. No fabricated physics or hardware acceptance.",
+  "source_run": "task3_sim\\runs_ubuntu\\official_20261019_211859_3364",
+  "official_document_contract": {
+    "attitude": "docs/api_zsl-1.md:399-429: attitudeControl(roll_vel,pitch_vel,yaw_vel,height_vel), angular rad/s bounded +/-0.5, height m/s bounded +/-0.5, enter from standing, uint32 status0 means action accepted",
+    "move": "docs/api_zsl-1.md:166-194: move(vx,vy,yaw_rate), translational m/s, yaw rad/s nonzero magnitude >=.02",
+    "axes": "docs/architecture.md:82-85: X forward,Y left,Z up,right-handed rotation; docs/api_zsl-1.md:479 confirms body axes",
+    "frequency": "docs/faq.md:81-85: highlevel feedback50Hz, controls maximum500Hz, generally20-50Hz for stable operation",
+    "do_not_reinterpret": "Docs/header remain authoritative public API units. Do not rename those values as absolute Euler-angle targets. The shipped learned controller response must be validated separately."
+  },
+  "observed_run": {
+    "mission_status": "FAILED",
+    "shots": 0,
+    "ammo_remaining": 5,
+    "sdk_operation_status_counts": [
+      {
+        "kind": "connected",
+        "operation": null,
+        "code": null,
+        "count": 1
+      },
+      {
+        "kind": "stationary_confirmed",
+        "operation": null,
+        "code": null,
+        "count": 14
+      },
+      {
+        "kind": "sdk_result",
+        "operation": "standUp",
+        "code": 0,
+        "count": 7
+      },
+      {
+        "kind": "sdk_result",
+        "operation": "move",
+        "code": 0,
+        "count": 115
+      },
+      {
+        "kind": "sdk_result",
+        "operation": "attitudeControl",
+        "code": 0,
+        "count": 1451
+      }
+    ],
+    "event_loop_period_quantiles_s": {
+      "min": 0.09570013699999436,
+      "median": 0.11475456249999638,
+      "p95": 0.12642366310001021,
+      "max": 5.661885111000004
+    },
+    "median_visual_control_rate_hz": 8.714250468255077,
+    "per_target": [
+      {
+        "id": 2,
+        "aiming_frames": 540,
+        "error_norm_min_m": 0.010921461843608402,
+        "last_time_s": 85.69873745999996,
+        "last_error_norm_m": 0.05461742173190901,
+        "last_yaw_pitch_error_rad": [
+          -0.01065990832084695,
+          -0.017591041353213602
+        ],
+        "last_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": -0.015989862481270427,
+          "pitch_rate_rad_s": -0.026386562029820405
+        },
+        "last_feedback": {
+          "valid": true,
+          "rpy_rad": [
+            -0.021808169529069117,
+            -0.005471624290694437,
+            1.569080148127481
+          ],
+          "position_m": [
+            0.026342392,
+            0.064354755,
+            0.321806222
+          ],
+          "gyro_rad_s": [
+            -6.73181333e-08,
+            -4.29264588e-07,
+            -6.80905146e-07
+          ],
+          "velocity_m_s": [
+            8.36211882e-08,
+            3.9269969e-07,
+            2.0992124e-07
+          ],
+          "timestamp": 85.69742823800001
+        },
+        "last_5s_mean_rpy_rad": [
+          -0.02180817972508695,
+          -0.005472406757824759,
+          1.5690818646358589
+        ],
+        "last_5s_mean_gyro_rad_s": [
+          -1.2853806064386357e-08,
+          4.733289603409089e-07,
+          -9.87145582431818e-07
+        ],
+        "last_5s_mean_command_yaw_pitch": [
+          -0.01599009427562906,
+          -0.026385254579172835
+        ]
+      },
+      {
+        "id": 5,
+        "aiming_frames": 449,
+        "error_norm_min_m": 0.10866175420557846,
+        "last_time_s": 155.941625509,
+        "last_error_norm_m": 0.16440227847137276,
+        "last_yaw_pitch_error_rad": [
+          -0.061770570971494576,
+          -0.010742072440040499
+        ],
+        "last_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": -0.09265585645724186,
+          "pitch_rate_rad_s": -0.01611310866006075
+        },
+        "last_feedback": {
+          "valid": true,
+          "rpy_rad": [
+            -0.01896984238251542,
+            -0.011071160262106576,
+            0.03881249629685747
+          ],
+          "position_m": [
+            0.0818363279,
+            0.00244471082,
+            0.321317971
+          ],
+          "gyro_rad_s": [
+            7.08083753e-05,
+            0.000141852841,
+            0.000200982264
+          ],
+          "velocity_m_s": [
+            -2.98665909e-05,
+            -2.42764181e-05,
+            -2.76563715e-05
+          ],
+          "timestamp": 155.93102242499998
+        },
+        "last_5s_mean_rpy_rad": [
+          -0.018977067463744307,
+          -0.010885748661106129,
+          0.03884323717017868
+        ],
+        "last_5s_mean_gyro_rad_s": [
+          -3.966566317499997e-06,
+          -2.39846157409091e-05,
+          -2.2220913275000005e-05
+        ],
+        "last_5s_mean_command_yaw_pitch": [
+          -0.09292292792152397,
+          -0.016080429504209542
+        ]
+      },
+      {
+        "id": 9,
+        "aiming_frames": 487,
+        "error_norm_min_m": 0.10054246628577308,
+        "last_time_s": 226.203653342,
+        "last_error_norm_m": 0.15573844603209014,
+        "last_yaw_pitch_error_rad": [
+          -0.058941302412017026,
+          -0.010781352657874107
+        ],
+        "last_command": {
+          "vx_m_s": 0.0,
+          "vy_m_s": 0.0,
+          "yaw_rate_rad_s": -0.08841195361802553,
+          "pitch_rate_rad_s": -0.01617202898681116
+        },
+        "last_feedback": {
+          "valid": true,
+          "rpy_rad": [
+            -0.01914629156189297,
+            -0.010513482480867432,
+            -1.5445055890437704
+          ],
+          "position_m": [
+            0.0277507026,
+            -0.0885294005,
+            0.321339905
+          ],
+          "gyro_rad_s": [
+            0.000100213409,
+            0.000404837163,
+            0.000263335183
+          ],
+          "velocity_m_s": [
+            -3.33526259e-05,
+            -5.39172906e-05,
+            1.35379396e-05
+          ],
+          "timestamp": 226.19976969700002
+        },
+        "last_5s_mean_rpy_rad": [
+          -0.019157210497085166,
+          -0.010536193718158398,
+          -1.5443995492881877
+        ],
+        "last_5s_mean_gyro_rad_s": [
+          9.370039230909093e-06,
+          1.8125335113636358e-05,
+          4.193757781015918e-06
+        ],
+        "last_5s_mean_command_yaw_pitch": [
+          -0.08901144496373951,
+          -0.01632202774857272
+        ]
+      }
+    ]
+  },
+  "static_binary_findings": [
+    {
+      "file": "deps/zsibot_sdk/lib/zsl-1/x86_64/libmc_sdk_zsl_1_x86_64.so",
+      "function": "mc_sdk::zsl_1::HighLevel::attitudeControl(float,float,float,float)",
+      "entry": "0x21ab0",
+      "claim": "Validates state/limits, stores four input floats unchanged into outgoing command fields, sets ctrlmode21. It neither integrates rates nor converts them to absolute angles; repeated calls do not call standUp or an FSM-reset function. Acceptance count tracks unsuccessful mode transition; when state==21 it resets that error counter.",
+      "assembly": [
+        "0x21c42: mov rdx, qword ptr [rbx]",
+        "0x21c45: pxor xmm0, xmm0",
+        "0x21c49: mov qword ptr [rdx + 0x30], 0",
+        "0x21c51: movups xmmword ptr [rdx + 0x10], xmm0",
+        "0x21c55: movups xmmword ptr [rdx + 0x20], xmm0",
+        "0x21c59: mov rax, qword ptr [rbx]",
+        "0x21c5c: mov dword ptr [rax + 0x2e], 0x10015",
+        "0x21c63: mov rdi, qword ptr [rax]",
+        "0x21c66: movups xmmword ptr [rax + 0x1c], xmm1",
+        "0x21c6a: call 0x1e650 ; _ZN6mc_sdk18HighLevelConnector8GetStateEv",
+        "0x21c6f: cmp dword ptr [rax + 0x16c], 0x15",
+        "0x21c76: je 0x21e70",
+        "0x21e70: mov dword ptr [rip + 0x217ae], 0",
+        "0x21e7a: jmp 0x21d32"
+      ]
+    },
+    {
+      "file": "src/robot_mc/build/export/mc/bin/libbiomimetics.so",
+      "function": "DesiredStateCommand<float>::handleHighLevelCommand",
+      "entry": "0xaa760",
+      "claim": "Copies API payload roll,pitch,yaw,height into desired command fields +0x3c,+0x40,+0x44,+0x48 without integration. ctrlmode21 selection does not reset pose.",
+      "assembly": [
+        "0xaa760: endbr64 ",
+        "0xaa764: mov rax, qword ptr [rdi + 0x58]",
+        "0xaa768: mov rcx, qword ptr [rdi + 0x390]",
+        "0xaa76f: movss xmm0, dword ptr [rax + 4]",
+        "0xaa774: movzx edx, word ptr [rax + 0x1e]",
+        "0xaa778: movss dword ptr [rdi + 0x444], xmm0",
+        "0xaa780: movss xmm0, dword ptr [rax + 8]",
+        "0xaa785: movss dword ptr [rdi + 0x440], xmm0",
+        "0xaa78d: movss xmm0, dword ptr [rax + 0x14]",
+        "0xaa792: movss dword ptr [rdi + 0x448], xmm0",
+        "0xaa79a: movss xmm1, dword ptr [rax + 0x10]",
+        "0xaa79f: movss dword ptr [rdi + 0x44c], xmm1",
+        "0xaa7a7: movss xmm0, dword ptr [rax + 0x18]",
+        "0xaa7ac: movss xmm2, dword ptr [rax + 0x14]",
+        "0xaa7b1: unpcklps xmm2, xmm0",
+        "0xaa7b4: movss xmm0, dword ptr [rax + 0xc]",
+        "0xaa7b9: unpcklps xmm0, xmm1",
+        "0xaa7bc: movlhps xmm0, xmm2",
+        "0xaa7bf: movups xmmword ptr [rdi + 0x3c], xmm0",
+        "0xaa7c3: cmp dx, 0x15",
+        "0xaa7c7: je 0xaa890",
+        "0xaa7cd: ja 0xaa840",
+        "0xaa890: mov qword ptr [rcx + 0x98], 0x15",
+        "0xaa89b: movzx eax, word ptr [rax + 0x1c]",
+        "0xaa89f: cmp ax, 5",
+        "0xaa8a3: sete byte ptr [rdi + 0x20]",
+        "0xaa8a7: cmp ax, 6",
+        "0xaa8ab: sete byte ptr [rdi + 0x21]",
+        "0xaa8af: cmp ax, 2",
+        "0xaa8b3: sete byte ptr [rdi + 0x14]",
+        "0xaa8b7: cmp ax, 7",
+        "0xaa8bb: sete byte ptr [rdi + 0x15]",
+        "0xaa8bf: ret "
+      ]
+    },
+    {
+      "file": "src/robot_mc/build/export/mc/bin/mc_ctrl",
+      "function": "RL_State_BalanceStand::run",
+      "entry": "0x46cb60",
+      "claim": "Reads desired pitch(+0x40),yaw(+0x44); filters each as0.9*previous+0.1*current and applies configured FSM balance scaling. The code then supplies those bounded commands to the encrypted RL policy observation; it does not implement dt-based integration into target Euler angles. In this XG config FSM_balance_pitch/yaw=1.0. Under zero input the filtered command decays toward zero; there is no hold-last-Euler-target branch here.",
+      "assembly": [
+        "0x46cb88: mov rdx, qword ptr [rbx + 0x18]",
+        "0x46cb8c: movss xmm0, dword ptr [rip + 0x880f4]",
+        "0x46cb94: pxor xmm1, xmm1",
+        "0x46cb98: pxor xmm4, xmm4",
+        "0x46cb9c: mov rax, qword ptr [rdx + 0x18]",
+        "0x46cba0: movss xmm3, dword ptr [rax]",
+        "0x46cba4: movss xmm6, dword ptr [rax + 0x44]",
+        "0x46cba9: movss xmm5, dword ptr [rax + 0x40]",
+        "0x46cbae: movss xmm2, dword ptr [rax + 4]",
+        "0x46cbb3: comiss xmm0, xmm3",
+        "0x46cbb6: cvtss2sd xmm1, xmm6",
+        "0x46cbba: cvtss2sd xmm4, xmm5",
+        "0x46cbbe: ja 0x46d448",
+        "0x46cbc4: movaps xmm3, xmm0",
+        "0x46cbc7: comiss xmm0, xmm2",
+        "0x46cbca: ja 0x46d428",
+        "0x46cbd0: movaps xmm2, xmm0",
+        "0x46cbd3: comiss xmm0, xmm6",
+        "0x46cbd6: ja 0x46d408",
+        "0x46cbdc: movsd xmm1, qword ptr [rip + 0x85c0c]",
+        "0x46cbe4: mulsd xmm1, qword ptr [rip + 0x880ac]",
+        "0x46cbec: comiss xmm0, xmm5",
+        "0x46cbef: ja 0x46d3e8",
+        "0x46cbf5: movsd xmm4, qword ptr [rip + 0x85bf3]",
+        "0x46cbfd: mulsd xmm4, qword ptr [rip + 0x88093]",
+        "0x46cc05: movsd xmm5, qword ptr [rip + 0x88093]",
+        "0x46cc0d: pxor xmm0, xmm0",
+        "0x46cc11: mov rdx, qword ptr [rdx + 0x28]",
+        "0x46cc15: unpcklps xmm2, xmm3",
+        "0x46cc18: cvtss2sd xmm0, dword ptr [rbx + 0xf8]",
+        "0x46cc20: movsd xmm3, qword ptr [rip + 0x85290]",
+        "0x46cc28: mulsd xmm0, xmm5",
+        "0x46cc2c: addsd xmm0, xmm1",
+        "0x46cc30: mulsd xmm0, qword ptr [rdx + 0x27a8]",
+        "0x46cc38: pxor xmm1, xmm1",
+        "0x46cc3c: cvtss2sd xmm1, dword ptr [rbx + 0xfc]",
+        "0x46cc44: mulsd xmm1, xmm5",
+        "0x46cc48: cvtsd2ss xmm0, xmm0",
+        "0x46cc4c: addsd xmm1, xmm4",
+        "0x46cc50: mulsd xmm1, qword ptr [rdx + 0x2668]",
+        "0x46cc58: cvtsd2ss xmm1, xmm1",
+        "0x46cc5c: unpcklps xmm0, xmm1",
+        "0x46cc5f: movlhps xmm2, xmm0",
+        "0x46cc62: movss xmm0, dword ptr [rip + 0x850f6]",
+        "0x46cc6a: movups xmmword ptr [rbx + 0xf0], xmm2",
+        "0x46cc71: movss xmm2, dword ptr [rax + 0x3c]",
+        "0x46cfcb: movss xmm0, dword ptr [rbx + 0x100]",
+        "0x46cfd3: mulss xmm0, dword ptr [rbx + 0x40]",
+        "0x46cfd8: movss dword ptr [rdx + 0x2c], xmm0",
+        "0x46cfdd: movss xmm0, dword ptr [rbx + 0xfc]",
+        "0x46cfe5: mulss xmm0, dword ptr [rbx + 0x40]",
+        "0x46cfea: movss dword ptr [rdx + 0x30], xmm0",
+        "0x46cfef: movss xmm0, dword ptr [rbx + 0xf8]",
+        "0x46cff7: mulss xmm0, dword ptr [rbx + 0x40]",
+        "0x46cffc: movss dword ptr [rdx + 0x34], xmm0",
+        "0x46d001: movss xmm0, dword ptr [rbx + 0x104]",
+        "0x46d009: mulss xmm0, dword ptr [rbx + 0x40]",
+        "0x46d00e: movss dword ptr [rdx + 0x38], xmm0"
+      ]
+    }
+  ],
+  "zero_input_response_before_standup": {
+    "explanation": "A real zero-input interval, no standUp until end. This proves that zeroing attitude input changes physical pose rather than holding the previously aligned orientation on this run. It does not establish the exact universal neutral pose of the learned controller.",
+    "zero_command_events": [
+      {
+        "read_at_s": 156.05330639,
+        "kind": "sdk_result",
+        "operation": "attitudeControl",
+        "arguments": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "code": 0
+      },
+      {
+        "read_at_s": 156.15721236999997,
+        "kind": "sdk_result",
+        "operation": "attitudeControl",
+        "arguments": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "code": 0
+      },
+      {
+        "read_at_s": 156.25944307999998,
+        "kind": "sdk_result",
+        "operation": "attitudeControl",
+        "arguments": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "code": 0
+      }
+    ],
+    "next_standup_time_s": 157.63578833499997,
+    "source_samples": [
+      {
+        "task_time_s": 156.065463249,
+        "published_at_s": 156.05817115900004,
+        "source_clock": 68750,
+        "bridge_seq": 13751,
+        "rpy_rad": [
+          -0.018961364589381486,
+          -0.011037206241873177,
+          0.038841247463286314
+        ],
+        "gyro_body_rad_s": [
+          6.1581115e-05,
+          0.0003511307,
+          0.000253000384
+        ],
+        "velocity_world_m_s": [
+          2.67668202e-05,
+          -2.69805969e-05,
+          -2.26666839e-06
+        ]
+      },
+      {
+        "task_time_s": 156.56800459799996,
+        "published_at_s": 156.55992396700003,
+        "source_clock": 68985,
+        "bridge_seq": 13798,
+        "rpy_rad": [
+          -0.018747968553077518,
+          0.0031274831248835214,
+          0.0820697818877717
+        ],
+        "gyro_body_rad_s": [
+          0.00215722644,
+          0.0164242536,
+          0.0833100975
+        ],
+        "velocity_world_m_s": [
+          0.00112115813,
+          -0.00073014939,
+          0.000683565275
+        ]
+      },
+      {
+        "task_time_s": 157.06128627199996,
+        "published_at_s": 157.05301177500002,
+        "source_clock": 69215,
+        "bridge_seq": 13844,
+        "rpy_rad": [
+          -0.018234638063471705,
+          0.007887672466615408,
+          0.10792815898828431
+        ],
+        "gyro_body_rad_s": [
+          0.000477820111,
+          0.00448444718,
+          0.032466244
+        ],
+        "velocity_world_m_s": [
+          0.00134674739,
+          -0.00162795465,
+          0.000246807555
+        ]
+      },
+      {
+        "task_time_s": 157.502917587,
+        "published_at_s": 157.500505457,
+        "source_clock": 69425,
+        "bridge_seq": 13886,
+        "rpy_rad": [
+          -0.017862847670388458,
+          0.0091702005685515,
+          0.11858952250955902
+        ],
+        "gyro_body_rad_s": [
+          6.39540594e-05,
+          0.00116958923,
+          0.0171453524
+        ],
+        "velocity_world_m_s": [
+          0.000539131637,
+          4.56586276e-05,
+          3.19744031e-05
+        ]
+      }
+    ]
+  },
+  "root_cause_candidates_ranked": [
+    {
+      "confidence": "high",
+      "candidate": "Pure proportional image-error command assumes an angular-rate plant, while the shipped balanceStand learned policy exhibits a bounded posture response with residual aiming error. Inputs remain nonzero for tens of seconds while true gyros approach zero. This explains permanent AIMING and target_timeout.",
+      "consequence": "Use measured response compensation/integral feedback within official bounds and preserve required mode transition; do not loosen shot accuracy gates."
+    },
+    {
+      "confidence": "high",
+      "candidate": "Sending all-zero attitude input during SETTLING/READY would change the posture-conditioning input. Source code filter decays toward neutral, and actual zero-only interval changes pose before any standUp.",
+      "consequence": "A future compensated controller needs a bounded, validated in-mode hold payload while collecting fresh RGB and stationary physics feedback; zero remains an abort command, not an aim-preserving hold."
+    },
+    {
+      "confidence": "high",
+      "candidate": "RGB-bound command loop median8.71Hz is below the official typical20-50Hz control recommendation.",
+      "consequence": "Refresh latest bounded command at20-50Hz independently of camera inference, with command expiration/disconnect fail-stop. Do not claim frequency alone fixes posture tracking."
+    }
+  ],
+  "not_supported_by_evidence": [
+    "An absolute-angle API reinterpretation",
+    "Wrong pitch/yaw API parameter order or rad-versus-degree units",
+    "SDK action rejection: all1451 attitude calls returned0",
+    "Per-frame attitude API call resetting balanceStand FSM: static SDK and MC log do not support this",
+    "Zero input holding current Euler pose"
+  ],
+  "limits": [
+    "The official learned ONNX policy is encrypted; exact policy-internal target interpretation and universal neutral pose cannot be mathematically proven from the public wrapper/static ELF alone.",
+    "The actual Ubuntu run proves native sensor/controller response only for its configuration. Future firmware/hardware needs independent response characterization and acceptance.",
+    "Zero input transition windows do not provide a standalone long-duration neutral-step test; they do prove immediate posture change before any standUp."
+  ],
+  "official_file_sha256": {
+    "sdk": {
+      "path": "deps/zsibot_sdk/lib/zsl-1/x86_64/libmc_sdk_zsl_1_x86_64.so",
+      "sha256": "c03aa3503a6de49f50871e995221c6695d35320494e8e8d5ddde78a8b026594e"
+    },
+    "mc": {
+      "path": "src/robot_mc/build/export/mc/bin/mc_ctrl",
+      "sha256": "4fa0c4a364244aa911b137726c36994ed9a1d42009b3b0b61016a2d8409fdea0"
+    },
+    "command_mapping": {
+      "path": "src/robot_mc/build/export/mc/bin/libbiomimetics.so",
+      "sha256": "aac875366b952ade4d9e5428ad67967e1748d98720d724576f12fd66f735f1ea"
+    }
+  }
+}

@@ -1,0 +1,631 @@
+{
+  "schema": "task3.ubuntu036_five_shot_review.v1",
+  "reviewed_at_utc": "2026-10-19T20:37:54.080406+00:00",
+  "review_platform": "Windows-10-10.0.19045-SP0",
+  "scope": {
+    "read_only_returned_evidence_review": true,
+    "audit_only_no_sdk_or_physics_execution": true,
+    "returned_evidence_modified": false,
+    "source_or_official_files_modified_by_review": false,
+    "only_new_file_written": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\validation\\ubuntu036_five_shot_review.json",
+    "hardware_test_or_certification": false
+  },
+  "source_run": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_five036_20261020_035314",
+  "package_version": "0.3.6",
+  "verdict": {
+    "mission_success": true,
+    "five_actual_correct_identity_ring10_shots": true,
+    "total_score": 50,
+    "ammo_remaining": 0,
+    "ledger_consistency_passed": true,
+    "sdk_sequence_passed": true,
+    "offline_audit_complete": true,
+    "offline_audit_all_passed": false,
+    "failed_checks": [
+      "official_source_hashes_verified"
+    ],
+    "returned_validation_file_present": false,
+    "complete_036_acceptance_provided": false,
+    "hardware_ready_claim_supported": false
+  },
+  "shot_table": [
+    {
+      "sequence": 1,
+      "intended_id": 2,
+      "actual_id": 2,
+      "ring": 10,
+      "ammo_before": 5,
+      "ammo_after": 4,
+      "cumulative_score": 10,
+      "timestamp_s": 39.10082797299992,
+      "predicted_miss_m": 0.0061264327171166606,
+      "actual_miss_m": 0.004467408659568534,
+      "fire_gate_allowed": true,
+      "fire_gate_referee_age_s": 0.00663973499987236
+    },
+    {
+      "sequence": 2,
+      "intended_id": 5,
+      "actual_id": 5,
+      "ring": 10,
+      "ammo_before": 4,
+      "ammo_after": 3,
+      "cumulative_score": 20,
+      "timestamp_s": 73.81099930000005,
+      "predicted_miss_m": 0.006671209303384059,
+      "actual_miss_m": 0.006684119651742424,
+      "fire_gate_allowed": true,
+      "fire_gate_referee_age_s": 0.007123503999821423
+    },
+    {
+      "sequence": 3,
+      "intended_id": 9,
+      "actual_id": 9,
+      "ring": 10,
+      "ammo_before": 3,
+      "ammo_after": 2,
+      "cumulative_score": 30,
+      "timestamp_s": 109.71525393999991,
+      "predicted_miss_m": 0.00600594648990749,
+      "actual_miss_m": 0.00640510192080472,
+      "fire_gate_allowed": true,
+      "fire_gate_referee_age_s": 0.010978909999991515
+    },
+    {
+      "sequence": 4,
+      "intended_id": 2,
+      "actual_id": 2,
+      "ring": 10,
+      "ammo_before": 2,
+      "ammo_after": 1,
+      "cumulative_score": 40,
+      "timestamp_s": 143.16106040299996,
+      "predicted_miss_m": 0.007373472240146766,
+      "actual_miss_m": 0.004300827220576675,
+      "fire_gate_allowed": true,
+      "fire_gate_referee_age_s": 0.009509210000089752
+    },
+    {
+      "sequence": 5,
+      "intended_id": 5,
+      "actual_id": 5,
+      "ring": 10,
+      "ammo_before": 1,
+      "ammo_after": 0,
+      "cumulative_score": 50,
+      "timestamp_s": 185.52852828899995,
+      "predicted_miss_m": 0.005887507636530902,
+      "actual_miss_m": 0.005840456703678266,
+      "fire_gate_allowed": true,
+      "fire_gate_referee_age_s": 0.00239542499991785
+    }
+  ],
+  "ledger_checks": {
+    "physical_file_equals_summary": true,
+    "mission_file_equals_summary": true,
+    "event_physical_ledger": true,
+    "event_mission_ledger": true,
+    "counts_all_five": true,
+    "csv_all_mission_accepted": true,
+    "csv_all_credit_confirmed": true,
+    "csv_cumulative_scores": true
+  },
+  "mission": {
+    "shooting_policy": "round_robin",
+    "coverage_complete": true,
+    "termination_reason": "ammo_exhausted",
+    "credited_score_sums": {
+      "2": 20,
+      "5": 20,
+      "9": 10
+    },
+    "latest_target_score_total": 30,
+    "cumulative_total_score": 50
+  },
+  "sdk_standup_evidence": {
+    "request_count": 14,
+    "arrival_acknowledgment_count": 14,
+    "standup_sdk_call_count": 28,
+    "standup_return_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "max_acknowledgment_source_age_s": 0.011270870999823046,
+    "nonzero_sdk_result_events": [],
+    "fault_events": [],
+    "counter_limit_0x3007_observed": false
+  },
+  "cross_machine_source_hash_limit": {
+    "official_files_checked": 703,
+    "number_of_current_local_source_mismatches": 1,
+    "mismatches": [
+      {
+        "recorded_source": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/src/robot_mc/build/export/mile_data.txt",
+        "local_source": "E:\\各种比赛\\robortac\\matrix_robotac_first\\src\\robot_mc\\build\\export\\mile_data.txt",
+        "recorded_source_sha256": "873743ba3a63dd828c18aac42621ec50b61fe94174236a7af5918ff1d65e06df",
+        "staged_initial_sha256": "873743ba3a63dd828c18aac42621ec50b61fe94174236a7af5918ff1d65e06df",
+        "current_local_source_sha256": "3e5bff7eaf0b5568ca10c08a2c8d3f39ee9b354ddae8f92370a3241d08bebd85",
+        "current_local_source_text": "mile: 4817.56\n"
+      }
+    ],
+    "returned_manifest_sources_unchanged": true,
+    "returned_manifest_changed_sources": [],
+    "interpretation": "Only mutable mile_data.txt differs between recorded Ubuntu source and current Windows source. This local mismatch does not by itself establish a modification during the Ubuntu run. The original offline validator remains failed; no source is changed and no check is bypassed by this review. A read-only validator on the original Ubuntu tree is needed to close this source identity check."
+  },
+  "terminal_and_cleanup": {
+    "task_result_line_precedes_connect_timeout": true,
+    "display_hold_line_precedes_connect_timeout": true,
+    "terminal_process_exit_zero": true,
+    "display_exit_reason": "window_closed",
+    "shutdown_completed": true,
+    "cleanup_errors": [],
+    "fault_log_bytes": 0,
+    "owned_process_shutdown": {
+      "mc_ctrl": {
+        "pid": 4686,
+        "exit_code": -6,
+        "exit_code_before_cleanup": null,
+        "termination_requested": true,
+        "forced_kill": false,
+        "classification": "controlled_controller_teardown_abort",
+        "accepted": true
+      },
+      "robot_mujoco": {
+        "pid": 4668,
+        "exit_code": 0,
+        "exit_code_before_cleanup": null,
+        "termination_requested": true,
+        "forced_kill": false,
+        "classification": "controlled_normal_exit",
+        "accepted": true
+      },
+      "official_state_bridge": {
+        "pid": 4657,
+        "exit_code": 0,
+        "exit_code_before_cleanup": null,
+        "termination_requested": true,
+        "forced_kill": false,
+        "classification": "controlled_normal_exit",
+        "accepted": true
+      }
+    },
+    "interpretation": "The recorded mission completed five shots before the idle display-period connection diagnostics. mc_ctrl retains its nonzero -6 controlled teardown abort classification; it is not relabeled zero."
+  },
+  "older_full_acceptance": {
+    "path": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_034806_3861",
+    "package_version": "0.3.5",
+    "all_passed": false,
+    "vision_passed": false,
+    "first_failed_phase": "native_nominal",
+    "phases": {
+      "unit_tests": {
+        "status": "passed",
+        "exit_code": 0
+      },
+      "official_dependency_preflight": {
+        "status": "passed",
+        "exit_code": 0
+      },
+      "native_nominal": {
+        "status": "failed",
+        "exit_code": 2
+      },
+      "native_identity_order_swap": {
+        "status": "skipped",
+        "exit_code": null
+      },
+      "native_start_distance_delay_drop": {
+        "status": "skipped",
+        "exit_code": null
+      },
+      "vision_fixed_plus_20_random": {
+        "status": "skipped",
+        "exit_code": null
+      },
+      "evidence_summary": {
+        "status": "failed",
+        "exit_code": 1
+      }
+    },
+    "declared_native_cases": [
+      "native_nominal",
+      "native_identity_order_swap",
+      "native_start_distance_delay_drop"
+    ],
+    "native_nominal_mission_status": "SUCCESS",
+    "native_nominal_shot_count": 3,
+    "native_nominal_score": 30,
+    "native_nominal_validator_failed_checks": [
+      "native_physics_samples_finite_fresh_increasing",
+      "frames_and_feedback_match_recorded_source_publications"
+    ],
+    "interpretation": "This is 0.3.5 evidence, not full 0.3.6 acceptance. Later native cases and vision were skipped; no five-shot native case was included in this older acceptance tree."
+  },
+  "evidence_sha256": {
+    "summary.json": "2c3117196d1d0ddcde9699de38caf7283ff5312456c4c4fa95e7f9355bd1c310",
+    "config.json": "5405174f0d1bbf68337c5248b35a4e096072e6412570ceaee408030548a8f8e2",
+    "mission.json": "19e210239168e119bd6f51e4348d32cb7c901a217f772146be85428558977551",
+    "shots.json": "aa11b1917a1afabc61e3db70bcf96fbe7775112dda897f08e397b916be056c06",
+    "shots.csv": "4f4ed387002a5d5647180aae9fc9e9f01e5aa3cafbccd581d6421f6b102e7d15",
+    "events.jsonl": "ab5be3614383834facabddd699c77a4816206409076383d7a048a67815a064b8",
+    "official_physics.jsonl": "9bb8af3522a99ba00d5160fa3302ceae4d62238d3c832c8a5182c027fd58d316",
+    "terminal.log": "6c4b402b7b02afed41532a81a21a7086be249c74e52da7acd57448ecf94d1255",
+    "fault.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "official_runtime/staging_manifest.json": "eaa614ddcecc37827307a8eafa8628a3b28e48ccfe6e54369f4c1d3da4e258d1",
+    "official_runtime/runtime_status.json": "99bdcd5cc9663b70faedd8e9f7a30c9c772bbef08f2925f5b7aefc0421e1a0f4",
+    "official_runtime/mc_ctrl.log": "a8a222da40d991ebca373879ac47adf9e0b2bc83b3cc6c9d2981500feae3045f"
+  },
+  "older_acceptance_sha256": "96de59a6ec998ce6d0d2abf72661b1e33faf8db1954ce8b79682bbdbb2e9d722",
+  "offline_audit": {
+    "schema": "task3.official_validation.v1",
+    "run_dir": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_five036_20261020_035314",
+    "complete": true,
+    "all_passed": false,
+    "native_acceptance_passed": false,
+    "audit_platform": "Windows-10-10.0.19045-SP0",
+    "audit_only_no_processes_launched": true,
+    "criteria": {
+      "min_ring": 9,
+      "max_actual_miss_m": 0.02,
+      "min_gait_q_span_rad": 0.02,
+      "min_gait_qd_rad_s": 0.05,
+      "min_active_joints": 6
+    },
+    "checks": {
+      "not_a_test_fixture": true,
+      "mission_success": true,
+      "official_backend_no_kinematic_fallback": true,
+      "reported_linux_cpython310_runtime": true,
+      "shutdown_completed": true,
+      "perception_closed": true,
+      "model_sources_unchanged": true,
+      "native_fault_log_empty": true,
+      "runtime_preflight_passed": true,
+      "owned_runtime_closed": true,
+      "controller_actual_log_uses_loopback": true,
+      "controller_log_has_no_sdk_initialization_failure": true,
+      "controller_bind_environment_recorded": true,
+      "owned_process_startup_completed": true,
+      "owned_processes_alive_before_cleanup": true,
+      "owned_processes_have_controlled_termination": true,
+      "owned_process_exit_codes_and_identity": true,
+      "official_source_hashes_verified": false,
+      "staged_files_match_manifest": true,
+      "only_allowed_staged_configs_changed": true,
+      "unchanged_official_elf_executables": true,
+      "staged_official_configs_use_task3_and_loopback": true,
+      "official_hold_profile_source_and_staged_hashes_verified": true,
+      "declared_targets_complete_with_expected_attempts": true,
+      "shot_event_and_ledgers_match": true,
+      "unique_correct_target_and_ammo_debit": true,
+      "score_attribution_and_precision": true,
+      "round_robin_policy_and_numeric_order_recorded": true,
+      "round_robin_complete_expected_shot_sequence": true,
+      "round_robin_one_shot_per_visit": true,
+      "round_robin_visits_and_retirement_are_consistent": true,
+      "round_robin_summary_round_counters": true,
+      "round_robin_event_mission_rows_match": true,
+      "round_robin_per_shot_credit_matches_physical_outcome": true,
+      "round_robin_cumulative_attempts_and_hits": true,
+      "round_robin_last_score_per_target": true,
+      "round_robin_total_score_is_all_shots": true,
+      "round_robin_target_score_sums": true,
+      "round_robin_shot_score_sum": true,
+      "round_robin_coverage_is_actual_correct_hits": true,
+      "round_robin_success_requires_empty_magazine_and_coverage": true,
+      "round_robin_no_ammo_without_coverage": true,
+      "round_robin_terminal_reason_matches_magazine": true,
+      "round_robin_every_shot_has_new_independent_dwell": true,
+      "native_physics_samples_finite_fresh_increasing": true,
+      "physics_sample_count_matches_report": true,
+      "source_publication_to_monotonic_clock_mapping_consistent": true,
+      "frames_and_feedback_match_recorded_source_publications": true,
+      "delivered_source_frames_strictly_increase": true,
+      "sdk_results_and_mode_sequence": true,
+      "official_move_commands_recorded": true,
+      "official_attitude_commands_recorded": true,
+      "sdk_refresh_preserves_original_image_and_command_deadlines": true,
+      "official_execution_fresh_and_transitions_stop": true,
+      "all_shots_have_fresh_stationary_native_gate": true,
+      "coarse_turns_have_official_leg_motion": true,
+      "applied_execution_matches_actual_sdk_call_ledger": true,
+      "actual_cli_exit_zero_recorded": true
+    },
+    "metrics": {
+      "controller_actual_client_ips": [
+        "127.0.0.1"
+      ],
+      "controller_sdk_initialization_error_lines": [],
+      "controller_log_sha256": "a8a222da40d991ebca373879ac47adf9e0b2bc83b3cc6c9d2981500feae3045f",
+      "controller_bind_environment": "SDK_CLIENT_IP",
+      "controller_bind_ip": "127.0.0.1",
+      "owned_process_shutdown": {
+        "mc_ctrl": {
+          "pid": 4686,
+          "exit_code": -6,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false,
+          "classification": "controlled_controller_teardown_abort",
+          "accepted": true
+        },
+        "robot_mujoco": {
+          "pid": 4668,
+          "exit_code": 0,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false,
+          "classification": "controlled_normal_exit",
+          "accepted": true
+        },
+        "official_state_bridge": {
+          "pid": 4657,
+          "exit_code": 0,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false,
+          "classification": "controlled_normal_exit",
+          "accepted": true
+        }
+      },
+      "cleanup_nonzero_exit_codes": {
+        "mc_ctrl": -6
+      },
+      "source_files_checked": 703,
+      "source_hash_failures": [
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\src\\robot_mc\\build\\export\\mile_data.txt"
+      ],
+      "staged_hash_failures": [],
+      "official_hold_profile_evidence": {
+        "required": true,
+        "failures": []
+      },
+      "repeat_shooting": {
+        "shooting_policy": "round_robin",
+        "expected_shot_order": [
+          2,
+          5,
+          9,
+          2,
+          5
+        ],
+        "actual_shot_order": [
+          2,
+          5,
+          9,
+          2,
+          5
+        ],
+        "round_indices": [
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "attempts_by_target": {
+          "2": 2,
+          "5": 2,
+          "9": 1
+        },
+        "successful_hits_by_target": {
+          "2": 2,
+          "5": 2,
+          "9": 1
+        },
+        "last_credited_scores": {
+          "2": 10,
+          "5": 10,
+          "9": 10
+        },
+        "cumulative_scores_by_target": {
+          "2": 20,
+          "5": 20,
+          "9": 10
+        },
+        "total_score": 50,
+        "latest_target_score_total": 30,
+        "shot_score_sum": 50,
+        "per_shot_dwell": [
+          {
+            "target_id": 2,
+            "shot_time_s": 39.10082797299992,
+            "dwell_started_s": 38.63334297100005,
+            "observed_stable_s": 0.46748500199987575,
+            "new_image_after_previous_shot": true,
+            "valid": true
+          },
+          {
+            "target_id": 5,
+            "shot_time_s": 73.81099930000005,
+            "dwell_started_s": 73.39903120400004,
+            "observed_stable_s": 0.4119680960000096,
+            "new_image_after_previous_shot": true,
+            "valid": true
+          },
+          {
+            "target_id": 9,
+            "shot_time_s": 109.71525393999991,
+            "dwell_started_s": 109.27788839200002,
+            "observed_stable_s": 0.4373655479998888,
+            "new_image_after_previous_shot": true,
+            "valid": true
+          },
+          {
+            "target_id": 2,
+            "shot_time_s": 143.16106040299996,
+            "dwell_started_s": 142.72459795600003,
+            "observed_stable_s": 0.43646244699993986,
+            "new_image_after_previous_shot": true,
+            "valid": true
+          },
+          {
+            "target_id": 5,
+            "shot_time_s": 185.52852828899995,
+            "dwell_started_s": 185.10061380599996,
+            "observed_stable_s": 0.427914482999995,
+            "new_image_after_previous_shot": true,
+            "valid": true
+          }
+        ]
+      },
+      "sdk_refresh_evidence": {
+        "enabled": true,
+        "active_calls": 2184,
+        "refresh_calls": 969,
+        "failures": []
+      },
+      "shot_hold_evidence": [
+        {
+          "target_id": 2,
+          "nonzero_input": true,
+          "held_attitude_exception": true,
+          "hold_failed_checks": []
+        },
+        {
+          "target_id": 5,
+          "nonzero_input": true,
+          "held_attitude_exception": true,
+          "hold_failed_checks": []
+        },
+        {
+          "target_id": 9,
+          "nonzero_input": true,
+          "held_attitude_exception": true,
+          "hold_failed_checks": []
+        },
+        {
+          "target_id": 2,
+          "nonzero_input": true,
+          "held_attitude_exception": true,
+          "hold_failed_checks": []
+        },
+        {
+          "target_id": 5,
+          "nonzero_input": true,
+          "held_attitude_exception": true,
+          "hold_failed_checks": []
+        }
+      ],
+      "native_physics_samples": 12268,
+      "coarse_motion_samples": 1119,
+      "coarse_joint_q_span_rad": [
+        0.1429165714,
+        0.09493911300000002,
+        0.38088882,
+        0.1309903671,
+        0.149502515,
+        0.29898428999999993,
+        0.09956446473,
+        0.208547771,
+        0.17757285,
+        0.0996977464,
+        0.21986073299999997,
+        0.14260387000000008
+      ],
+      "coarse_joint_qd_peak_rad_s": [
+        2.08351517,
+        2.30318332,
+        8.90468121,
+        1.81034887,
+        2.36031699,
+        5.29003191,
+        1.7400465,
+        1.73755205,
+        1.75294864,
+        1.53908348,
+        2.12225127,
+        1.68489695
+      ],
+      "coarse_body_yaw_travel_rad": 9.093228305155963,
+      "sdk_sequence_errors": [],
+      "shot_count": 5,
+      "scores": {
+        "2": 10,
+        "5": 10,
+        "9": 10
+      },
+      "per_shot_scores": [
+        {
+          "sequence": 1,
+          "target_id": 2,
+          "ring": 10
+        },
+        {
+          "sequence": 2,
+          "target_id": 5,
+          "ring": 10
+        },
+        {
+          "sequence": 3,
+          "target_id": 9,
+          "ring": 10
+        },
+        {
+          "sequence": 4,
+          "target_id": 2,
+          "ring": 10
+        },
+        {
+          "sequence": 5,
+          "target_id": 5,
+          "ring": 10
+        }
+      ],
+      "total_score": 50,
+      "latest_target_score_total": 30,
+      "cumulative_scores_by_target": {
+        "2": 20,
+        "5": 20,
+        "9": 10
+      },
+      "package_version": "0.3.6"
+    },
+    "errors": [],
+    "warnings": [
+      "Owned mc_ctrl pid=4686 exited with SIGABRT (-6) after an explicit termination request. The recorded pre-cleanup process was alive; the known official teardown anomaly remains a nonzero exit."
+    ],
+    "limitations": [
+      "Offline consistency audit of returned evidence, not independent authentication of a host or hardware trial.",
+      "eCAL publication time is source freshness evidence; raw protobuf time_stamp units remain unknown.",
+      "Contact dynamics are executed by the official native process; RGB/ray scoring use its state in a read-only rendering mirror."
+    ],
+    "failed_checks": [
+      "official_source_hashes_verified"
+    ]
+  },
+  "limits": [
+    "Only one returned 0.3.6 nominal five-shot native run was reviewed.",
+    "No complete 0.3.6 acceptance output is supplied by this evidence set.",
+    "Full offline all_passed remains false for the cross-machine mutable mileage source mismatch.",
+    "Delay/drop, identity-order swaps, random starts, and vision phases require the current 0.3.6 complete Ubuntu acceptance run.",
+    "No physical robot, official hardware video pipeline, actual laser/fire command, hardware interlocks, or real target scoring has been exercised.",
+    "Evidence consistency is not independent authentication of a host or hardware trial."
+  ]
+}

@@ -1,0 +1,662 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-19",
+  "purpose": "Read-only review of user-supplied Ubuntu fix1 logs; excludes copied old Windows and pre-fix Linux runs from fix1 acceptance.",
+  "evidence": {
+    "terminal": "../task3_terminal_after_fix1",
+    "terminal_sha256": "7a33c41ab9f6aebe93af34aae22d37245aab202ee35feda6357282a206ea8b97",
+    "root": "runs_ubuntu",
+    "all_summary_count": 36,
+    "summary_groups": {
+      "old_windows": 19,
+      "old_linux": 8,
+      "linux_fix1": 9
+    },
+    "unit_tests": {
+      "passed": 33,
+      "source": "task3_terminal_after_fix1",
+      "runtime": "Linux / Python 3.10.12"
+    },
+    "six_case_validation": {
+      "all_passed": true,
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "ubuntu_runtime_tested": true,
+      "python310_grammar_files": 19,
+      "cases": [
+        {
+          "case": "default",
+          "passed": true,
+          "status": "SUCCESS",
+          "ring": 10,
+          "simulation_time_s": 2.549999999999968,
+          "summary": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/runs/validation_20261019_132108_a05f3701/default/summary.json"
+        },
+        {
+          "case": "left_start",
+          "passed": true,
+          "status": "SUCCESS",
+          "ring": 10,
+          "simulation_time_s": 2.8999999999999604,
+          "summary": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/runs/validation_20261019_132108_a05f3701/left_start/summary.json"
+        },
+        {
+          "case": "oblique_target",
+          "passed": true,
+          "status": "SUCCESS",
+          "ring": 10,
+          "simulation_time_s": 2.399999999999971,
+          "summary": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/runs/validation_20261019_132108_a05f3701/oblique_target/summary.json"
+        },
+        {
+          "case": "beam_blocked",
+          "passed": true,
+          "status": "MISSED",
+          "ring": 3,
+          "simulation_time_s": 2.549999999999968,
+          "summary": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/runs/validation_20261019_132108_a05f3701/beam_blocked/summary.json"
+        },
+        {
+          "case": "tag_out_of_view",
+          "passed": true,
+          "status": "TIMEOUT",
+          "ring": null,
+          "simulation_time_s": 1.0000000000000007,
+          "summary": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/runs/validation_20261019_132108_a05f3701/tag_out_of_view/summary.json"
+        },
+        {
+          "case": "no_ammo",
+          "passed": true,
+          "status": "NO_AMMO",
+          "ring": null,
+          "simulation_time_s": 2.549999999999968,
+          "summary": "/home/xiaozhibuzhan/robotac/matrix_robotac_first/task3_sim/runs/validation_20261019_132108_a05f3701/no_ammo/summary.json"
+        }
+      ]
+    },
+    "six_case_validation_sha256": "d661c33dc13eec953bd0fe414c135b191f7b652e7ad1744101b9ff55d5c3a6a5",
+    "preservation_uploaded_report": {
+      "path": "runs_ubuntu/preservation_report.json",
+      "unchanged": true,
+      "files_checked": 988,
+      "sha256_files": 978,
+      "metadata_only_files": 10,
+      "limit": "Report generation time and enumerated paths only; not the independent audit for the next update."
+    }
+  },
+  "acceptance": {
+    "milestone": "single_target_render_apriltag_autoaim_ray",
+    "verdict": "Ubuntu milestone demonstrated; proceed to controlled single-target appearance robustness with residual lifecycle and viewer improvements.",
+    "all_9_latest_linux_summaries_cleanup_complete": true,
+    "all_9_latest_native_fault_logs_empty": true,
+    "residuals": [
+      {
+        "issue": "Ctrl+C after result still returns 1",
+        "run": "run_20261019_131720_3532",
+        "evidence": "SUCCESS summary and completed cleanup; terminal TASK3_PROCESS_EXIT code=1"
+      },
+      {
+        "issue": "Viewer side panels dominate and target outside screenshot framing",
+        "evidence": "Screenshot from 2026-10-19 13-18-20.png",
+        "recommendation": "Hide both side panels by launch_passive options and frame robot/target together; preserve detection-camera calibration."
+      }
+    ]
+  },
+  "user_authorized_appearance": {
+    "background": "Image #3 pastel texture bitmap",
+    "fixed_target": "Image #4 green target bitmap with black/white fiducial",
+    "confirmation": "User explicitly confirmed this mapping.",
+    "constraints": [
+      "Native rendered scene geometry and textures, preserve unmodified source images.",
+      "Detect actual fiducial family and ID; derive board geometry and scorer mapping from image coordinates.",
+      "Metric scale remains a documented simulation assumption until target dimensions are measured.",
+      "Keep old synthetic baseline config for regression."
+    ]
+  },
+  "limitations": [
+    "No CPU, GPU, RAM or per-frame wall-latency series were logged; fixed simulated 20 Hz is not a measured hardware throughput.",
+    "Empty fault logs and successful limited runs do not prove indefinite memory stability.",
+    "Low reprojection residual and ideal-render millimeter scores do not establish real camera calibration or hardware accuracy.",
+    "Kinematic base with velocity lag; no gait dynamics or hardware control.",
+    "Synthetic ring scale and miss=3 policy are not official competition validation.",
+    "Photo/background aesthetic realism alone does not establish robustness.",
+    "Blocked-ray test demonstrates scoring occlusion, not perception-based inhibition of a shot."
+  ],
+  "next_stage_proposed_acceptance": {
+    "status": "recommendations_not_completed_or_official_thresholds",
+    "baseline_repeated_runs": 20,
+    "baseline_required_successes": 20,
+    "controlled_perturbation_cases_min": 100,
+    "success_rate_min": 0.95,
+    "p95_aim_time_s_max": 8.0,
+    "visible_target_valid_detection_frame_ratio_min": 0.95,
+    "p95_actual_miss_m_debug_target_if_current_metric_scale_retained": 0.01,
+    "invalid_or_stale_observation_or_empty_ammo_unauthorized_shots_max": 0,
+    "initial_perturbation_envelope": {
+      "range_relative_to_baseline": [
+        0.8,
+        1.2
+      ],
+      "target_yaw_deg": [
+        -15,
+        15
+      ],
+      "initial_base_yaw_deg": [
+        -10,
+        10
+      ],
+      "illumination_relative": [
+        0.7,
+        1.3
+      ]
+    },
+    "retain_six_case_regressions": true,
+    "later_scope": [
+      "camera noise/blur/exposure with saved seeds",
+      "frame latency/dropout freshness gating",
+      "camera/laser extrinsic mismatch",
+      "navigation to firing pose",
+      "multiple target IDs and formal scoring",
+      "gait dynamics and official video interface separately"
+    ]
+  },
+  "records": [
+    {
+      "summary": "runs_ubuntu/run_20261019_131552_3476/summary.json",
+      "summary_sha256": "b638175e1ec5de832bb712b01f5755c9ef315c189a93185a28e3da06ce4c4760",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "simulation_time_s": 2.549999999999968,
+      "frames": 52,
+      "mission_wall_time_s": 2.4573100220000015,
+      "wall_time_s_including_display_hold": 4.935918308999987,
+      "ammo_remaining": 4,
+      "shot": {
+        "target_id": 0,
+        "ring": 10,
+        "hit": true,
+        "point_world_m": [
+          2.5,
+          0.25358155046850345,
+          0.49653107039088074
+        ],
+        "reason": "ring_hit"
+      },
+      "shot_event_count": 1,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.5093723572098265,
+          0.2507529631644747,
+          0.5014159682383524
+        ],
+        "bullseye_position_error_m": 0.00950857503770498,
+        "predicted_miss_m": 0.0056958409998541,
+        "actual_miss_m": 0.004986078257655168
+      },
+      "detected_frames": 52,
+      "event_count": 52,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.009595758265201072,
+        0.08306265073817456,
+        0.1992601246987323
+      ],
+      "decision_margin_min_median_max": [
+        116.66666412353516,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.4499999999999904,
+      "final_gyro_norm_rad_s": 9.647226624778096e-05,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": null,
+      "fault_log_bytes": 0,
+      "launcher_exit_code": 0
+    },
+    {
+      "summary": "runs_ubuntu/run_20261019_131720_3532/summary.json",
+      "summary_sha256": "e73a5596a98aab7dad75fa7c8b9a383d6290a7d6c5d8a9a26d06cacffa106808",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "glfw",
+      "simulation_time_s": 2.399999999999971,
+      "frames": 49,
+      "mission_wall_time_s": 2.567951556999958,
+      "wall_time_s_including_display_hold": 86.06958467800001,
+      "ammo_remaining": 4,
+      "shot": {
+        "target_id": 0,
+        "ring": 10,
+        "hit": true,
+        "point_world_m": [
+          2.5,
+          0.2539144291668368,
+          0.4959330409858448
+        ],
+        "reason": "ring_hit"
+      },
+      "shot_event_count": 1,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.4984857531842946,
+          0.249748898580853,
+          0.49991954621469464
+        ],
+        "bullseye_position_error_m": 0.0015370322550752392,
+        "predicted_miss_m": 0.005726186674341989,
+        "actual_miss_m": 0.005644724202740214
+      },
+      "detected_frames": 49,
+      "event_count": 49,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.025142083691692973,
+        0.0772647550942407,
+        0.1679311883851342
+      ],
+      "decision_margin_min_median_max": [
+        116.66666412353516,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.44999999999999063,
+      "final_gyro_norm_rad_s": 0.0001471949347048936,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": "keyboard_interrupt_after_result",
+      "fault_log_bytes": 0,
+      "launcher_exit_code": 1
+    },
+    {
+      "summary": "runs_ubuntu/run_20261019_131947_3657/summary.json",
+      "summary_sha256": "1ea35f938bef2c325c6b3234b965e0b45f51198dc473fe1a34cb62afbaf31a85",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "glfw",
+      "simulation_time_s": 2.399999999999971,
+      "frames": 49,
+      "mission_wall_time_s": 2.4404695720000404,
+      "wall_time_s_including_display_hold": 29.50452860500002,
+      "ammo_remaining": 4,
+      "shot": {
+        "target_id": 0,
+        "ring": 10,
+        "hit": true,
+        "point_world_m": [
+          2.5,
+          0.2539144291668368,
+          0.4959330409858448
+        ],
+        "reason": "ring_hit"
+      },
+      "shot_event_count": 1,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.4984857531842946,
+          0.249748898580853,
+          0.49991954621469464
+        ],
+        "bullseye_position_error_m": 0.0015370322550752392,
+        "predicted_miss_m": 0.005726186674341989,
+        "actual_miss_m": 0.005644724202740214
+      },
+      "detected_frames": 49,
+      "event_count": 49,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.025142083691692973,
+        0.0772647550942407,
+        0.1679311883851342
+      ],
+      "decision_margin_min_median_max": [
+        116.66666412353516,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.44999999999999063,
+      "final_gyro_norm_rad_s": 0.0001471949347048936,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": "viewer_closed",
+      "fault_log_bytes": 0,
+      "launcher_exit_code": 0
+    },
+    {
+      "summary": "runs_ubuntu/validation_20261019_132108_a05f3701/beam_blocked/summary.json",
+      "summary_sha256": "fbb1c9beab4ed6e455c78b85dbd130395e833ccbf6f5e91664282ce9d643a017",
+      "status": "MISSED",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "simulation_time_s": 2.549999999999968,
+      "frames": 52,
+      "mission_wall_time_s": 0.5382466659999636,
+      "wall_time_s_including_display_hold": 1.6249110629998995,
+      "ammo_remaining": 4,
+      "shot": {
+        "target_id": null,
+        "ring": 3,
+        "hit": false,
+        "point_world_m": [
+          1.77,
+          0.17955182997180566,
+          0.4479736536099993
+        ],
+        "reason": "occluded"
+      },
+      "shot_event_count": 1,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.5093723572098265,
+          0.2507529631644747,
+          0.5014159682383524
+        ],
+        "bullseye_position_error_m": 0.00950857503770498,
+        "predicted_miss_m": 0.0056958409998541,
+        "actual_miss_m": null
+      },
+      "detected_frames": 52,
+      "event_count": 52,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.009595758265201072,
+        0.08306265073817456,
+        0.1992601246987323
+      ],
+      "decision_margin_min_median_max": [
+        115.27776336669922,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.4499999999999904,
+      "final_gyro_norm_rad_s": 9.647226624778096e-05,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": null,
+      "fault_log_bytes": 0
+    },
+    {
+      "summary": "runs_ubuntu/validation_20261019_132108_a05f3701/default/summary.json",
+      "summary_sha256": "532dd382554aeb867bfc4a36e7d540e589b1d50a64bffed13c9a11207cf4d821",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "simulation_time_s": 2.549999999999968,
+      "frames": 52,
+      "mission_wall_time_s": 2.4025133080000387,
+      "wall_time_s_including_display_hold": 4.740159745000028,
+      "ammo_remaining": 4,
+      "shot": {
+        "target_id": 0,
+        "ring": 10,
+        "hit": true,
+        "point_world_m": [
+          2.5,
+          0.25358155046850345,
+          0.49653107039088074
+        ],
+        "reason": "ring_hit"
+      },
+      "shot_event_count": 1,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.5093723572098265,
+          0.2507529631644747,
+          0.5014159682383524
+        ],
+        "bullseye_position_error_m": 0.00950857503770498,
+        "predicted_miss_m": 0.0056958409998541,
+        "actual_miss_m": 0.004986078257655168
+      },
+      "detected_frames": 52,
+      "event_count": 52,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.009595758265201072,
+        0.08306265073817456,
+        0.1992601246987323
+      ],
+      "decision_margin_min_median_max": [
+        116.66666412353516,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.4499999999999904,
+      "final_gyro_norm_rad_s": 9.647226624778096e-05,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": null,
+      "fault_log_bytes": 0
+    },
+    {
+      "summary": "runs_ubuntu/validation_20261019_132108_a05f3701/left_start/summary.json",
+      "summary_sha256": "ffe50fe6a0c63e29e8895e73a61c2354e39a71726f2bb30bc34f7c9a79946fb6",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "simulation_time_s": 2.8999999999999604,
+      "frames": 59,
+      "mission_wall_time_s": 0.5804655549999325,
+      "wall_time_s_including_display_hold": 1.7407591579999462,
+      "ammo_remaining": 4,
+      "shot": {
+        "target_id": 0,
+        "ring": 10,
+        "hit": true,
+        "point_world_m": [
+          2.5,
+          0.24537845413290893,
+          0.49738639387763905
+        ],
+        "reason": "ring_hit"
+      },
+      "shot_event_count": 1,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.501595973760845,
+          0.2502947945931751,
+          0.4998658980168969
+        ],
+        "bullseye_position_error_m": 0.0016285022073496695,
+        "predicted_miss_m": 0.0053150653681365385,
+        "actual_miss_m": 0.005309390093454159
+      },
+      "detected_frames": 59,
+      "event_count": 59,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.007972598242138832,
+        0.08551170421495118,
+        0.1891393125858902
+      ],
+      "decision_margin_min_median_max": [
+        116.66666412353516,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.4499999999999904,
+      "final_gyro_norm_rad_s": 0.00010056264695595626,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": null,
+      "fault_log_bytes": 0
+    },
+    {
+      "summary": "runs_ubuntu/validation_20261019_132108_a05f3701/no_ammo/summary.json",
+      "summary_sha256": "13efcdbe76d111610c6fb0f8bb34938ba8f9bd4be021c637023524eb0b59d0de",
+      "status": "NO_AMMO",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "simulation_time_s": 2.549999999999968,
+      "frames": 52,
+      "mission_wall_time_s": 0.5339505289999806,
+      "wall_time_s_including_display_hold": 1.6211935139999696,
+      "ammo_remaining": 0,
+      "shot": null,
+      "shot_event_count": 0,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.5093723572098265,
+          0.2507529631644747,
+          0.5014159682383524
+        ],
+        "bullseye_position_error_m": 0.00950857503770498,
+        "predicted_miss_m": 0.0056958409998541,
+        "actual_miss_m": null
+      },
+      "detected_frames": 52,
+      "event_count": 52,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.009595758265201072,
+        0.08306265073817456,
+        0.1992601246987323
+      ],
+      "decision_margin_min_median_max": [
+        116.66666412353516,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.4499999999999904,
+      "final_gyro_norm_rad_s": 9.647226624778096e-05,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": null,
+      "fault_log_bytes": 0
+    },
+    {
+      "summary": "runs_ubuntu/validation_20261019_132108_a05f3701/oblique_target/summary.json",
+      "summary_sha256": "b95a478b4bb20c8b6869a00263142b12a1e521315e9988b80b82e045130d9a3a",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "simulation_time_s": 2.399999999999971,
+      "frames": 49,
+      "mission_wall_time_s": 0.5283230460000823,
+      "wall_time_s_including_display_hold": 1.6236603500000228,
+      "ammo_remaining": 4,
+      "shot": {
+        "target_id": 0,
+        "ring": 10,
+        "hit": true,
+        "point_world_m": [
+          2.300288158116926,
+          -0.20093153685443843,
+          0.5449712812173203
+        ],
+        "reason": "ring_hit"
+      },
+      "shot_event_count": 1,
+      "diagnostics": {
+        "estimated_bullseye_world_m": [
+          2.299634908972821,
+          -0.19995086730585268,
+          0.5501572308765197
+        ],
+        "bullseye_position_error_m": 0.00040053342968054376,
+        "predicted_miss_m": 0.005313791366992449,
+        "actual_miss_m": 0.005122383098402873
+      },
+      "detected_frames": 49,
+      "event_count": 49,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": [
+        0.007141064239339283,
+        0.05928288862098952,
+        0.18855958357302846
+      ],
+      "decision_margin_min_median_max": [
+        116.66666412353516,
+        116.66666412353516,
+        116.66666412353516
+      ],
+      "final_settling_ready_observation_span_s": 0.44999999999999063,
+      "final_gyro_norm_rad_s": 0.00015129093959726043,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": null,
+      "fault_log_bytes": 0
+    },
+    {
+      "summary": "runs_ubuntu/validation_20261019_132108_a05f3701/tag_out_of_view/summary.json",
+      "summary_sha256": "0a23dd1db3593711882ec5ced209748afcdacb0683f3d872a2d3a36b159499e5",
+      "status": "TIMEOUT",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "package_version": "0.1.1",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "simulation_time_s": 1.0000000000000007,
+      "frames": 20,
+      "mission_wall_time_s": 0.31608487299990884,
+      "wall_time_s_including_display_hold": 1.4056240540001,
+      "ammo_remaining": 5,
+      "shot": null,
+      "shot_event_count": 0,
+      "diagnostics": null,
+      "detected_frames": 0,
+      "event_count": 20,
+      "simulation_frame_interval_s": [
+        0.05
+      ],
+      "reprojection_error_px_min_median_max": null,
+      "decision_margin_min_median_max": null,
+      "final_settling_ready_observation_span_s": null,
+      "final_gyro_norm_rad_s": 0.0,
+      "perception_closed": true,
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "display_exit_reason": null,
+      "fault_log_bytes": 0
+    }
+  ]
+}

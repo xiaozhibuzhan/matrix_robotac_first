@@ -1,0 +1,5417 @@
+{
+  "complete": true,
+  "all_passed": true,
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.12.3",
+  "ubuntu_runtime_tested": false,
+  "seed": 20261019,
+  "random_cases_requested": 0,
+  "fixed_cases": 20,
+  "code_semantics": "Each case calls run_multi in this validator process. process_code is the returned application code; independent CLI termination is a separate check. A native abort terminates validation and leaves pending_case recorded.",
+  "source_py_sha256": {
+    "__init__.py": "0178337015056aa8169939505142b8d633c9c822718d5982c6b8740d193306ab",
+    "__main__.py": "89df8d52045663ae13fbe1c47da74fa62fa23886c9f514a6397164b3de3d702c",
+    "appearance.py": "80f816e3aec3817a6b855268e655424a390c016de83780562ae190e74939b70d",
+    "backend.py": "fc2f83e2cad59aa028220725ac2d371295b8d6737ab7bce08e046d1dbeceb95a",
+    "controller.py": "338d82d487ad30b9594da1f4c5823b5df8ee60b45fb95eb653192497e590f1ac",
+    "geometry.py": "e0e74a38ac6ca97b5ac1f34ce882eea30e2cd571473796531517b4e8a6acec84",
+    "interfaces.py": "9317bf55c60464d53b60ab386a2af9ccfac86ca3b365adf0be059248e2a8ea1d",
+    "mesh.py": "a3edeed0dd4adc4e13a93ff87231b500bd372932a7219d15849e5dfa28e8e931",
+    "mission.py": "47d6aabb7293002eb12dbcdbed4a25694a5ecf90da12f87fad608f2410986f58",
+    "multi.py": "841be8a64430b320438e8da96bbfb0445d50a25502a9f049315d87eb91da666d",
+    "multi_config.py": "df034ecc6bd15b1ef9a7a46d0dc11213db2910cedfdd3111623f029975eee776",
+    "multi_perception.py": "8860652fd3608037459c32e95d47540904cfc194021059060509b04f0d02391f",
+    "multi_scene.py": "ad8e56736aa0208bb3d5f27e8a354681e3494c513189bc737e775c52fe34094c",
+    "multi_scoring.py": "78ede0a855b3a8b6810866ff1423b102bc1cca3c4a7b8c09608ec48ede560baa",
+    "official.py": "2fddbb4c3bee1642216ac8f03c9de30209ba168f97e4eea9c39758f46d1728f2",
+    "official_aim.py": "c723cae9c2edeef89f4cc5ed9588d6d9792320e6fa115ff74d712a2dcc488f22",
+    "official_backend.py": "1b852b77325f03dc7e1517be4ae677f3782b11a08bd2b84ed70262d2860a7980",
+    "official_runtime.py": "7d5da9b883ec0718f5775a3185364d1be8b3c1c5e39ffb2930b8c1ecd0d65554",
+    "official_scene.py": "72e023175a1ac8df335783e315defbadcb701301d0f2d3df2887f82356b351f8",
+    "official_sdk.py": "35fdda3d5809e5d44c90594734be272738c8e89b932d498bf85c59f8b98d35a1",
+    "official_state.py": "78ac8dfc54664d77befb7976b783b5f6d642c0c1d10d9733913572be7e77e133",
+    "package_update.py": "7fbfbc84c7f22f30ed2003944c6271934bded3fa382c6aa68e2bda29cf775948",
+    "perception.py": "d9e1cc1551796e50607a3b9924e5d8545defc4b5cd61d0cb042ccaf25f9a6454",
+    "preserve.py": "3f77bd336529855462c7c1880aafba93689656506fc91b21a18db600ea022cbf",
+    "scene.py": "482e449b1026f18ee150cdd9c9db703bbdb6191c5235b7216593f06646217deb",
+    "scoring.py": "9d14f1273f76d48398d328932d33ff4a14fbc37e6f6570dfe779521a2fff6ce6",
+    "sensor.py": "b7cf3f37d5c3efc458576a9e6888c78c62af0d2bb2bc002d70e3373cee1f9f2c",
+    "telemetry.py": "c71f6dd9d80ee97142464c8b6cd9fee2911c659e9a923c2c9f71fc898290d1fc",
+    "tests/test_appearance_assets.py": "0fc258ef5a69629c7e2e8cb68e7094b4aa088a0f7377920b9013a92b45fdd6a4",
+    "tests/test_camera_effects.py": "011d658e9c48a4ccdc7f07caec2777b1088055d3f8aa8de5b436c6709383d631",
+    "tests/test_fixed_directions_render.py": "2359539ce591c18917ccea0fb40cca6cf271d31defe9c6f865c67cf01b426672",
+    "tests/test_frame_transport.py": "02905ca247f878150943524aab5adeab630d6b0ecc727e2d986b58c7f80b0d37",
+    "tests/test_interrupt_shutdown.py": "ce5d93140f27a0bc79cfb5b8076742e76b20c57ef0ed3952de6bc646d528335b",
+    "tests/test_multi_mission.py": "208ee2f2c02832b52adb62c4f3abae051506242082c80cbde2a00c433340c8cc",
+    "tests/test_multi_perception.py": "8ebe5cfd2b03412e8c4a6cbbd056d8f29b3811d8a9f27c1791255d691c44bb3a",
+    "tests/test_multi_referee.py": "457048b9b59ebbd3718c4ea9082175d52fc3431cccb0de856f378e1f8206ebb7",
+    "tests/test_multi_runtime_lifecycle.py": "5808540f3faddd95938fc4ec247f5f97afb379dfa5bb10ce7c0ab7153a6e09b0",
+    "tests/test_multi_scene.py": "347e466332e62c647e263f305d18858c9dc460b96e0d79d4b24711373491da66",
+    "tests/test_multi_startup033.py": "59f92035c3569ecbe90265ae8ff11cac0fee08d95f8b88b5c3ac49f73d348d7b",
+    "tests/test_official_aim.py": "c65188847da5372453188c71cf216676dc3d31595175bd9aa9897abe5ba6b0ec",
+    "tests/test_official_backend.py": "facf089bf4293a149884a9aa37faf7f24192d5940cc13209b4448a2b21c1376f",
+    "tests/test_official_fire_transaction.py": "80314e1f67b63ef87ef09e10b2802f0b7510a80f165588a5ff3d1b3be18eefca",
+    "tests/test_official_recovery.py": "1beb3f90fe44545f602f7a7191ff18dd43379e5191a4a344cfffd50385bc7b09",
+    "tests/test_official_runtime.py": "88fcf3104c51b0e8b805e24bed422e2552f006892986578f8ac79b613683a933",
+    "tests/test_official_scene.py": "115a3a94094f70aef053c6fca2617457b4f33fb92f7fb19ea5824a6e9ae26198",
+    "tests/test_official_sdk.py": "b6b34da051208bfdd5357f7915c846c10903f1f5486efd6db60c9fef2ee06862",
+    "tests/test_official_state.py": "c354b076fb35cf506b05b059a6d55c8b7fa3a5b5981c298866ee4d379df49035",
+    "tests/test_perception_lifecycle.py": "dc2425de715660411e2f692c7f7c00753965879c586eb1960c3f212b05bc56a7",
+    "tests/test_printed_ring_scoring.py": "3ffdb418835787ce0a3773369e6e40a85fa2af42418e3ebba4ab27611ed76126",
+    "tests/test_ray_referee.py": "d8815bed3746712081369326e7765a83da4443c23c08ecce0673cce5459d2e8a",
+    "tests/test_repeat_acceptance.py": "4ad78d8f451fda6b5de5a04bf045c17b0cdf5833ac973e7cbb1d23120a1f8c15",
+    "tests/test_repeat_fire_transaction.py": "24d97c0a210182e62a36aea2d366a07cbd5a6468df098754c16fa62b6700bc67",
+    "tests/test_round_robin_mission.py": "258a1ef461193e903d913c8eb42df644000e409ec3bae199d4e5fd2e8ab840fc",
+    "tests/test_safety_geometry.py": "2519b1600f4073b2878f7aceb698e8a5aa9c34f241748654b5fece4a224e877f",
+    "tests/test_shot_receipts035.py": "5c1140cb806f00f09cf3ab01b5c7cb147f5aabc4316f5ff947d1d7fe7d2d8c16",
+    "tests/test_telemetry.py": "2e668d80c81a7ae5fc2403e12a2c6f930eeb35b689536d4509caede3fc1c8899",
+    "tests/test_ui_lifecycle.py": "99b541d0e25b56516cb9d325715c2ab9defea79c1d603662ba4df13d6f7804c4",
+    "tests/test_update_boundaries.py": "06eb6f480edcd405bdb822be59db88b181a25235f0bebb13ff727089e3977dd4",
+    "tests/test_validate_multi.py": "3d1e0d16ede0cd9b8f36ad02bcb9b107f792dd5d70bf8ed121436e8edd963018",
+    "tests/test_validate_official.py": "e1312610ad7c2dde6060d24f81cfceddf4ad3c1c8076d7d7ed8b43e74b55c5ad",
+    "transport.py": "c227b81e91aceab625cfbb361180b45cda41336b87e01ec696b61069c25f6241",
+    "ui.py": "4d60c26733e391b3ab423f63d6554729dadbf743a1e5c66f7eb2f6071bf186b5",
+    "validate.py": "d4b2770a679a01b0df73f1178927c9ab81f0e00dc8d327b6789a54113f9eaac6",
+    "validate_appearance.py": "3a372127b6282b60c9558fb1c1ce6b4df16e76dd75d4a651cdbfc2a8bfe2baf5",
+    "validate_multi.py": "be31c4fc4a7e3285c2cb7c6487457d9348bb47b0ad0b64f5c18dbb992c5db53e",
+    "validate_official.py": "723a114d38472e5847e0b0b00d1e0bded79ab77d80c00df0b87a947bc8aa15bd"
+  },
+  "scene_layout": {
+    "background": "surround",
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.27
+    ],
+    "initial_rpy_rad": [
+      0.0,
+      0.04,
+      0.0
+    ],
+    "target_boards": [
+      {
+        "id": 2,
+        "simulation": {
+          "target_center_world_m": [
+            0.0,
+            2.7,
+            0.5
+          ],
+          "target_yaw_rad": 1.5707963267948966
+        }
+      },
+      {
+        "id": 5,
+        "simulation": {
+          "target_center_world_m": [
+            2.7,
+            0.0,
+            0.5
+          ],
+          "target_yaw_rad": 0.0
+        }
+      },
+      {
+        "id": 9,
+        "simulation": {
+          "target_center_world_m": [
+            0.0,
+            -2.7,
+            0.5
+          ],
+          "target_yaw_rad": -1.5707963267948966
+        }
+      }
+    ]
+  },
+  "scope": "Actual MuJoCo RGB, native decoded AprilTags, static boards only; fixed scenarios plus saved seeded samples. Failures are never rerolled. Assumed dimensions; no real-world guarantee.",
+  "random_ranges": {
+    "initial_x_m": [
+      -0.1,
+      0.1
+    ],
+    "initial_y_m": [
+      -0.1,
+      0.1
+    ],
+    "initial_pitch_rad": [
+      0,
+      0.08
+    ],
+    "initial_yaw_rad": [
+      -0.15,
+      0.15
+    ],
+    "distance_scale": [
+      0.9,
+      1.1
+    ],
+    "exposure": [
+      0.75,
+      1.25
+    ],
+    "noise_std_u8": [
+      0,
+      4
+    ],
+    "delay_s": [
+      0,
+      0.05
+    ],
+    "drop_probability": [
+      0,
+      0.15
+    ]
+  },
+  "cases": [
+    {
+      "case": "three_targets",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "both_turn_directions_actually_used": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "require_bidirectional_search": true
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058,
+          0.0051200998110726825
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664,
+          19.950000000000315
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 400,
+        "capture_frames": 400,
+        "transport": {
+          "pushed": 400,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 400,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 1.566499718462206,
+            "9": 1.5709624184967819
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.350000000000687,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0003956473485736446,
+              "timestamp": 14.950000000000937,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708230940634849,
+              "timestamp": 8.299999999999898,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5709247659004364,
+              "timestamp": 19.950000000000315,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 19.950000000000315,
+              "dwell_started_s": 19.500000000000405,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 19.950000000000315,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\three_targets\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\three_targets.json"
+    },
+    {
+      "case": "unknown_tag_ignored",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "unknown_tag_actually_detected": true,
+        "unknown_tag_never_selected": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "require_unknown_id": 42
+      },
+      "parameters": {
+        "kind": "fixed",
+        "distractor_geometry": "small visual-only AprilTag; no green target or scoring surface"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058,
+          0.0051200998110726825
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664,
+          19.950000000000315
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9,
+          42
+        ],
+        "delivered_frames": 400,
+        "capture_frames": 400,
+        "transport": {
+          "pushed": 400,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 400,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 1.566499718462206,
+            "9": 1.5709624184967819
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.350000000000687,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0003956473485736446,
+              "timestamp": 14.950000000000937,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708230940634849,
+              "timestamp": 8.299999999999898,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5709247659004364,
+              "timestamp": 19.950000000000315,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 19.950000000000315,
+              "dwell_started_s": 19.500000000000405,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 19.950000000000315,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\unknown_tag_ignored\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\unknown_tag_ignored.json"
+    },
+    {
+      "case": "per_id_calibration",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.004559826036893818,
+          0.004371090647272814
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884,
+          13.250000000000671,
+          20.000000000000306
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 401,
+        "capture_frames": 401,
+        "transport": {
+          "pushed": 401,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 401,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 1.5668757331695553,
+            "9": 1.5708885783158912
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.00016143525539222056,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.400000000000695,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0007338412395325718,
+              "timestamp": 15.10000000000096,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708230940634849,
+              "timestamp": 8.299999999999898,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5710907537941343,
+              "timestamp": 20.000000000000306,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.250000000000671,
+              "dwell_started_s": 12.850000000000609,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 20.000000000000306,
+              "dwell_started_s": 19.550000000000395,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 20.000000000000306,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\per_id_calibration\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\per_id_calibration.json"
+    },
+    {
+      "case": "middle_target_missing",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "target_5_failure_reason": true,
+        "lost_state_observed": true,
+        "missing_id_never_decoded": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "NO_AMMO",
+      "process_code": 2,
+      "expected": {
+        "status": "NO_AMMO",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          9
+        ],
+        "shot_order": [
+          2,
+          9,
+          2
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "require_lost": true,
+        "require_unseen_id": 5,
+        "failed_reasons": {
+          "5": "target_timeout"
+        }
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005647097628880573,
+          0.006962941168493529
+        ],
+        "max_actual_miss_m": 0.006962941168493529,
+        "shot_times_s": [
+          6.899999999999875,
+          54.50000000000943,
+          66.20000000001228
+        ],
+        "completed_ids": [
+          2,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "FAILED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          9
+        ],
+        "delivered_frames": 1325,
+        "capture_frames": 1325,
+        "transport": {
+          "pushed": 1325,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 1325,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 330,
+          "feedback_rotation_rad_by_target": {
+            "2": 3.14217979585973,
+            "5": 3.0479726110039347,
+            "9": 0.0
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 0.0,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 0
+              },
+              {
+                "timestamp": 0.40000000000000024,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              },
+              {
+                "timestamp": 54.650000000009506,
+                "yaw_rad": 1.5708230940634849,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 7.099999999999871,
+                "yaw_rad": 0.0,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 0
+              },
+              {
+                "timestamp": 12.1500000000005,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ],
+            "9": []
+          },
+          "observed_bearings": {
+            "2": {
+              "yaw_rad": 1.5705527267580504,
+              "timestamp": 66.20000000001228,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5711610411524324,
+              "timestamp": 56.250000000010324,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            9,
+            2
+          ],
+          "actual_shot_order": [
+            2,
+            9,
+            2
+          ],
+          "round_indices": [
+            1,
+            1,
+            2
+          ],
+          "attempts_by_target": {
+            "2": 2,
+            "5": 0,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 2,
+            "5": 0,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 0,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 20,
+            "5": 0,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 20,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.899999999999875,
+              "dwell_started_s": 6.449999999999885,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 54.50000000000943,
+              "dwell_started_s": 54.100000000009224,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 2,
+              "shot_time_s": 66.20000000001228,
+              "dwell_started_s": 65.75000000001269,
+              "observed_stable_s": 0.4499999999995907,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 66.20000000001228,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\middle_target_missing\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\middle_target_missing.json"
+    },
+    {
+      "case": "two_rounds_only",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "target_9_failure_reason": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "NO_AMMO",
+      "process_code": 2,
+      "expected": {
+        "status": "NO_AMMO",
+        "shot_count": 2,
+        "completed_ids": [
+          2,
+          5
+        ],
+        "shot_order": [
+          2,
+          5
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "failed_reasons": {
+          "9": "no_ammo"
+        }
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664
+        ],
+        "completed_ids": [
+          2,
+          5
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "FAILED"
+        },
+        "detected_ids": [
+          2,
+          5
+        ],
+        "delivered_frames": 265,
+        "capture_frames": 265,
+        "transport": {
+          "pushed": 265,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 265,
+          "max_queue_observed": 1
+        },
+        "total_score": 20,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 60,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 1.566499718462206,
+            "9": 0.0
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": []
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -6.093150117759429e-06,
+              "timestamp": 13.200000000000664,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708230940634849,
+              "timestamp": 8.299999999999898,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5
+          ],
+          "actual_shot_order": [
+            2,
+            5
+          ],
+          "round_indices": [
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 0
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 0
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 0
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 0
+          },
+          "total_score": 20,
+          "latest_target_score_total": 20,
+          "shot_score_sum": 20,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 13.200000000000664,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\two_rounds_only\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\two_rounds_only.json"
+    },
+    {
+      "case": "empty_magazine",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "target_2_failure_reason": true,
+        "target_5_failure_reason": true,
+        "target_9_failure_reason": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "NO_AMMO",
+      "process_code": 2,
+      "expected": {
+        "status": "NO_AMMO",
+        "shot_count": 0,
+        "completed_ids": [],
+        "shot_order": [],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "failed_reasons": {
+          "2": "no_ammo",
+          "5": "no_ammo",
+          "9": "no_ammo"
+        }
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [],
+        "max_actual_miss_m": null,
+        "shot_times_s": [],
+        "completed_ids": [],
+        "target_states": {
+          "2": "FAILED",
+          "5": "FAILED",
+          "9": "FAILED"
+        },
+        "detected_ids": [
+          5
+        ],
+        "delivered_frames": 1,
+        "capture_frames": 1,
+        "transport": {
+          "pushed": 1,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 1,
+          "max_queue_observed": 1
+        },
+        "total_score": 0,
+        "direction_routes": {
+          "search_positive_commands": 0,
+          "search_negative_commands": 0,
+          "feedback_rotation_rad_by_target": {
+            "2": 0.0,
+            "5": 0.0,
+            "9": 0.0
+          },
+          "probe_goals_by_target": {
+            "2": [],
+            "5": [],
+            "9": []
+          },
+          "observed_bearings": {}
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [],
+          "actual_shot_order": [],
+          "round_indices": [],
+          "attempts_by_target": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "successful_hits_by_target": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "last_credited_scores": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "cumulative_scores_by_target": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "total_score": 0,
+          "latest_target_score_total": 0,
+          "shot_score_sum": 0,
+          "per_shot_dwell": []
+        }
+      },
+      "simulation_time_s": 0.0,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\empty_magazine\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\empty_magazine.json"
+    },
+    {
+      "case": "magazine_1_shots",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "target_5_failure_reason": true,
+        "target_9_failure_reason": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "NO_AMMO",
+      "process_code": 2,
+      "expected": {
+        "status": "NO_AMMO",
+        "shot_count": 1,
+        "completed_ids": [
+          2
+        ],
+        "shot_order": [
+          2
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "failed_reasons": {
+          "5": "no_ammo",
+          "9": "no_ammo"
+        }
+      },
+      "parameters": {
+        "kind": "fixed",
+        "ammo_count": 1
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884
+        ],
+        "completed_ids": [
+          2
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "FAILED",
+          "9": "FAILED"
+        },
+        "detected_ids": [
+          2,
+          5
+        ],
+        "delivered_frames": 131,
+        "capture_frames": 131,
+        "transport": {
+          "pushed": 131,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 131,
+          "max_queue_observed": 1
+        },
+        "total_score": 10,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 0,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 0.0,
+            "9": 0.0
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [],
+            "9": []
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": 0.0004464211627393666,
+              "timestamp": 1.6999999999999857,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.570552437969693,
+              "timestamp": 6.499999999999884,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2
+          ],
+          "actual_shot_order": [
+            2
+          ],
+          "round_indices": [
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 0,
+            "9": 0
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 0,
+            "9": 0
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 0,
+            "9": 0
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 0,
+            "9": 0
+          },
+          "total_score": 10,
+          "latest_target_score_total": 10,
+          "shot_score_sum": 10,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 6.499999999999884,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\magazine_1_shots\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\magazine_1_shots.json"
+    },
+    {
+      "case": "magazine_5_shots",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 5,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9,
+          2,
+          5
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "failed_reasons": {}
+      },
+      "parameters": {
+        "kind": "fixed",
+        "ammo_count": 5
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058,
+          0.0051200998110726825,
+          0.007315897112402034,
+          0.00520301080131011
+        ],
+        "max_actual_miss_m": 0.007315897112402034,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664,
+          19.950000000000315,
+          31.199999999998077,
+          37.95000000000096
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 760,
+        "capture_frames": 760,
+        "transport": {
+          "pushed": 760,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 760,
+          "max_queue_observed": 1
+        },
+        "total_score": 50,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 330,
+          "feedback_rotation_rad_by_target": {
+            "2": 3.1413351178851663,
+            "5": 1.5709958311112544,
+            "9": 0.0
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              },
+              {
+                "timestamp": 20.150000000000276,
+                "yaw_rad": 1.5708230940634849,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              },
+              {
+                "timestamp": 31.399999999998037,
+                "yaw_rad": -0.0003956473485736446,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.350000000000687,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.00015155799405710995,
+              "timestamp": 37.95000000000096,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708811905963804,
+              "timestamp": 32.99999999999843,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.571132266452846,
+              "timestamp": 21.749999999999957,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9,
+            2,
+            5
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9,
+            2,
+            5
+          ],
+          "round_indices": [
+            1,
+            1,
+            1,
+            2,
+            2
+          ],
+          "attempts_by_target": {
+            "2": 2,
+            "5": 2,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 2,
+            "5": 2,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 20,
+            "5": 20,
+            "9": 10
+          },
+          "total_score": 50,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 50,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 19.950000000000315,
+              "dwell_started_s": 19.500000000000405,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 2,
+              "shot_time_s": 31.199999999998077,
+              "dwell_started_s": 30.749999999998167,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 37.95000000000096,
+              "dwell_started_s": 37.55000000000076,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 37.95000000000096,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\magazine_5_shots\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\magazine_5_shots.json"
+    },
+    {
+      "case": "magazine_6_shots",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 6,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9,
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "failed_reasons": {}
+      },
+      "parameters": {
+        "kind": "fixed",
+        "ammo_count": 6
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058,
+          0.0051200998110726825,
+          0.007315897112402034,
+          0.00520301080131011,
+          0.005732140123204064
+        ],
+        "max_actual_miss_m": 0.007315897112402034,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664,
+          19.950000000000315,
+          31.199999999998077,
+          37.95000000000096,
+          44.600000000004364
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 893,
+        "capture_frames": 893,
+        "transport": {
+          "pushed": 893,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 893,
+          "max_queue_observed": 1
+        },
+        "total_score": 60,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 390,
+          "feedback_rotation_rad_by_target": {
+            "2": 3.1413351178851663,
+            "5": 1.5709958311112544,
+            "9": 1.5705818911260518
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              },
+              {
+                "timestamp": 20.150000000000276,
+                "yaw_rad": 1.5708230940634849,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              },
+              {
+                "timestamp": 31.399999999998037,
+                "yaw_rad": -0.0003956473485736446,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.350000000000687,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              },
+              {
+                "timestamp": 38.10000000000104,
+                "yaw_rad": -1.571132266452846,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0003305561585392631,
+              "timestamp": 39.70000000000186,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708811905963804,
+              "timestamp": 32.99999999999843,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5707795657564616,
+              "timestamp": 44.600000000004364,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9,
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9,
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "attempts_by_target": {
+            "2": 2,
+            "5": 2,
+            "9": 2
+          },
+          "successful_hits_by_target": {
+            "2": 2,
+            "5": 2,
+            "9": 2
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 20,
+            "5": 20,
+            "9": 20
+          },
+          "total_score": 60,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 60,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 19.950000000000315,
+              "dwell_started_s": 19.500000000000405,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 2,
+              "shot_time_s": 31.199999999998077,
+              "dwell_started_s": 30.749999999998167,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 37.95000000000096,
+              "dwell_started_s": 37.55000000000076,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 44.600000000004364,
+              "dwell_started_s": 44.20000000000416,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 44.600000000004364,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\magazine_6_shots\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\magazine_6_shots.json"
+    },
+    {
+      "case": "round_robin_numeric_id_order",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed",
+        "declared_order": [
+          9,
+          5,
+          2
+        ]
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058,
+          0.0051200998110726825
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664,
+          19.950000000000315
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 400,
+        "capture_frames": 400,
+        "transport": {
+          "pushed": 400,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 400,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 1.566499718462206,
+            "9": 1.5709624184967819
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.350000000000687,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0003956473485736446,
+              "timestamp": 14.950000000000937,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708230940634849,
+              "timestamp": 8.299999999999898,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5709247659004364,
+              "timestamp": 19.950000000000315,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 19.950000000000315,
+              "dwell_started_s": 19.500000000000405,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 19.950000000000315,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\round_robin_numeric_id_order\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\round_robin_numeric_id_order.json"
+    },
+    {
+      "case": "second_round_frame_loss",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "second_round_delivery_loss_actually_observed": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 6,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9,
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "require_second_round_drop": true
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006889247431948587,
+          0.0053300556365805316,
+          0.005645423914741979,
+          0.005339831269059393,
+          0.0053762741039184965,
+          0.006024798349358754
+        ],
+        "max_actual_miss_m": 0.006889247431948587,
+        "shot_times_s": [
+          7.049999999999872,
+          14.400000000000851,
+          21.749999999999957,
+          33.99999999999894,
+          41.300000000002676,
+          48.550000000006385
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 898,
+        "capture_frames": 972,
+        "transport": {
+          "pushed": 972,
+          "dropped_probability": 0,
+          "dropped_periodic": 74,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 898,
+          "max_queue_observed": 1
+        },
+        "total_score": 60,
+        "direction_routes": {
+          "search_positive_commands": 60,
+          "search_negative_commands": 389,
+          "feedback_rotation_rad_by_target": {
+            "2": 3.141749289045044,
+            "5": 1.5707145326056189,
+            "9": 1.570547399287058
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              },
+              {
+                "timestamp": 21.949999999999918,
+                "yaw_rad": 1.570773167257075,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 7.249999999999868,
+                "yaw_rad": 0.0003382259929210289,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              },
+              {
+                "timestamp": 34.14999999999902,
+                "yaw_rad": 5.6437544169858366e-05,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 14.550000000000875,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              },
+              {
+                "timestamp": 41.45000000000275,
+                "yaw_rad": -1.5711326152029212,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0003771301288849892,
+              "timestamp": 43.20000000000365,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708279006950776,
+              "timestamp": 35.89999999999991,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5706790233339962,
+              "timestamp": 48.550000000006385,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9,
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9,
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "attempts_by_target": {
+            "2": 2,
+            "5": 2,
+            "9": 2
+          },
+          "successful_hits_by_target": {
+            "2": 2,
+            "5": 2,
+            "9": 2
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 20,
+            "5": 20,
+            "9": 20
+          },
+          "total_score": 60,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 60,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 7.049999999999872,
+              "dwell_started_s": 6.5999999999998815,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 14.400000000000851,
+              "dwell_started_s": 13.95000000000078,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 21.749999999999957,
+              "dwell_started_s": 21.250000000000057,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 2,
+              "shot_time_s": 33.99999999999894,
+              "dwell_started_s": 33.54999999999871,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 41.300000000002676,
+              "dwell_started_s": 40.850000000002446,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 48.550000000006385,
+              "dwell_started_s": 48.15000000000618,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 48.550000000006385,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\second_round_frame_loss\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\second_round_frame_loss.json"
+    },
+    {
+      "case": "delay_and_drop",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006420198310763191,
+          0.0054857148507600935,
+          0.005405574740652522
+        ],
+        "max_actual_miss_m": 0.006420198310763191,
+        "shot_times_s": [
+          8.199999999999882,
+          16.05000000000109,
+          25.09999999999929
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 393,
+        "capture_frames": 503,
+        "transport": {
+          "pushed": 503,
+          "dropped_probability": 109,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 393,
+          "max_queue_observed": 2
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 62,
+          "search_negative_commands": 121,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5473755931693924,
+            "5": 1.566502454023009,
+            "9": 1.5708229130749467
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.049999999999999996,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 8.349999999999905,
+                "yaw_rad": 0.0033266290718165516,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 16.25000000000105,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0001714709198185817,
+              "timestamp": 18.650000000000574,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5707122611039657,
+              "timestamp": 10.450000000000234,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5708226445086768,
+              "timestamp": 25.0499999999993,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 8.199999999999882,
+              "dwell_started_s": 7.699999999999858,
+              "observed_stable_s": 0.4000000000000181,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 16.05000000000109,
+              "dwell_started_s": 15.600000000001039,
+              "observed_stable_s": 0.40000000000004476,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 25.09999999999929,
+              "dwell_started_s": 24.49999999999941,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 25.09999999999929,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\delay_and_drop\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\delay_and_drop.json"
+    },
+    {
+      "case": "periodic_frame_loss",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006889247431948587,
+          0.0053300556365805316,
+          0.005645423914741979
+        ],
+        "max_actual_miss_m": 0.006889247431948587,
+        "shot_times_s": [
+          7.049999999999872,
+          14.400000000000851,
+          21.749999999999957
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 403,
+        "capture_frames": 436,
+        "transport": {
+          "pushed": 436,
+          "dropped_probability": 0,
+          "dropped_periodic": 33,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 403,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 60,
+          "search_negative_commands": 119,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5471925765987629,
+            "5": 1.5663932325156487,
+            "9": 1.5706649781023643
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 7.249999999999868,
+                "yaw_rad": 0.0003382259929210289,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 14.550000000000875,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": 5.6437544169858366e-05,
+              "timestamp": 16.30000000000104,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.570773167257075,
+              "timestamp": 8.95,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5707976857881838,
+              "timestamp": 21.749999999999957,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 7.049999999999872,
+              "dwell_started_s": 6.5999999999998815,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 14.400000000000851,
+              "dwell_started_s": 13.95000000000078,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 21.749999999999957,
+              "dwell_started_s": 21.250000000000057,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 21.749999999999957,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\periodic_frame_loss\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\periodic_frame_loss.json"
+    },
+    {
+      "case": "delivery_jitter",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.007316261045565766,
+          0.006058903439259858,
+          0.005492718437207835
+        ],
+        "max_actual_miss_m": 0.007316261045565766,
+        "shot_times_s": [
+          9.450000000000077,
+          19.100000000000485,
+          28.949999999998525
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 404,
+        "capture_frames": 580,
+        "transport": {
+          "pushed": 580,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 175,
+          "delivered": 404,
+          "max_queue_observed": 3
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5470133461484172,
+            "5": 1.565930552640111,
+            "9": 1.5710049247411342
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.049999999999999996,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 9.600000000000101,
+                "yaw_rad": 6.53175585432186e-05,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 19.300000000000445,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0002667794745750572,
+              "timestamp": 21.749999999999957,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5707819568405195,
+              "timestamp": 11.650000000000421,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5707600282491032,
+              "timestamp": 28.899999999998535,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 9.450000000000077,
+              "dwell_started_s": 8.95,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 19.100000000000485,
+              "dwell_started_s": 18.550000000000594,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 28.949999999998525,
+              "dwell_started_s": 28.299999999998654,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 28.949999999998525,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\delivery_jitter\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\delivery_jitter.json"
+    },
+    {
+      "case": "stale_frames_no_fire",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "target_2_failure_reason": true,
+        "target_5_failure_reason": true,
+        "target_9_failure_reason": true,
+        "stale_frames_actually_delivered": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "TIMEOUT",
+      "process_code": 2,
+      "expected": {
+        "status": "TIMEOUT",
+        "shot_count": 0,
+        "completed_ids": [],
+        "shot_order": [],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "require_stale_frame": true,
+        "failed_reasons": {
+          "2": "global_timeout",
+          "5": "global_timeout",
+          "9": "global_timeout"
+        }
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [],
+        "max_actual_miss_m": null,
+        "shot_times_s": [],
+        "completed_ids": [],
+        "target_states": {
+          "2": "FAILED",
+          "5": "FAILED",
+          "9": "FAILED"
+        },
+        "detected_ids": [
+          5
+        ],
+        "delivered_frames": 56,
+        "capture_frames": 61,
+        "transport": {
+          "pushed": 61,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 56,
+          "max_queue_observed": 6
+        },
+        "total_score": 0,
+        "direction_routes": {
+          "search_positive_commands": 0,
+          "search_negative_commands": 0,
+          "feedback_rotation_rad_by_target": {
+            "2": 0.0,
+            "5": 0.0,
+            "9": 0.0
+          },
+          "probe_goals_by_target": {
+            "2": [],
+            "5": [],
+            "9": []
+          },
+          "observed_bearings": {}
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [],
+          "actual_shot_order": [],
+          "round_indices": [],
+          "attempts_by_target": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "successful_hits_by_target": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "last_credited_scores": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "cumulative_scores_by_target": {
+            "2": 0,
+            "5": 0,
+            "9": 0
+          },
+          "total_score": 0,
+          "latest_target_score_total": 0,
+          "shot_score_sum": 0,
+          "per_shot_dwell": []
+        }
+      },
+      "simulation_time_s": 3.049999999999957,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\stale_frames_no_fire\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\stale_frames_no_fire.json"
+    },
+    {
+      "case": "blackout_then_recover",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "lost_state_observed": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02,
+        "require_lost": true
+      },
+      "parameters": {
+        "kind": "fixed"
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006433475695836314,
+          0.005622531231722056,
+          0.005120099811076825
+        ],
+        "max_actual_miss_m": 0.006433475695836314,
+        "shot_times_s": [
+          8.499999999999929,
+          15.150000000000968,
+          21.899999999999928
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 398,
+        "capture_frames": 439,
+        "transport": {
+          "pushed": 439,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 41,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 398,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5473998261331765,
+            "5": 1.5664957016718444,
+            "9": 1.5709624184967819
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 8.649999999999952,
+                "yaw_rad": 0.0002911839240953733,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 15.300000000000992,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.00039564734857199684,
+              "timestamp": 16.900000000000922,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.57082309405699,
+              "timestamp": 10.250000000000203,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5709247659004348,
+              "timestamp": 21.899999999999928,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 8.499999999999929,
+              "dwell_started_s": 8.099999999999866,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 15.150000000000968,
+              "dwell_started_s": 14.750000000000906,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 21.899999999999928,
+              "dwell_started_s": 21.450000000000017,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 21.899999999999928,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\blackout_then_recover\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\blackout_then_recover.json"
+    },
+    {
+      "case": "identity_directions_102",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed",
+        "direction_slot_permutation": [
+          1,
+          0,
+          2
+        ]
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.004098209100990958,
+          0.006020205504472056,
+          0.005289860952664983
+        ],
+        "max_actual_miss_m": 0.006020205504472056,
+        "shot_times_s": [
+          2.1999999999999753,
+          18.300000000000644,
+          29.549999999998406
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 592,
+        "capture_frames": 592,
+        "transport": {
+          "pushed": 592,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 592,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 147,
+          "search_negative_commands": 236,
+          "feedback_rotation_rad_by_target": {
+            "2": 0.020557830338299974,
+            "5": 4.518505093451413,
+            "9": 3.1374589425283457
+          },
+          "probe_goals_by_target": {
+            "2": [],
+            "5": [
+              {
+                "timestamp": 2.399999999999971,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              },
+              {
+                "timestamp": 7.499999999999862,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 18.500000000000604,
+                "yaw_rad": -1.5707263222648629,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ]
+          },
+          "observed_bearings": {
+            "2": {
+              "yaw_rad": 0.0012020548611029393,
+              "timestamp": 24.59999999999939,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.570915713746834,
+              "timestamp": 29.549999999998406,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "5": {
+              "yaw_rad": 1.5705279141063275,
+              "timestamp": 20.100000000000286,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 2.1999999999999753,
+              "dwell_started_s": 1.7499999999999847,
+              "observed_stable_s": 0.44999999999999063,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 18.300000000000644,
+              "dwell_started_s": 17.850000000000733,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 29.549999999998406,
+              "dwell_started_s": 29.099999999998495,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 29.549999999998406,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\identity_directions_102\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\identity_directions_102.json"
+    },
+    {
+      "case": "identity_directions_201",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed",
+        "direction_slot_permutation": [
+          2,
+          0,
+          1
+        ]
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.005235598047061818,
+          0.005707928822685316,
+          0.005202270322373361
+        ],
+        "max_actual_miss_m": 0.005707928822685316,
+        "shot_times_s": [
+          16.10000000000108,
+          27.349999999998843,
+          34.09999999999899
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 683,
+        "capture_frames": 683,
+        "transport": {
+          "pushed": 683,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 683,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 89,
+          "search_negative_commands": 357,
+          "feedback_rotation_rad_by_target": {
+            "2": 4.594040063756563,
+            "5": 3.141334669732757,
+            "9": 1.5709700541621343
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              },
+              {
+                "timestamp": 5.199999999999911,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 16.30000000000104,
+                "yaw_rad": 1.5695759023341902,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 27.549999999998803,
+                "yaw_rad": -0.00031722091819825474,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ]
+          },
+          "observed_bearings": {
+            "9": {
+              "yaw_rad": -0.00015789215112510738,
+              "timestamp": 34.09999999999899,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "5": {
+              "yaw_rad": 1.5704148496014154,
+              "timestamp": 29.149999999998485,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": -1.570709304457932,
+              "timestamp": 17.900000000000723,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 16.10000000000108,
+              "dwell_started_s": 15.700000000001054,
+              "observed_stable_s": 0.400000000000027,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 27.349999999998843,
+              "dwell_started_s": 26.899999999998933,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 34.09999999999899,
+              "dwell_started_s": 33.69999999999879,
+              "observed_stable_s": 0.40000000000020464,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 34.09999999999899,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\identity_directions_201\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\identity_directions_201.json"
+    },
+    {
+      "case": "shooting_order_210",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed",
+        "declared_order": [
+          9,
+          5,
+          2
+        ]
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058,
+          0.0051200998110726825
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664,
+          19.950000000000315
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 400,
+        "capture_frames": 400,
+        "transport": {
+          "pushed": 400,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 400,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 1.566499718462206,
+            "9": 1.5709624184967819
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.350000000000687,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0003956473485736446,
+              "timestamp": 14.950000000000937,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708230940634849,
+              "timestamp": 8.299999999999898,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5709247659004364,
+              "timestamp": 19.950000000000315,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 19.950000000000315,
+              "dwell_started_s": 19.500000000000405,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 19.950000000000315,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\shooting_order_210\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\shooting_order_210.json"
+    },
+    {
+      "case": "shooting_order_120",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "exit_code": true,
+        "declared_id_records": true,
+        "completed_ids": true,
+        "terminal_target_states": true,
+        "shot_count": true,
+        "finite_ammo": true,
+        "model_unchanged": true,
+        "shutdown_completed": true,
+        "perception_closed": true,
+        "cleanup_errors": true,
+        "events_present": true,
+        "one_fire_event_per_ledger_row": true,
+        "shots_follow_declared_order": true,
+        "no_duplicate_or_unknown_shots": true,
+        "sequential_shot_indices": true,
+        "ammo_ledger": true,
+        "same_id_hit_and_credit": true,
+        "completed_targets_have_correct_hit_history": true,
+        "total_score_matches_ledger": true,
+        "actual_miss_limit": true,
+        "fresh_observation_at_every_shot": true,
+        "shot_events_match_ledger": true,
+        "ready_geometry_at_every_shot": true,
+        "matching_decoded_detection_at_every_shot": true,
+        "decoded_detection_quality_at_every_shot": true,
+        "fresh_stationary_feedback_at_every_shot": true,
+        "delivered_acquisitions_strictly_increase": true,
+        "no_future_or_restamped_acquisitions": true,
+        "no_shot_in_blackout_without_fresh_preblackout_frame": true,
+        "no_motion_without_fresh_observation": true,
+        "search_exhausted_is_stationary": true,
+        "transport_delivery_counts_match_events": true,
+        "fixed_direction_search_mode_logged": true,
+        "bearing_map_contains_only_declared_image_identities": true,
+        "prior_probe_goals_match_public_directions": true,
+        "search_turns_follow_shortest_angular_error": true,
+        "search_commands_only_yaw": true,
+        "fixed_probe_is_stationary": true,
+        "no_extra_full_rotation_per_selected_target": true,
+        "round_robin_policy_and_numeric_order_recorded": true,
+        "round_robin_complete_expected_shot_sequence": true,
+        "round_robin_one_shot_per_visit": true,
+        "round_robin_visits_and_retirement_are_consistent": true,
+        "round_robin_summary_round_counters": true,
+        "round_robin_event_mission_rows_match": true,
+        "round_robin_per_shot_credit_matches_physical_outcome": true,
+        "round_robin_cumulative_attempts_and_hits": true,
+        "round_robin_last_score_per_target": true,
+        "round_robin_total_score_is_all_shots": true,
+        "round_robin_target_score_sums": true,
+        "round_robin_shot_score_sum": true,
+        "round_robin_coverage_is_actual_correct_hits": true,
+        "round_robin_success_requires_empty_magazine_and_coverage": true,
+        "round_robin_no_ammo_without_coverage": true,
+        "round_robin_terminal_reason_matches_magazine": true,
+        "round_robin_every_shot_has_new_independent_dwell": true,
+        "four_background_walls": true,
+        "physical_scoring_board_count": true,
+        "visual_only_distractor_tag_count": true,
+        "native_fault_log_empty": true
+      },
+      "status": "SUCCESS",
+      "process_code": 0,
+      "expected": {
+        "status": "SUCCESS",
+        "shot_count": 3,
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "shot_order": [
+          2,
+          5,
+          9
+        ],
+        "min_ring": 9,
+        "max_actual_miss_m": 0.02
+      },
+      "parameters": {
+        "kind": "fixed",
+        "declared_order": [
+          5,
+          9,
+          2
+        ]
+      },
+      "metrics": {
+        "actual_miss_m": [
+          0.006411660201575586,
+          0.005622531231718058,
+          0.0051200998110726825
+        ],
+        "max_actual_miss_m": 0.006411660201575586,
+        "shot_times_s": [
+          6.499999999999884,
+          13.200000000000664,
+          19.950000000000315
+        ],
+        "completed_ids": [
+          2,
+          5,
+          9
+        ],
+        "target_states": {
+          "2": "COMPLETED",
+          "5": "COMPLETED",
+          "9": "COMPLETED"
+        },
+        "detected_ids": [
+          2,
+          5,
+          9
+        ],
+        "delivered_frames": 400,
+        "capture_frames": 400,
+        "transport": {
+          "pushed": 400,
+          "dropped_probability": 0,
+          "dropped_periodic": 0,
+          "dropped_blackout": 0,
+          "dropped_overflow": 0,
+          "dropped_obsolete": 0,
+          "delivered": 400,
+          "max_queue_observed": 1
+        },
+        "total_score": 30,
+        "direction_routes": {
+          "search_positive_commands": 61,
+          "search_negative_commands": 120,
+          "feedback_rotation_rad_by_target": {
+            "2": 1.5474082757671184,
+            "5": 1.566499718462206,
+            "9": 1.5709624184967819
+          },
+          "probe_goals_by_target": {
+            "2": [
+              {
+                "timestamp": 0.0,
+                "yaw_rad": 1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 1
+              }
+            ],
+            "5": [
+              {
+                "timestamp": 6.699999999999879,
+                "yaw_rad": 0.0004464211627393666,
+                "source": "image_derived_bearing",
+                "direction_index": null
+              }
+            ],
+            "9": [
+              {
+                "timestamp": 13.350000000000687,
+                "yaw_rad": -1.5707963267948966,
+                "source": "public_direction_prior_identity_unknown",
+                "direction_index": 2
+              }
+            ]
+          },
+          "observed_bearings": {
+            "5": {
+              "yaw_rad": -0.0003956473485736446,
+              "timestamp": 14.950000000000937,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "2": {
+              "yaw_rad": 1.5708230940634849,
+              "timestamp": 8.299999999999898,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            },
+            "9": {
+              "yaw_rad": -1.5709247659004364,
+              "timestamp": 19.950000000000315,
+              "position_m": [
+                0.0,
+                0.0,
+                0.27
+              ],
+              "source": "image_pose_with_timestamped_robot_feedback"
+            }
+          }
+        },
+        "repeat_shooting": {
+          "shooting_policy": "round_robin",
+          "expected_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "actual_shot_order": [
+            2,
+            5,
+            9
+          ],
+          "round_indices": [
+            1,
+            1,
+            1
+          ],
+          "attempts_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "successful_hits_by_target": {
+            "2": 1,
+            "5": 1,
+            "9": 1
+          },
+          "last_credited_scores": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "cumulative_scores_by_target": {
+            "2": 10,
+            "5": 10,
+            "9": 10
+          },
+          "total_score": 30,
+          "latest_target_score_total": 30,
+          "shot_score_sum": 30,
+          "per_shot_dwell": [
+            {
+              "target_id": 2,
+              "shot_time_s": 6.499999999999884,
+              "dwell_started_s": 6.049999999999893,
+              "observed_stable_s": 0.4499999999999904,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 5,
+              "shot_time_s": 13.200000000000664,
+              "dwell_started_s": 12.800000000000601,
+              "observed_stable_s": 0.40000000000006253,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            },
+            {
+              "target_id": 9,
+              "shot_time_s": 19.950000000000315,
+              "dwell_started_s": 19.500000000000405,
+              "observed_stable_s": 0.44999999999991047,
+              "new_image_after_previous_shot": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      "simulation_time_s": 19.950000000000315,
+      "summary": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\shooting_order_120\\summary.json",
+      "config": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\score035_fixed_release\\shooting_order_120.json"
+    }
+  ],
+  "tested_sources_unchanged": true,
+  "random_cases_completed": 0
+}

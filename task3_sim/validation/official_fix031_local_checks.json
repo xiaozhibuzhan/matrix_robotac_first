@@ -1,0 +1,277 @@
+{
+  "package_version": "0.3.1",
+  "host": "Windows; CPython 3.12 + MuJoCo 3.3.7",
+  "unit_tests": {
+    "total": 230,
+    "passed": 227,
+    "skipped": 3,
+    "failures": 0,
+    "errors": 0,
+    "process_exit_code": 0,
+    "log": "runs/all_tests_031_final.log"
+  },
+  "real_render_regression": {
+    "cases": 35,
+    "all_passed": true,
+    "fixed_cases": 15,
+    "seeded_random_cases": 20,
+    "statuses": {
+      "SUCCESS": 31,
+      "PARTIAL": 1,
+      "NO_AMMO": 2,
+      "TIMEOUT": 1
+    },
+    "expected_negative_cases_retained": true,
+    "shots": 97,
+    "all_shots_correct_identity_and_ring10": true,
+    "max_actual_miss_m": 0.008960889389361031,
+    "report": "validation/directional_actual_render_031.json",
+    "tested_sources_unchanged": true,
+    "source_py_sha256": {
+      "__init__.py": "3d24b073745d342dcf2568f031593f3bb827ed18429086ec28021969cca2b508",
+      "__main__.py": "89df8d52045663ae13fbe1c47da74fa62fa23886c9f514a6397164b3de3d702c",
+      "appearance.py": "80f816e3aec3817a6b855268e655424a390c016de83780562ae190e74939b70d",
+      "backend.py": "fc2f83e2cad59aa028220725ac2d371295b8d6737ab7bce08e046d1dbeceb95a",
+      "controller.py": "338d82d487ad30b9594da1f4c5823b5df8ee60b45fb95eb653192497e590f1ac",
+      "geometry.py": "e0e74a38ac6ca97b5ac1f34ce882eea30e2cd571473796531517b4e8a6acec84",
+      "interfaces.py": "9317bf55c60464d53b60ab386a2af9ccfac86ca3b365adf0be059248e2a8ea1d",
+      "mesh.py": "a3edeed0dd4adc4e13a93ff87231b500bd372932a7219d15849e5dfa28e8e931",
+      "mission.py": "2296778927944bc59b74975f0838e527c88c1a6d758c37f4b95114cb3bef55d7",
+      "multi.py": "687aceb809e9393a1f3d694e2c7969241c76b0c90fa56862c3325a6595e7aec2",
+      "multi_config.py": "3e756dab0b7b121bb0bf2faedfc167e44a40c3780fd3bb41576af998e112aae1",
+      "multi_perception.py": "8860652fd3608037459c32e95d47540904cfc194021059060509b04f0d02391f",
+      "multi_scene.py": "ad8e56736aa0208bb3d5f27e8a354681e3494c513189bc737e775c52fe34094c",
+      "multi_scoring.py": "78ede0a855b3a8b6810866ff1423b102bc1cca3c4a7b8c09608ec48ede560baa",
+      "official.py": "2fddbb4c3bee1642216ac8f03c9de30209ba168f97e4eea9c39758f46d1728f2",
+      "official_backend.py": "491540b85c465f22b25f1302516e192d2daebc034520805103c023a36d9256aa",
+      "official_runtime.py": "7d5da9b883ec0718f5775a3185364d1be8b3c1c5e39ffb2930b8c1ecd0d65554",
+      "official_scene.py": "72e023175a1ac8df335783e315defbadcb701301d0f2d3df2887f82356b351f8",
+      "official_sdk.py": "f03475184a432b2ada7c6d5b9df98cee98da0890fdecb3a60027966cd53a7570",
+      "official_state.py": "914c72c5c9c36936d961f0234ef83d2217310f7ea3a9ab24e99366ec60a9005e",
+      "package_update.py": "413f93368b601177b829b77533d571c821f70c3f3ec14a2ea19a2b5dd81f42b1",
+      "perception.py": "d9e1cc1551796e50607a3b9924e5d8545defc4b5cd61d0cb042ccaf25f9a6454",
+      "preserve.py": "3f77bd336529855462c7c1880aafba93689656506fc91b21a18db600ea022cbf",
+      "scene.py": "482e449b1026f18ee150cdd9c9db703bbdb6191c5235b7216593f06646217deb",
+      "scoring.py": "9d14f1273f76d48398d328932d33ff4a14fbc37e6f6570dfe779521a2fff6ce6",
+      "sensor.py": "b7cf3f37d5c3efc458576a9e6888c78c62af0d2bb2bc002d70e3373cee1f9f2c",
+      "tests/test_appearance_assets.py": "0fc258ef5a69629c7e2e8cb68e7094b4aa088a0f7377920b9013a92b45fdd6a4",
+      "tests/test_camera_effects.py": "011d658e9c48a4ccdc7f07caec2777b1088055d3f8aa8de5b436c6709383d631",
+      "tests/test_fixed_directions_render.py": "06d39f60ae0693e3cbad11ee5767f571e58085492c1641f6e837b05d3f5b9f90",
+      "tests/test_frame_transport.py": "02905ca247f878150943524aab5adeab630d6b0ecc727e2d986b58c7f80b0d37",
+      "tests/test_interrupt_shutdown.py": "ce5d93140f27a0bc79cfb5b8076742e76b20c57ef0ed3952de6bc646d528335b",
+      "tests/test_multi_mission.py": "5d45d2a79017815f1bbaafe43639f419d279ff29f221100b2c8b3325ec4c6176",
+      "tests/test_multi_perception.py": "8ebe5cfd2b03412e8c4a6cbbd056d8f29b3811d8a9f27c1791255d691c44bb3a",
+      "tests/test_multi_referee.py": "457048b9b59ebbd3718c4ea9082175d52fc3431cccb0de856f378e1f8206ebb7",
+      "tests/test_multi_runtime_lifecycle.py": "5808540f3faddd95938fc4ec247f5f97afb379dfa5bb10ce7c0ab7153a6e09b0",
+      "tests/test_multi_scene.py": "347e466332e62c647e263f305d18858c9dc460b96e0d79d4b24711373491da66",
+      "tests/test_official_backend.py": "e3e95f74b855e652bebfe08fc4294aab74a517144adeed598eae4d740052f215",
+      "tests/test_official_runtime.py": "88fcf3104c51b0e8b805e24bed422e2552f006892986578f8ac79b613683a933",
+      "tests/test_official_scene.py": "115a3a94094f70aef053c6fca2617457b4f33fb92f7fb19ea5824a6e9ae26198",
+      "tests/test_official_sdk.py": "3ac2c44ff4743b5a70bf66ca500e110088a8641ed6018b17f94236130d5ab88e",
+      "tests/test_official_state.py": "5383e7d8b2cb6e49949a25687cc474781c16c36ae8d75e485d9ae66245b8e536",
+      "tests/test_perception_lifecycle.py": "dc2425de715660411e2f692c7f7c00753965879c586eb1960c3f212b05bc56a7",
+      "tests/test_printed_ring_scoring.py": "3ffdb418835787ce0a3773369e6e40a85fa2af42418e3ebba4ab27611ed76126",
+      "tests/test_ray_referee.py": "d8815bed3746712081369326e7765a83da4443c23c08ecce0673cce5459d2e8a",
+      "tests/test_safety_geometry.py": "2519b1600f4073b2878f7aceb698e8a5aa9c34f241748654b5fece4a224e877f",
+      "tests/test_ui_lifecycle.py": "99b541d0e25b56516cb9d325715c2ab9defea79c1d603662ba4df13d6f7804c4",
+      "tests/test_update_boundaries.py": "06eb6f480edcd405bdb822be59db88b181a25235f0bebb13ff727089e3977dd4",
+      "tests/test_validate_multi.py": "3d1e0d16ede0cd9b8f36ad02bcb9b107f792dd5d70bf8ed121436e8edd963018",
+      "tests/test_validate_official.py": "767b3647cd9b386609adf09d75eb18866138b31d96013b1759af7cd2e3db58c7",
+      "transport.py": "c227b81e91aceab625cfbb361180b45cda41336b87e01ec696b61069c25f6241",
+      "ui.py": "4d60c26733e391b3ab423f63d6554729dadbf743a1e5c66f7eb2f6071bf186b5",
+      "validate.py": "d4b2770a679a01b0df73f1178927c9ab81f0e00dc8d327b6789a54113f9eaac6",
+      "validate_appearance.py": "3a372127b6282b60c9558fb1c1ce6b4df16e76dd75d4a651cdbfc2a8bfe2baf5",
+      "validate_multi.py": "4ef70747fb96ecbf2221b221a4ac9047753df4bac533aa54f375f5d7748d70ac",
+      "validate_official.py": "d21f97d632b7c2ca014096e46492a69aeb783c0c5e55a58c86c1e4e97c590493"
+    },
+    "all_current_python_sources_match_tested": true,
+    "tested_default_config_matches_current_except_explicit_transport_seed": true,
+    "nominal_config_only_difference": "Validator explicitly sets observation.seed=20261019; default has no observation settings and no impairments. Independent CLI tests exact default configuration."
+  },
+  "independent_cli": {
+    "checks": {
+      "status_success": true,
+      "three_unique_shots": true,
+      "all_ring10": true,
+      "ammo_remaining2": true,
+      "clean_shutdown": true,
+      "fault_log_empty": true,
+      "actual_cli_exit_zero": true
+    },
+    "all_passed": true,
+    "summary": "runs/directional_cli_031/summary.json",
+    "process_exit_code": 0,
+    "simulation_time_s": 19.950000000000315,
+    "package_version": "0.3.1",
+    "scope": "Independent kinematic CLI termination and real render shot checks; not native gait acceptance."
+  },
+  "static_checks": {
+    "single_target_files": [
+      {
+        "file": "config/single_target.json",
+        "unchanged": true
+      },
+      {
+        "file": "config/photo_target.json",
+        "unchanged": true
+      },
+      {
+        "file": "controller.py",
+        "unchanged": true
+      },
+      {
+        "file": "scene.py",
+        "unchanged": true
+      },
+      {
+        "file": "perception.py",
+        "unchanged": true
+      },
+      {
+        "file": "backend.py",
+        "unchanged": true
+      },
+      {
+        "file": "scoring.py",
+        "unchanged": true
+      },
+      {
+        "file": "ui.py",
+        "unchanged": true
+      },
+      {
+        "file": "run_task3.sh",
+        "unchanged": true
+      },
+      {
+        "file": "requirements.txt",
+        "unchanged": true
+      },
+      {
+        "file": "assets/background_source.jpg",
+        "unchanged": true
+      },
+      {
+        "file": "assets/fixed_target_source.png",
+        "unchanged": true
+      },
+      {
+        "file": "assets/fixed_target_rectified.png",
+        "unchanged": true
+      },
+      {
+        "file": "assets/provenance.json",
+        "unchanged": true
+      }
+    ],
+    "single_entry_ast": [
+      {
+        "name": "run",
+        "unchanged": true
+      },
+      {
+        "name": "parse_args",
+        "unchanged": true
+      },
+      {
+        "name": "annotate",
+        "unchanged": true
+      },
+      {
+        "name": "defer_cleanup_sigint",
+        "unchanged": true
+      }
+    ],
+    "all_single_files_and_functions_unchanged": true,
+    "python310_syntax_passed": true,
+    "python_source_count": 55,
+    "scripts": [
+      {
+        "file": "accept_official_ubuntu.sh",
+        "contains_crlf": false
+      },
+      {
+        "file": "build_official_bridge.sh",
+        "contains_crlf": false
+      },
+      {
+        "file": "run_official_task3.sh",
+        "contains_crlf": false
+      },
+      {
+        "file": "run_task3.sh",
+        "contains_crlf": false
+      },
+      {
+        "file": "setup_ubuntu.sh",
+        "contains_crlf": false
+      }
+    ],
+    "scope": "Static Python 3.10 grammar and single-target preservation only; no Linux native execution"
+  },
+  "native_visibility": {
+    "all_robot_geometry_enabled": true,
+    "robot_geoms_in_static_render": 30,
+    "score_surfaces_hidden": true,
+    "native_vs_mirror_physical_arrays_equal": true,
+    "official_binary_hashes_unchanged": true,
+    "scope": "Static Python MuJoCo mj_forward render only. No native ELF/controller run, no mj_step, no home keyframe reset, no gait or hardware acceptance claim.",
+    "report": "validation/official_fix031_visibility.json",
+    "native_main_camera_contract": "validation/official_fix031_native_camera_contract.json"
+  },
+  "original_project_preservation": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": [],
+    "added": [],
+    "files_checked": 1189,
+    "sha256_files": 1181,
+    "metadata_only_files": 8,
+    "excluded_directory_names": [
+      ".git",
+      ".venv",
+      "__pycache__",
+      "build",
+      "install",
+      "log"
+    ],
+    "protected_paths": [
+      "src/robot_mujoco",
+      "src/robot_mc",
+      "deps",
+      "config",
+      "scripts",
+      "navigation",
+      "mapping",
+      "maps",
+      "scene_tools",
+      "scene_updates",
+      "run_sim.sh",
+      "field_map.pcd",
+      "README.md",
+      "README_GPT.md",
+      "TASK2_PLAN.md",
+      "TASK3_PLAN.md",
+      "PROJECT_STATUS.md",
+      "CHANGELOG.md",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.umap",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.uexp"
+    ],
+    "missing_paths": []
+  },
+  "bash_syntax_checks_passed": [
+    "accept_official_ubuntu.sh",
+    "run_official_task3.sh",
+    "build_official_bridge.sh",
+    "setup_ubuntu.sh"
+  ],
+  "native_bridge_cpp_changed_this_fix": false,
+  "official_linux_sdk_or_gait_executed_on_this_host": false,
+  "new_031_official_native_acceptance_passed": false,
+  "ubuntu_030_failure_review": "validation/ubuntu_official_030_failure_review.json",
+  "next_required_evidence": "User Ubuntu 22.04 CPython3.10 native SDK/standUp/gait and three-target acceptance; no kinematic fallback.",
+  "config_sha256": {
+    "multi_fixed.json": "f9d5c317c8cb38488a3eb0372b875844e57610933adc7e77d0f15ea9d4f5995c",
+    "multi_official.json": "9d53db13c37fab250ed13b56633a291924fe1ed7f60403b809d9efa6acb79605"
+  }
+}

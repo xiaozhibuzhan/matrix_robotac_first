@@ -1,0 +1,40 @@
+{
+  "unchanged": true,
+  "changed": [],
+  "deleted": [],
+  "added": [],
+  "files_checked": 1189,
+  "sha256_files": 1181,
+  "metadata_only_files": 8,
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "install",
+    "log"
+  ],
+  "protected_paths": [
+    "src/robot_mujoco",
+    "src/robot_mc",
+    "deps",
+    "config",
+    "scripts",
+    "navigation",
+    "mapping",
+    "maps",
+    "scene_tools",
+    "scene_updates",
+    "run_sim.sh",
+    "field_map.pcd",
+    "README.md",
+    "README_GPT.md",
+    "TASK2_PLAN.md",
+    "TASK3_PLAN.md",
+    "PROJECT_STATUS.md",
+    "CHANGELOG.md",
+    "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.umap",
+    "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.uexp"
+  ],
+  "missing_paths": []
+}

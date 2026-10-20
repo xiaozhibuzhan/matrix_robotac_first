@@ -1,0 +1,132 @@
+{
+  "baseline_archive": "task3_sim\\updates\\task3_single_target_20261019_appearance.zip",
+  "files": [
+    {
+      "file": "config/single_target.json",
+      "unchanged": true
+    },
+    {
+      "file": "config/photo_target.json",
+      "unchanged": true
+    },
+    {
+      "file": "controller.py",
+      "unchanged": true
+    },
+    {
+      "file": "scene.py",
+      "unchanged": true
+    },
+    {
+      "file": "perception.py",
+      "unchanged": true
+    },
+    {
+      "file": "backend.py",
+      "unchanged": true
+    },
+    {
+      "file": "scoring.py",
+      "unchanged": true
+    },
+    {
+      "file": "ui.py",
+      "unchanged": true
+    },
+    {
+      "file": "run_task3.sh",
+      "unchanged": true
+    },
+    {
+      "file": "requirements.txt",
+      "unchanged": true
+    },
+    {
+      "file": "assets/background_source.jpg",
+      "unchanged": true
+    },
+    {
+      "file": "assets/fixed_target_source.png",
+      "unchanged": true
+    },
+    {
+      "file": "assets/fixed_target_rectified.png",
+      "unchanged": true
+    },
+    {
+      "file": "assets/provenance.json",
+      "unchanged": true
+    }
+  ],
+  "all_single_assets_unchanged": true,
+  "single_run_function_ast_unchanged": true,
+  "python310_syntax_passed": true,
+  "python310_syntax_count": 55,
+  "python310_syntax_files": [
+    "__init__.py",
+    "__main__.py",
+    "appearance.py",
+    "backend.py",
+    "controller.py",
+    "geometry.py",
+    "interfaces.py",
+    "mesh.py",
+    "mission.py",
+    "multi.py",
+    "multi_config.py",
+    "multi_perception.py",
+    "multi_scene.py",
+    "multi_scoring.py",
+    "official.py",
+    "official_backend.py",
+    "official_runtime.py",
+    "official_scene.py",
+    "official_sdk.py",
+    "official_state.py",
+    "package_update.py",
+    "perception.py",
+    "preserve.py",
+    "scene.py",
+    "scoring.py",
+    "sensor.py",
+    "tests/test_appearance_assets.py",
+    "tests/test_camera_effects.py",
+    "tests/test_fixed_directions_render.py",
+    "tests/test_frame_transport.py",
+    "tests/test_interrupt_shutdown.py",
+    "tests/test_multi_mission.py",
+    "tests/test_multi_perception.py",
+    "tests/test_multi_referee.py",
+    "tests/test_multi_runtime_lifecycle.py",
+    "tests/test_multi_scene.py",
+    "tests/test_official_backend.py",
+    "tests/test_official_runtime.py",
+    "tests/test_official_scene.py",
+    "tests/test_official_sdk.py",
+    "tests/test_official_state.py",
+    "tests/test_perception_lifecycle.py",
+    "tests/test_printed_ring_scoring.py",
+    "tests/test_ray_referee.py",
+    "tests/test_safety_geometry.py",
+    "tests/test_ui_lifecycle.py",
+    "tests/test_update_boundaries.py",
+    "tests/test_validate_multi.py",
+    "tests/test_validate_official.py",
+    "transport.py",
+    "ui.py",
+    "validate.py",
+    "validate_appearance.py",
+    "validate_multi.py",
+    "validate_official.py"
+  ],
+  "old_release_zip_sha256": "de3ce91320d8977a141497c240d30a1c03c5cdbde4cf4f5557120712d97a58ab",
+  "unit_tests": {
+    "run": 213,
+    "passed": 210,
+    "skipped": 3,
+    "failures": 0,
+    "log": "runs/all_tests_030_final.log"
+  },
+  "official_native_runtime_executed_on_this_windows_host": false,
+  "native_cpp_bridge_compiled_on_this_windows_host": false
+}

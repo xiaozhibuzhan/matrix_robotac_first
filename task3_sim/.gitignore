@@ -1,0 +1,8 @@
+.venv/
+runs/
+runs_ubuntu/
+updates/
+local/
+__pycache__/
+*.py[cod]
+*_local.json

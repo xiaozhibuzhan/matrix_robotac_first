@@ -1,0 +1,1145 @@
+{
+  "schema": "task3.returned_ubuntu034_four_shot_review.v1",
+  "audit_utc": "2026-10-19T18:54:42.318905+00:00",
+  "scope": "Read-only returned Ubuntu evidence audit; no source or returned-log edits; no native process execution.",
+  "conclusions": [
+    "Both latest0.3.4 runs fired correct-ID ring10 shots2,5,9,2, ammo5 to1.",
+    "Per-shot credits sum40; total_score30 follows last_credited_attempt_per_target, scores10/10/10. Fourth-shot attribution is preserved.",
+    "Fifth visitID5 began; after fresh stationary confirmation in SDK ctrlmode21, standUp returned12295/0x3007 and Python exited2 with ERROR. Not timeout or user cancellation.",
+    "Four actually fired shots pass individual native fire gate plus full independent SDK-input/native-stationarity/fresh-image dwell audits. Broad checks also require a fifth shot.",
+    "Separate trace arithmetic defect:12 samples per run have publication_age_s vs task_time_s-published_at_s differences above10microseconds, causing dependent source lookup failures. Physical data remain within0.15s.",
+    "No native five-shot fix or completed five-shot acceptance is established."
+  ],
+  "runs": [
+    {
+      "run_dir": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364",
+      "version": "0.3.4",
+      "status": "ERROR",
+      "error": "standUp: official SDK returned 12295 (0x3007)",
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "cleanup_sigint_count": 0,
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "official_files_modified": false,
+      "expected_shot_order": [
+        2,
+        5,
+        9,
+        2,
+        5
+      ],
+      "actual_shot_order": [
+        2,
+        5,
+        9,
+        2
+      ],
+      "ledgers": {
+        "shots_file_equals_summary": true,
+        "mission_file_equals_summary": true,
+        "event_shot_records_equal_shots_file": true,
+        "event_mission_records_equal_mission_file": true,
+        "all_actual_shot_counts_four": true,
+        "ammo_debit_from5_consistent": true,
+        "credited_ring_sum": 40,
+        "latest_scores": {
+          "2": 10,
+          "5": 10,
+          "9": 10
+        }
+      },
+      "mission": {
+        "status": "RUNNING",
+        "active_target_id": 5,
+        "ammo_remaining": 1,
+        "shooting_policy": "round_robin",
+        "firing_order": [
+          2,
+          5,
+          9
+        ],
+        "round_index": 2,
+        "completed_rounds": 1,
+        "termination_reason": null,
+        "coverage_complete": true,
+        "total_score": 30,
+        "shot_score_sum": 40,
+        "score_policy": "last_credited_attempt_per_target; shot_score_sum is diagnostic only"
+      },
+      "per_shot_gates": [
+        {
+          "shot": {
+            "sequence": 1,
+            "intended_target_id": 2,
+            "actual_target_id": 2,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 5,
+            "ammo_after": 4,
+            "point_world_m": [
+              -0.0015257323611720733,
+              2.7000000000000006,
+              0.49600799306614185
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 36.986606198000004
+          },
+          "round_index": 1,
+          "actual_miss_m": 0.0042736376306256076,
+          "image_error_m": 0.005995883649818311,
+          "source_sequence": 2414,
+          "source_age_s": 0.00512206299998752,
+          "frame_age_s": 0.05817593699999435,
+          "feedback_age_s": 0.00512206299998752,
+          "hold_duration_s": 0.43864374200001066,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        },
+        {
+          "shot": {
+            "sequence": 2,
+            "intended_target_id": 5,
+            "actual_target_id": 5,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 4,
+            "ammo_after": 3,
+            "point_world_m": [
+              2.7,
+              -0.0004124673947476995,
+              0.49341316182182904
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 67.16449040699996
+          },
+          "round_index": 1,
+          "actual_miss_m": 0.006599739884051531,
+          "image_error_m": 0.006450635824769818,
+          "source_sequence": 5249,
+          "source_age_s": 0.009029297999973096,
+          "frame_age_s": 0.040621368999993024,
+          "feedback_age_s": 0.009029297999973096,
+          "hold_duration_s": 0.41285847400001785,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        },
+        {
+          "shot": {
+            "sequence": 3,
+            "intended_target_id": 9,
+            "actual_target_id": 9,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 3,
+            "ammo_after": 2,
+            "point_world_m": [
+              0.00020039879282599676,
+              -2.7,
+              0.4942354198173449
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 98.563170926
+          },
+          "round_index": 1,
+          "actual_miss_m": 0.005768062444047026,
+          "image_error_m": 0.005225278460745112,
+          "source_sequence": 8200,
+          "source_age_s": 0.0064580929999920045,
+          "frame_age_s": 0.059561575000003586,
+          "feedback_age_s": 0.0064580929999920045,
+          "hold_duration_s": 0.4042580280000152,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        },
+        {
+          "shot": {
+            "sequence": 4,
+            "intended_target_id": 2,
+            "actual_target_id": 2,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 2,
+            "ammo_after": 1,
+            "point_world_m": [
+              -0.0008136404560213362,
+              2.7000000000000006,
+              0.4953283504423115
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 128.863385925
+          },
+          "round_index": 2,
+          "actual_miss_m": 0.00474197431261767,
+          "image_error_m": 0.006663006603743907,
+          "source_sequence": 11030,
+          "source_age_s": 0.009022963999939293,
+          "frame_age_s": 0.05190720999996756,
+          "feedback_age_s": 0.009022963999939293,
+          "hold_duration_s": 0.41054344299999457,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        }
+      ],
+      "all_four_individual_gates_passed": true,
+      "failure_chronology": {
+        "fourth_shot_s": 128.863385925,
+        "zero_commands_after_fourth_shot": [
+          {
+            "read_at_s": 128.864404615,
+            "kind": "sdk_result",
+            "command_family": "attitude",
+            "original_issued_at_s": 128.860339765,
+            "valid_until_s": 128.96143284500002,
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "refresh": false,
+            "safety_zero": true,
+            "sdk_called_at_s": 128.864395161,
+            "code": 0
+          },
+          {
+            "read_at_s": 128.95863690699997,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 128.95862844199996,
+            "code": 0
+          },
+          {
+            "read_at_s": 129.011614232,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 129.011604497,
+            "code": 0
+          },
+          {
+            "read_at_s": 129.07994363399996,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 129.079926828,
+            "code": 0
+          },
+          {
+            "read_at_s": 129.80541669299998,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 129.805402178,
+            "code": 0
+          },
+          {
+            "read_at_s": 129.84765918699998,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 129.84763321099996,
+            "code": 0
+          }
+        ],
+        "stationary_confirmed": {
+          "read_at_s": 129.80530949399997,
+          "kind": "stationary_confirmed",
+          "control_mode": 21,
+          "source_timestamp_s": 129.80265303500002
+        },
+        "standup_failure": {
+          "read_at_s": 129.805364183,
+          "kind": "sdk_result",
+          "operation": "standUp",
+          "arguments": [],
+          "sdk_called_at_s": 129.805320794,
+          "code": 12295
+        },
+        "mission_still_running_ID5_active": true,
+        "fifth_shot_absent": true,
+        "terminal_exit2": true,
+        "timeout_marker": false,
+        "cancel_marker": false
+      },
+      "trace_diagnostics": {
+        "native_samples": 7956,
+        "age_arithmetic_mismatch_count": 12,
+        "mismatches": [
+          {
+            "index": 107,
+            "sequence": 109,
+            "task_time_s": 12.38904754699999,
+            "published_at_s": 12.384325430999995,
+            "recorded_age_s": 0.004744209999996585,
+            "computed_age_s": 0.004722115999994614,
+            "arithmetic_delta_s": 2.2094000001970926e-05
+          },
+          {
+            "index": 752,
+            "sequence": 1060,
+            "task_time_s": 22.582046709999986,
+            "published_at_s": 22.579540125000012,
+            "recorded_age_s": 0.0025269689999838363,
+            "computed_age_s": 0.0025065849999741374,
+            "arithmetic_delta_s": 2.0384000009698866e-05
+          },
+          {
+            "index": 973,
+            "sequence": 1286,
+            "task_time_s": 24.99004646199998,
+            "published_at_s": 24.985228719000002,
+            "recorded_age_s": 0.004831527999971996,
+            "computed_age_s": 0.004817742999978947,
+            "arithmetic_delta_s": 1.3784999993049496e-05
+          },
+          {
+            "index": 1879,
+            "sequence": 2704,
+            "task_time_s": 40.08104891400001,
+            "published_at_s": 40.07737267100002,
+            "recorded_age_s": 0.0036879409999670543,
+            "computed_age_s": 0.003676242999986812,
+            "arithmetic_delta_s": 1.1697999980242457e-05
+          },
+          {
+            "index": 1940,
+            "sequence": 2766,
+            "task_time_s": 40.744049813000004,
+            "published_at_s": 40.74082246300001,
+            "recorded_age_s": 0.003252537999991034,
+            "computed_age_s": 0.0032273499999959654,
+            "arithmetic_delta_s": 2.518799999506882e-05
+          },
+          {
+            "index": 2713,
+            "sequence": 3749,
+            "task_time_s": 51.21204775799998,
+            "published_at_s": 51.20134822800003,
+            "recorded_age_s": 0.010715017999984866,
+            "computed_age_s": 0.010699529999953938,
+            "arithmetic_delta_s": 1.548800003092765e-05
+          },
+          {
+            "index": 2783,
+            "sequence": 3831,
+            "task_time_s": 52.081067206,
+            "published_at_s": 52.078646662,
+            "recorded_age_s": 0.002456029000015292,
+            "computed_age_s": 0.002420544000003133,
+            "arithmetic_delta_s": 3.548500001215871e-05
+          },
+          {
+            "index": 2964,
+            "sequence": 4015,
+            "task_time_s": 54.04204719699999,
+            "published_at_s": 54.036952175,
+            "recorded_age_s": 0.005111908000010601,
+            "computed_age_s": 0.0050950219999847945,
+            "arithmetic_delta_s": 1.6886000025806425e-05
+          },
+          {
+            "index": 3820,
+            "sequence": 5331,
+            "task_time_s": 68.03111556799996,
+            "published_at_s": 68.02898975500001,
+            "recorded_age_s": 0.0021375829999641383,
+            "computed_age_s": 0.0021258129999495168,
+            "arithmetic_delta_s": 1.1770000014621473e-05
+          },
+          {
+            "index": 4091,
+            "sequence": 5612,
+            "task_time_s": 71.043044974,
+            "published_at_s": 71.033767334,
+            "recorded_age_s": 0.009292542999958187,
+            "computed_age_s": 0.009277639999993426,
+            "arithmetic_delta_s": 1.4902999964760966e-05
+          },
+          {
+            "index": 7407,
+            "sequence": 10123,
+            "task_time_s": 119.253048471,
+            "published_at_s": 119.245643774,
+            "recorded_age_s": 0.007415740999960008,
+            "computed_age_s": 0.00740469699999835,
+            "arithmetic_delta_s": 1.1043999961657391e-05
+          },
+          {
+            "index": 7433,
+            "sequence": 10175,
+            "task_time_s": 119.805048898,
+            "published_at_s": 119.79876253199998,
+            "recorded_age_s": 0.006309542000025203,
+            "computed_age_s": 0.006286366000011867,
+            "arithmetic_delta_s": 2.3176000013336306e-05
+          }
+        ],
+        "dependent_missing_timestamps": [
+          {
+            "event_index": 923,
+            "kind": "capture",
+            "timestamp_s": 119.245643774
+          },
+          {
+            "event_index": 923,
+            "kind": "frame",
+            "timestamp_s": 119.245643774
+          },
+          {
+            "event_index": 932,
+            "kind": "capture",
+            "timestamp_s": 119.79876253199998
+          },
+          {
+            "event_index": 932,
+            "kind": "frame",
+            "timestamp_s": 119.79876253199998
+          }
+        ],
+        "other_independent_trace_checks": "All source seq/clock/publications increasing; finite native vectors and unit quaternions; publication/transit/receive ages within0.15s (independently inspected).",
+        "confirmed_adapter_cause": "official_backend._record_sample calls receiver.now() separately for task_time_s and publication_age_s.",
+        "fix_recommendation": "Use one sampling time for the two recorded fields; preserve original source times and0.15s thresholds.",
+        "not_fifth_shot_trigger": true
+      },
+      "sdk_audit_failures": [
+        "nonzero SDK result",
+        "fault"
+      ],
+      "fault_log_bytes": 0,
+      "owned_process_cleanup": {
+        "mc_ctrl": {
+          "pid": 3510,
+          "exit_code": -6,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false
+        },
+        "robot_mujoco": {
+          "pid": 3492,
+          "exit_code": 0,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false
+        },
+        "official_state_bridge": {
+          "pid": 3481,
+          "exit_code": 0,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false
+        }
+      },
+      "summary_limit": "Error path omits normal-success fields frames/ammo_initial/diagnostics/perception_closed/model_sources_unchanged. Their missing values cause additional broad validation false, not evidence of absent perception or modified official model.",
+      "evidence_sha256": {
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\summary.json": "504105c10b117ed83469b1a0aec5deb5ed997a8e6aa6f4a52205012b3b84449d",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\mission.json": "a0e4d2b6017ebac2d394a4631241b761a4a9d52bd931d9e1080e890c93ce8128",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\shots.json": "e9b67c6b5f7d05d35bf8be9bdee5d2ba734b81c2d1d9549db27ffb2649fae6be",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\config.json": "905d609614577090940f037b12851fd52875a114c0b13adf107ac476625ba83b",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\events.jsonl": "2f665821eb58e0fe482970b60949af9bdb4c65b5e3cfde0081047f956d6873bc",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\official_physics.jsonl": "955390f4c621dacb100a27da8cd0a6637930f2cae3b003bbe2d09c5edd2c65dd",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\terminal.log": "0ef3fd51161844f2fa12da20383f1ad0278a9fe78e2c3dabc605c68bffe4e0f6",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\error.log": "052d38e2a40f25ebd53f4fd3a468bdf33181d7d1424d2cc388af4156f11ad46f",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\fault.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\official_runtime\\runtime_status.json": "cface618fb48134c8d23a3ca155aae1fa13e57e4f29e83826fc86bc3c5ca6bb1",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\target_2_shot_01_rgb.png": "1d332eb4b0aefb2d1e54aae27e18bb4bc5cfb27441d87e6553fce5391f30c938",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\target_2_shot_04_rgb.png": "d0b87a8d0cfa8570bfef6b02cb043511ad31387e5ae8d107e1db534a3b59c862",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\target_5_shot_02_rgb.png": "fb8af47cc22bd9c092390f076fda31dd9c9d1d7302a074815908a39cd485bcee",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364\\target_9_shot_03_rgb.png": "d21622e8969d706090cc0d151288334134321787a2a9643ff7cc854fa15c3de6"
+      }
+    },
+    {
+      "run_dir": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal",
+      "version": "0.3.4",
+      "status": "ERROR",
+      "error": "standUp: official SDK returned 12295 (0x3007)",
+      "shutdown_completed": true,
+      "cleanup_errors": [],
+      "cleanup_sigint_count": 0,
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "official_files_modified": false,
+      "expected_shot_order": [
+        2,
+        5,
+        9,
+        2,
+        5
+      ],
+      "actual_shot_order": [
+        2,
+        5,
+        9,
+        2
+      ],
+      "ledgers": {
+        "shots_file_equals_summary": true,
+        "mission_file_equals_summary": true,
+        "event_shot_records_equal_shots_file": true,
+        "event_mission_records_equal_mission_file": true,
+        "all_actual_shot_counts_four": true,
+        "ammo_debit_from5_consistent": true,
+        "credited_ring_sum": 40,
+        "latest_scores": {
+          "2": 10,
+          "5": 10,
+          "9": 10
+        }
+      },
+      "mission": {
+        "status": "RUNNING",
+        "active_target_id": 5,
+        "ammo_remaining": 1,
+        "shooting_policy": "round_robin",
+        "firing_order": [
+          2,
+          5,
+          9
+        ],
+        "round_index": 2,
+        "completed_rounds": 1,
+        "termination_reason": null,
+        "coverage_complete": true,
+        "total_score": 30,
+        "shot_score_sum": 40,
+        "score_policy": "last_credited_attempt_per_target; shot_score_sum is diagnostic only"
+      },
+      "per_shot_gates": [
+        {
+          "shot": {
+            "sequence": 1,
+            "intended_target_id": 2,
+            "actual_target_id": 2,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 5,
+            "ammo_after": 4,
+            "point_world_m": [
+              -0.001510688906603809,
+              2.7000000000000006,
+              0.4953415536479652
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 36.69507198200006
+          },
+          "round_index": 1,
+          "actual_miss_m": 0.004897275098186939,
+          "image_error_m": 0.006630135345932905,
+          "source_sequence": 2421,
+          "source_age_s": 0.010340859999985241,
+          "frame_age_s": 0.04188011299989114,
+          "feedback_age_s": 0.010340859999985241,
+          "hold_duration_s": 0.41009441699998206,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        },
+        {
+          "shot": {
+            "sequence": 2,
+            "intended_target_id": 5,
+            "actual_target_id": 5,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 4,
+            "ammo_after": 3,
+            "point_world_m": [
+              2.7,
+              -0.00059818479028775,
+              0.49292005963490537
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 67.82692771799998
+          },
+          "round_index": 1,
+          "actual_miss_m": 0.007105165769820424,
+          "image_error_m": 0.0059823590393857555,
+          "source_sequence": 5358,
+          "source_age_s": 0.0065243419999490015,
+          "frame_age_s": 0.038452283999944825,
+          "feedback_age_s": 0.0065243419999490015,
+          "hold_duration_s": 0.4127444639999567,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        },
+        {
+          "shot": {
+            "sequence": 3,
+            "intended_target_id": 9,
+            "actual_target_id": 9,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 3,
+            "ammo_after": 2,
+            "point_world_m": [
+              -0.0005437232344060877,
+              -2.7000000000000006,
+              0.49253630888780364
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 100.83215466900003
+          },
+          "round_index": 1,
+          "actual_miss_m": 0.0074834697817197015,
+          "image_error_m": 0.005973120441576571,
+          "source_sequence": 8474,
+          "source_age_s": 0.00556286699993791,
+          "frame_age_s": 0.03699922899993169,
+          "feedback_age_s": 0.00556286699993791,
+          "hold_duration_s": 0.40790077299993754,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        },
+        {
+          "shot": {
+            "sequence": 4,
+            "intended_target_id": 2,
+            "actual_target_id": 2,
+            "ring": 10,
+            "hit": true,
+            "reason": "ring_hit",
+            "ammo_before": 2,
+            "ammo_after": 1,
+            "point_world_m": [
+              -0.0005537125590912018,
+              2.7,
+              0.4951723997365382
+            ],
+            "physical_ring": 10,
+            "timestamp_s": 132.29529620100004
+          },
+          "round_index": 2,
+          "actual_miss_m": 0.004859251166781948,
+          "image_error_m": 0.006617364188339241,
+          "source_sequence": 11446,
+          "source_age_s": 0.001466803999988997,
+          "frame_age_s": 0.03294670200006067,
+          "feedback_age_s": 0.011895422999970151,
+          "hold_duration_s": 0.40746263400001226,
+          "sdk_ctrlmode": 21,
+          "checks": {
+            "allowed": true,
+            "valid_native_sample": true,
+            "sample_publication_matches": true,
+            "native_age": true,
+            "frame_age": true,
+            "feedback_age": true,
+            "native_stationary": true,
+            "feedback_stationary": true,
+            "ready_reachable_within8mm": true,
+            "full_held_attitude_dwell_audit": true,
+            "mode": true,
+            "accepted": true,
+            "correct_identity": true,
+            "fresh_valid_apriltag": true,
+            "one_ammo_debit": true
+          },
+          "all_passed": true,
+          "hold_failed_checks": []
+        }
+      ],
+      "all_four_individual_gates_passed": true,
+      "failure_chronology": {
+        "fourth_shot_s": 132.29529620100004,
+        "zero_commands_after_fourth_shot": [
+          {
+            "read_at_s": 132.29627298800006,
+            "kind": "sdk_result",
+            "command_family": "attitude",
+            "original_issued_at_s": 132.29256526799998,
+            "valid_until_s": 132.412323956,
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "refresh": false,
+            "safety_zero": true,
+            "sdk_called_at_s": 132.29626229400003,
+            "code": 0
+          },
+          {
+            "read_at_s": 132.35189954500004,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 132.35189111600005,
+            "code": 0
+          },
+          {
+            "read_at_s": 132.40882903,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 132.40882096200005,
+            "code": 0
+          },
+          {
+            "read_at_s": 132.46145592699997,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 132.46144463200005,
+            "code": 0
+          },
+          {
+            "read_at_s": 133.23735620599996,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 133.23734347599998,
+            "code": 0
+          },
+          {
+            "read_at_s": 133.243905573,
+            "kind": "sdk_result",
+            "operation": "attitudeControl",
+            "arguments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sdk_called_at_s": 133.24387118599998,
+            "code": 0
+          }
+        ],
+        "stationary_confirmed": {
+          "read_at_s": 133.23724225900003,
+          "kind": "stationary_confirmed",
+          "control_mode": 21,
+          "source_timestamp_s": 133.2280914050001
+        },
+        "standup_failure": {
+          "read_at_s": 133.23729139500006,
+          "kind": "sdk_result",
+          "operation": "standUp",
+          "arguments": [],
+          "sdk_called_at_s": 133.23725255099998,
+          "code": 12295
+        },
+        "mission_still_running_ID5_active": true,
+        "fifth_shot_absent": true,
+        "terminal_exit2": true,
+        "timeout_marker": false,
+        "cancel_marker": false
+      },
+      "trace_diagnostics": {
+        "native_samples": 8766,
+        "age_arithmetic_mismatch_count": 12,
+        "mismatches": [
+          {
+            "index": 145,
+            "sequence": 151,
+            "task_time_s": 12.650301283000033,
+            "published_at_s": 12.647484298000062,
+            "recorded_age_s": 0.0028307079999656537,
+            "computed_age_s": 0.0028169849999706287,
+            "arithmetic_delta_s": 1.372299999502502e-05
+          },
+          {
+            "index": 256,
+            "sequence": 264,
+            "task_time_s": 13.85230083700003,
+            "published_at_s": 13.848081957000067,
+            "recorded_age_s": 0.004238310999960859,
+            "computed_age_s": 0.00421887999996251,
+            "arithmetic_delta_s": 1.9430999998348852e-05
+          },
+          {
+            "index": 412,
+            "sequence": 423,
+            "task_time_s": 15.538300803000027,
+            "published_at_s": 15.535410405000034,
+            "recorded_age_s": 0.0029036730000076005,
+            "computed_age_s": 0.0028903979999927998,
+            "arithmetic_delta_s": 1.3275000014800753e-05
+          },
+          {
+            "index": 472,
+            "sequence": 539,
+            "task_time_s": 16.770301708000034,
+            "published_at_s": 16.76667987000003,
+            "recorded_age_s": 0.0036354239999702997,
+            "computed_age_s": 0.0036218380000043737,
+            "arithmetic_delta_s": 1.3585999965926021e-05
+          },
+          {
+            "index": 1031,
+            "sequence": 1236,
+            "task_time_s": 24.171403421000036,
+            "published_at_s": 24.161009973000052,
+            "recorded_age_s": 0.010404241999975028,
+            "computed_age_s": 0.010393447999984318,
+            "arithmetic_delta_s": 1.079399999071029e-05
+          },
+          {
+            "index": 2218,
+            "sequence": 2882,
+            "task_time_s": 41.58730110600004,
+            "published_at_s": 41.57914577900003,
+            "recorded_age_s": 0.00816679999998371,
+            "computed_age_s": 0.008155327000011425,
+            "arithmetic_delta_s": 1.1472999972284015e-05
+          },
+          {
+            "index": 2395,
+            "sequence": 3211,
+            "task_time_s": 45.07630063600004,
+            "published_at_s": 45.074702617000085,
+            "recorded_age_s": 0.0016152349999032367,
+            "computed_age_s": 0.0015980189999567074,
+            "arithmetic_delta_s": 1.7215999946529337e-05
+          },
+          {
+            "index": 2678,
+            "sequence": 3535,
+            "task_time_s": 48.516300152999975,
+            "published_at_s": 48.512422124000096,
+            "recorded_age_s": 0.0038900989999035573,
+            "computed_age_s": 0.0038780289998783246,
+            "arithmetic_delta_s": 1.207000002523273e-05
+          },
+          {
+            "index": 4362,
+            "sequence": 5658,
+            "task_time_s": 71.018300426,
+            "published_at_s": 71.00814868200003,
+            "recorded_age_s": 0.010162783999973612,
+            "computed_age_s": 0.010151743999969653,
+            "arithmetic_delta_s": 1.1040000003958994e-05
+          },
+          {
+            "index": 5843,
+            "sequence": 7410,
+            "task_time_s": 89.60530099599998,
+            "published_at_s": 89.59696887400001,
+            "recorded_age_s": 0.008348263000030443,
+            "computed_age_s": 0.008332121999970354,
+            "arithmetic_delta_s": 1.6141000060088118e-05
+          },
+          {
+            "index": 5897,
+            "sequence": 7466,
+            "task_time_s": 90.199301139,
+            "published_at_s": 90.19505382100002,
+            "recorded_age_s": 0.004269050000033303,
+            "computed_age_s": 0.0042473179999831245,
+            "arithmetic_delta_s": 2.1732000050178613e-05
+          },
+          {
+            "index": 7894,
+            "sequence": 10273,
+            "task_time_s": 119.92830063999997,
+            "published_at_s": 119.91851668600009,
+            "recorded_age_s": 0.009803813999951672,
+            "computed_age_s": 0.009783953999885853,
+            "arithmetic_delta_s": 1.9860000065818895e-05
+          }
+        ],
+        "dependent_missing_timestamps": [
+          {
+            "event_index": 23,
+            "kind": "capture",
+            "timestamp_s": 16.76667987000003
+          },
+          {
+            "event_index": 23,
+            "kind": "frame",
+            "timestamp_s": 16.76667987000003
+          },
+          {
+            "event_index": 368,
+            "kind": "capture",
+            "timestamp_s": 45.074702617000085
+          },
+          {
+            "event_index": 368,
+            "kind": "frame",
+            "timestamp_s": 45.074702617000085
+          }
+        ],
+        "other_independent_trace_checks": "All source seq/clock/publications increasing; finite native vectors and unit quaternions; publication/transit/receive ages within0.15s (independently inspected).",
+        "confirmed_adapter_cause": "official_backend._record_sample calls receiver.now() separately for task_time_s and publication_age_s.",
+        "fix_recommendation": "Use one sampling time for the two recorded fields; preserve original source times and0.15s thresholds.",
+        "not_fifth_shot_trigger": true
+      },
+      "sdk_audit_failures": [
+        "nonzero SDK result",
+        "fault"
+      ],
+      "fault_log_bytes": 0,
+      "owned_process_cleanup": {
+        "mc_ctrl": {
+          "pid": 4025,
+          "exit_code": -6,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false
+        },
+        "robot_mujoco": {
+          "pid": 4007,
+          "exit_code": 0,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false
+        },
+        "official_state_bridge": {
+          "pid": 3996,
+          "exit_code": 0,
+          "exit_code_before_cleanup": null,
+          "termination_requested": true,
+          "forced_kill": false
+        }
+      },
+      "summary_limit": "Error path omits normal-success fields frames/ammo_initial/diagnostics/perception_closed/model_sources_unchanged. Their missing values cause additional broad validation false, not evidence of absent perception or modified official model.",
+      "evidence_sha256": {
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\summary.json": "82fee2949cb2eb8aef9a0ec88075a71a7dbc7f75658ec70cf98be1bdfce6478a",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\mission.json": "5858db7bf4cca233d6d4d01082b8ed4f557e38c1606b364032f83e5b85801b49",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\shots.json": "82bfb0a3d9c91531ad6c210fc2a84b6f66a0574bd19cf04d22f23bbb3bfeec6b",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\config.json": "905d609614577090940f037b12851fd52875a114c0b13adf107ac476625ba83b",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\events.jsonl": "7b6bcb7fde66eb1c21ba1128a687696cd5193f25d98a0452f1cda1c68b0517ac",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\official_physics.jsonl": "c67e2e94157a3b4d5702da13c3c60a02a0354d8700217b84f0fd54c73d6c547c",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\terminal.log": "02381a4d9b04f7890ef9a969622b3d9c2cae4771186cf60acc542c6be069411b",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\error.log": "052d38e2a40f25ebd53f4fd3a468bdf33181d7d1424d2cc388af4156f11ad46f",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\fault.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\official_runtime\\runtime_status.json": "168e5b5b4ceedca1ceaaba0695b504d4cb50de4fa7b85d306933c7988c14b913",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\target_2_shot_01_rgb.png": "4ad782c83f4067ffc2f1ebfcdaba41ecb2bce5a98a5057525173ab1692673681",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\target_2_shot_04_rgb.png": "d85e8221ac171205eecdbae7cb5c9f927ababda4c82c4f46fcca5c48f4b539eb",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\target_5_shot_02_rgb.png": "89f2b42fc9d1a6301c683a469c03e6233595decdc116a4bafc065619d656d519",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\target_9_shot_03_rgb.png": "ab04114a53be9b3e96550c1e69b72cd3352ed72a07cf5e99555ede2902c1ad01",
+        "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal\\official_validation.json": "ec3e7b99540f4c2eeee42943f3d9fd3bc22db8120d22fa1ee00f167d4636efcb"
+      }
+    }
+  ],
+  "limitations": [
+    "Returned offline consistency evidence cannot authenticate the host or hardware.",
+    "Raw protobuf timestamp units remain unknown; mapped source eCAL publication clock is used.",
+    "Ray scoring is simulated; official_score=false.",
+    "Precise0x3007 official rejection precondition is not inferred from the code alone.",
+    "No gate, official SDK, official model/policy, task1/2 or original logs changed."
+  ],
+  "acceptance": {
+    "all_passed": false,
+    "vision_passed": false,
+    "first_failed_phase": "native_nominal",
+    "phases": {
+      "unit_tests": {
+        "status": "passed",
+        "exit_code": 0
+      },
+      "official_dependency_preflight": {
+        "status": "passed",
+        "exit_code": 0
+      },
+      "native_nominal": {
+        "status": "failed",
+        "exit_code": 2
+      },
+      "native_identity_order_swap": {
+        "status": "skipped",
+        "exit_code": null
+      },
+      "native_start_distance_delay_drop": {
+        "status": "skipped",
+        "exit_code": null
+      },
+      "vision_fixed_plus_20_random": {
+        "status": "skipped",
+        "exit_code": null
+      },
+      "evidence_summary": {
+        "status": "failed",
+        "exit_code": 1
+      }
+    },
+    "not_started_native_cases": [
+      "native_identity_order_swap",
+      "native_start_distance_delay_drop"
+    ],
+    "scope": "Ubuntu official physics acceptance; no hardware certification",
+    "evidence_sha256": "70c6f33c3102b4bb8579073e3479ad0a23209eefc5cbaa9993fb0c1acf8ff457",
+    "broad_check_interpretation": "shot ledger/score/gate aggregate checks require expected5 or normal-success fields. Four actual shots are individually validated above without marking full acceptance passed."
+  }
+}

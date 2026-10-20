@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T13:02:57.226508+00:00",
+  "scope": "Read-only x86-64 ELF static analysis using ELF symbols/PLT relocations and Capstone. No Linux executable, controller or native GUI was executed; no source or official file was modified.",
+  "elf_path": "src\\robot_mujoco\\simulate\\build\\robot_mujoco",
+  "elf_sha256": "8f96a848d80082aa843e7ae43c5beed785eb00770c17e5665ed5c589dd166e1c",
+  "address_basis": "ELF virtual addresses before runtime ASLR relocation",
+  "conclusion": "The unchanged native main observer starts as a free camera and initializes from mjv_defaultFreeCamera(model, main_camera) on first nonempty model-file load. The optional this_camera fixed view uses a separate auxiliary camera and does not force the main observer into first person. The derived visual/global and statistic camera settings therefore apply to the default native main view through the standard MuJoCo free-camera initializer.",
+  "camera_slots_in_Simulate": {
+    "main_observer": {
+      "offset": "0x6b28",
+      "main_stack_object": "rbp-0x41d0",
+      "constructor_argument": "rdx",
+      "type_on_default_start": "mjCAMERA_FREE (0)"
+    },
+    "auxiliary_fixed": {
+      "offset": "0x6b30",
+      "main_stack_object": "rbp-0x4180",
+      "constructor_argument": "rcx",
+      "optional_camera_name": "this_camera",
+      "type_when_enabled": "mjCAMERA_FIXED (2)"
+    },
+    "optional_auxiliary_enable_flag": {
+      "offset": "0x4748",
+      "default_value": 0,
+      "small_render_rect": [
+        0,
+        0,
+        64,
+        64
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "claim": "main initializes two distinct mjvCamera objects, passes the first in rdx and second in rcx to Simulate",
+      "assembly": [
+        "0x168aa: lea r15, [rbp - 0x4130]",
+        "0x168b1: lea rbx, [rbp - 0x40d0]",
+        "0x168b8: mov rdi, r13",
+        "0x168bb: call 0x13aa0 ; mjv_defaultCamera",
+        "0x168c0: mov rdi, r14",
+        "0x168c3: call 0x13aa0 ; mjv_defaultCamera",
+        "0x168c8: mov rdi, r15",
+        "0x168cb: call 0x139d0 ; mjv_defaultOption",
+        "0x168d0: mov rdi, rbx",
+        "0x168d3: call 0x13fc0 ; mjv_defaultPerturb",
+        "0x1691f: mov rcx, r14",
+        "0x16922: mov rdx, r13",
+        "0x16925: mov rsi, rax",
+        "0x16928: mov rdi, r12",
+        "0x1692b: mov qword ptr [rbp - 0x42f8], rax",
+        "0x16932: call 0x37c10 ; _ZN6mujoco8SimulateC1ESt10unique_ptrINS_17PlatformUIAdapterESt14default_deleteIS2_EEP10mjvCamera_S7_P10mjvOption_P11mjvPerturb_b"
+      ]
+    },
+    {
+      "claim": "Simulate constructor stores the two distinct camera pointers consecutively at offsets 0x6b28 and 0x6b30; auxiliary enable flag is initially zero",
+      "assembly": [
+        "0x37f9a: movq xmm0, qword ptr [rsp + 8]",
+        "0x37fa0: mov dword ptr [rbx + 0x46cc], 0",
+        "0x37faa: movhps xmm0, qword ptr [rsp + 0x10]",
+        "0x37faf: mov dword ptr [rbx + 0x4710], 0",
+        "0x37fb9: movups xmmword ptr [rbx + 0x6b28], xmm0",
+        "0x37fc0: movq xmm0, qword ptr [rsp + 0x18]",
+        "0x37fc6: mov qword ptr [rbx + 0x4724], 0",
+        "0x37fd1: mov qword ptr [rbx + 0x473c], 0",
+        "0x37fdc: movhps xmm0, qword ptr [rsp + 0x20]",
+        "0x37fe1: mov dword ptr [rbx + 0x4744], 0",
+        "0x37feb: mov byte ptr [rbx + 0x4748], 0",
+        "0x37ff2: movups xmmword ptr [rbx + 0x6b38], xmm0"
+      ]
+    },
+    {
+      "claim": "Previous and current model filename buffers are zeroed by the constructor",
+      "assembly": [
+        "0x37eae: movups xmmword ptr [rbx + 0x3db4], xmm0",
+        "0x37eb5: mov qword ptr [rbx + 0x3dc4], 0",
+        "0x37ec0: and rdi, 0xfffffffffffffff8",
+        "0x37ec4: mov qword ptr [rbx + 0x4194], 0",
+        "0x37ecf: sub rcx, rdi",
+        "0x37ed2: add ecx, 0x3d8",
+        "0x37ed8: shr ecx, 3",
+        "0x37edb: rep stosq qword ptr [rdi], rax",
+        "0x37ede: lea rdi, [rbx + 0x41b4]",
+        "0x37ee5: lea rcx, [rbx + 0x41ac]",
+        "0x37eec: movups xmmword ptr [rbx + 0x419c], xmm0",
+        "0x37ef3: mov qword ptr [rbx + 0x41ac], 0",
+        "0x37efe: and rdi, 0xfffffffffffffff8",
+        "0x37f02: mov qword ptr [rbx + 0x457c], 0",
+        "0x37f0d: sub rcx, rdi",
+        "0x37f10: add ecx, 0x3d8",
+        "0x37f16: shr ecx, 3",
+        "0x37f19: rep stosq qword ptr [rdi], rax"
+      ]
+    },
+    {
+      "claim": "For a nonempty filename different from the previous one, first model load branches to mjv_defaultFreeCamera(model, main camera) and remembers the filename",
+      "assembly": [
+        "0x393c3: cmp byte ptr [rbx + 0x3db4], 0",
+        "0x393ca: je 0x393ec",
+        "0x393cc: lea rsi, [rbx + 0x419c]",
+        "0x393d3: lea rdi, [rbx + 0x3db4]",
+        "0x393da: mov edx, 0x3e8",
+        "0x393df: call 0x13970 ; strncmp",
+        "0x393e4: test eax, eax",
+        "0x393e6: jne 0x39d37",
+        "0x39d37: mov rsi, qword ptr [rbx + 0x6b28]",
+        "0x39d3e: mov rdi, qword ptr [rbx + 0x18]",
+        "0x39d42: call 0x14310 ; mjv_defaultFreeCamera",
+        "0x39d47: movzx edx, byte ptr [rbx + 0x3db4]",
+        "0x39d4e: xor eax, eax",
+        "0x39d50: test dl, dl",
+        "0x39d52: jne 0x39d68",
+        "0x39d54: jmp 0x39d7f",
+        "0x39d56: nop word ptr cs:[rax + rax]",
+        "0x39d60: cmp rax, 0x3e7",
+        "0x39d66: je 0x39d7f",
+        "0x39d68: mov byte ptr [rbx + rax + 0x419c], dl",
+        "0x39d6f: add rax, 1",
+        "0x39d73: movzx edx, byte ptr [rbx + rax + 0x3db4]",
+        "0x39d7b: test dl, dl",
+        "0x39d7d: jne 0x39d60",
+        "0x39d7f: mov byte ptr [rbx + rax + 0x419c], 0"
+      ]
+    },
+    {
+      "claim": "Native main scene updates use the main observer slot 0x6b28",
+      "assembly": [
+        "0x30485: mov rcx, qword ptr [rbx + 0x6b40]",
+        "0x3048c: mov rsi, r10",
+        "0x3048f: push rax",
+        "0x30490: mov r8, qword ptr [rbx + 0x6b28]",
+        "0x30497: mov r9d, 7",
+        "0x3049d: call 0x144f0 ; mjv_updateScene",
+        "0x304a2: pop rdi",
+        "0x304a3: pop r8",
+        "0x39770: sub rsp, 8",
+        "0x39774: mov rcx, qword ptr [rbx + 0x6b40]",
+        "0x3977b: mov r8, qword ptr [rbx + 0x6b28]",
+        "0x39782: mov r9d, 7",
+        "0x39788: push r13"
+      ]
+    },
+    {
+      "claim": "Main viewport render happens before optional auxiliary render; the optional fixed camera is not substituted for the main camera",
+      "assembly": [
+        "0x34c88: mov rax, qword ptr [rbp + 0x3e7150]",
+        "0x34c8f: lea r8, [rbp + 0x4750]",
+        "0x34c96: mov rdi, r14",
+        "0x34c99: mov rsi, r15",
+        "0x34c9c: mov rdx, r8",
+        "0x34c9f: mov qword ptr [rsp + 0x40], r8",
+        "0x34ca4: lea rcx, [rax + 0x248]",
+        "0x34cab: call 0x14550 ; mjr_render",
+        "0x34cb0: cmp byte ptr [rbp + 0x4748], 0",
+        "0x34cb7: mov r8, qword ptr [rsp + 0x40]",
+        "0x34cbc: jne 0x35541",
+        "0x35541: mov rdx, qword ptr [rbp + 0x6b30]",
+        "0x35548: mov rsi, qword ptr [rbp + 0x20]",
+        "0x3554c: mov rcx, r8",
+        "0x3554f: mov rdi, qword ptr [rbp + 0x18]",
+        "0x35553: mov rbx, qword ptr [rip + 0x26f46]",
+        "0x3555a: call 0x13bf0 ; mjv_updateCamera",
+        "0x3555f: mov rdx, qword ptr [rsp + 0x40]",
+        "0x35564: mov rsi, rbx",
+        "0x35567: xor edi, edi",
+        "0x35569: mov rax, qword ptr [rbp + 0x3e7150]",
+        "0x35570: lea rcx, [rax + 0x248]",
+        "0x35577: call 0x14550 ; mjr_render"
+      ]
+    },
+    {
+      "claim": "this_camera lookup belongs to the optional enable-flag branch and only sets auxiliary slot 0x6b30 fixedcamid and type=2",
+      "assembly": [
+        "0x3931d: cmp byte ptr [rbx + 0x4748], 0",
+        "0x39324: mov r8, qword ptr [rbx + 0x18]",
+        "0x39328: jne 0x39990",
+        "0x39990: lea rdx, [rip + 0x21920]",
+        "0x39997: mov esi, 7",
+        "0x3999c: mov rdi, r8",
+        "0x3999f: call 0x143e0 ; mj_name2id",
+        "0x399a4: mov ebp, eax",
+        "0x399a6: cmp eax, -1",
+        "0x39b66: mov rdi, qword ptr [rbx + 0x6b30]",
+        "0x39b6d: call 0x13aa0 ; mjv_defaultCamera",
+        "0x39b72: mov rax, qword ptr [rbx + 0x6b30]",
+        "0x39b79: mov rdi, r12",
+        "0x39b7c: mov edx, 8",
+        "0x39b81: lea rsi, [rip + 0x21783]",
+        "0x39b88: mov dword ptr [rax + 4], ebp",
+        "0x39b8b: mov dword ptr [rax], 2"
+      ]
+    }
+  ],
+  "derived_scene_static_render_evidence": "task3_sim/runs/native_visibility_031_20261019_205115/visibility_evidence.json",
+  "limits": [
+    "No claim of native rendered pixels or live gait acceptance: this was static ELF control-flow evidence plus a separate Python MuJoCo static default-free-camera render.",
+    "User interaction can manually switch the main observer to a fixed camera; that does not describe default startup.",
+    "The installed Ubuntu MuJoCo shared library was not loaded on this Windows host. ELF startup checks mj_version()==330 (MuJoCo 3.3.0); the external standard free-camera function is imported through PLT 0x14310."
+  ]
+}

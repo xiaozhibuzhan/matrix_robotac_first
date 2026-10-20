@@ -1,0 +1,1288 @@
+{
+  "package_version": "0.2.0",
+  "created_utc": "2026-10-19T07:21:33.859104+00:00",
+  "all_passed": true,
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.12.3",
+  "mujoco": "3.3.7",
+  "ubuntu_runtime_tested": false,
+  "scope": "Static multi-target missions with actual RGB rendering and native AprilTag detection. Simulated scores and assumed dimensions. Windows release verification; new Ubuntu runtime remains untested.",
+  "unit": {
+    "tests_run": 116,
+    "passed": 113,
+    "skipped_posix_only_on_windows": 3,
+    "process_exit_code": 0
+  },
+  "multi": {
+    "fixed_cases": 11,
+    "random_cases": 100,
+    "passed_cases": 111,
+    "seed": 20261019,
+    "random_ranges": {
+      "initial_x_m": [
+        -0.1,
+        0.1
+      ],
+      "initial_y_m": [
+        -0.1,
+        0.1
+      ],
+      "initial_pitch_rad": [
+        0,
+        0.08
+      ],
+      "initial_yaw_rad": [
+        -0.15,
+        0.15
+      ],
+      "distance_scale": [
+        0.9,
+        1.1
+      ],
+      "exposure": [
+        0.75,
+        1.25
+      ],
+      "noise_std_u8": [
+        0,
+        4
+      ],
+      "delay_s": [
+        0,
+        0.05
+      ],
+      "drop_probability": [
+        0,
+        0.15
+      ]
+    },
+    "status_counts": {
+      "SUCCESS": 107,
+      "PARTIAL": 1,
+      "NO_AMMO": 2,
+      "TIMEOUT": 1
+    },
+    "shots": 325,
+    "max_actual_miss_m": 0.00827005318582825,
+    "acceptance_min_ring": 9,
+    "acceptance_max_actual_miss_m": 0.02,
+    "tested_sources_unchanged": true,
+    "validator_process_exit_code": 0,
+    "code_semantics": "Each case calls run_multi in this validator process. process_code is the returned application code; independent CLI termination is a separate check. A native abort terminates validation and leaves pending_case recorded.",
+    "cases": [
+      {
+        "case": "three_targets",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006839102472571379,
+        "all_checks": true
+      },
+      {
+        "case": "unknown_tag_ignored",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006839102472571379,
+        "all_checks": true
+      },
+      {
+        "case": "per_id_calibration",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.007352230346593556,
+        "all_checks": true
+      },
+      {
+        "case": "middle_target_missing",
+        "passed": true,
+        "status": "PARTIAL",
+        "shots": 2,
+        "total_score": 20,
+        "max_actual_miss_m": 0.005775462848557474,
+        "all_checks": true
+      },
+      {
+        "case": "two_rounds_only",
+        "passed": true,
+        "status": "NO_AMMO",
+        "shots": 2,
+        "total_score": 20,
+        "max_actual_miss_m": 0.005775462848557474,
+        "all_checks": true
+      },
+      {
+        "case": "empty_magazine",
+        "passed": true,
+        "status": "NO_AMMO",
+        "shots": 0,
+        "total_score": 0,
+        "max_actual_miss_m": null,
+        "all_checks": true
+      },
+      {
+        "case": "delay_and_drop",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.007217750073101689,
+        "all_checks": true
+      },
+      {
+        "case": "periodic_frame_loss",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.007048746676164607,
+        "all_checks": true
+      },
+      {
+        "case": "delivery_jitter",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.00827005318582825,
+        "all_checks": true
+      },
+      {
+        "case": "stale_frames_no_fire",
+        "passed": true,
+        "status": "TIMEOUT",
+        "shots": 0,
+        "total_score": 0,
+        "max_actual_miss_m": null,
+        "all_checks": true
+      },
+      {
+        "case": "blackout_then_recover",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006875940776382629,
+        "all_checks": true
+      },
+      {
+        "case": "random_000",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006489861559601154,
+        "all_checks": true
+      },
+      {
+        "case": "random_001",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005935947018431442,
+        "all_checks": true
+      },
+      {
+        "case": "random_002",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005848225442483047,
+        "all_checks": true
+      },
+      {
+        "case": "random_003",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0047540733486913945,
+        "all_checks": true
+      },
+      {
+        "case": "random_004",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006051767129545573,
+        "all_checks": true
+      },
+      {
+        "case": "random_005",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005671825646121983,
+        "all_checks": true
+      },
+      {
+        "case": "random_006",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006132270505872889,
+        "all_checks": true
+      },
+      {
+        "case": "random_007",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0067804430955415,
+        "all_checks": true
+      },
+      {
+        "case": "random_008",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005472011820600726,
+        "all_checks": true
+      },
+      {
+        "case": "random_009",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005527993035772951,
+        "all_checks": true
+      },
+      {
+        "case": "random_010",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006056935709772852,
+        "all_checks": true
+      },
+      {
+        "case": "random_011",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.00535592958084515,
+        "all_checks": true
+      },
+      {
+        "case": "random_012",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005704892194244811,
+        "all_checks": true
+      },
+      {
+        "case": "random_013",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005352083948510356,
+        "all_checks": true
+      },
+      {
+        "case": "random_014",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006587702293333054,
+        "all_checks": true
+      },
+      {
+        "case": "random_015",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005679337413801476,
+        "all_checks": true
+      },
+      {
+        "case": "random_016",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005374859127139114,
+        "all_checks": true
+      },
+      {
+        "case": "random_017",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.00507838360831986,
+        "all_checks": true
+      },
+      {
+        "case": "random_018",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005497750906802897,
+        "all_checks": true
+      },
+      {
+        "case": "random_019",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005733222284846148,
+        "all_checks": true
+      },
+      {
+        "case": "random_020",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006469527818943421,
+        "all_checks": true
+      },
+      {
+        "case": "random_021",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005653290235067376,
+        "all_checks": true
+      },
+      {
+        "case": "random_022",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005649728979830938,
+        "all_checks": true
+      },
+      {
+        "case": "random_023",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006203854297484358,
+        "all_checks": true
+      },
+      {
+        "case": "random_024",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005714566695185851,
+        "all_checks": true
+      },
+      {
+        "case": "random_025",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005766740560023931,
+        "all_checks": true
+      },
+      {
+        "case": "random_026",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005474404646074089,
+        "all_checks": true
+      },
+      {
+        "case": "random_027",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005831897145342796,
+        "all_checks": true
+      },
+      {
+        "case": "random_028",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005709476803044493,
+        "all_checks": true
+      },
+      {
+        "case": "random_029",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005997478670151632,
+        "all_checks": true
+      },
+      {
+        "case": "random_030",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005779134950320745,
+        "all_checks": true
+      },
+      {
+        "case": "random_031",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006538940095645224,
+        "all_checks": true
+      },
+      {
+        "case": "random_032",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006244537810282809,
+        "all_checks": true
+      },
+      {
+        "case": "random_033",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0059867174687853525,
+        "all_checks": true
+      },
+      {
+        "case": "random_034",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006515174205222266,
+        "all_checks": true
+      },
+      {
+        "case": "random_035",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006087405097811,
+        "all_checks": true
+      },
+      {
+        "case": "random_036",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005957873284052795,
+        "all_checks": true
+      },
+      {
+        "case": "random_037",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005583539043518566,
+        "all_checks": true
+      },
+      {
+        "case": "random_038",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005338039679723294,
+        "all_checks": true
+      },
+      {
+        "case": "random_039",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006298733804547787,
+        "all_checks": true
+      },
+      {
+        "case": "random_040",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006967812881581035,
+        "all_checks": true
+      },
+      {
+        "case": "random_041",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005746802792360558,
+        "all_checks": true
+      },
+      {
+        "case": "random_042",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005159369582431922,
+        "all_checks": true
+      },
+      {
+        "case": "random_043",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005749987175894319,
+        "all_checks": true
+      },
+      {
+        "case": "random_044",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0074985603687670105,
+        "all_checks": true
+      },
+      {
+        "case": "random_045",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006081690370426084,
+        "all_checks": true
+      },
+      {
+        "case": "random_046",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006166751445689365,
+        "all_checks": true
+      },
+      {
+        "case": "random_047",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005716019966517417,
+        "all_checks": true
+      },
+      {
+        "case": "random_048",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005293238033602247,
+        "all_checks": true
+      },
+      {
+        "case": "random_049",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005790992873269454,
+        "all_checks": true
+      },
+      {
+        "case": "random_050",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006180657355572373,
+        "all_checks": true
+      },
+      {
+        "case": "random_051",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005611006728791654,
+        "all_checks": true
+      },
+      {
+        "case": "random_052",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.00625152575869198,
+        "all_checks": true
+      },
+      {
+        "case": "random_053",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005393022787532396,
+        "all_checks": true
+      },
+      {
+        "case": "random_054",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0053157344604977475,
+        "all_checks": true
+      },
+      {
+        "case": "random_055",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005690094751999948,
+        "all_checks": true
+      },
+      {
+        "case": "random_056",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005731679074763583,
+        "all_checks": true
+      },
+      {
+        "case": "random_057",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006065017887994319,
+        "all_checks": true
+      },
+      {
+        "case": "random_058",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006657265092970158,
+        "all_checks": true
+      },
+      {
+        "case": "random_059",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005574581056277894,
+        "all_checks": true
+      },
+      {
+        "case": "random_060",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005991984451200554,
+        "all_checks": true
+      },
+      {
+        "case": "random_061",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006001277122482405,
+        "all_checks": true
+      },
+      {
+        "case": "random_062",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0057005686816970075,
+        "all_checks": true
+      },
+      {
+        "case": "random_063",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0059411720098267815,
+        "all_checks": true
+      },
+      {
+        "case": "random_064",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005032787683462592,
+        "all_checks": true
+      },
+      {
+        "case": "random_065",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006354876178265303,
+        "all_checks": true
+      },
+      {
+        "case": "random_066",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.00570671635453411,
+        "all_checks": true
+      },
+      {
+        "case": "random_067",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005602041880791822,
+        "all_checks": true
+      },
+      {
+        "case": "random_068",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0058057848173499885,
+        "all_checks": true
+      },
+      {
+        "case": "random_069",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005772398796897623,
+        "all_checks": true
+      },
+      {
+        "case": "random_070",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005958739264633542,
+        "all_checks": true
+      },
+      {
+        "case": "random_071",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005747671917973187,
+        "all_checks": true
+      },
+      {
+        "case": "random_072",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005362350729685121,
+        "all_checks": true
+      },
+      {
+        "case": "random_073",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006473548709083499,
+        "all_checks": true
+      },
+      {
+        "case": "random_074",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006854571540985471,
+        "all_checks": true
+      },
+      {
+        "case": "random_075",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006028912418407079,
+        "all_checks": true
+      },
+      {
+        "case": "random_076",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005045914589853635,
+        "all_checks": true
+      },
+      {
+        "case": "random_077",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006056705169669787,
+        "all_checks": true
+      },
+      {
+        "case": "random_078",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0058130099426590845,
+        "all_checks": true
+      },
+      {
+        "case": "random_079",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0052031863263915885,
+        "all_checks": true
+      },
+      {
+        "case": "random_080",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006609391812639066,
+        "all_checks": true
+      },
+      {
+        "case": "random_081",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0071360882625495685,
+        "all_checks": true
+      },
+      {
+        "case": "random_082",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.00637572046362253,
+        "all_checks": true
+      },
+      {
+        "case": "random_083",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.004800007912408994,
+        "all_checks": true
+      },
+      {
+        "case": "random_084",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.007030406502153047,
+        "all_checks": true
+      },
+      {
+        "case": "random_085",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006769563937257313,
+        "all_checks": true
+      },
+      {
+        "case": "random_086",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0053486540187966955,
+        "all_checks": true
+      },
+      {
+        "case": "random_087",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.0058722371505060085,
+        "all_checks": true
+      },
+      {
+        "case": "random_088",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006442449094773124,
+        "all_checks": true
+      },
+      {
+        "case": "random_089",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005741916617324605,
+        "all_checks": true
+      },
+      {
+        "case": "random_090",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.00594871773226553,
+        "all_checks": true
+      },
+      {
+        "case": "random_091",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006251973178865241,
+        "all_checks": true
+      },
+      {
+        "case": "random_092",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006572658253998962,
+        "all_checks": true
+      },
+      {
+        "case": "random_093",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005664487711600805,
+        "all_checks": true
+      },
+      {
+        "case": "random_094",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005271410099664047,
+        "all_checks": true
+      },
+      {
+        "case": "random_095",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005204279706868273,
+        "all_checks": true
+      },
+      {
+        "case": "random_096",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005757305457616565,
+        "all_checks": true
+      },
+      {
+        "case": "random_097",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005133283186416971,
+        "all_checks": true
+      },
+      {
+        "case": "random_098",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.005874906690709924,
+        "all_checks": true
+      },
+      {
+        "case": "random_099",
+        "passed": true,
+        "status": "SUCCESS",
+        "shots": 3,
+        "total_score": 30,
+        "max_actual_miss_m": 0.006712799124481206,
+        "all_checks": true
+      }
+    ]
+  },
+  "single_regression": {
+    "synthetic_cases": 6,
+    "synthetic_passed": true,
+    "photo_cases": 15,
+    "photo_passed": true
+  },
+  "multi_dual_window": {
+    "process_exit_code": 0,
+    "status": "SUCCESS",
+    "ammo_remaining": 2,
+    "scores": {
+      "2": 10,
+      "5": 10,
+      "9": 10
+    },
+    "hold_seconds": 2,
+    "exit_reason": "elapsed",
+    "shutdown_completed": true
+  },
+  "python310_grammar_files": 41,
+  "original_files": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": [],
+    "added": [],
+    "files_checked": 1189,
+    "sha256_files": 1181,
+    "metadata_only_files": 8,
+    "excluded_directory_names": [
+      ".git",
+      ".venv",
+      "__pycache__",
+      "build",
+      "install",
+      "log"
+    ],
+    "protected_paths": [
+      "src/robot_mujoco",
+      "src/robot_mc",
+      "deps",
+      "config",
+      "scripts",
+      "navigation",
+      "mapping",
+      "maps",
+      "scene_tools",
+      "scene_updates",
+      "run_sim.sh",
+      "field_map.pcd",
+      "README.md",
+      "README_GPT.md",
+      "TASK2_PLAN.md",
+      "TASK3_PLAN.md",
+      "PROJECT_STATUS.md",
+      "CHANGELOG.md",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.umap",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.uexp"
+    ],
+    "missing_paths": []
+  },
+  "single_baselines": {
+    "baseline_archive": "task3_sim/updates/task3_single_target_20261019_appearance.zip",
+    "all_unchanged": true,
+    "files": [
+      {
+        "file": "config/single_target.json",
+        "unchanged": true,
+        "sha256": "8d6e1ad257811aa7c5708d81704fef45adb2e48da4ee1fcb45d79996146d89b3"
+      },
+      {
+        "file": "config/photo_target.json",
+        "unchanged": true,
+        "sha256": "0bc4e2d4e24695eac42c8a89a5e2a1e55a3a5d7d1e2cfbb38e1d9be06b009b80"
+      },
+      {
+        "file": "controller.py",
+        "unchanged": true,
+        "sha256": "338d82d487ad30b9594da1f4c5823b5df8ee60b45fb95eb653192497e590f1ac"
+      },
+      {
+        "file": "scene.py",
+        "unchanged": true,
+        "sha256": "482e449b1026f18ee150cdd9c9db703bbdb6191c5235b7216593f06646217deb"
+      },
+      {
+        "file": "perception.py",
+        "unchanged": true,
+        "sha256": "d9e1cc1551796e50607a3b9924e5d8545defc4b5cd61d0cb042ccaf25f9a6454"
+      },
+      {
+        "file": "backend.py",
+        "unchanged": true,
+        "sha256": "fc2f83e2cad59aa028220725ac2d371295b8d6737ab7bce08e046d1dbeceb95a"
+      },
+      {
+        "file": "scoring.py",
+        "unchanged": true,
+        "sha256": "9d14f1273f76d48398d328932d33ff4a14fbc37e6f6570dfe779521a2fff6ce6"
+      },
+      {
+        "file": "ui.py",
+        "unchanged": true,
+        "sha256": "4d60c26733e391b3ab423f63d6554729dadbf743a1e5c66f7eb2f6071bf186b5"
+      },
+      {
+        "file": "run_task3.sh",
+        "unchanged": true,
+        "sha256": "168a3c6ab1147eabdc1d6ee707f82a78e2182918dd044261553c74e833925bb5"
+      },
+      {
+        "file": "requirements.txt",
+        "unchanged": true,
+        "sha256": "9a2d46699c0642165082f6d3815beea05e10958ebae219a2fd9c0c079ccfb4cf"
+      },
+      {
+        "file": "assets/background_source.jpg",
+        "unchanged": true,
+        "sha256": "7ee04a23913daf276d9b358851839e2bd17537ef7e1f1dad5695480007d93bd4"
+      },
+      {
+        "file": "assets/fixed_target_source.png",
+        "unchanged": true,
+        "sha256": "97f58a672d3b6da74e7b4ef378a7a888833cbd7bd1bfcaab86d90e7334db3952"
+      },
+      {
+        "file": "assets/fixed_target_rectified.png",
+        "unchanged": true,
+        "sha256": "8a8f670b53be4dac4d8787576ea3bf18c1602cec3869c1fc52b525d419a41ba4"
+      },
+      {
+        "file": "assets/provenance.json",
+        "unchanged": true,
+        "sha256": "862ecdfea05e8f43b4f869cf714bb0d5d0474054b0baea3b38c4601035e8d9da"
+      }
+    ],
+    "single_entry_functions": [
+      {
+        "function": "run",
+        "unchanged_ast": true
+      },
+      {
+        "function": "parse_args",
+        "unchanged_ast": true
+      },
+      {
+        "function": "annotate",
+        "unchanged_ast": true
+      },
+      {
+        "function": "defer_cleanup_sigint",
+        "unchanged_ast": true
+      }
+    ]
+  },
+  "source_py_sha256": {
+    "__init__.py": "9731bb52cd5d0e21977b99ff616ade5f6b947bdca0654107c3470928aa12a2fa",
+    "__main__.py": "89df8d52045663ae13fbe1c47da74fa62fa23886c9f514a6397164b3de3d702c",
+    "appearance.py": "80f816e3aec3817a6b855268e655424a390c016de83780562ae190e74939b70d",
+    "backend.py": "fc2f83e2cad59aa028220725ac2d371295b8d6737ab7bce08e046d1dbeceb95a",
+    "controller.py": "338d82d487ad30b9594da1f4c5823b5df8ee60b45fb95eb653192497e590f1ac",
+    "geometry.py": "e0e74a38ac6ca97b5ac1f34ce882eea30e2cd571473796531517b4e8a6acec84",
+    "interfaces.py": "9317bf55c60464d53b60ab386a2af9ccfac86ca3b365adf0be059248e2a8ea1d",
+    "mesh.py": "a3edeed0dd4adc4e13a93ff87231b500bd372932a7219d15849e5dfa28e8e931",
+    "mission.py": "708cefe5d5c3fcaa28bcc6abcc2442ff8f926ebfb3d3c9c2fcddfd111cdaea8d",
+    "multi.py": "4dde8eba9d90654ca81e6d333e912e911c8505c1c96091c9c7c3c5c6f1313a3e",
+    "multi_config.py": "5383ce328687c9b40cfbdec75a80cd1ca7b03e0e628f79b638d26e6791e2f7f9",
+    "multi_perception.py": "8860652fd3608037459c32e95d47540904cfc194021059060509b04f0d02391f",
+    "multi_scene.py": "33451899294ce0c5ca593f47ba479d3f29c61ab92055c5ea8d0373d50b524047",
+    "multi_scoring.py": "487bc30e42c7884426976f9cbaddb98ffb83347698eae4b247b32d1cd43d60a5",
+    "package_update.py": "c8e298b9d336944354ae7a714edec7c1956ce167afd2172fbe34c4da38a96819",
+    "perception.py": "d9e1cc1551796e50607a3b9924e5d8545defc4b5cd61d0cb042ccaf25f9a6454",
+    "preserve.py": "3f77bd336529855462c7c1880aafba93689656506fc91b21a18db600ea022cbf",
+    "scene.py": "482e449b1026f18ee150cdd9c9db703bbdb6191c5235b7216593f06646217deb",
+    "scoring.py": "9d14f1273f76d48398d328932d33ff4a14fbc37e6f6570dfe779521a2fff6ce6",
+    "sensor.py": "b7cf3f37d5c3efc458576a9e6888c78c62af0d2bb2bc002d70e3373cee1f9f2c",
+    "tests/test_appearance_assets.py": "0fc258ef5a69629c7e2e8cb68e7094b4aa088a0f7377920b9013a92b45fdd6a4",
+    "tests/test_camera_effects.py": "011d658e9c48a4ccdc7f07caec2777b1088055d3f8aa8de5b436c6709383d631",
+    "tests/test_frame_transport.py": "02905ca247f878150943524aab5adeab630d6b0ecc727e2d986b58c7f80b0d37",
+    "tests/test_interrupt_shutdown.py": "ce5d93140f27a0bc79cfb5b8076742e76b20c57ef0ed3952de6bc646d528335b",
+    "tests/test_multi_mission.py": "89a77d9f08530fa6d52d7b20bfb4c365c20e9ee7809933eb4158ce4704912642",
+    "tests/test_multi_perception.py": "8ebe5cfd2b03412e8c4a6cbbd056d8f29b3811d8a9f27c1791255d691c44bb3a",
+    "tests/test_multi_referee.py": "457048b9b59ebbd3718c4ea9082175d52fc3431cccb0de856f378e1f8206ebb7",
+    "tests/test_multi_runtime_lifecycle.py": "5808540f3faddd95938fc4ec247f5f97afb379dfa5bb10ce7c0ab7153a6e09b0",
+    "tests/test_multi_scene.py": "da5ddb0b3a6a3785b99806d8abcb66cccc0c5f414dbc8b76eee0d42b9c5f9745",
+    "tests/test_perception_lifecycle.py": "dc2425de715660411e2f692c7f7c00753965879c586eb1960c3f212b05bc56a7",
+    "tests/test_printed_ring_scoring.py": "3ffdb418835787ce0a3773369e6e40a85fa2af42418e3ebba4ab27611ed76126",
+    "tests/test_ray_referee.py": "d8815bed3746712081369326e7765a83da4443c23c08ecce0673cce5459d2e8a",
+    "tests/test_safety_geometry.py": "2519b1600f4073b2878f7aceb698e8a5aa9c34f241748654b5fece4a224e877f",
+    "tests/test_ui_lifecycle.py": "99b541d0e25b56516cb9d325715c2ab9defea79c1d603662ba4df13d6f7804c4",
+    "tests/test_update_boundaries.py": "06eb6f480edcd405bdb822be59db88b181a25235f0bebb13ff727089e3977dd4",
+    "tests/test_validate_multi.py": "c935eb4add29f1901ff8eea50fe310867559fe6dcc80cfba46d98bbd4e6c2530",
+    "transport.py": "c227b81e91aceab625cfbb361180b45cda41336b87e01ec696b61069c25f6241",
+    "ui.py": "4d60c26733e391b3ab423f63d6554729dadbf743a1e5c66f7eb2f6071bf186b5",
+    "validate.py": "d4b2770a679a01b0df73f1178927c9ab81f0e00dc8d327b6789a54113f9eaac6",
+    "validate_appearance.py": "3a372127b6282b60c9558fb1c1ce6b4df16e76dd75d4a651cdbfc2a8bfe2baf5",
+    "validate_multi.py": "aa2361e3c871b39dd9f90a32e3eafd6d9018e1bdf936a405cb6cf8966d38b2ce"
+  },
+  "bash_syntax_checked": [
+    "run_task3.sh",
+    "setup_ubuntu.sh"
+  ],
+  "raw_evidence": [
+    "runs/multi_validation_acceptance_20261019/validation.json",
+    "runs/multi_validation_acceptance_20261019_terminal.log",
+    "runs/multi_release_verification/verification.json",
+    "runs/multi_release_verification/unit.log"
+  ],
+  "limitations": [
+    "New Ubuntu desktop/driver/real Ctrl+C acceptance remains required.",
+    "Source preservation uses SHA256 for 1181 files and size/mtime for 8 large ROS bag files.",
+    "Kinematic body response, no quadruped gait or physical laser simulation.",
+    "Per-target one attempt; misses retain physical ring3 but receive no mission credit.",
+    "Sampled robustness bounds do not establish real-world success probability."
+  ]
+}

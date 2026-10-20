@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-19",
+  "scope": "Windows local verification, Git Bash process-group signals, and real MuJoCo RGB rendering with display calls replaced; not a new Ubuntu acceptance run",
+  "user_evidence": {
+    "run": "runs_ubuntu/run_20261019_131720_3532",
+    "status": "SUCCESS",
+    "phase": "finished",
+    "shutdown_completed": true,
+    "display_exit_reason": "keyboard_interrupt_after_result",
+    "cleanup_errors": [],
+    "native_fault_log_empty": true,
+    "launcher_status": 1,
+    "final_success_output_missing": true
+  },
+  "diagnosis": "Terminal Ctrl+C also interrupts tee in the foreground pipeline. Python catches KeyboardInterrupt and completes cleanup, then its final prints write into tee's closed pipe. A process-group signal probe reproduces exit 1 and missing final output with old tee; tee -i keeps logging until child termination. No native crash stack is present in this user run.",
+  "changes": [
+    "Launcher catches SIGINT while tee -i retains stdout/stderr; child exit code remains PIPESTATUS[0]",
+    "Repeated SIGINT is deferred only while completing cleanup and summary; previous Python signal handler is restored",
+    "SystemExit, ordinary cleanup failures, SIGABRT and SIGSEGV are not suppressed",
+    "Passive viewer starts with both side panels hidden and an overview centered between robot and target"
+  ],
+  "git_bash_probe": {
+    "environment": "Git for Windows Bash; actual SIGINT to foreground pipeline process group; shell child mimics Python's completed/cancelled signal handling and broken-pipe exit",
+    "source": "runs/interrupt_signal_probe/probe.py",
+    "raw_results": "runs/interrupt_signal_probe/results.json",
+    "results": [
+      {"case": "old tee interrupted after completed child", "exit_code": 1, "final_child_output_present": false},
+      {"case": "tee -i interrupted after completed child", "exit_code": 0, "final_child_output_present": true},
+      {"case": "tee -i interrupted before result", "exit_code": 2, "final_child_output_present": true},
+      {"case": "simulated child exit status 134", "exit_code": 134},
+      {"case": "simulated child exit status 139", "exit_code": 139}
+    ]
+  },
+  "real_render_signal_probe": {
+    "source": "runs/interrupt_signal_probe/run_probe.py",
+    "raw_results": "runs/interrupt_signal_probe/run_20261019_134924/validation.json",
+    "method": "Real MuJoCo rendering/detection/control/ray score. Python SIGINT raised through signal.raise_signal; observer calls stubbed to avoid opening GUI windows.",
+    "results": [
+      {"case": "completed result SIGINT plus two cleanup SIGINTs", "status": "SUCCESS", "exit_code": 0, "ring": 10, "cleanup_sigint_count": 2, "shutdown_completed": true},
+      {"case": "SIGINT before first image/shot", "status": "CANCELLED", "exit_code": 2, "shutdown_completed": true},
+      {"case": "completed result plus injected cleanup warning", "status": "CLEANUP_ERROR", "exit_code": 2, "shutdown_completed": false}
+    ]
+  },
+  "unit_tests": {
+    "command": "task3_sim/.venv/Scripts/python -m unittest task3_sim.tests.test_interrupt_shutdown task3_sim.tests.test_ui_lifecycle -v",
+    "passed": 14,
+    "skipped": 3,
+    "skip_reason": "POSIX killpg launcher tests execute on Ubuntu; Windows is supplemented by the actual Git Bash foreground-group probe",
+    "python_compile": "passed",
+    "bash_syntax": "passed"
+  },
+  "photo_overview_visual_check": {
+    "config": "config/photo_target.json",
+    "method": "Real MuJoCo RGB renders from passive observer camera; visually inspected complete frames",
+    "problem": "Previous azimuth 130 put the camera behind the background wall; azimuths 200 and 220 were also obstructed",
+    "selected_azimuth_degrees": 45.0,
+    "selected_elevation_degrees": -18.0,
+    "framing": "Look at midpoint of initial robot and target; distance max(3.5m, 1.6 times their separation)",
+    "result": "Robot and front face of the supplied target are both visible with supplied background behind them",
+    "screenshot": "runs/overview_probe_20261019/azimuth_45.png",
+    "comparison": "runs/overview_probe_20261019/comparison.png",
+    "perception_camera_or_control_changed": false
+  },
+  "limits": [
+    "Target Ubuntu still needs one completed-result Ctrl+C run and one pre-result cancellation run",
+    "Exit 134/139 forwarding used simulated child statuses rather than intentionally crashing native libraries",
+    "New overview framing changes only the observer, not the perception camera or robot state"
+  ]
+}

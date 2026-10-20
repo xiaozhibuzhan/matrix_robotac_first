@@ -1,0 +1,838 @@
+{
+  "report_version": 1,
+  "audit_kind": "static official SDK contract and returned native log correlation; no SDK execution",
+  "conclusion": "The returned fifth-shot failures are the official SDK standUp non-mode-1 call-counter failure. Each run invokes standUp 11 times; the first 10 return zero, the eleventh prints the counter-specific failure string and returns 0x3007. The adapter waits for mode 1 using getters but does not call standUp while that mode is observed, so the SDK counter does not reset between completed transitions.",
+  "official_code_modified": false,
+  "native_sdk_executed_on_windows": false,
+  "library": {
+    "path": "E:\\各种比赛\\robortac\\matrix_robotac_first\\deps\\zsibot_sdk\\lib\\zsl-1\\x86_64\\libmc_sdk_zsl_1_x86_64.so",
+    "sha256": "c03aa3503a6de49f50871e995221c6695d35320494e8e8d5ddde78a8b026594e",
+    "format": "ELF64 little-endian x86_64",
+    "standUp_symbol": "_ZN6mc_sdk5zsl_19HighLevel7standUpEv",
+    "standUp_elf_virtual_address": "0x203d0",
+    "standUp_size_bytes": 813,
+    "getCurrentCtrlmode_elf_virtual_address": "0x22d80",
+    "getCurrentCtrlmode_size_bytes": 30,
+    "counter_elf_virtual_address": "0x43644",
+    "counter_storage": ".bss, zero-initialized process-local storage in this shared library; RIP-relative access, not an SDK object field",
+    "address_scope": "ELF virtual addresses and file offsets are equal for the listed text/rodata instructions in this exact library; runtime load base must be added to virtual addresses"
+  },
+  "official_contract": [
+    {
+      "file": "deps/zsibot_sdk/docs/api_zsl-1.md",
+      "line": 89,
+      "quote": "| 0x3007 | 状态机切换失败 |",
+      "meaning": "Nonzero state-machine switch failure; must remain fatal rather than treated as already-standing success."
+    },
+    {
+      "file": "deps/zsibot_sdk/docs/api_zsl-1.md",
+      "line": 93,
+      "quote": "机器狗正常站立，移动中不可直接切入此状态"
+    },
+    {
+      "file": "deps/zsibot_sdk/docs/api_zsl-1.md",
+      "line": 193,
+      "quote": "仅在机器狗站立状态下切入，控制狗按指定速度运动。"
+    },
+    {
+      "file": "deps/zsibot_sdk/docs/api_zsl-1.md",
+      "line": 427,
+      "quote": "机器狗站立状态下切入，控制狗按指定速度原地扭动，身体高度变化。"
+    },
+    {
+      "file": "deps/zsibot_sdk/docs/api_zsl-1.md",
+      "line": 662,
+      "quote": "| 21 | 动作状态(姿态模式、跳跃模式、双腿站立等) |"
+    },
+    {
+      "file": "deps/zsibot_sdk/docs/api_zsl-1.md",
+      "line": 666,
+      "quote": "返回的状态为最后一次设备执行的状态，若执行动作后没有收到移动指令，则返回的永远是动作状态。"
+    },
+    {
+      "file": "deps/zsibot_sdk/demo/zsl-1/python/examples/highlevel_demo_Interactive.py",
+      "line": 109,
+      "sequence": [
+        {
+          "line": 109,
+          "code": "app.attitudeControl(0.1, 0.1, 0.1, 0.1)"
+        },
+        {
+          "line": 110,
+          "code": "time.sleep(4)"
+        },
+        {
+          "line": 111,
+          "code": "app.standUp()  # Return to a stable state"
+        },
+        {
+          "line": 112,
+          "code": "time.sleep(2)"
+        },
+        {
+          "line": 123,
+          "code": "app.standUp()"
+        },
+        {
+          "line": 124,
+          "code": "time.sleep(2)"
+        }
+      ],
+      "meaning": "The official interactive example returns from attitude using standUp and subsequently calls standUp again after a standing wait. Static code independently confirms mode-1 calls are accepted and clear the counter. The example alone does not verify a fresh measured mode 1."
+    },
+    {
+      "file": "deps/zsibot_sdk/include/zsl-1/highlevel.h",
+      "line": 20,
+      "quote": "uint32_t standUp();",
+      "meaning": "Only the official method is used; an adapter acknowledgement is another checked standUp invocation, not a new SDK operation."
+    }
+  ],
+  "static_instruction_evidence": [
+    {
+      "elf_virtual_address": "0x204cc",
+      "file_offset": "0x204cc",
+      "bytes": "83 b8 6c 01 00 00 01",
+      "interpretation": "cmp DWORD PTR [rax+0x16c],1; this native control-mode field is also read by getCurrentCtrlmode"
+    },
+    {
+      "elf_virtual_address": "0x204d3",
+      "file_offset": "0x204d3",
+      "bytes": "0f 84 1f 01 00 00",
+      "interpretation": "je 0x205f8; observed mode 1 clears the counter"
+    },
+    {
+      "elf_virtual_address": "0x204d9",
+      "file_offset": "0x204d9",
+      "bytes": "8b 05 65 31 02 00",
+      "interpretation": "mov eax,DWORD PTR [rip+0x23165]; reads counter at 0x43644"
+    },
+    {
+      "elf_virtual_address": "0x204df",
+      "file_offset": "0x204df",
+      "bytes": "83 c0 01",
+      "interpretation": "add eax,1"
+    },
+    {
+      "elf_virtual_address": "0x204e2",
+      "file_offset": "0x204e2",
+      "bytes": "89 05 5c 31 02 00",
+      "interpretation": "mov DWORD PTR [rip+0x2315c],eax; stores counter at 0x43644"
+    },
+    {
+      "elf_virtual_address": "0x204e8",
+      "file_offset": "0x204e8",
+      "bytes": "83 f8 0a",
+      "interpretation": "cmp eax,10"
+    },
+    {
+      "elf_virtual_address": "0x204eb",
+      "file_offset": "0x204eb",
+      "bytes": "0f 8f 1f 01 00 00",
+      "interpretation": "jg 0x20610; the eleventh non-mode-1 standUp call takes the counter failure path"
+    },
+    {
+      "elf_virtual_address": "0x205f8",
+      "file_offset": "0x205f8",
+      "bytes": "c7 05 42 30 02 00 00 00 00 00",
+      "interpretation": "mov DWORD PTR [rip+0x23042],0; mode 1 clears counter at 0x43644"
+    },
+    {
+      "elf_virtual_address": "0x20602",
+      "file_offset": "0x20602",
+      "bytes": "e9 ea fe ff ff",
+      "interpretation": "jmp 0x204f1; common unlock and return path"
+    },
+    {
+      "elf_virtual_address": "0x2061c",
+      "file_offset": "0x2061c",
+      "bytes": "48 8d 35 f7 80 01 00",
+      "interpretation": "lea rsi,[rip+0x180f7]; loads string at 0x3871a: transition to standUP failed!"
+    },
+    {
+      "elf_virtual_address": "0x20662",
+      "file_offset": "0x20662",
+      "bytes": "c7 05 d8 2f 02 00 00 00 00 00",
+      "interpretation": "mov DWORD PTR [rip+0x22fd8],0; also clears counter after counter failure"
+    },
+    {
+      "elf_virtual_address": "0x2066c",
+      "file_offset": "0x2066c",
+      "bytes": "41 bc 07 30 00 00",
+      "interpretation": "mov r12d,0x3007; prepares the nonzero return code"
+    },
+    {
+      "elf_virtual_address": "0x20672",
+      "file_offset": "0x20672",
+      "bytes": "e9 7a fe ff ff",
+      "interpretation": "jmp 0x204f1; common unlock and return path"
+    },
+    {
+      "elf_virtual_address": "0x2059c",
+      "file_offset": "0x2059c",
+      "bytes": "48 8d 35 fd 7a 01 00",
+      "interpretation": "lea rsi,[rip+0x17afd]; running safety branch loads different string at 0x380a0"
+    },
+    {
+      "elf_virtual_address": "0x22d93",
+      "file_offset": "0x22d93",
+      "bytes": "8b 80 6c 01 00 00",
+      "interpretation": "getCurrentCtrlmode: mov eax,DWORD PTR [rax+0x16c]; same field as standUp"
+    }
+  ],
+  "static_counter_semantics": {
+    "field_read_by_mode_check_and_getter": "native state + 0x16c",
+    "reset_condition": "A standUp invocation itself observes mode 1. Merely waiting for/getting mode 1 does not execute this counter reset.",
+    "non_mode_1_path": "Increment counter. If <=10, return current safeCheck result (zero here) without waiting for mode 1. If >10, print counter failure, reset counter, return 0x3007.",
+    "mode_1_path": "Clear counter and return current safeCheck result. No rejection of already-standing mode appears in this path.",
+    "return_zero_limit": "A request returning zero before mode 1 does not prove the state transition completed and does not clear the counter."
+  },
+  "distinct_running_safety_branch": {
+    "string": "robot is runing, can't transition to standUp",
+    "string_elf_virtual_address": "0x380a0",
+    "branch_entry": "0x20590",
+    "return_code": "0x3007",
+    "conditions": "Absolute body velocity x or y, or absolute body gyro z, exceeds 0.2, and current control mode is 18 or 21. Getter offsets identify body velocity x/y at state+0x38/+0x3c, gyro z at state+0x1c.",
+    "double_threshold": {
+      "elf_virtual_address": "0x38a10",
+      "value": 0.2
+    },
+    "absolute_yaw_is_not_this_guard": "getRPY uses state offsets 0x2c/0x30/0x34; standUp guard reads different offsets, so absolute yaw around 1.62 rad is not this guard condition.",
+    "returned_logs": "Neither returned terminal log prints this safety-branch string; both print the counter failure string instead."
+  },
+  "native_runs": [
+    {
+      "run": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_20261020_020620_3364",
+      "package_version": "0.3.4",
+      "status": "ERROR",
+      "error": "standUp: official SDK returned 12295 (0x3007)",
+      "shot_count": 4,
+      "ammo_remaining": 1,
+      "summary_sha256": "504105c10b117ed83469b1a0aec5deb5ed997a8e6aa6f4a52205012b3b84449d",
+      "terminal_sha256": "0ef3fd51161844f2fa12da20383f1ad0278a9fe78e2c3dabc605c68bffe4e0f6",
+      "recorded_official_sdk_sha256_matches_static_library": true,
+      "terminal_branch_matches": [
+        {
+          "line": 70,
+          "text": "transition to standUP failed!"
+        }
+      ],
+      "standup_count": 11,
+      "calls": [
+        {
+          "ordinal": 1,
+          "sdk_event_index": 2,
+          "call": {
+            "read_at_s": 11.486550878999992,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 11.486533030999993,
+            "code": 0
+          },
+          "elapsed_call_us": 17.84799999882125,
+          "preceding_stationary_event": {
+            "read_at_s": 11.486521833999973,
+            "kind": "stationary_confirmed",
+            "control_mode": 0,
+            "source_timestamp_s": 11.47564371900001
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 15.781618956999978,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 15.776222826000009
+          }
+        },
+        {
+          "ordinal": 2,
+          "sdk_event_index": 246,
+          "call": {
+            "read_at_s": 22.529346284999974,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 22.529322041,
+            "code": 0
+          },
+          "elapsed_call_us": 24.24399997380533,
+          "preceding_stationary_event": {
+            "read_at_s": 22.52930897899998,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 22.525276212
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 26.552018471999986,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 26.542350459000016
+          }
+        },
+        {
+          "ordinal": 3,
+          "sdk_event_index": 869,
+          "call": {
+            "read_at_s": 37.92262800200001,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 37.92260626999996,
+            "code": 0
+          },
+          "elapsed_call_us": 21.732000050178613,
+          "preceding_stationary_event": {
+            "read_at_s": 37.92259499599999,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 37.920201782
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 41.93779134699997,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 41.930511572999976
+          }
+        },
+        {
+          "ordinal": 4,
+          "sdk_event_index": 1099,
+          "call": {
+            "read_at_s": 47.61600562299998,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 47.61598341000001,
+            "code": 0
+          },
+          "elapsed_call_us": 22.212999965631752,
+          "preceding_stationary_event": {
+            "read_at_s": 47.615971350999985,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 47.60526891299998
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 51.629477838000014,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 51.620815721
+          }
+        },
+        {
+          "ordinal": 5,
+          "sdk_event_index": 1111,
+          "call": {
+            "read_at_s": 53.35722066699998,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 53.35719931899996,
+            "code": 0
+          },
+          "elapsed_call_us": 21.34800001840631,
+          "preceding_stationary_event": {
+            "read_at_s": 53.35718890800001,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 53.354559112000004
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 57.36966994599999,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 57.365522910999985
+          }
+        },
+        {
+          "ordinal": 6,
+          "sdk_event_index": 1682,
+          "call": {
+            "read_at_s": 68.88692211899996,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 68.88689882400001,
+            "code": 0
+          },
+          "elapsed_call_us": 23.294999948575423,
+          "preceding_stationary_event": {
+            "read_at_s": 68.88688456,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 68.87561421600002
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 72.89358056599997,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 72.88950712800003
+          }
+        },
+        {
+          "ordinal": 7,
+          "sdk_event_index": 1934,
+          "call": {
+            "read_at_s": 78.90957622600001,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 78.90955374099997,
+            "code": 0
+          },
+          "elapsed_call_us": 22.485000044980552,
+          "preceding_stationary_event": {
+            "read_at_s": 78.90954124199999,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 78.90124441
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 82.91815700000001,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 82.91631252499998
+          }
+        },
+        {
+          "ordinal": 8,
+          "sdk_event_index": 1946,
+          "call": {
+            "read_at_s": 84.65348675000001,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 84.65346688400001,
+            "code": 0
+          },
+          "elapsed_call_us": 19.86600000236649,
+          "preceding_stationary_event": {
+            "read_at_s": 84.65345539200001,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 84.646918496
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 88.665684882,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 88.65830293399999
+          }
+        },
+        {
+          "ordinal": 9,
+          "sdk_event_index": 2526,
+          "call": {
+            "read_at_s": 100.30632055999996,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 100.30630081499999,
+            "code": 0
+          },
+          "elapsed_call_us": 19.744999974591337,
+          "preceding_stationary_event": {
+            "read_at_s": 100.30628992800001,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 100.29563605599998
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 104.32275569399997,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 104.31971076199999
+          }
+        },
+        {
+          "ordinal": 10,
+          "sdk_event_index": 3016,
+          "call": {
+            "read_at_s": 114.42033401999998,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 114.42031204599999,
+            "code": 0
+          },
+          "elapsed_call_us": 21.97399999204208,
+          "preceding_stationary_event": {
+            "read_at_s": 114.42030000400001,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 114.416541886
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 118.43157438099996,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 118.42817144699998
+          }
+        },
+        {
+          "ordinal": 11,
+          "sdk_event_index": 3613,
+          "call": {
+            "read_at_s": 129.805364183,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 129.805320794,
+            "code": 12295
+          },
+          "elapsed_call_us": 43.38899998401757,
+          "preceding_stationary_event": {
+            "read_at_s": 129.80530949399997,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 129.80265303500002
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 129.80539273299996,
+            "kind": "fault",
+            "error": "standUp: official SDK returned 12295 (0x3007)"
+          }
+        }
+      ],
+      "pre_call_modes": [
+        0,
+        18,
+        21,
+        18,
+        21,
+        21,
+        18,
+        21,
+        21,
+        18,
+        21
+      ]
+    },
+    {
+      "run": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs_ubuntu\\official_acceptance_20261020_020951_3603\\native_nominal",
+      "package_version": "0.3.4",
+      "status": "ERROR",
+      "error": "standUp: official SDK returned 12295 (0x3007)",
+      "shot_count": 4,
+      "ammo_remaining": 1,
+      "summary_sha256": "82fee2949cb2eb8aef9a0ec88075a71a7dbc7f75658ec70cf98be1bdfce6478a",
+      "terminal_sha256": "02381a4d9b04f7890ef9a969622b3d9c2cae4771186cf60acc542c6be069411b",
+      "recorded_official_sdk_sha256_matches_static_library": true,
+      "terminal_branch_matches": [
+        {
+          "line": 88,
+          "text": "transition to standUP failed!"
+        }
+      ],
+      "standup_count": 11,
+      "calls": [
+        {
+          "ordinal": 1,
+          "sdk_event_index": 2,
+          "call": {
+            "read_at_s": 11.312624706999998,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 11.312608323000006,
+            "code": 0
+          },
+          "elapsed_call_us": 16.383999991376186,
+          "preceding_stationary_event": {
+            "read_at_s": 11.312598648000005,
+            "kind": "stationary_confirmed",
+            "control_mode": 0,
+            "source_timestamp_s": 11.306657443000068
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 15.593024710000009,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 15.588435848000023
+          }
+        },
+        {
+          "ordinal": 2,
+          "sdk_event_index": 298,
+          "call": {
+            "read_at_s": 21.724371079000036,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 21.724354162999987,
+            "code": 0
+          },
+          "elapsed_call_us": 16.916000049604918,
+          "preceding_stationary_event": {
+            "read_at_s": 21.724343879000003,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 21.722259592000036
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 25.728208962000053,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 25.72341660300007
+          }
+        },
+        {
+          "ordinal": 3,
+          "sdk_event_index": 945,
+          "call": {
+            "read_at_s": 37.574537227000064,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 37.57452729600004,
+            "code": 0
+          },
+          "elapsed_call_us": 9.931000022334047,
+          "preceding_stationary_event": {
+            "read_at_s": 37.574521508999965,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 37.57318526000007
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 41.591720269999996,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 41.589730401999994
+          }
+        },
+        {
+          "ordinal": 4,
+          "sdk_event_index": 1203,
+          "call": {
+            "read_at_s": 47.254436896000016,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 47.254418792000024,
+            "code": 0
+          },
+          "elapsed_call_us": 18.103999991581077,
+          "preceding_stationary_event": {
+            "read_at_s": 47.25440746900006,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 47.250834277000074
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 51.25884088600003,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 51.254136259
+          }
+        },
+        {
+          "ordinal": 5,
+          "sdk_event_index": 1213,
+          "call": {
+            "read_at_s": 53.285889793000024,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 53.285869553,
+            "code": 0
+          },
+          "elapsed_call_us": 20.240000026205962,
+          "preceding_stationary_event": {
+            "read_at_s": 53.285857530000044,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 53.27514084800002
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 57.31017814799998,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 57.30149487000007
+          }
+        },
+        {
+          "ordinal": 6,
+          "sdk_event_index": 1808,
+          "call": {
+            "read_at_s": 69.57391672799997,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 69.573898913,
+            "code": 0
+          },
+          "elapsed_call_us": 17.81499997832725,
+          "preceding_stationary_event": {
+            "read_at_s": 69.57388803599997,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 69.57161935300006
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 73.57629932200007,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 73.57208436900001
+          }
+        },
+        {
+          "ordinal": 7,
+          "sdk_event_index": 2094,
+          "call": {
+            "read_at_s": 80.23960737699997,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 80.23959029100001,
+            "code": 0
+          },
+          "elapsed_call_us": 17.08599995708937,
+          "preceding_stationary_event": {
+            "read_at_s": 80.239579413,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 80.233652867
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 84.249075501,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 84.24001836200004
+          }
+        },
+        {
+          "ordinal": 8,
+          "sdk_event_index": 2106,
+          "call": {
+            "read_at_s": 86.28125124999997,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 86.28123297100001,
+            "code": 0
+          },
+          "elapsed_call_us": 18.278999959875364,
+          "preceding_stationary_event": {
+            "read_at_s": 86.28122220299997,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 86.2744843980001
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 90.29204046799998,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 90.28976863700007
+          }
+        },
+        {
+          "ordinal": 9,
+          "sdk_event_index": 2705,
+          "call": {
+            "read_at_s": 102.55581210599996,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 102.55579433900004,
+            "code": 0
+          },
+          "elapsed_call_us": 17.766999917512294,
+          "preceding_stationary_event": {
+            "read_at_s": 102.55578262799997,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 102.55204416900006
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 106.56144180399997,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 106.55455578700003
+          }
+        },
+        {
+          "ordinal": 10,
+          "sdk_event_index": 3215,
+          "call": {
+            "read_at_s": 117.27393136299997,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 117.27391111899999,
+            "code": 0
+          },
+          "elapsed_call_us": 20.24399998390436,
+          "preceding_stationary_event": {
+            "read_at_s": 117.27389834300004,
+            "kind": "stationary_confirmed",
+            "control_mode": 18,
+            "source_timestamp_s": 117.26823061000005
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 121.27820995600007,
+            "kind": "stationary_confirmed",
+            "control_mode": 1,
+            "source_timestamp_s": 121.27386607000001
+          }
+        },
+        {
+          "ordinal": 11,
+          "sdk_event_index": 3858,
+          "call": {
+            "read_at_s": 133.23729139500006,
+            "kind": "sdk_result",
+            "operation": "standUp",
+            "arguments": [],
+            "sdk_called_at_s": 133.23725255099998,
+            "code": 12295
+          },
+          "elapsed_call_us": 38.84400007336808,
+          "preceding_stationary_event": {
+            "read_at_s": 133.23724225900003,
+            "kind": "stationary_confirmed",
+            "control_mode": 21,
+            "source_timestamp_s": 133.2280914050001
+          },
+          "next_stationary_or_fault_event": {
+            "read_at_s": 133.237334401,
+            "kind": "fault",
+            "error": "standUp: official SDK returned 12295 (0x3007)"
+          }
+        }
+      ],
+      "pre_call_modes": [
+        0,
+        18,
+        21,
+        18,
+        21,
+        21,
+        18,
+        21,
+        21,
+        18,
+        21
+      ]
+    }
+  ],
+  "fix_contract_assessment": {
+    "approved_in_principle": true,
+    "sequence": [
+      "Before the request, preserve the existing fresh native stationary checks and matched current-family zero command.",
+      "Call the official standUp once and check its return code. Any nonzero result remains a fault; do not retry it.",
+      "Under one bounded transition deadline, obtain a fresh native mode-1 stationary confirmation.",
+      "Only after that mode-1 confirmation, call the same official standUp once as a checked already-standing acknowledgement; in this exact SDK this clears the counter.",
+      "Check the acknowledgement return code, then preserve a full 4-second stable native mode-1 settling period after the acknowledgement, with fresh stationary/native state and normal command refresh.",
+      "All waiting shares one explicit deadline, all nonzero SDK returns remain faults, and no synthetic state/timestamp, relaxed shooting gate, direct attitude-to-move shortcut, official-file patch, or blind retry is used."
+    ],
+    "why_repeated_mode1_call_is_supported": "Official interactive demo repeats standUp after its standing wait; static mode-1 branch directly clears the counter and returns normally.",
+    "ack_safety_precondition": "Do not issue the acknowledgement based only on elapsed time or a stale mode1 packet; require fresh native mode1 and actual stationarity.",
+    "acceptance_requirement": "Local static/fake-SDK tests can validate wrapper ordering and counter behavior, but Ubuntu native five-shot and repeated-transition acceptance remains necessary."
+  },
+  "limits": [
+    "This report does not execute or modify the official SDK, controller, policies, models, task 1/2, or returned logs. Only this newly authorized report is written.",
+    "The counter value is not directly logged at runtime. The exact 11-call sequence and unique counter-branch terminal string, combined with the recorded identical SDK hash, identify the failure branch.",
+    "This static inspection covers the provided x86_64 SDK hash; no claim is made about uninspected aarch64 or later SDK revisions.",
+    "The official SDK does not provide a public counter-reset API or source implementation in the inspected folders. The proposed correction uses only the supported standUp API with fresh mode1 confirmation."
+  ]
+}

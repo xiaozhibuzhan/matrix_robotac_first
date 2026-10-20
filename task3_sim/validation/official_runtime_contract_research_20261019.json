@@ -1,0 +1,117 @@
+{
+  "schema": "task3.official_runtime_contract_research.v1",
+  "date": "2026-10-19",
+  "method": "Read-only inspection of supplied official headers, Ubuntu .deb packages, and x86_64 ELF files; official files were not edited.",
+  "execution_limits": {
+    "host": "Windows",
+    "official_linux_runtime_executed": false,
+    "native_bridge_compiled": false,
+    "reason": "The official runtime and CPython 3.10 extension are Linux x86_64 ELF files. This host has no usable Ubuntu/WSL/container runtime or installed official eCAL/protobuf development headers and libraries.",
+    "required_next_validation": "Compile and execute on Ubuntu 22.04 x86_64 with official eCAL 5.13.3, official robot SDK/common .deb, protobuf, ROS Humble, and bundled original executables. Static inspection does not establish dynamic mission acceptance."
+  },
+  "official_sdk": {
+    "header": "deps/zsibot_sdk/include/zsl-1/highlevel.h",
+    "extension": "deps/zsibot_sdk/lib/zsl-1/x86_64/mc_sdk_zsl_1_py.cpython-310-x86_64-linux-gnu.so",
+    "extension_sha256": "a0814e9ef9acd88a6193882c09742992a1aa1af133e0fa80b337c1574554b38e",
+    "declared_returns": {
+      "initRobot": "void",
+      "checkConnect": "bool",
+      "standUp": "uint32_t",
+      "move": "uint32_t",
+      "attitudeControl": "uint32_t"
+    },
+    "binding_evidence": {
+      "scope": "The exact supplied x86_64 CPython 3.10 extension, not hypothetical alternate SDK versions.",
+      "standUp": {
+        "wrapper_virtual_address": "0x45b70",
+        "member_call_virtual_address": "0x45bd2",
+        "conversion": "Member function result EAX is zero-extended through mov edi,eax, then passed to PyLong_FromSize_t at PLT address 0x16b10."
+      },
+      "move": {
+        "wrapper_virtual_address": "0x45cb0",
+        "member_call_virtual_address": "0x45dcd",
+        "conversion": "Member function result is converted by mov edi,eax and PyLong_FromSize_t."
+      },
+      "attitudeControl": {
+        "wrapper_virtual_address": "0x46210",
+        "member_call_virtual_address": "0x46353",
+        "conversion": "Member function result is converted by mov edi,eax and PyLong_FromSize_t."
+      },
+      "conclusion": "These three supplied Python bindings return an unsigned integer status, not None. Keep allow_void_status disabled for this bundle."
+    },
+    "contract": [
+      "Use actual methods checkConnect and standUp; documentation variants checkConnection/standUP are not the supplied header names.",
+      "Nonzero move speeds: abs(vx)>=0.05 m/s, abs(vy)>=0.1 m/s, abs(yaw)>=0.02 rad/s; documented maxima 3, 1, 3 respectively. Zero is permitted.",
+      "attitudeControl roll/pitch/yaw/height rates are within +/-0.5; zero is permitted.",
+      "Before changing move/attitude command family, send matching-family zero, observe stationary feedback, call standUp, wait at least 4 seconds, then require fresh feedback and a new image.",
+      "passive is not a normal stop; no public shooting function exists in the official SDK."
+    ]
+  },
+  "native_simulator": {
+    "executable": "src/robot_mujoco/simulate/build/robot_mujoco",
+    "controller": "src/robot_mc/build/export/mc/bin/mc_ctrl",
+    "config_path": "../config.yaml relative to simulator working directory, parsed before model selection",
+    "model_override": "argv[1] supplies scene path; there is no native --headless flag.",
+    "glfw": "Native executable constructs GLFW before loading scene. A machine without a display requires Xvfb for this process; Python EGL does not remove that requirement.",
+    "physics": "Original executable performs mj_step. Python task3 backend only replays original RobotState through mj_forward for RGB rendering and the virtual ray referee.",
+    "startup": "mj_makeData + mj_forward, no mj_resetDataKeyframe call. Preserve official base qpos0 height 0.65 m and zero initial hinge qpos; original home keyframe is not automatically loaded.",
+    "sensors": "Preserve official 52-value sensor order: 12 joint position, 12 joint velocity, 12 actuator force, quaternion4, gyro3, accelerometer3, position3, velocity3.",
+    "imu": "Original site imu is identity at base origin, allowing actual RobotState.position to map directly to the render mirror freejoint translation.",
+    "joint_order": "FR, FL, RR, RL (FAR,FBL,RAR,RBL), each ABAD,HIP,KNEE. Protobuf arrays are grouped by joint family.",
+    "rendering": "No native RGB sensor_msgs/Image publisher found. Native camera name is this_camera; task3_camera is the added read-only render camera.",
+    "controller_configuration": "Official run_sim.sh switches motor_platform_type to 5 for MuJoCo; 8 is UE. Patch only the staged copied configuration, never the official source tree.",
+    "executable_sha256": "8f96a848d80082aa843e7ae43c5beed785eb00770c17e5665ed5c589dd166e1c",
+    "state_field_binary_evidence": {
+      "method": "Static x86_64 ELF disassembly and supplied robot_sdk.pb.h repeated-field layout; addresses are ELF virtual addresses.",
+      "state_object": "JszrSdkBridge embeds RobotState at this+0xb8; repeated fields retain their actual protobuf lengths.",
+      "constructor": "JszrSdkBridge constructor at 0x19250.",
+      "joint_array_lengths": "Loop 0x199e3..0x19b2d runs four times and Add(0) initializes every q/qd/tau joint-family repeated field. The nine bridge-consumed arrays each have length four.",
+      "quat_length": "0x19b85..0x19bf3 adds four entries to quat at this+0x1e8.",
+      "gyro_length": "0x19bf8..0x19c4b adds three entries to gyro at this+0x200.",
+      "acc_length": "0x19c50..0x19ca3 adds three entries to acc at this+0x218.",
+      "position_length": "0x19ca8..0x19cfb adds three entries to position at this+0x260.",
+      "v_world_length": "0x19d00..0x19d53 adds three entries to v_world at this+0x278.",
+      "sensor_check": "CheckSensor at 0x18110 enables IMU and position copy blocks after finding original imu_quat and frame_pos sensor names. The task3 derived scene preserves those names and the original exact sensor layout.",
+      "joint_state_copy": "Run at 0x19f60, block 0x1a7fc..0x1aa74 copies interleaved official joint position/velocity/actuator-force sensor values to the per-family arrays.",
+      "imu_copy": "Run block 0x1aa80..0x1aaf3 copies sensordata[36:46] to quat4, gyro3, acc3 in original MuJoCo wxyz order.",
+      "position_velocity_copy": "Run block 0x1aaf8..0x1ab50 copies sensordata[46:52] to position3 and v_world3 each publication. These are actual supplied native fields, not synthesized fallback values."
+    }
+  },
+  "ecal": {
+    "package": "deps/ecal_5.13.3-1ppa1~jammy_amd64.deb",
+    "state_topic": "mujoco_state",
+    "command_topic": "mujoco_cmd",
+    "callback_signature": "void(const char*, const RobotState&, long long time_us, long long clock, long long id)",
+    "id": "ecal_callback.h initializes id=0. ecal_publisher.h SetID(long long) documents a signed application-controlled subscriber topic filter ID, with 0 meaning no ID. It is not a unique publisher identity, need not be positive, and is forwarded as diagnostic metadata without continuity assertions.",
+    "source_clock": "Separate per-publication writer clock, not the SetID value.",
+    "send_time": "Publisher send timestamp in microseconds; its epoch follows the loaded eCAL time plugin and must not be assumed to be Unix epoch.",
+    "freshness_mapping": "publication_monotonic = bridge_receive_monotonic - (bridge_receive_ecal_us - source_send_ecal_us)/1e6. Check transit and host queue age; retain raw RobotState.time_stamp without assigning an undocumented unit.",
+    "source_isolation": "Read-only state and command subscribers reject publisher count greater than one on either fixed official topic; command observer has no callback and never sends/forwards controls.",
+    "api_verification": "eCAL::core CMake imported target, protobuf subscriber callback, GetPublisherCount, Destroy, RemReceiveCallback, eCAL::Time::GetMicroSeconds, and IsSynchronized verified against supplied 5.13.3 headers/CMake metadata.",
+    "bridge": "task3_sim/native/official_state_bridge.cpp",
+    "send_time_binary_evidence": {
+      "simulator_publish_function": "ECALPublisher<RobotState>::publish at 0x1cb90 (adjusted thunk at 0x1cc00).",
+      "call_site": "0x1cbbc sets RCX=-1, 0x1cbc3 sets RDX=-1, 0x1cbd6 calls eCAL::CPublisher::Send(CPayloadWriter&,long long,long long). The thunk likewise sets both arguments to -1 before 0x1cc46.",
+      "meaning": "The original simulator passes the default time sentinel -1 and default acknowledge timeout -1. It does not pass mjData.time, milliseconds, or a custom timestamp to the eCAL Send timestamp parameter.",
+      "core_library": "libecal_core.so.5.13.3 from supplied deps/ecal_5.13.3-1ppa1~jammy_amd64.deb",
+      "core_library_sha256": "6776347e4501928539265b6c16eede374eec0eef2f7be2b29dc735febe605e20",
+      "default_branch": "In supplied eCAL::CPublisher::Send at 0xf5d50, default time branch 0xf5e40 calls eCAL::Time::GetMicroSeconds via PLT 0x6fdc0, then passes that result as Write timestamp.",
+      "rmw_header_distinction": "Run also calls std::chrono::system_clock::now for its RMW Header. ECALPublisher sends the payload with default eCAL time, independently of that Header.",
+      "mapping_conclusion": "Mapping callback source_ecal_time_us through bridge receive eCAL time and monotonic time is consistent with this exact supplied native publication path."
+    },
+    "first_source_clock_binary_evidence": {
+      "conclusion": "The supplied eCAL writer starts its first publication clock at 1; min=1 agrees with the inspected bundle. No native/Python contract change was made.",
+      "constructor": "CDataWriter constructor at 0x110680 clears xmm1 at 0x1106ea, then writes its zero vector to this+0x2a8 (topic filter id) and this+0x2b0 (writer clock) at 0x110966.",
+      "increment_before_use": "PrepareWrite at 0x10cce0 calls RefreshSendCounter at 0x10cd14. RefreshSendCounter at 0x10c310 increments this+0x2b0 at 0x10c322; PrepareWrite reads it at 0x10cd2c for the outgoing sample.",
+      "limits": "Static evidence applies to the bundled eCAL 5.13.3 library. Actual Ubuntu packets and runtime behavior remain to be validated."
+    }
+  },
+  "ubuntu_acceptance_still_required": [
+    "Build the native bridge against original supplied packages.",
+    "Launch exactly one unchanged robot_mujoco and one unchanged mc_ctrl; confirm original file hashes remain unchanged.",
+    "Confirm standing contact dynamics and 12 actual joint trajectories; turn left and right through 90 degrees via official SDK.",
+    "Verify matching-family zero and standUp mode transitions produce fresh stationary state before attitude aiming.",
+    "Execute full three-target RGB/AprilTag mission and inspect per-shot target identity, score, timestamps, and no synthetic motion fallback.",
+    "Verify bridge/runtime stop on a second state or command publisher and stale physics feedback."
+  ]
+}

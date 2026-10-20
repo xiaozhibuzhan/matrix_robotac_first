@@ -1,0 +1,224 @@
+{
+  "review_date": "2026-10-19",
+  "review_type": "read_only_audit_of_user_supplied_Ubuntu_0.2.0_evidence",
+  "accepted_program_scope": "Three stationary boards in a row in front of the initial robot; this evidence does not validate the requested 9/12/3 oclock layout or four-wall background correction.",
+  "conclusion": "The supplied 0.2.0 row-layout build completes normal headless and GUI operation on the tested Ubuntu host. All supplied final multi-target cases and preserved single-target regressions pass.",
+  "inputs": {
+    "acceptance_file": "E:/各种比赛/robortac/task3_acceptance",
+    "acceptance_sha256": "7f3ab32a18a498e5aa7498db129168b9e79501f35fe86d979dc98f73474f3576",
+    "multi_validation_report": "task3_sim/runs_ubuntu/multi_validation_20261019_154008_8f13effd/validation.json",
+    "fixed_only_report": "task3_sim/runs_ubuntu/multi_validation_20261019_153846_e119cac8/validation.json",
+    "tested_release_zip": "task3_sim/updates/task3_multi_fixed_20261019.zip",
+    "release_zip_sha256": "30252fcd9b644300396dad613fc4b21fa9af298ecbb7740534af7feca61b7b69"
+  },
+  "environment": {
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "mujoco_version": "3.3.7",
+    "os_distribution_release": "Not explicitly recorded; Linux kernel and glibc do not independently prove a specific Ubuntu release."
+  },
+  "fixed_only_validation": {
+    "complete": true,
+    "all_passed": true,
+    "cases": 11,
+    "random_cases": 0
+  },
+  "full_validation": {
+    "case_count": 111,
+    "passed_count": 111,
+    "fixed_cases": 11,
+    "random_cases_requested": 100,
+    "random_cases_completed": 100,
+    "random_case_records": 100,
+    "shot_count": 325,
+    "ring_counts": {
+      "10": 325
+    },
+    "maximum_actual_miss_m": 0.008273096641786744,
+    "all_shots_match_intended_ids": true,
+    "all_source_model_flags_unchanged": true,
+    "all_cleanup_completed": true,
+    "fault_logs_nonempty": [],
+    "missing_summaries": [],
+    "failed_checks": []
+  },
+  "released_python_source_match": {
+    "files_checked": 41,
+    "mismatches": [],
+    "tested_sources_unchanged": true
+  },
+  "independent_cli_runs": [
+    {
+      "package_version": "0.2.0",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "egl",
+      "shot_count": 3,
+      "ammo_initial": 5,
+      "ammo_remaining": 2,
+      "simulation_time_s": 9.800000000000132,
+      "model_sources_unchanged": true,
+      "official_files_modified": false,
+      "shutdown_completed": true,
+      "perception_closed": true,
+      "display_exit_reason": null,
+      "cleanup_errors": [],
+      "summary": "task3_sim/runs_ubuntu/run_20261019_153330_3376/summary.json",
+      "process_exit_code_from_terminal": 0,
+      "total_score": 30,
+      "shots": [
+        {
+          "intended_target_id": 2,
+          "actual_target_id": 2,
+          "ring": 10,
+          "ammo_before": 5,
+          "ammo_after": 4
+        },
+        {
+          "intended_target_id": 5,
+          "actual_target_id": 5,
+          "ring": 10,
+          "ammo_before": 4,
+          "ammo_after": 3
+        },
+        {
+          "intended_target_id": 9,
+          "actual_target_id": 9,
+          "ring": 10,
+          "ammo_before": 3,
+          "ammo_after": 2
+        }
+      ],
+      "fault_log_bytes": 0
+    },
+    {
+      "package_version": "0.2.0",
+      "status": "SUCCESS",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12",
+      "mujoco_version": "3.3.7",
+      "mujoco_gl": "glfw",
+      "shot_count": 3,
+      "ammo_initial": 5,
+      "ammo_remaining": 2,
+      "simulation_time_s": 10.050000000000171,
+      "model_sources_unchanged": true,
+      "official_files_modified": false,
+      "shutdown_completed": true,
+      "perception_closed": true,
+      "display_exit_reason": "key",
+      "cleanup_errors": [],
+      "summary": "task3_sim/runs_ubuntu/run_20261019_153356_3422/summary.json",
+      "process_exit_code_from_terminal": 0,
+      "total_score": 30,
+      "shots": [
+        {
+          "intended_target_id": 2,
+          "actual_target_id": 2,
+          "ring": 10,
+          "ammo_before": 5,
+          "ammo_after": 4
+        },
+        {
+          "intended_target_id": 5,
+          "actual_target_id": 5,
+          "ring": 10,
+          "ammo_before": 4,
+          "ammo_after": 3
+        },
+        {
+          "intended_target_id": 9,
+          "actual_target_id": 9,
+          "ring": 10,
+          "ammo_before": 3,
+          "ammo_after": 2
+        }
+      ],
+      "fault_log_bytes": 0
+    }
+  ],
+  "single_target_regressions": [
+    {
+      "report": "task3_sim/runs_ubuntu/validation_20261019_160947_8814220e/validation.json",
+      "all_passed": true,
+      "case_count": 6,
+      "status_counts": {
+        "SUCCESS": 3,
+        "MISSED": 1,
+        "TIMEOUT": 1,
+        "NO_AMMO": 1
+      }
+    },
+    {
+      "report": "task3_sim/runs_ubuntu/appearance_20261019_160958_d351ecd8/validation.json",
+      "all_passed": true,
+      "case_count": 15,
+      "status_counts": {
+        "SUCCESS": 12,
+        "MISSED": 1,
+        "TIMEOUT": 1,
+        "NO_AMMO": 1
+      }
+    }
+  ],
+  "unit_tests": {
+    "terminal_record": "Ran 116 tests in 12.339s; OK",
+    "passed": 116,
+    "skipped": 0,
+    "evidence_line_1based": 5188
+  },
+  "interpretation": {
+    "sample_count": "100 random cases actually completed, in addition to 11 fixed cases. The separate fixed-only run contains 11 cases and no random cases.",
+    "expected_negative_results": "PARTIAL, NO_AMMO and TIMEOUT are expected test outcomes in explicitly negative scenarios; their validation checks passed.",
+    "abort_text": "The only native abort/segmentation wording in the acceptance terminal is a passing launcher status-preservation unit test name. No actual traceback, fatal Python error, segmentation fault or aborted CLI was found in this acceptance text; latest audited fault logs are empty.",
+    "score": "325 fired rays in the 111-case run all matched intended target IDs and scored 10. This includes seeded constrained random perturbations, not physical-robot accuracy.",
+    "preservation": "The 41 released Python modules match the recorded test-source hashes. Imported source-model unchanged flags are true; this audit does not independently rehash the entire external official SDK/model tree on Ubuntu."
+  },
+  "limitations": [
+    "No physical robot, real video transport or official competition scoring acceptance is established by this simulation evidence.",
+    "Actual tag size and photo dimensions remain configured assumptions rather than measured competition dimensions.",
+    "Completed GUI run exits by a key; the acceptance data does not establish every manual window-close or Ctrl+C timing path for a real GUI session.",
+    "Random ranges are limited to those saved in validation.json and one artwork/background family.",
+    "The corrected three-direction scene and four-wall background require their own validation after implementation."
+  ],
+  "random_ranges": {
+    "initial_x_m": [
+      -0.1,
+      0.1
+    ],
+    "initial_y_m": [
+      -0.1,
+      0.1
+    ],
+    "initial_pitch_rad": [
+      0,
+      0.08
+    ],
+    "initial_yaw_rad": [
+      -0.15,
+      0.15
+    ],
+    "distance_scale": [
+      0.9,
+      1.1
+    ],
+    "exposure": [
+      0.75,
+      1.25
+    ],
+    "noise_std_u8": [
+      0,
+      4
+    ],
+    "delay_s": [
+      0,
+      0.05
+    ],
+    "drop_probability": [
+      0,
+      0.15
+    ]
+  }
+}

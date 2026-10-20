@@ -1,0 +1,224 @@
+{
+  "scope": "Static Python MuJoCo mj_forward render only. No native ELF/controller run, no mj_step, no home keyframe reset, no gait or hardware acceptance claim.",
+  "mujoco_version": "3.3.7",
+  "native_scene": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\native_visibility_031_20261019_205115\\generated\\official_scene.xml",
+  "initial_qpos": [
+    0.0,
+    0.0,
+    0.65,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "initial_time_s": 0.0,
+  "camera": {
+    "type": 0,
+    "lookat": [
+      0.0,
+      0.0,
+      0.3
+    ],
+    "distance": 8.5,
+    "azimuth": 45.0,
+    "elevation": -65.0
+  },
+  "default_visible_groups": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+  ],
+  "robot_geometry": {
+    "count": 30,
+    "mirror_group": 3,
+    "native_group_unique": [
+      0
+    ],
+    "all_enabled_by_default": true,
+    "present_in_render_scene": 30
+  },
+  "score_surfaces": {
+    "names": [
+      "task3_target_collision_2",
+      "task3_target_collision_5",
+      "task3_target_collision_9"
+    ],
+    "native_groups": [
+      5,
+      5,
+      5
+    ],
+    "all_hidden_by_default": true,
+    "in_render_scene": [
+      false,
+      false,
+      false
+    ]
+  },
+  "background": {
+    "layout": "surround",
+    "room_half_extent_m": 3.712,
+    "room_bounds_xy_m": [
+      [
+        -3.712,
+        -3.712
+      ],
+      [
+        3.712,
+        3.712
+      ]
+    ],
+    "wall_width_m": 7.424,
+    "wall_height_m": 4.5,
+    "board_max_xy_corner_extent_m": 2.712,
+    "robot_max_xy_geometry_extent_m": 0.41577145183926695,
+    "distance_behind_boards_m": 1.0,
+    "walls": [
+      {
+        "name": "front",
+        "center_world_m": [
+          3.712,
+          0,
+          2.25
+        ],
+        "outward_normal_world": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "left",
+        "center_world_m": [
+          0,
+          3.712,
+          2.25
+        ],
+        "outward_normal_world": [
+          6.123233995736766e-17,
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "name": "back",
+        "center_world_m": [
+          -3.712,
+          0,
+          2.25
+        ],
+        "outward_normal_world": [
+          -1.0,
+          1.2246467991473532e-16,
+          0.0
+        ]
+      },
+      {
+        "name": "right",
+        "center_world_m": [
+          0,
+          -3.712,
+          2.25
+        ],
+        "outward_normal_world": [
+          6.123233995736766e-17,
+          -1.0,
+          0.0
+        ]
+      }
+    ],
+    "policy": "four textured visual-only walls beyond every board corner and imported robot geometry"
+  },
+  "physical_array_equality_native_vs_mirror": {
+    "qpos0": true,
+    "body_mass": true,
+    "body_inertia": true,
+    "body_ipos": true,
+    "body_iquat": true,
+    "jnt_axis": true,
+    "jnt_range": true,
+    "dof_damping": true,
+    "dof_frictionloss": true,
+    "geom_type": true,
+    "geom_pos": true,
+    "geom_quat": true,
+    "geom_size": true,
+    "geom_contype": true,
+    "geom_conaffinity": true,
+    "geom_friction": true,
+    "actuator_gainprm": true,
+    "actuator_biasprm": true,
+    "actuator_ctrlrange": true,
+    "sensor_type": true,
+    "sensor_adr": true,
+    "sensor_dim": true
+  },
+  "all_checked_physical_arrays_equal": true,
+  "original_sha256_before": {
+    "src\\robot_mujoco\\zsibot_robots\\xgb\\xgb.xml": "3d961047af6ee26f087f114154ecfa67e38e2106886ab8b7ac7cb63ad711a1b4",
+    "src\\robot_mujoco\\simulate\\build\\robot_mujoco": "8f96a848d80082aa843e7ae43c5beed785eb00770c17e5665ed5c589dd166e1c",
+    "src\\robot_mc\\build\\export\\mc\\bin\\mc_ctrl": "4fa0c4a364244aa911b137726c36994ed9a1d42009b3b0b61016a2d8409fdea0"
+  },
+  "original_sha256_after": {
+    "src\\robot_mujoco\\zsibot_robots\\xgb\\xgb.xml": "3d961047af6ee26f087f114154ecfa67e38e2106886ab8b7ac7cb63ad711a1b4",
+    "src\\robot_mujoco\\simulate\\build\\robot_mujoco": "8f96a848d80082aa843e7ae43c5beed785eb00770c17e5665ed5c589dd166e1c",
+    "src\\robot_mc\\build\\export\\mc\\bin\\mc_ctrl": "4fa0c4a364244aa911b137726c36994ed9a1d42009b3b0b61016a2d8409fdea0"
+  },
+  "official_originals_unchanged": true,
+  "render_scene_geometry_names": [
+    "task3_floor",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "task3_background_visual_front",
+    "task3_background_visual_left",
+    "task3_background_visual_back",
+    "task3_background_visual_right",
+    "task3_board_visual_2",
+    "task3_board_visual_5",
+    "task3_board_visual_9"
+  ],
+  "image": "E:\\各种比赛\\robortac\\matrix_robotac_first\\task3_sim\\runs\\native_visibility_031_20261019_205115\\initial_native_overview.png"
+}

@@ -1,0 +1,5 @@
+# Preserve exact source and acceptance-report bytes across Windows and Ubuntu.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Bash entry points must always be checked out with Unix line endings.
+*.sh text eol=lf

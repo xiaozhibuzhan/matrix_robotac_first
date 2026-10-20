@@ -1,0 +1,306 @@
+{
+  "format_version": 1,
+  "source": "User-supplied attachments; no official competition asset claim",
+  "source_files": {
+    "background_source.jpg": {
+      "sha256": "7ee04a23913daf276d9b358851839e2bd17537ef7e1f1dad5695480007d93bd4",
+      "bytes": 71743
+    },
+    "fixed_target_rectified.png": {
+      "sha256": "8a8f670b53be4dac4d8787576ea3bf18c1602cec3869c1fc52b525d419a41ba4",
+      "bytes": 1388976
+    },
+    "fixed_target_source.png": {
+      "sha256": "97f58a672d3b6da74e7b4ef378a7a888833cbd7bd1bfcaab86d90e7334db3952",
+      "bytes": 107343
+    }
+  },
+  "target_tag": {
+    "family": "tag36h11",
+    "id": 2,
+    "hamming": 0,
+    "decision_margin": 106.11084747314453,
+    "corner_order": "LT,RT,RB,LB in source image",
+    "black_square_corners_px": [
+      [
+        116.0771255493164,
+        41.63720703125
+      ],
+      [
+        196.28277587890625,
+        41.30693435668945
+      ],
+      [
+        195.96400451660156,
+        116.52143096923828
+      ],
+      [
+        115.49225616455078,
+        116.51582336425781
+      ]
+    ],
+    "black_square_size_m": 0.16,
+    "physical_scale_status": "ASSUMED; user image contains no verified physical ruler",
+    "marker_replaced": false
+  },
+  "rectification": {
+    "method": "Whole supplied bitmap homography from original detected marker corners to square; cubic resampling; white padding. No new marker is generated.",
+    "source_to_tag_m_homography": [
+      [
+        0.002016304167409425,
+        1.2155375121817984e-05,
+        -0.3152294602171427
+      ],
+      [
+        4.376532551400822e-06,
+        0.0021584902238335727,
+        -0.17105807200378662
+      ],
+      [
+        5.6583653615532124e-05,
+        4.536415539099774e-05,
+        1.0
+      ]
+    ],
+    "source_to_target_body_m_homography": [
+      [
+        0.002016201295544907,
+        1.2072900856740325e-05,
+        -0.31704750938761234
+      ],
+      [
+        -7.266682185382192e-06,
+        0.0021491556445192178,
+        -0.37682800718497766
+      ],
+      [
+        5.6583653615532124e-05,
+        4.536415539099774e-05,
+        1.0
+      ]
+    ],
+    "source_to_rectified_px_homography": [
+      [
+        4.068899047671833,
+        0.05340568194067419,
+        10.904981224775383
+      ],
+      [
+        0.02813071045534684,
+        4.332515862203248,
+        0.34398563004469906
+      ],
+      [
+        5.6583653615532124e-05,
+        4.536415539099774e-05,
+        1.0
+      ]
+    ],
+    "pixels_per_m": 2000,
+    "texture_size_px": [
+      1290,
+      1363
+    ],
+    "board_width_m": 0.645,
+    "board_height_m": 0.6815,
+    "board_center_down_m": -0.036250000000000004
+  },
+  "bullseye": {
+    "source_center_px": [
+      156.1968536376953,
+      175.86582946777344
+    ],
+    "offset_tag_m": [
+      0.0018180491704696345,
+      0.20576993518119108,
+      0.0
+    ]
+  },
+  "printed_ring_fit": {
+    "method": "Least-squares ellipses fit white boundaries in source ROI x35..281,y138..280, iterated residual band 1.25px. Outer scoring regions clipped by manually traced green panel. Source resolution is only 320x319; ring boundary accuracy is approximate, not metrology.",
+    "source_ellipses": [
+      {
+        "center_px": [
+          156.1968536376953,
+          175.86582946777344
+        ],
+        "diameters_px": [
+          45.93561553955078,
+          47.53105545043945
+        ],
+        "angle_deg": 3.117351770401001,
+        "fit_samples": 358
+      },
+      {
+        "center_px": [
+          155.90313720703125,
+          176.44723510742188
+        ],
+        "diameters_px": [
+          101.27625274658203,
+          103.28278350830078
+        ],
+        "angle_deg": 173.6873779296875,
+        "fit_samples": 467
+      },
+      {
+        "center_px": [
+          156.46783447265625,
+          176.70277404785156
+        ],
+        "diameters_px": [
+          151.64547729492188,
+          157.4686737060547
+        ],
+        "angle_deg": 175.0869903564453,
+        "fit_samples": 605
+      },
+      {
+        "center_px": [
+          157.0416717529297,
+          176.17877197265625
+        ],
+        "diameters_px": [
+          202.1296844482422,
+          215.1544647216797
+        ],
+        "angle_deg": 178.21572875976562,
+        "fit_samples": 632
+      },
+      {
+        "center_px": [
+          158.13729858398438,
+          177.15655517578125
+        ],
+        "diameters_px": [
+          252.15325927734375,
+          266.46673583984375
+        ],
+        "angle_deg": 178.2263641357422,
+        "fit_samples": 371
+      }
+    ],
+    "target_body_ring_ellipses_m": [
+      {
+        "center_offset_m": [
+          -5.8338546518430964e-05,
+          -5.2801182402962714e-05
+        ],
+        "quadratic_m_inv2": [
+          [
+            482.0464978853979,
+            0.34133928922959067
+          ],
+          [
+            0.341339289229593,
+            396.38978355605434
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          -0.0008609839351182026,
+          0.0009793200844108478
+        ],
+        "quadratic_m_inv2": [
+          [
+            99.13327635324757,
+            -0.6444121445634989
+          ],
+          [
+            -0.6444121445634973,
+            83.98610634671321
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          -9.41437144638048e-05,
+          0.0011805862702172244
+        ],
+        "quadratic_m_inv2": [
+          [
+            44.217410509113094,
+            -0.3735637440592722
+          ],
+          [
+            -0.3735637440592721,
+            36.13791762655994
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          0.000541849499719373,
+          -0.00043658320243058677
+        ],
+        "quadratic_m_inv2": [
+          [
+            24.90002626388912,
+            -0.1548706204532052
+          ],
+          [
+            -0.1548706204532053,
+            19.347149254204556
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          0.0020944415944126756,
+          0.0010403051193900628
+        ],
+        "quadratic_m_inv2": [
+          [
+            16.005207638326297,
+            -0.0913368827084853
+          ],
+          [
+            -0.09133688270848535,
+            12.61627173520375
+          ]
+        ]
+      }
+    ],
+    "target_body_scoring_polygon_m": [
+      [
+        -0.10274461347265891,
+        -0.12047534273700246
+      ],
+      [
+        -0.1046941647894692,
+        -0.1140840136677331
+      ],
+      [
+        -0.24260744583365748,
+        -0.0606320571577345
+      ],
+      [
+        -0.23958240910398232,
+        0.22143011577938954
+      ],
+      [
+        0.24585357041194505,
+        0.2166957113141567
+      ],
+      [
+        0.24573301098070524,
+        -0.06365940887756223
+      ],
+      [
+        0.10598177265982082,
+        -0.1141685488573557
+      ],
+      [
+        0.10200779259326562,
+        -0.12052088483598325
+      ]
+    ],
+    "max_source_fit_band_px": 1.25
+  },
+  "background": {
+    "source_file": "background_source.jpg",
+    "role": "Real textured visual-only wall behind target, rendered by MuJoCo; source watermark retained",
+    "measured_robustness_claim": false
+  }
+}

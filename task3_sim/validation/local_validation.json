@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-19",
+  "scope": "Development-machine evidence summary; large runs and original assets are excluded from the update archive.",
+  "host": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.12.3",
+    "mujoco": "3.3.7"
+  },
+  "ubuntu_runtime_tested": false,
+  "interactive_gui_tested": false,
+  "unit_tests": {
+    "passed": 14,
+    "failed": 0,
+    "command": "python -m unittest discover -s task3_sim/tests -v"
+  },
+  "actual_render_integration": {
+    "all_passed": true,
+    "cases": [
+      {
+        "case": "default",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "simulation_time_s": 2.549999999999968,
+        "summary": "runs/release_validation_20261019/default/summary.json"
+      },
+      {
+        "case": "left_start",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "simulation_time_s": 2.6499999999999657,
+        "summary": "runs/release_validation_20261019/left_start/summary.json"
+      },
+      {
+        "case": "oblique_target",
+        "passed": true,
+        "status": "SUCCESS",
+        "ring": 10,
+        "simulation_time_s": 2.399999999999971,
+        "summary": "runs/release_validation_20261019/oblique_target/summary.json"
+      },
+      {
+        "case": "beam_blocked",
+        "passed": true,
+        "status": "MISSED",
+        "ring": 3,
+        "simulation_time_s": 2.549999999999968,
+        "summary": "runs/release_validation_20261019/beam_blocked/summary.json"
+      },
+      {
+        "case": "tag_out_of_view",
+        "passed": true,
+        "status": "TIMEOUT",
+        "ring": null,
+        "simulation_time_s": 1.0000000000000007,
+        "summary": "runs/release_validation_20261019/tag_out_of_view/summary.json"
+      },
+      {
+        "case": "no_ammo",
+        "passed": true,
+        "status": "NO_AMMO",
+        "ring": null,
+        "simulation_time_s": 2.549999999999968,
+        "summary": "runs/release_validation_20261019/no_ammo/summary.json"
+      }
+    ]
+  },
+  "default_result": {
+    "status": "SUCCESS",
+    "simulation_time_s": 2.549999999999968,
+    "frames": 52,
+    "ammo_remaining": 4,
+    "shot": {
+      "target_id": 0,
+      "ring": 10,
+      "hit": true,
+      "point_world_m": [
+        2.5,
+        0.2539208171455781,
+        0.4980196186060482
+      ],
+      "reason": "ring_hit"
+    },
+    "diagnostics": {
+      "estimated_bullseye_world_m": [
+        2.5063006110386508,
+        0.25057335743048764,
+        0.5005710948858709
+      ],
+      "bullseye_position_error_m": 0.006352368658392799,
+      "predicted_miss_m": 0.0045276036792313915,
+      "actual_miss_m": 0.0043925752759138735
+    },
+    "model_sources_unchanged": true
+  },
+  "mesh_derivative": {
+    "source_sha256": "2e0adba36e31a62ef57897678fd7b246ba2d5510215043ba799c40076edbd30c",
+    "original_faces": 330190,
+    "derived_faces": 133432,
+    "grid_spacing_m": 0.001,
+    "max_vertex_displacement_m": 0.0008660236024934307,
+    "changed": true,
+    "method": "vertex_grid_clustering_remove_degenerate_duplicate_faces",
+    "derived_sha256": "27c1cbb8b4792370816f410879f1252fdc6dc38a24a49e1a37b9789d7462daef"
+  },
+  "official_preservation": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": [],
+    "added": [],
+    "files_checked": 1189,
+    "sha256_files": 1181,
+    "metadata_only_files": 8,
+    "excluded_directory_names": [
+      ".git",
+      ".venv",
+      "__pycache__",
+      "build",
+      "install",
+      "log"
+    ],
+    "protected_paths": [
+      "src/robot_mujoco",
+      "src/robot_mc",
+      "deps",
+      "config",
+      "scripts",
+      "navigation",
+      "mapping",
+      "maps",
+      "scene_tools",
+      "scene_updates",
+      "run_sim.sh",
+      "field_map.pcd",
+      "README.md",
+      "README_GPT.md",
+      "TASK2_PLAN.md",
+      "TASK3_PLAN.md",
+      "PROJECT_STATUS.md",
+      "CHANGELOG.md",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.umap",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.uexp"
+    ],
+    "missing_paths": []
+  },
+  "portability": {
+    "target": "Ubuntu 22.04 x86_64 / Python 3.10",
+    "python310_grammar_files": 16,
+    "linux_cp310_binary_wheels_downloaded": [
+      {
+        "file": "mujoco-3.3.7-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "771923e71faa19749fed8dae1329b70b77d1cd9cef699d0e0ad984e00ee05c0a"
+      },
+      {
+        "file": "numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "ffa75af20b44f8dba823498024771d5ac50620e6915abac414251bd971b4529f"
+      },
+      {
+        "file": "opencv_python-4.11.0.86-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "6b02611523803495003bd87362db3e1d2a0454a6a63025dc6658a9830570aa0d"
+      },
+      {
+        "file": "pupil_apriltags-1.0.4.post11-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "2fbc1da75650f0535041c30a0325e97711b4388466da82f90e364e0f597664e6"
+      }
+    ],
+    "shell_scripts_lf": true
+  },
+  "development_evidence_paths_relative_to_task3_sim": [
+    "runs/release_validation_20261019/validation.json",
+    "runs/preservation_before.json",
+    "runs/preservation_report.json",
+    "runs/ubuntu310_wheel_check"
+  ]
+}

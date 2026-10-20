@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "status_success": true,
+    "three_unique_shots": true,
+    "all_ring10": true,
+    "ammo_remaining2": true,
+    "clean_shutdown": true,
+    "fault_log_empty": true,
+    "actual_cli_exit_zero": true
+  },
+  "all_passed": true,
+  "summary": "runs/directional_cli_031/summary.json",
+  "process_exit_code": 0,
+  "simulation_time_s": 19.950000000000315,
+  "package_version": "0.3.1",
+  "scope": "Independent kinematic CLI termination and real render shot checks; not native gait acceptance."
+}

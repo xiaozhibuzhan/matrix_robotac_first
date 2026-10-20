@@ -1,0 +1,305 @@
+{
+  "description": "Independent three-direction fixed-target milestone. Default scene example: ID2 left / 9 oclock (+Y), ID5 front / 12 oclock (+X), ID9 right / 3 oclock (-Y). Public mission direction priors are relative to the initial robot heading and never associate an ID with a direction. Native image detections learn identity bearings; target switching turns by the shortest feedback-measured angle. Four surrounding walls use the supplied background; no moving targets. ID2 artwork retained, other IDs have derived marker and one-cell quiet-zone patches. All physical dimensions remain assumed.",
+  "camera": {
+    "width": 960,
+    "height": 720,
+    "fx": 650.0,
+    "fy": 650.0,
+    "cx": 480.0,
+    "cy": 360.0,
+    "position_base_m": [
+      0.3,
+      0.0,
+      -0.05185
+    ],
+    "rotation_base_from_camera": [
+      [
+        0.0,
+        0.258819045102521,
+        0.965925826289068
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -0.965925826289068,
+        0.258819045102521
+      ]
+    ]
+  },
+  "laser": {
+    "origin_base_m": [
+      0.0,
+      0.0,
+      0.060122496627693
+    ],
+    "direction_base": [
+      0.999515577500871,
+      0.02107605831445,
+      0.022900002162161
+    ]
+  },
+  "tag": {
+    "family": "tag36h11",
+    "id": 2,
+    "size_m": 0.16,
+    "bullseye_offset_tag_m": [
+      0.0018180491704696345,
+      0.20576993518119108,
+      0.0
+    ],
+    "min_decision_margin": 40.0,
+    "max_reprojection_error_px": 2.0,
+    "detector_threads": 2,
+    "quad_decimate": 1.0
+  },
+  "control": {
+    "yaw_kp": 1.5,
+    "pitch_kp": 1.5,
+    "max_yaw_rate_rad_s": 0.35,
+    "max_pitch_rate_rad_s": 0.18,
+    "aim_tolerance_m": 0.008,
+    "stable_duration_s": 0.4,
+    "max_gyro_rad_s": 0.02,
+    "max_speed_m_s": 0.01,
+    "max_frame_age_s": 0.15,
+    "max_feedback_age_s": 0.15,
+    "max_pitch_rad": 0.3490658503988659
+  },
+  "simulation": {
+    "frame_rate_hz": 20.0,
+    "integration_step_s": 0.005,
+    "velocity_time_constant_s": 0.12,
+    "command_timeout_s": 0.25,
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.27
+    ],
+    "initial_rpy_rad": [
+      0.0,
+      0.04,
+      0.0
+    ],
+    "target_center_world_m": [
+      2.5,
+      0.25,
+      0.5
+    ],
+    "target_yaw_rad": 0.0,
+    "board_width_m": 0.645,
+    "board_height_m": 0.6815,
+    "board_center_down_m": -0.036250000000000004,
+    "ring_radii_m": [
+      0.05022726366651066,
+      0.1091357514339462,
+      0.16638800993122355,
+      0.2273735571365543,
+      0.281563805012907
+    ],
+    "ammo_count": 3,
+    "obstacles": [],
+    "ring_ellipses_m": [
+      {
+        "center_offset_m": [
+          -5.8338546518430964e-05,
+          -5.2801182402962714e-05
+        ],
+        "quadratic_m_inv2": [
+          [
+            482.0464978853979,
+            0.34133928922959067
+          ],
+          [
+            0.341339289229593,
+            396.38978355605434
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          -0.0008609839351182026,
+          0.0009793200844108478
+        ],
+        "quadratic_m_inv2": [
+          [
+            99.13327635324757,
+            -0.6444121445634989
+          ],
+          [
+            -0.6444121445634973,
+            83.98610634671321
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          -9.41437144638048e-05,
+          0.0011805862702172244
+        ],
+        "quadratic_m_inv2": [
+          [
+            44.217410509113094,
+            -0.3735637440592722
+          ],
+          [
+            -0.3735637440592721,
+            36.13791762655994
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          0.000541849499719373,
+          -0.00043658320243058677
+        ],
+        "quadratic_m_inv2": [
+          [
+            24.90002626388912,
+            -0.1548706204532052
+          ],
+          [
+            -0.1548706204532053,
+            19.347149254204556
+          ]
+        ]
+      },
+      {
+        "center_offset_m": [
+          0.0020944415944126756,
+          0.0010403051193900628
+        ],
+        "quadratic_m_inv2": [
+          [
+            16.005207638326297,
+            -0.0913368827084853
+          ],
+          [
+            -0.09133688270848535,
+            12.61627173520375
+          ]
+        ]
+      }
+    ],
+    "scoring_polygon_m": [
+      [
+        -0.10274461347265891,
+        -0.12047534273700246
+      ],
+      [
+        -0.1046941647894692,
+        -0.1140840136677331
+      ],
+      [
+        -0.24260744583365748,
+        -0.0606320571577345
+      ],
+      [
+        -0.23958240910398232,
+        0.22143011577938954
+      ],
+      [
+        0.24585357041194505,
+        0.2166957113141567
+      ],
+      [
+        0.24573301098070524,
+        -0.06365940887756223
+      ],
+      [
+        0.10598177265982082,
+        -0.1141685488573557
+      ],
+      [
+        0.10200779259326562,
+        -0.12052088483598325
+      ]
+    ]
+  },
+  "appearance": {
+    "target": {
+      "kind": "image",
+      "asset": "assets/fixed_target_rectified.png",
+      "calibration": "assets/provenance.json",
+      "brightness": 1.0
+    },
+    "background": {
+      "asset": "assets/background_source.jpg",
+      "brightness": 1.0,
+      "tile": [
+        1.0,
+        1.0
+      ],
+      "width_m": 8.0,
+      "height_m": 4.5,
+      "distance_behind_target_m": 1.0,
+      "layout": "surround"
+    },
+    "lighting": {
+      "ambient": 0.5,
+      "diffuse": 0.5
+    },
+    "camera_effects": {
+      "exposure": 1.0,
+      "gamma": 1.0,
+      "blur_sigma_px": 0.0,
+      "noise_std_u8": 0.0,
+      "seed": 0
+    }
+  },
+  "targets": [
+    {
+      "id": 2,
+      "simulation": {
+        "target_center_world_m": [
+          0.0,
+          2.7,
+          0.5
+        ],
+        "target_yaw_rad": 1.5707963267948966
+      }
+    },
+    {
+      "id": 5,
+      "simulation": {
+        "target_center_world_m": [
+          2.7,
+          0.0,
+          0.5
+        ],
+        "target_yaw_rad": 0.0
+      }
+    },
+    {
+      "id": 9,
+      "simulation": {
+        "target_center_world_m": [
+          0.0,
+          -2.7,
+          0.5
+        ],
+        "target_yaw_rad": -1.5707963267948966
+      }
+    }
+  ],
+  "distractors": [],
+  "mission": {
+    "shooting_policy": "round_robin",
+    "target_timeout_s": 45.0,
+    "lost_timeout_s": 1.2,
+    "switch_pause_s": 0.15,
+    "max_target_attempts": 1,
+    "search_yaw_rate_rad_s": 0.35,
+    "search_mode": "fixed_directions",
+    "search_max_rotation_rad": 6.283185307179586,
+    "search_directions_rad": [0.0, 1.5707963267948966, -1.5707963267948966],
+    "direction_tolerance_rad": 0.10,
+    "direction_probe_s": 0.35,
+    "bearing_max_age_s": 120.0,
+    "bearing_max_translation_m": 0.20,
+    "local_search_span_rad": 0.25
+  }
+}
