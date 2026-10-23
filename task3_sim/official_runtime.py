@@ -118,7 +118,7 @@ class OfficialRuntime:
                 and platform.python_implementation() == "CPython" and sys.version_info[:2] == (3, 10))
 
     def preflight(self, bridge_executable=None):
-        errors, warnings, libraries = [], [], {}
+        errors, warnings, libraries, repair_actions = [], [], {}, []
         native_supported = self._native_supported()
         if not native_supported:
             errors.append("Official x86_64 runtime and supplied SDK require Ubuntu/Linux x86_64 CPython 3.10")
@@ -140,6 +140,12 @@ class OfficialRuntime:
         for name, path in required.items():
             if not path.is_file():
                 errors.append(f"Missing {name}: {path}")
+                if name == "state_bridge":
+                    repair_actions.append({
+                        "reason": "The task-owned state bridge must be built on this Ubuntu host; it is excluded from update ZIPs.",
+                        "cwd": str(self.repo_root),
+                        "command": "bash task3_sim/build_official_bridge.sh",
+                    })
         executables = {name: path for name, path in required.items()
                        if name in ("robot_mujoco", "mc_ctrl", "state_bridge", "sdk_library", "sdk_binding")}
         for name, path in executables.items():
@@ -187,6 +193,7 @@ class OfficialRuntime:
                     errors.append(f"Official SDK/controller loopback UDP port {port} is unavailable: {exc}")
         warnings.append("This preflight does not prove gait stability or successful source-state delivery")
         self.preflight_report = {"ready": not errors, "errors": errors, "warnings": warnings,
+                                 "repair_actions": repair_actions,
                                  "platform": platform.platform(), "python": platform.python_version(),
                                  "required_files": {key: str(value) for key, value in required.items()},
                                  "conflicting_processes": conflicts, "libraries": libraries,

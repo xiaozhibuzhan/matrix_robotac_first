@@ -192,6 +192,22 @@ class RuntimeTests(unittest.TestCase):
             runtime.start(44889, self.bridge)
         self.assertEqual(self.calls, [])
 
+    def test_missing_state_bridge_has_local_build_recovery_without_starting_or_writing_sources(self):
+        runtime = self.runtime()
+        self.mock_native(runtime)
+        self.bridge.unlink()
+        report = runtime.preflight(self.bridge)
+        self.assertFalse(report["ready"])
+        self.assertEqual(len(report["errors"]), 1)
+        self.assertIn("Missing state_bridge", report["errors"][0])
+        self.assertEqual(report["repair_actions"][0]["command"], "bash task3_sim/build_official_bridge.sh")
+        self.assertEqual(report["repair_actions"][0]["cwd"], str(self.repo.resolve()))
+        with self.assertRaisesRegex(OfficialRuntimeError, "Missing state_bridge"):
+            runtime.start(44889, self.bridge)
+        self.assertEqual(self.calls, [])
+        self.assertFalse(runtime.workdir.exists())
+        self.assert_sources_unchanged()
+
     def test_existing_official_process_rejects_global_bus_start_without_killing(self):
         runtime = self.runtime()
         self.mock_native(runtime)

@@ -1,0 +1,147 @@
+{
+  "created_utc": "2026-10-22T08:46:14.326396+00:00",
+  "version": "0.3.8",
+  "host": {
+    "platform": "win32",
+    "architecture": "AMD64",
+    "python": "3.12.3"
+  },
+  "scope": "Host-side tests and read-only ARM ELF verification only; no ARM compilation, SDK runtime, real RTSP or robot action executed.",
+  "target": {
+    "soc": "RK3588",
+    "architecture": "aarch64 (must be verified on board)",
+    "python_user_reported": "3.10.12",
+    "os_release": "not received"
+  },
+  "autonomous_hardware_ready": false,
+  "tests": {
+    "tests_run": 422,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 3,
+    "seconds": 42.15599999999904,
+    "successful": true,
+    "passed": 419
+  },
+  "targeted_tests": {
+    "run": 75,
+    "failed": 0,
+    "errors": 0
+  },
+  "skipped_reasons": [
+    "3 POSIX foreground process-group signal tests skipped on Windows"
+  ],
+  "protected": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": [],
+    "added": [],
+    "files_checked": 1189,
+    "sha256_files": 1181,
+    "metadata_only_files": 8,
+    "excluded_directory_names": [
+      ".git",
+      ".venv",
+      "__pycache__",
+      "build",
+      "install",
+      "log"
+    ],
+    "protected_paths": [
+      "src/robot_mujoco",
+      "src/robot_mc",
+      "deps",
+      "config",
+      "scripts",
+      "navigation",
+      "mapping",
+      "maps",
+      "scene_tools",
+      "scene_updates",
+      "run_sim.sh",
+      "field_map.pcd",
+      "README.md",
+      "README_GPT.md",
+      "TASK2_PLAN.md",
+      "TASK3_PLAN.md",
+      "PROJECT_STATUS.md",
+      "CHANGELOG.md",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.umap",
+      "src/UeSim/Linux/UeSim/Content/Maps/RobotAC/RobotAC_Level_1.uexp"
+    ],
+    "missing_paths": []
+  },
+  "changes_vs037": {
+    "modified": [
+      "task3_sim/.gitignore",
+      "task3_sim/README.md",
+      "task3_sim/__init__.py",
+      "task3_sim/official_sdk.py",
+      "task3_sim/package_update.py",
+      "task3_sim/perception.py"
+    ],
+    "new": [
+      "task3_sim/RK3588_DEPLOY_038.md",
+      "task3_sim/config/hardware_rk3588.json",
+      "task3_sim/hardware.py",
+      "task3_sim/requirements_hardware.txt",
+      "task3_sim/requirements_hardware_build.txt",
+      "task3_sim/run_hardware_task3.sh",
+      "task3_sim/sdk_platform.py",
+      "task3_sim/setup_hardware_ubuntu.sh",
+      "task3_sim/tests/test_hardware_arm038.py"
+    ],
+    "deleted": []
+  },
+  "sdk_files": {
+    "aarch64/library": {
+      "path": "deps/zsibot_sdk/lib/zsl-1/aarch64/libmc_sdk_zsl_1_aarch64.so",
+      "size": 265744,
+      "sha256": "bacd06930fc054be431e5dd5363c38146fc69796b280356504c7157d19b3919b",
+      "matches_unmodified_upstream_local_copy": true
+    },
+    "aarch64/binding": {
+      "path": "deps/zsibot_sdk/lib/zsl-1/aarch64/mc_sdk_zsl_1_py.cpython-310-aarch64-linux-gnu.so",
+      "size": 405672,
+      "sha256": "1e7b53ffeefc7914f224686f675d2caf610c4a536e660ed5099e88e548817c2c",
+      "matches_unmodified_upstream_local_copy": true
+    },
+    "x86_64/library": {
+      "path": "deps/zsibot_sdk/lib/zsl-1/x86_64/libmc_sdk_zsl_1_x86_64.so",
+      "size": 274168,
+      "sha256": "c03aa3503a6de49f50871e995221c6695d35320494e8e8d5ddde78a8b026594e",
+      "matches_unmodified_upstream_local_copy": true
+    },
+    "x86_64/binding": {
+      "path": "deps/zsibot_sdk/lib/zsl-1/x86_64/mc_sdk_zsl_1_py.cpython-310-x86_64-linux-gnu.so",
+      "size": 434592,
+      "sha256": "a0814e9ef9acd88a6193882c09742992a1aa1af133e0fa80b337c1574554b38e",
+      "matches_unmodified_upstream_local_copy": true
+    }
+  },
+  "pypi_dependency_research": {
+    "numpy==1.26.4": "cp310 manylinux aarch64 wheel available",
+    "opencv-python==4.11.0.86": "abi3 manylinux aarch64 wheel available",
+    "pupil-apriltags==1.0.4.post11": "No Linux aarch64 wheel; compile unchanged source on target",
+    "build_requirements": "All pinned versions checked on PyPI; compatible universal/aarch64 artifacts found; CMake held at 3.31.6"
+  },
+  "python310_syntax_files": 71,
+  "bash_syntax_files": 8,
+  "changed_source_sha256": {
+    "task3_sim/.gitignore": "8c0e4cab389582ccf3baad40319451e104a27852bd96b74855b37b6c5840bcf9",
+    "task3_sim/README.md": "f07358da5434686d5ed27d20f335aaf223ef10504d21ab15a3b442b86573d573",
+    "task3_sim/__init__.py": "b0c570fe653fa4b6c096147b0e4cf868b65940ebd629792a98ca3b33e6ff9810",
+    "task3_sim/official_sdk.py": "d4a2986749193b092827be16c76acbaceba4cba8d8f3539daebf0a9eea025130",
+    "task3_sim/package_update.py": "c3ffa1f7788dddf6e6f66f0c13daa2d8b534ba89b4477f1db1b42ff8225d392b",
+    "task3_sim/perception.py": "e3cfc025bed12f1d45bc745e9c9aa2f88b2bc6edd90040ce3a6e23c1cc958a20",
+    "task3_sim/RK3588_DEPLOY_038.md": "fe5de3bfaf661e296ea67084fec9d2968d1b21cf1c1c1ae6b0ae788c49c3061c",
+    "task3_sim/config/hardware_rk3588.json": "8d80b15fed63f76d8629ca04a72361270f3430f3b08928c3319b56fba6bfaf79",
+    "task3_sim/hardware.py": "b2cfe9969741ba8084adba33558b21e8f64487d497a4726f94af733779b3a94f",
+    "task3_sim/requirements_hardware.txt": "42fad3ef83398e13a70050df6556dc4e88d4dc4e9c3375c887c75d74817cc43e",
+    "task3_sim/requirements_hardware_build.txt": "a0092dd371d822e4993ce796c89812430d5b49752ffc34ede907d24d5872cfe9",
+    "task3_sim/run_hardware_task3.sh": "7207fe45b0d8986cd07fec07fa93d67974de2fbe482d85dec8ef8e0fbe54578c",
+    "task3_sim/sdk_platform.py": "505cae8d3f7d192a04301c774b23a915f224eb882e62dd09f23cf1efc122ac54",
+    "task3_sim/setup_hardware_ubuntu.sh": "ad5e8ce54288bedf90638d9c13192a61041d32ee4d9bf587342c972abeee51ab",
+    "task3_sim/tests/test_hardware_arm038.py": "496a2c77efd6ede3e1de111c25950f0f6e224766313ebc5bc0c53d83af837132"
+  }
+}

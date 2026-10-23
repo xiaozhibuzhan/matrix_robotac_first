@@ -1,0 +1,4 @@
+# Real-camera / SDK adapter dependencies; intentionally no MuJoCo or ROS.
+numpy==1.26.4
+opencv-python==4.11.0.86
+pupil-apriltags==1.0.4.post11

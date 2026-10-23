@@ -1,0 +1,13 @@
+{
+  "package": "task3_arm64_038_20261022.zip",
+  "sha256": "df5c1d9125a8def7a939fe3ee18a0b1c392ba9eb634c09b3e28ebb5d3a7e314f",
+  "size_bytes": 4477541,
+  "source_files": 164,
+  "crc_ok": true,
+  "manifest_and_source_sha256_match": true,
+  "unix_bash_line_endings": true,
+  "no_native_libraries_environments_local_data_or_official_files": true,
+  "extracted_cli_help_without_site_packages": true,
+  "old036_037_archives_unchanged": true,
+  "arm_hardware_execution": false
+}

@@ -1,0 +1,23 @@
+{
+  "backend": "hardware_observer",
+  "description": "RK3588 ARM64 CPython3.10 observation-only profile; no SDK connection, movement, firing or scoring. Target IDs are examples; replace with actual IDs.",
+  "robot_model": "zsl-1",
+  "target_ids": [2, 5, 9],
+  "tag": {
+    "family": "tag36h11",
+    "detector_threads": 2,
+    "quad_decimate": 1.0,
+    "quad_sigma": 0.0,
+    "min_decision_margin": 40.0,
+    "max_hamming": 0
+  },
+  "camera": {
+    "calibrated": false,
+    "intrinsics": null,
+    "distortion": null
+  },
+  "video": {
+    "open_timeout_ms": 3000,
+    "read_timeout_ms": 2000
+  }
+}

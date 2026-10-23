@@ -9,7 +9,7 @@ from pathlib import Path
 import sys
 import zipfile
 
-EXCLUDED_DIRS = {".venv", "runs", "runs_ubuntu", "updates", "__pycache__", ".pytest_cache", "local", ".git"}
+EXCLUDED_DIRS = {".venv", ".venv_hardware", "runs", "runs_ubuntu", "updates", "__pycache__", ".pytest_cache", "local", ".git"}
 SOURCE_SUFFIXES = {".py", ".json", ".md", ".txt", ".sh", ".png", ".xml", ".svg", ".jpg", ".jpeg", ".cpp", ".h", ".cmake"}
 
 
@@ -63,7 +63,7 @@ def make_package(source: Path, output: Path) -> dict:
 def main(argv: list[str] | None = None) -> int:
     source = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=source / "updates" / "task3_standup_fix_036_20261020.zip")
+    parser.add_argument("--output", type=Path, default=source / "updates" / "task3_arm64_038_20261022.zip")
     args = parser.parse_args(argv)
     print(json.dumps(make_package(source, args.output.resolve()), ensure_ascii=False, indent=2))
     return 0

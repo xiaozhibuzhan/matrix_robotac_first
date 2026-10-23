@@ -1,10 +1,12 @@
 # 任务三独立 MuJoCo 仿真平台
 
-更新：2026-10-20，当前版本 **0.3.6**。修复第五发前 `standUp 0x3007` 的适配层原因：官方 SDK 在尚未站立时累计切换次数，现补上真实到达站立状态后的官方接口确认，再等待完整四秒；不重试或忽略非零返回码。源码和本机回归可验证，五发官方原生运行仍须 Ubuntu 验收，详见 [0.3.6 第五发切换修复](OFFICIAL_STANDUP_036.md)。默认基础弹药仍为 **3 发**，保留 0.3.5 的逐发累计计分、界面回执和 `shots.csv`，四发十环为 40 分、五发为 50 分。图像/反馈 0.15 秒、8 mm、0.4 秒门槛保留，官方原件、任务一二与旧单靶不变。
+更新：2026-10-22，当前版本 **0.3.8**。新增 **RK3588 / ARM64 / Python 3.10** 独立实物准备入口，自动选择原版 aarch64 SDK、检查 ELF/动态依赖，在板上编译 AprilTag 并读取真实 RTSP 图像识别 ID。安装用 `setup_hardware_ubuntu.sh`，运行用 `run_hardware_task3.sh`；详见 [RK3588 部署与板端验收](RK3588_DEPLOY_038.md)。此入口不连接控制、不运动或发射，实机自动任务仍需状态、标定及发射协议接入。
+
+x86 仿真入口和第五发、计分逻辑保留。0.3.7 的开窗前依赖检查见 [启动恢复说明](STARTUP_RECOVERY_037.md)，第五发故障修复见 [0.3.6 说明](OFFICIAL_STANDUP_036.md)。默认基础弹药仍为 **3 发**，四发十环为 40 分、五发为 50 分。图像/反馈 0.15 秒、8 mm、0.4 秒门槛保留，官方原件、任务一二与旧单靶不变。本版官方仿真运行仍须 x86 Ubuntu 验收。
 
 `bash task3_sim/run_official_task3.sh --show --viewer --max-seconds 240` 启动默认基础三发官方动力学；额外用 `--config task3_sim/config/multi_official_five_shots.json` 明确测试第五发。首次使用需编译只读状态桥，已有可用桥无需重复编译。`bash task3_sim/accept_official_ubuntu.sh` 包含独立的官方原生五发巡回诊断及视觉回归，并导出回传包。官方原件、任务一二与旧单靶保持独立。
 
-最新 Ubuntu 回传已完成一次 0.3.6 原生五发任务：顺序 `2,5,9,2,5`，全十环、50 分、余弹 0。离线复核 57/58 项通过，唯一未通过项是跨机可变里程文件的源哈希核对；旧 0.3.5 完整验收不能替代本版全套验收。详见 [最新五发复核](validation/ubuntu036_five_shot_review.json)。实物连接步骤与尚待接入的硬件接口见 [SSH、网络和视频说明](HARDWARE_CONNECT_20261020.md)。
+先前 Ubuntu 回传已完成一次 0.3.6 原生五发任务：顺序 `2,5,9,2,5`，全十环、50 分、余弹 0。离线复核 57/58 项通过，唯一未通过项是跨机可变里程文件的源哈希核对；旧版记录不能替代本版验收。详见 [五发复核](validation/ubuntu036_five_shot_review.json)。实物连接步骤与尚待接入的硬件接口见 [SSH、网络和视频说明](HARDWARE_CONNECT_20261020.md)。
 
 以下基础入口的首个里程碑为 **MuJoCo 相机真实渲染 → AprilTag3 检测与位姿 → 自主瞄准 → 最近碰撞面的射线计分**。默认单靶和运动学视觉回归不启动官方运行链；显式 `multi_official.json` 会启动隔离副本中的官方进程，只连接本机回环地址。
 
@@ -18,7 +20,7 @@
 
 ## Ubuntu 22.04 安装和首次运行
 
-在已经跑通任务一、二的原工程目录解压本目录即可。Ubuntu 目标为 **x86_64、Python 3.10**；不需要重新安装或升级原工程的 ROS/SDK。
+本节是 **x86_64、Python 3.10 仿真工作站**的安装流程，在已经跑通任务一、二的原工程目录解压本目录即可，不需要重新安装或升级原工程的 ROS/SDK。RK3588 板端请使用 [独立 ARM64 流程](RK3588_DEPLOY_038.md)。
 
 ```bash
 cd "$HOME/robotac/matrix_robotac_first"
@@ -30,6 +32,8 @@ sudo apt-get install python3.10-venv libgl1 libglib2.0-0 libegl1 libgl1-mesa-dri
 bash task3_sim/setup_ubuntu.sh
 bash task3_sim/run_task3.sh --headless --max-seconds 25
 ```
+
+首次使用官方动力学入口或清理过 `task3_sim/local/native/` 后，还必须在已加载 ROS Humble 的 Ubuntu 桌面终端执行 `bash task3_sim/build_official_bridge.sh`。它只编译自有状态桥，并在最后自动预检；`ready=true` 后再启动官方任务。缺少编译依赖时见 [启动恢复说明](STARTUP_RECOVERY_037.md)。
 
 脚本只用 `task3_sim/.venv/bin/python` 安装固定版本依赖，并在子进程中清除继承的 `PYTHONHOME/PYTHONPATH`，避免已加载的 ROS Python 路径混入；调用终端不受影响。无需激活虚拟环境，也不要使用 `sudo pip`。依赖版本见 [requirements.txt](requirements.txt)。若工程复制自 Windows，不要复制 `.venv`，在 Ubuntu 重新执行安装脚本。
 
@@ -76,6 +80,7 @@ bash task3_sim/run_task3.sh --headless \
 | `error.log` | 进入运行阶段后的异常堆栈，仅出错时产生 |
 | `terminal.log` | 启动脚本记录的标准输出、标准错误及真实 Python 退出码 |
 | `fault.log` | Python faulthandler 诊断输出；正常运行时可为空 |
+| `startup_preflight.json` | 官方入口在开窗前保存的依赖报告，缺桥时含本机编译命令 |
 
 单靶验收时确认 `summary.json` 的 `status` 为 `SUCCESS`、`shot.ring` 为期望环数、`model_sources_unchanged` 和 `shutdown_completed` 均为 `true`，并检查图像确实包含可识别的目标。默认单靶只自动发射一次。默认多靶为基础 3 发，顺序 `2,5,9`、余弹 0；逐发次数以 `shot_count`、`shots.json` 和 `shots.csv` 核对。`mission.total_score` 与 `shot_score_sum` 均累计所有有效发分，每靶 `score_sum` 为累计分、`ring` 为最新分；原逐靶最新分合计移至 `latest_target_score_total`。四发十环总分 40，五发为 50。1、2、6 发是非比赛边界测试；5 发是额外弹药/重复访问诊断，不能据此推定本场获准弹药。
 
@@ -109,7 +114,7 @@ bash task3_sim/run_task3.sh --headless \
 
 环半径顺序为 10、9、8、7、6 环。射线命中环外或脱靶记 3 分，边界算内环；这些均为可替换的仿真裁判约定。单靶模式中，已消耗弹药的脱靶会把当前目标的最后成绩更新为 3，且保留实际 `target_id=null`。命中障碍会被最近碰撞面阻挡；射线忽略机器人自身与仅供显示的几何。无弹药和未初始化调用不扣弹，不计新成绩。靶纸与比赛正式尺寸、擦边规则、脱靶归属仍须正式规则确认。
 
-多靶模式计算本次任务认可的逐靶环数与总分，并支持图像交付延迟、抖动、掉帧、断流测试；仍未接入 RTSP、实机串口、任务二奖励弹药、时间奖励或三次尝试最好成绩。后续接入官方视频流时，应保持图像接口和采集时间戳语义，并重新标定内参、外参和延迟保护。
+多靶仿真模式计算本次任务认可的逐靶环数与总分，并支持图像交付延迟、抖动、掉帧、断流测试。0.3.8 的实物准备入口另行提供真实 RTSP 的只读 ID/角点识别，尚未接入多靶运动和射击闭环；实机串口、任务二奖励弹药、时间奖励或三次尝试最好成绩也未接入。实物闭环需保持采集时间戳语义，并重新标定内参、外参和延迟保护。
 
 把现场配置放到 `task3_sim/local/`，避免后续代码包覆盖：
 
@@ -129,12 +134,12 @@ bash task3_sim/run_task3.sh --headless --config task3_sim/local/single_target.js
 python3 task3_sim/package_update.py
 ```
 
-得到 `task3_sim/updates/task3_standup_fix_036_20261020.zip` 与 `.zip.sha256`。校验文件和包内 Bash 脚本使用 LF 换行。压缩包内部全部路径均以 `task3_sim/` 开头，并带 `PACKAGE_MANIFEST.json` 的逐文件 SHA-256。复制这两个文件到 Ubuntu，在压缩包所在目录校验后解压到**现有原工程根目录**：
+得到 `task3_sim/updates/task3_startup_fix_037_20261021.zip` 与 `.zip.sha256`。校验文件和包内 Bash 脚本使用 LF 换行。压缩包内部全部路径均以 `task3_sim/` 开头，并带 `PACKAGE_MANIFEST.json` 的逐文件 SHA-256。复制这两个文件到 Ubuntu，在压缩包所在目录校验后解压到**现有原工程根目录**：
 
 ```bash
-sha256sum -c task3_standup_fix_036_20261020.zip.sha256
-unzip -l task3_standup_fix_036_20261020.zip
-unzip -o task3_standup_fix_036_20261020.zip -d "$HOME/robotac/matrix_robotac_first"
+sha256sum -c task3_startup_fix_037_20261021.zip.sha256
+unzip -l task3_startup_fix_037_20261021.zip
+unzip -o task3_startup_fix_037_20261021.zip -d "$HOME/robotac/matrix_robotac_first"
 cd "$HOME/robotac/matrix_robotac_first"
 bash task3_sim/run_task3.sh --headless --config task3_sim/config/multi_fixed.json --max-seconds 180
 echo $?

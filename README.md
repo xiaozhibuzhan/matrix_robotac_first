@@ -1,22 +1,26 @@
 # matrix_robotac_first
 
-更新：2026-10-20。**任务一、二原有成果保留；任务三新增独立 MuJoCo 仿真平台，0.3.6 已在 Ubuntu 官方原生动力学运行中完成三方向固定靶五发巡回。** 实物接入目前处于联网、视频与硬件适配准备阶段。任务一、二的现场结论与变更见 [CHANGELOG.md](CHANGELOG.md)。
+更新：2026-10-23。**任务三当前版本为 0.3.8，新增 RK3588 / ARM64 / Python 3.10.12 板端部署、官方 SDK 架构预检与真实 RTSP 的 AprilTag 身份识别。** 保留已有 x86 MuJoCo 仿真、第五发修复和任务一、二成果。实物自动转向、瞄准与发射还需可信状态、相机/发射器标定和真实发射协议接入。任务一、二的现场结论与变更见 [CHANGELOG.md](CHANGELOG.md)。
 
 任务三入口与最新说明：
 
+- [RK3588 板端部署与三步验收](task3_sim/RK3588_DEPLOY_038.md)
+- [0.3.8 更新包、校验文件与上传内容](update/task3/README.md)
 - [独立仿真平台与 Ubuntu 安装](task3_sim/README.md)
 - [0.3.6 第五发切换修复与五发验证](task3_sim/OFFICIAL_STANDUP_036.md)
 - [实物连接、SSH、视频和后续适配](task3_sim/HARDWARE_CONNECT_20261020.md)
 - [最新 Ubuntu 五发离线复核](task3_sim/validation/ubuntu036_five_shot_review.json)
 
-最新五发顺序为 `2 → 5 → 9 → 2 → 5`，均十环、累计 50 分、余弹 0。完整 0.3.6 验收尚未全部完成；回传记录的跨机里程文件哈希差异保留在复核报告中。仓库包含任务三源码、图片来源记录和精选验收证据，不含虚拟环境、原始运行记录或官方编译运行时；Ubuntu 仍需保留原官方工程。
+0.3.8 开发机回归 419 项通过、3 项 POSIX 信号测试因 Windows 跳过，1,189 个受保护文件无变化；[验证报告](task3_sim/validation/arm038_local_checks.json)明确记录尚未在 RK3588 实板编译、运行 SDK 或做机器人动作。ARM 入口使用独立 `.venv_hardware`，不要求 MuJoCo 或 x86 官方仿真 ELF。
+
+历史 0.3.6 Ubuntu 五发顺序为 `2 → 5 → 9 → 2 → 5`，均十环、累计 50 分、余弹 0。完整 0.3.6 验收尚未全部完成；回传记录的跨机里程文件哈希差异保留在复核报告中。仓库包含任务三源码、更新包、图片来源记录和精选验收证据，不含虚拟环境、原始运行记录或官方编译运行时；部署仍需官方工程提供相应 SDK/运行资源。
 
 ## 当前推进路线
 
 1. 保留任务一地图、普通导航和已经成功的宝箱场景修复；已应用补丁的 Ubuntu 无需重新安装。
 2. 任务二正式操作沿用 [普通导航触碰宝箱](navigation/TREASURE_UBUNTU.md)，启动不加 `--treasure`，不使用旧双点与宝箱 CLI 流程。
 3. 任务二以 UE 中宝箱真实消失及官方记分牌增分为成功依据，用户已确认完成。
-4. 任务三使用 [独立仿真平台](task3_sim/README.md) 验证识别、转向、瞄准与逐发计分，实物按 [连接与适配说明](task3_sim/HARDWARE_CONNECT_20261020.md) 分阶段接入；[原准备计划](TASK3_PLAN.md) 保留作规则与资源参考。
+4. 任务三在 x86 工作站使用 [独立仿真平台](task3_sim/README.md)，RK3588 板上按 [ARM64 部署说明](task3_sim/RK3588_DEPLOY_038.md) 依次做依赖预检、SDK 仅导入检查和只读真实视频识别，再继续实物标定、状态、动作及发射适配；[原准备计划](TASK3_PLAN.md) 保留作规则与资源参考。
 
 已确认的成功命令：
 
@@ -50,7 +54,7 @@ bash navigation/run_navigation.sh --config navigation/config/treasure_local.yaml
 
 | 目录 | 用途 |
 | --- | --- |
-| 本工作区 `E:\各种比赛\robortac\matrix_robotac_first` | 包含官方运行时的开发原件 |
+| 本工作区 `E:\各种比赛\robortac\matrix_robotac_first_baohu` | 包含官方运行时的开发原件 |
 | 其下同名 `matrix_robotac_first/` | 独立 Git 发布副本；提交推送前从上一级工作区同步 |
 | Ubuntu 示例 `~/robotac/matrix_robotac_first` | 已经跑通官方仿真的实际安装目录 |
 

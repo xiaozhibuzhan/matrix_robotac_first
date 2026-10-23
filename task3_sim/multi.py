@@ -250,16 +250,25 @@ def run_multi(args) -> tuple[int, Path]:
         summary["source_model"] = provenance["source_model"]
         if config.get("backend", "kinematic") == "official_dynamics":
             from .official_backend import OfficialDynamicsRobot
-            from .official_runtime import OfficialRuntime
+            from .official_runtime import OfficialRuntime, OfficialRuntimeError
             from .official_scene import prepare_scene
             model, native_scene = prepare_scene(output/"generated/scene.xml", config, args.model_root)
             settings = config.get("official_dynamics", {})
             runtime = OfficialRuntime(PACKAGE.parent, output/"official_runtime", native_scene,
                                       sdk_port=int(settings.get("sdk_port", 44888)))
             bridge = PACKAGE / settings.get("bridge_executable", "local/native/task3_official_state_bridge")
-            robot = OfficialDynamicsRobot(model, config, runtime=runtime, bridge_executable=bridge, output=output)
-            summary["motion_model"] = robot.motion_model
+            summary["motion_model"] = OfficialDynamicsRobot.motion_model
             summary["official_dynamics_mission_completed"] = False
+            # Check local native dependencies before creating GL resources or
+            # UI windows. start() repeats the checks under its process lock.
+            report = runtime.preflight(bridge)
+            summary["official_startup_preflight"] = report
+            write_json(output/"startup_preflight.json", report)
+            if not report["ready"]:
+                for action in report.get("repair_actions", []):
+                    print(f"TASK3_REPAIR cwd={action['cwd']} command={action['command']}", flush=True)
+                raise OfficialRuntimeError("Official runtime preflight failed before graphics startup: " + "; ".join(report["errors"]))
+            robot = OfficialDynamicsRobot(model, config, runtime=runtime, bridge_executable=bridge, output=output)
         elif config.get("backend", "kinematic") == "kinematic":
             robot = MujocoRobot(model, config)
         else:

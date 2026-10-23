@@ -72,21 +72,20 @@ class _CommandLease:
     valid_until_s: float | None
 
 
-def load_official_sdk(sdk_root: str | Path | None = None):
-    """Load the supplied binary only on its declared Python/platform ABI."""
+def load_official_sdk_module(sdk_root: str | Path | None = None):
+    """Import the host-matched binding without constructing a robot client."""
     if sys.platform != "linux" or platform.python_implementation() != "CPython" or sys.version_info[:2] != (3, 10):
         raise OfficialSDKError("Official SDK runtime requires Linux CPython 3.10")
-    arch = {"amd64": "x86_64", "arm64": "aarch64"}.get(platform.machine().lower(), platform.machine().lower())
-    if arch not in ("x86_64", "aarch64"):
-        raise OfficialSDKError(f"Unsupported official SDK architecture: {arch}")
+    from .sdk_platform import inspect_sdk
     root = Path(sdk_root) if sdk_root is not None else Path(__file__).resolve().parents[1] / "deps" / "zsibot_sdk"
-    directory = (root / "lib" / "zsl-1" / arch).resolve()
-    libraries = list(directory.glob("mc_sdk_zsl_1_py.cpython-310-*.so"))
-    native = directory / f"libmc_sdk_zsl_1_{arch}.so"
-    if len(libraries) != 1 or not native.is_file():
-        raise OfficialSDKError(f"Matching official SDK binaries missing from {directory}")
+    report = inspect_sdk(root)
+    if not report["ready"]:
+        raise OfficialSDKError("; ".join(report["errors"]))
+    binding = Path(report["files"]["binding"])
+    native = Path(report["files"]["library"])
+    directory = binding.parent
     loaded = sys.modules.get("mc_sdk_zsl_1_py")
-    if loaded is not None and Path(getattr(loaded, "__file__", "")).resolve() != libraries[0].resolve():
+    if loaded is not None and Path(getattr(loaded, "__file__", "")).resolve() != binding:
         raise OfficialSDKError("A different mc_sdk_zsl_1_py is already loaded")
     ctypes.CDLL(str(native), mode=ctypes.RTLD_GLOBAL)
     sys.path.insert(0, str(directory))
@@ -94,9 +93,14 @@ def load_official_sdk(sdk_root: str | Path | None = None):
         module = importlib.import_module("mc_sdk_zsl_1_py")
     finally:
         sys.path.remove(str(directory))
-    if Path(module.__file__).resolve() != libraries[0].resolve():
+    if Path(module.__file__).resolve() != binding:
         raise OfficialSDKError("Imported SDK is outside the explicitly selected official SDK root")
-    return module.HighLevel()
+    return module
+
+
+def load_official_sdk(sdk_root: str | Path | None = None):
+    """Construct the client only for an explicitly requested SDK session."""
+    return load_official_sdk_module(sdk_root).HighLevel()
 
 
 class OfficialSDKSession:

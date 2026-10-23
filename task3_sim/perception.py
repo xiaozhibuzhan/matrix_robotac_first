@@ -128,25 +128,37 @@ def _release_native_detector(detector: Any) -> None:
     families.clear()
 
 
+def create_managed_detector(tag):
+    """Share the native detector and its safe lifetime with real-camera input."""
+    from pupil_apriltags import Detector
+
+    class ManagedDetector(Detector):
+        # Override instead of editing the installed third-party binding.
+        # This also protects constructor failures and interpreter cleanup.
+        def close(self):
+            _release_native_detector(self)
+
+        def __del__(self):
+            try:
+                self.close()
+            except Exception:
+                # Native finalizers cannot report exceptions reliably at
+                # interpreter shutdown. Explicit close reports failures.
+                pass
+
+    return ManagedDetector(
+        families=tag.get("family", "tag36h11"),
+        nthreads=int(tag.get("detector_threads", 1)),
+        quad_decimate=float(tag.get("quad_decimate", 1.0)),
+        quad_sigma=float(tag.get("quad_sigma", 0.0)),
+        refine_edges=1, decode_sharpening=0.25,
+    )
+
+
 class AprilTagPerception:
     """The detector takes pixels only; simulator ground truth is not accepted."""
 
     def __init__(self, config: Mapping[str, Any]):
-        from pupil_apriltags import Detector
-
-        class ManagedDetector(Detector):
-            # Override instead of editing the installed third-party binding.
-            # This also protects constructor failures and interpreter cleanup.
-            def close(self):
-                _release_native_detector(self)
-
-            def __del__(self):
-                try:
-                    self.close()
-                except Exception:
-                    # Native finalizers cannot report exceptions reliably at
-                    # interpreter shutdown. Explicit close reports failures.
-                    pass
 
         camera, tag = config["camera"], config["tag"]
         self.camera_params = tuple(float(camera[key]) for key in ("fx", "fy", "cx", "cy"))
@@ -158,14 +170,7 @@ class AprilTagPerception:
         self.max_reprojection_error_px = float(tag.get("max_reprojection_error_px", 2.0))
         if not np.isfinite(self.max_reprojection_error_px) or self.max_reprojection_error_px <= 0:
             raise ValueError("maximum reprojection error must be finite and positive")
-        self.detector = ManagedDetector(
-            families=tag.get("family", "tag36h11"),
-            nthreads=int(tag.get("detector_threads", 1)),
-            quad_decimate=float(tag.get("quad_decimate", 1.0)),
-            quad_sigma=float(tag.get("quad_sigma", 0.0)),
-            refine_edges=1,
-            decode_sharpening=0.25,
-        )
+        self.detector = create_managed_detector(tag)
 
     def detect(self, frame: Frame) -> list[TagDetection]:
         if self.detector.tag_detector_ptr is None:
